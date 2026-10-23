@@ -1,0 +1,25 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: ai-advisor-service
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/ai_db
+    username: app
+    password: app_secret
+    pool:
+      initial-size: 5
+      max-size: 20
+  kafka:
+    bootstrap-servers: localhost:9092
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+
+logging:
+  level:
+    com.cosmetics: DEBUG
