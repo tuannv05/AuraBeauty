@@ -1,0 +1,18 @@
+package com.cosmetics.payment;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
+
+@SpringBootApplication
+@ComponentScan(basePackages = {"com.cosmetics.payment", "com.cosmetics.common"})
+@EnableR2dbcRepositories(basePackages = {
+        "com.cosmetics.payment.adapter.out.persistence",
+        "com.cosmetics.common.outbox"
+})
+public class PaymentServiceApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(PaymentServiceApplication.class, args);
+    }
+}
