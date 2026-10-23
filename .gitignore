@@ -1,0 +1,28 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# IDE Files
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# Build & Dependencies
+target/
+build/
+.gradle/
+node_modules/
+dist/
+
+# Environment Variables & Secrets
+.env
+*.local
+
+# Logs
+*.log
+logs/
+
+# Test reports
+test-output/
