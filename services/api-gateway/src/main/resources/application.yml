@@ -1,0 +1,71 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: account-service-auth
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/auth/**
+
+        - id: account-service-users
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/users/**
+
+        - id: account-service-shops
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/shops/**, /api/admin/shops/**
+
+        - id: catalog-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/products/**
+
+        - id: inventory-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/inventory/**
+
+        - id: order-service-cart
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/cart/**
+
+        - id: order-service-orders
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/orders/**
+
+        - id: payment-service-payments
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/payments/**
+
+        - id: payment-service-ledger
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/ledger/**
+
+        - id: ai-advisor-service
+          uri: http://localhost:8086
+          predicates:
+            - Path=/api/advisor/**
+
+jwt:
+  secret: defaultSecretKeyForCosmeticsPlatformProjectMustBeLongEnough123456789
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+
+logging:
+  level:
+    com.cosmetics: DEBUG
