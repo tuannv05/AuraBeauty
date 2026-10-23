@@ -1,0 +1,29 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: account-service
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/account_db
+    username: app
+    password: app_secret
+    pool:
+      initial-size: 5
+      max-size: 20
+
+jwt:
+  secret: defaultSecretKeyForCosmeticsPlatformProjectMustBeLongEnough123456789
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.cosmetics: DEBUG
