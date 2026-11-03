@@ -62,9 +62,16 @@ public class ProductController {
     public Mono<ApiResponse<List<ProductDocument>>> search(
             @RequestParam(required = false) String q,
             @RequestParam(required = false) String category,
-            @RequestParam(required = false) String skinType
+            @RequestParam(required = false) String skinType,
+            @RequestParam(required = false) String concern,
+            @RequestParam(required = false) String activeGroup,
+            @RequestParam(required = false) String badge,
+            @RequestParam(required = false) String texture,
+            @RequestParam(required = false) String origin,
+            @RequestParam(required = false) String priceBucket
     ) {
-        return productService.search(q, category, skinType).collectList().map(ApiResponse::ok);
+        return productService.search(q, category, skinType, concern, activeGroup, badge, texture, origin, priceBucket)
+                .collectList().map(ApiResponse::ok);
     }
 
     @GetMapping("/{id}")

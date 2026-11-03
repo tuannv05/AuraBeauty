@@ -1,0 +1,16 @@
+{
+  "name": "cosmetics-crawler",
+  "version": "1.0.0",
+  "description": "Multi-Vendor Cosmetics Platform - Data Crawling, INCI Enrichment, and Seeding Tool",
+  "main": "scraper.js",
+  "scripts": {
+    "crawl": "node scraper.js",
+    "import:db": "node exporterAndImporter.js --import"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "cheerio": "^1.0.0",
+    "mongodb": "^6.10.0",
+    "pg": "^8.13.1"
+  }
+}

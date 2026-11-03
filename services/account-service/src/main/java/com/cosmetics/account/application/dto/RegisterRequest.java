@@ -5,18 +5,20 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class RegisterRequest {
-    @NotBlank(message = "Email is required")
-    @Email(message = "Email format is invalid")
+    @NotBlank(message = "Email không được để trống")
+    @Email(message = "Định dạng email không hợp lệ")
     private String email;
 
-    @NotBlank(message = "Password is required")
-    @Size(min = 8, message = "Password must have at least 8 characters")
+    @NotBlank(message = "Mật khẩu không được để trống")
+    @Size(min = 8, message = "Mật khẩu phải có tối thiểu 8 ký tự")
     private String password;
 
-    @NotBlank(message = "Full name is required")
+    @NotBlank(message = "Họ và tên không được để trống")
     private String fullName;
 
     private String phone;
+    private String role; // "BUYER" or "SELLER"
+    private String shopName;
 
     public RegisterRequest() {}
 
@@ -28,4 +30,8 @@ public class RegisterRequest {
     public void setFullName(String fullName) { this.fullName = fullName; }
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
+    public String getShopName() { return shopName; }
+    public void setShopName(String shopName) { this.shopName = shopName; }
 }

@@ -1,0 +1,578 @@
+[
+  {
+    "inciName": "Hyaluronic Acid",
+    "vietnameseName": "Axit Hyaluronic",
+    "function": "Chất cấp ẩm sâu, giữ nước gấp 1000 lần trọng lượng",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Sodium Hyaluronate",
+    "vietnameseName": "Muối Natri Hyaluronate",
+    "function": "Thẩm thấu biểu bì, phục hồi độ đàn hồi và màng lipid",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Glycerin",
+    "vietnameseName": "Glycerin thực vật",
+    "function": "Hút ẩm từ môi trường vào sâu tầng sừng da",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Panthenol",
+    "vietnameseName": "Vitamin B5",
+    "function": "Làm dịu da mẩn đỏ, kích thích lành vết thương, giảm ngứa",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Ceramide NP",
+    "vietnameseName": "Ceramide 3",
+    "function": "Củng cố hàng rào bảo vệ da, khóa ẩm chống mất nước qua biểu bì (TEWL)",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Ceramide AP",
+    "vietnameseName": "Ceramide 6-II",
+    "function": "Tái tạo ma trận gian bào biểu bì, duy trì hàng rào khỏe mạnh",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Ceramide EOP",
+    "vietnameseName": "Ceramide 1",
+    "function": "Liên kết chuỗi lipid, bảo vệ da khỏi kích ứng môi trường",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Phytosphingosine",
+    "vietnameseName": "Phytosphingosine",
+    "function": "Tiền chất lipid tự nhiên, kháng khuẩn ngừa mụn và củng cố biểu bì",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Cholesterol",
+    "vietnameseName": "Cholesterol sinh học",
+    "function": "Tỉ lệ vàng 3:1:1 cấu trúc lipid gian bào",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Allantoin",
+    "vietnameseName": "Allantoin",
+    "function": "Làm mềm lớp sừng, giảm kích ứng, chống viêm dịu nhẹ",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Squalane",
+    "vietnameseName": "Dầu Squalane từ mía/olive",
+    "function": "Khóa ẩm tự nhiên mô phỏng bã nhờn, chống oxy hóa mỏng nhẹ",
+    "comedogenicRating": 1,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Betaine",
+    "vietnameseName": "Betaine từ củ cải đường",
+    "function": "Kiểm soát cân bằng nước tế bào, giảm kích ứng từ surfactant",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Niacinamide",
+    "vietnameseName": "Vitamin B3",
+    "function": "Thu nhỏ lỗ chân lông, kiềm dầu, ức chế melanosome làm sáng đều màu da",
+    "comedogenicRating": 0,
+    "irritationRating": 1,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Ascorbic Acid",
+    "vietnameseName": "Vitamin C nguyên chất L-AA",
+    "function": "Chống oxy hóa mạnh, kích thích sản sinh collagen, mờ thâm nám",
+    "comedogenicRating": 0,
+    "irritationRating": 2,
+    "safetyLevel": "MODERATE",
+    "potentialIrritant": true
+  },
+  {
+    "inciName": "3-O-Ethyl Ascorbic Acid",
+    "vietnameseName": "Dẫn xuất Vitamin C E-AA",
+    "function": "Dẫn xuất C ổn định cao, sáng da, kháng viêm, thẩm thấu tốt",
+    "comedogenicRating": 0,
+    "irritationRating": 1,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Tranexamic Acid",
+    "vietnameseName": "Axit Tranexamic",
+    "function": "Ức chế plasmin, mờ nám nội tiết và đỏ da sau mụn (PIE)",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Alpha-Arbutin",
+    "vietnameseName": "Alpha-Arbutin",
+    "function": "Ức chế enzyme Tyrosinase, mờ thâm sạm an toàn",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Tocopherol",
+    "vietnameseName": "Vitamin E tự nhiên",
+    "function": "Chống oxy hóa màng tế bào, bảo vệ lipid khỏi gốc tự do",
+    "comedogenicRating": 2,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Resveratrol",
+    "vietnameseName": "Resveratrol polyphenol",
+    "function": "Chống lão hóa tế bào, bảo vệ da khỏi tia bức xạ UV",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Bakuchiol",
+    "vietnameseName": "Bakuchiol thảo dược",
+    "function": "Chống lão hóa tự nhiên thay thế retinol, không gây nhạy cảm ánh sáng",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Salicylic Acid",
+    "vietnameseName": "BHA (Axit Salicylic)",
+    "function": "Tan trong dầu, làm sạch sâu cổ nang lông, giảm bít tắc và mụn đầu đen",
+    "comedogenicRating": 0,
+    "irritationRating": 2,
+    "safetyLevel": "MODERATE",
+    "potentialIrritant": true
+  },
+  {
+    "inciName": "Glycolic Acid",
+    "vietnameseName": "AHA Axit Glycolic",
+    "function": "Phân tử nhỏ tẩy tế bào chết bề mặt, kích thích chu kỳ tái tạo da",
+    "comedogenicRating": 0,
+    "irritationRating": 2,
+    "safetyLevel": "MODERATE",
+    "potentialIrritant": true
+  },
+  {
+    "inciName": "Lactic Acid",
+    "vietnameseName": "AHA Axit Lactic",
+    "function": "Tẩy da chết dịu nhẹ kết hợp cấp ẩm tầng biểu bì",
+    "comedogenicRating": 0,
+    "irritationRating": 1,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Retinol",
+    "vietnameseName": "Vitamin A Retinol",
+    "function": "Tăng sinh tế bào, làm mờ nếp nhăn, kích thích elastin và collagen",
+    "comedogenicRating": 0,
+    "irritationRating": 3,
+    "safetyLevel": "MODERATE",
+    "potentialIrritant": true
+  },
+  {
+    "inciName": "Zinc PCA",
+    "vietnameseName": "Kẽm PCA",
+    "function": "Kiềm tiết bã nhờn, kháng khuẩn P.acnes, làm dịu ổ sưng",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Centella Asiatica Extract",
+    "vietnameseName": "Chiết xuất Rau Má",
+    "function": "Làm dịu da kích ứng, kháng viêm, thúc đẩy tổng hợp collagen tuýp I & III",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Madecassoside",
+    "vietnameseName": "Hoạt chất Madecassoside",
+    "function": "Tinh chất rau má tinh khiết, phục hồi da sau xâm lấn hoặc nặn mụn",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Asiaticoside",
+    "vietnameseName": "Asiaticoside",
+    "function": "Chữa lành vết trầy xước biểu bì, tăng lưu thông máu dưới da",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Houttuynia Cordata Extract",
+    "vietnameseName": "Chiết xuất Rau Diếp Cá (Heartleaf)",
+    "function": "Thải độc, kháng khuẩn, làm dịu da mụn nhạy cảm (Đặc trưng Anua)",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Camellia Sinensis Leaf Extract",
+    "vietnameseName": "Chiết xuất Trà Xanh EGCG",
+    "function": "Chống oxy hóa polyphenol mạnh, kiểm soát dầu và chống viêm",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Melaleuca Alternifolia (Tea Tree) Leaf Oil",
+    "vietnameseName": "Tinh dầu Tràm Trà",
+    "function": "Kháng khuẩn tự nhiên, giảm sưng viêm nốt mụn",
+    "comedogenicRating": 1,
+    "irritationRating": 2,
+    "safetyLevel": "MODERATE",
+    "potentialIrritant": true
+  },
+  {
+    "inciName": "Bifida Ferment Lysate",
+    "vietnameseName": "Men vi sinh Bifida",
+    "function": "Cân bằng hệ vi sinh da (microbiome), phục hồi ADN tế bào tổn thương",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Galactomyces Ferment Filtrate",
+    "vietnameseName": "Men rượu Sake Pitera",
+    "function": "Cải thiện kết cấu da thô ráp, se khít chân lông, làm bóng mướt",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Artemisia Princeps Extract",
+    "vietnameseName": "Chiết xuất Ngải Cứu Mugwort",
+    "function": "Làm dịu mát tức thì, hỗ trợ da kích ứng ửng đỏ và nhạy cảm",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Propolis Extract",
+    "vietnameseName": "Chiết xuất Keo Ong",
+    "function": "Kháng sinh tự nhiên, kháng nấm và tạo độ căng bóng tự nhiên",
+    "comedogenicRating": 0,
+    "irritationRating": 1,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Snail Secretion Filtrate",
+    "vietnameseName": "Dịch ốc sên lọc",
+    "function": "Tái tạo mô biểu bì, tăng độ đàn hồi, ngăn ngừa hình thành sẹo lõm",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Zinc Oxide",
+    "vietnameseName": "Kẽm Oxit vi hạt",
+    "function": "Màng lọc khoáng chất phổ rộng UVA/UVB, kháng viêm dịu nhẹ",
+    "comedogenicRating": 1,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Titanium Dioxide",
+    "vietnameseName": "Titanium Dioxide",
+    "function": "Màng lọc vật lý phản xạ tia UVB và UVA ngắn, nâng tông nhẹ",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Ethylhexyl Triazone",
+    "vietnameseName": "Uvinul T 150",
+    "function": "Màng lọc hữu cơ thế hệ mới chống UVB bền vững với ánh sáng",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine",
+    "vietnameseName": "Tinosorb S",
+    "function": "Màng lọc phổ rộng quang phổ cao, bảo vệ cả UVA I, UVA II và UVB",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Dimethicone",
+    "vietnameseName": "Silicone Dimethicone",
+    "function": "Tạo cảm giác mượt mà như lụa, lấp đầy rãnh nhăn và khóa ẩm mỏng nhẹ",
+    "comedogenicRating": 1,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Dimethicone Crosspolymer",
+    "vietnameseName": "Silicone Crosspolymer",
+    "function": "Tạo màng lì nhung (Velvet Matte) mịn mượt, giữ son lâu trôi",
+    "comedogenicRating": 1,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Diisostearyl Malate",
+    "vietnameseName": "Diisostearyl Malate",
+    "function": "Chất phân tán hạt màu đồng nhất, tạo độ ẩm mềm mọng cho môi",
+    "comedogenicRating": 1,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Polyglyceryl-2 Triisostearate",
+    "vietnameseName": "Polyglyceryl-2 Triisostearate",
+    "function": "Dung môi tự nhiên làm tan hạt màu son, tăng độ bám dính tự nhiên",
+    "comedogenicRating": 2,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Octyldodecanol",
+    "vietnameseName": "Octyldodecanol",
+    "function": "Chất làm mềm da và môi, dung môi cao cấp không gây bết dính",
+    "comedogenicRating": 1,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Silica",
+    "vietnameseName": "Bột khoáng Silica",
+    "function": "Hút dầu thừa, kiềm dầu, làm mờ lỗ chân lông và tạo hiệu ứng Soft-focus",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Mica",
+    "vietnameseName": "Khoáng chất Mica",
+    "function": "Tạo hiệu ứng bắt sáng nhũ ngọc trai lấp lánh (Shimmer Glow)",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Kaolin",
+    "vietnameseName": "Đất sét trắng Kaolin",
+    "function": "Hút dầu thừa và bã nhờn, làm sạch sâu lỗ chân lông",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Iron Oxides (CI 77491)",
+    "vietnameseName": "Oxit Sắt Đỏ",
+    "function": "Hạt khoáng màu đỏ tạo sắc tố tự nhiên cho son môi và phấn má",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Iron Oxides (CI 77492)",
+    "vietnameseName": "Oxit Sắt Vàng",
+    "function": "Hạt khoáng màu vàng tạo tông ấm cho kem nền và phấn mắt",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Iron Oxides (CI 77499)",
+    "vietnameseName": "Oxit Sắt Đen",
+    "function": "Hạt khoáng màu đen tạo độ sâu sắc thái cho phấn mắt và son đậm",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Red 7 Lake (CI 15850)",
+    "vietnameseName": "Phẩm màu đỏ Red 7 Lake",
+    "function": "Sắc tố đỏ chuẩn quốc tế cho son môi cao cấp",
+    "comedogenicRating": 0,
+    "irritationRating": 1,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Red 28 Lake (CI 45410)",
+    "vietnameseName": "Phẩm màu hồng Red 28 Lake",
+    "function": "Sắc tố hồng tươi sáng chuẩn màu cho son và má hồng",
+    "comedogenicRating": 0,
+    "irritationRating": 1,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Yellow 6 Lake (CI 15985)",
+    "vietnameseName": "Phẩm màu cam san hô Yellow 6",
+    "function": "Sắc tố cam đào và san hô rạng rỡ",
+    "comedogenicRating": 0,
+    "irritationRating": 1,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Butyrospermum Parkii (Shea) Butter",
+    "vietnameseName": "Bơ hạt mỡ hữu cơ",
+    "function": "Dưỡng ẩm sâu chống nứt nẻ môi và khô ráp biểu bì",
+    "comedogenicRating": 1,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Simmondsia Chinensis (Jojoba) Seed Oil",
+    "vietnameseName": "Dầu hạt Jojoba",
+    "function": "Khóa ẩm tự nhiên mô phỏng lớp màng bã nhờn, nuôi dưỡng bờ môi căng mọng",
+    "comedogenicRating": 1,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Coco-Glucoside",
+    "vietnameseName": "Chất hoạt động bề mặt Coco-Glucoside",
+    "function": "Làm sạch gốc thực vật siêu dịu nhẹ không khô căng màng ẩm",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Sodium Cocoyl Isethionate",
+    "vietnameseName": "Chất tạo bọt dịu nhẹ SCI",
+    "function": "Tạo bọt mịn như kem, giữ pH tự nhiên 5.5 lý tưởng cho da",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "PEG-6 Caprylic/Capric Glycerides",
+    "vietnameseName": "Hạt Micellar PEG-6",
+    "function": "Bẫy dầu hòa tan lớp trang điểm và bụi mịn không cần rửa lại",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Palmitic Acid",
+    "vietnameseName": "Axit Palmitic tự nhiên",
+    "function": "Chất nhũ hóa tạo kem đặc mềm mượt",
+    "comedogenicRating": 2,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Stearic Acid",
+    "vietnameseName": "Axit Stearic",
+    "function": "Tạo bọt rửa mặt và củng cố hàng rào lipid",
+    "comedogenicRating": 2,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Myristic Acid",
+    "vietnameseName": "Axit Myristic",
+    "function": "Tạo bọt rửa sạch dầu nhờn sâu tận lỗ chân lông",
+    "comedogenicRating": 3,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Copper Tripeptide-1",
+    "vietnameseName": "Peptide Đồng sinh học GHK-Cu",
+    "function": "Tái tạo mô sẹo, kích thích collagen tuýp 1, phục hồi màng biểu bì",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  },
+  {
+    "inciName": "Palmitoyl Tripeptide-1",
+    "vietnameseName": "Matrixyl 3000 Peptide",
+    "function": "Tín hiệu kích hoạt tổng hợp collagen màng đáy, tăng mật độ da",
+    "comedogenicRating": 0,
+    "irritationRating": 0,
+    "safetyLevel": "SAFE",
+    "potentialIrritant": false
+  }
+]

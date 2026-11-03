@@ -3,62 +3,365 @@ import Navbar from './components/Navbar';
 import BuyerZone from './components/BuyerZone';
 import SellerZone from './components/SellerZone';
 import AdminZone from './components/AdminZone';
-import AiAdvisorChat from './components/AiAdvisorChat';
-import { USER_ROLES } from './api';
+import MiniCartDrawer from './components/MiniCartDrawer';
+import Footer from './components/Footer';
+import ToastContainer from './components/ToastContainer';
+import AuthModal from './components/AuthModal';
+import AccountProfileView from './components/AccountProfileView';
+import SupportChat from './components/SupportChat';
+import ErrorBoundary from './components/ErrorBoundary';
+import { TopBarModals } from './components/TopBarModals';
+import { USER_ROLES, MOCK_PRODUCTS } from './api';
 
 export default function App() {
-  const [activeRole, setActiveRole] = useState('BUYER'); // BUYER | SELLER | ADMIN
-  const [cart, setCart] = useState([]);
+  // Current user state (mặc định ban đầu là null khi chưa đăng nhập)
+  const [currentUser, setCurrentUser] = useState(() => {
+    try {
+      const stored = localStorage.getItem('aura_current_user') || localStorage.getItem('cosmepoly_current_user');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        // Xóa sạch user mẫu cũ (nếu có) để người dùng bắt đầu ở trạng thái khách chưa đăng nhập
+        if (parsed?.id === 'buyer-001' && parsed?.name === 'Nguyễn Văn Mua') {
+          localStorage.removeItem('aura_current_user');
+          localStorage.removeItem('cosmepoly_current_user');
+          return null;
+        }
+        return parsed;
+      }
+    } catch (e) {}
+    return null; // Chưa đăng nhập -> null
+  });
+
+  // Role được suy ra 100% từ quyền của tài khoản đăng nhập
+  const activeRole = currentUser?.role || 'BUYER';
+
+  // Auth Modal State
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
+  // Top Bar Announcement / Quick Link Modals
+  const [activeTopBarModal, setActiveTopBarModal] = useState(null);
+
+  // Global Cart & Wishlist
+  const [cart, setCart] = useState([
+    {
+      productId: 'prod-001',
+      variantSku: 'INNI-GT-80ML',
+      shopId: 'shop-001',
+      productName: 'Innisfree Green Tea Seed Hyaluronic Serum',
+      variantTitle: 'Chai 80ml (Chuẩn)',
+      price: 620000,
+      quantity: 1,
+      image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&auto=format&fit=crop&q=80'
+    }
+  ]);
+  const [wishlistIds, setWishlistIds] = useState(['prod-002', 'prod-006']);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isSkinProfileOpen, setIsSkinProfileOpen] = useState(false);
+
+  // Global Toasts
+  const [toasts, setToasts] = useState([]);
+
+  const addToast = ({ type = 'info', message, action }) => {
+    const id = 'toast-' + Date.now() + Math.random();
+    setToasts((prev) => [...prev.slice(-2), { id, type, message, action }]);
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((t) => t.id !== id));
+    }, 4000);
+  };
+
+  const removeToast = (id) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  };
+
+  // Global Navigation View in Buyer mode
+  const [activeView, setActiveView] = useState('home'); // 'home' | 'catalog' | 'product-detail' | 'cart' | 'checkout' | 'order-result' | 'order-tracking' | 'combos'
+  const [selectedProduct, setSelectedProduct] = useState(MOCK_PRODUCTS[0]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('');
+
+  // Skin Profile
   const [skinProfile, setSkinProfile] = useState({
     skinType: 'COMBINATION',
     concerns: ['Mụn cám', 'Thâm mụn', 'Vùng chữ T đổ dầu'],
     allergies: ['Cồn khô (Alcohol Denat)', 'Hương liệu nồng']
   });
 
-  const currentUser = USER_ROLES[activeRole];
+  const handleLoginSuccess = (userObj) => {
+    setCurrentUser(userObj);
+    localStorage.setItem('aura_current_user', JSON.stringify(userObj));
+    const roleName = userObj.role === 'ADMIN' ? 'Quản Trị Viên' : userObj.role === 'SELLER' ? 'Người Bán (Shop)' : 'Khách Mua';
+    if (userObj.role === 'ADMIN') {
+      setActiveView('admin');
+    } else if (userObj.role === 'SELLER') {
+      setActiveView('seller');
+    } else {
+      setActiveView('home');
+    }
+    addToast({
+      type: 'success',
+      message: `Đăng nhập thành công! Giao diện đã chuyển sang quyền ${roleName}.`
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem('aura_current_user');
+    localStorage.removeItem('cosmepoly_current_user');
+    setActiveView('home');
+    addToast({
+      type: 'info',
+      message: 'Đã đăng xuất tài khoản. Bạn đang xem giao diện Khách Mua.'
+    });
+  };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Navbar
-        activeRole={activeRole}
-        setActiveRole={setActiveRole}
-        cartCount={cart.reduce((s, i) => s + i.quantity, 0)}
-        onOpenCart={() => setIsCartOpen(true)}
-        onOpenSkinProfile={() => setIsSkinProfileOpen(true)}
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--canvas)' }}>
+      {/* 1. Global Toast Container */}
+      <ToastContainer toasts={toasts} onDismiss={removeToast} />
+
+      {/* 1.1 Auth Modal */}
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        onLoginSuccess={handleLoginSuccess}
       />
 
-      <main className="container" style={{ flex: 1, paddingBottom: '80px' }}>
-        {activeRole === 'BUYER' && (
+      {/* 2. Global Navbar (shown in all views except distraction-free checkout) */}
+      {activeView !== 'checkout' && (
+        <Navbar
+          activeRole={activeRole}
+          setActiveRole={(newRole) => {
+            if (USER_ROLES[newRole]) {
+              handleLoginSuccess(USER_ROLES[newRole]);
+            }
+          }}
+          cartCount={cart.reduce((s, i) => s + i.quantity, 0)}
+          wishlistCount={wishlistIds.length}
+          onOpenCart={() => setIsCartOpen(true)}
+          onOpenSkinProfile={() => {
+            const popup = document.querySelector('.modal-backdrop');
+            if (!popup) {
+              addToast({ type: 'info', message: 'Hồ sơ da liễu: ' + skinProfile.skinType });
+            }
+          }}
+          onOpenAuthModal={() => setIsAuthModalOpen(true)}
+          onLogout={handleLogout}
+          onNavigateHome={() => {
+            setActiveView('home');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onNavigateCatalog={() => {
+            setSearchQuery('');
+            setCategoryFilter('');
+            setActiveView('catalog');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onNavigateCategory={(cat) => {
+            setCategoryFilter(cat);
+            setSearchQuery('');
+            setActiveView('catalog');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onNavigateTracking={() => {
+            setActiveView('order-tracking');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onNavigateCombos={() => {
+            setActiveView('combos');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onNavigateProfile={() => {
+            setActiveView('profile');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onSelectProduct={(p) => {
+            setSelectedProduct(p);
+            setActiveView('product-detail');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onSearchSubmit={(query) => {
+            setSearchQuery(query);
+            setCategoryFilter('');
+            setActiveView('catalog');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onOpenTopBarModal={(k) => setActiveTopBarModal(k)}
+          onNavigateFlashSale={() => {
+            setActiveView('flash-sale');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onNavigateAdmin={() => {
+            setActiveView('admin');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onNavigateSeller={() => {
+            setActiveView('seller');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          user={currentUser}
+        />
+      )}
+
+      {/* 3. Main Content Area */}
+      <main className="container" style={{ flex: 1, paddingBottom: '40px' }}>
+        <ErrorBoundary
+          resetKey={activeView + '-' + (currentUser?.role || 'BUYER')}
+          activeView={activeView}
+          onReset={() => {
+            setSearchQuery('');
+            setCategoryFilter('');
+            setActiveView('home');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onNavigateHome={() => {
+            setSearchQuery('');
+            setCategoryFilter('');
+            setActiveView('home');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
+        {activeView === 'profile' ? (
+          <div style={{ marginTop: '20px' }}>
+            <AccountProfileView
+              user={currentUser}
+              onUpdateUser={(updated) => {
+                setCurrentUser(updated);
+                localStorage.setItem('aura_current_user', JSON.stringify(updated));
+              }}
+              onAddToast={addToast}
+              onNavigateHome={() => {
+                setActiveView('home');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              onLogout={handleLogout}
+            />
+          </div>
+        ) : activeView === 'admin' ? (
+          <div style={{ marginTop: '24px' }}>
+            <AdminZone onNavigateHome={() => {
+              setActiveView('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }} />
+          </div>
+        ) : activeView === 'seller' ? (
+          <div style={{ marginTop: '24px' }}>
+            <SellerZone
+              user={currentUser}
+              onNavigateHome={() => {
+                setActiveView('home');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        ) : (
           <BuyerZone
             user={currentUser}
             cart={cart}
             setCart={setCart}
             skinProfile={skinProfile}
             setSkinProfile={setSkinProfile}
-            isSkinProfileOpen={isSkinProfileOpen}
-            setIsSkinProfileOpen={setIsSkinProfileOpen}
             isCartOpen={isCartOpen}
             setIsCartOpen={setIsCartOpen}
+            activeView={activeView}
+            setActiveView={setActiveView}
+            selectedProduct={selectedProduct}
+            setSelectedProduct={setSelectedProduct}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            categoryFilter={categoryFilter}
+            setCategoryFilter={setCategoryFilter}
+            onAddToast={addToast}
+            wishlistIds={wishlistIds}
+            setWishlistIds={setWishlistIds}
           />
         )}
-
-        {activeRole === 'SELLER' && (
-          <SellerZone user={currentUser} />
-        )}
-
-        {activeRole === 'ADMIN' && (
-          <AdminZone />
-        )}
+        </ErrorBoundary>
       </main>
 
-      {/* RAG AI Advisor Widget */}
-      <AiAdvisorChat skinProfile={skinProfile} />
+      {/* 4. Global MiniCart Drawer (1.5) */}
+      <MiniCartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        cart={cart}
+        setCart={setCart}
+        onOpenFullCart={() => {
+          setActiveView('cart');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onCheckout={() => {
+          setActiveView('checkout');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onAddToast={addToast}
+        onSelectProduct={(p) => {
+          setSelectedProduct(p);
+          setActiveView('product-detail');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
 
-      <footer style={{ background: '#ffffff', borderTop: '1px solid var(--border-color)', padding: '16px 0', textAlign: 'center', fontSize: '13px', color: 'var(--text-muted)' }}>
-        <p>Hệ Thống Sàn Mỹ Phẩm Đa Người Bán & Cố Vấn Da Liễu AI (6 Microservices + Event-Driven Saga + Hexagonal Architecture)</p>
-      </footer>
+      {/* 5. Global Footer (1.4 - hidden in distraction-free checkout) */}
+      {activeView !== 'checkout' && (
+        <Footer
+          onAddToast={addToast}
+          onNavigateTracking={() => {
+            setActiveView('order-tracking');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onOpenSellerRegistration={() => {
+            if (USER_ROLES['SELLER']) {
+              handleLoginSuccess(USER_ROLES['SELLER']);
+            }
+          }}
+        />
+      )}
+
+      {/* 5.1 Top Bar Modals */}
+      <TopBarModals
+        activeModal={activeTopBarModal}
+        onClose={() => setActiveTopBarModal(null)}
+        onAddToast={addToast}
+        onNavigateFlashSale={() => {
+          setActiveView('flash-sale');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onOpenAiChat={() => {
+          // Open AI chat window
+          const chatBtn = document.querySelector('[aria-label="Mở Trợ Lý AI"]');
+          if (chatBtn) chatBtn.click();
+        }}
+      />
+
+      {/* 6. Global Support Chat & AI Advisor (Hoạt động toàn sàn cho mọi người dùng) */}
+      <SupportChat
+        skinProfile={skinProfile}
+        user={currentUser}
+        onSelectProduct={(product) => {
+          setSelectedProduct(product);
+          setActiveView('product-detail');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onNavigateOrderTracking={() => {
+          setActiveView('order-tracking');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onNavigateCatalog={(q) => {
+          if (q) setSearchQuery(q);
+          setActiveView('catalog');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onNavigateSeller={() => {
+          if (currentUser?.role === 'SELLER') {
+            setActiveView('home');
+          } else {
+            setIsAuthModalOpen(true);
+            addToast({
+              type: 'info',
+              message: 'Vui lòng đăng ký hoặc đăng nhập tài khoản Người Bán (Shop) để quản lý gian hàng.'
+            });
+          }
+        }}
+      />
     </div>
   );
 }

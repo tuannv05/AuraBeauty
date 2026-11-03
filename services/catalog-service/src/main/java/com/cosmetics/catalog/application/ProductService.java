@@ -93,20 +93,30 @@ public class ProductService {
     }
 
     public Flux<ProductDocument> search(String query, String category, String skinType) {
+        return search(query, category, skinType, null, null, null, null, null, null);
+    }
+
+    public Flux<ProductDocument> search(String query, String category, String skinType,
+                                        String concern, String activeGroup, String badge,
+                                        String texture, String origin, String priceBucket) {
+        Flux<ProductDocument> flux;
         if (query != null && !query.isBlank()) {
-            return productRepository.searchPublished(query)
-                    .filter(p -> category == null || category.isBlank() || category.equalsIgnoreCase(p.getCategory()))
-                    .filter(p -> skinType == null || skinType.isBlank() || (p.getSuitableSkinTypes() != null && p.getSuitableSkinTypes().contains(skinType.toUpperCase())));
+            flux = productRepository.searchPublished(query);
+        } else if (category != null && !category.isBlank()) {
+            flux = productRepository.findByCategoryAndStatus(category, "PUBLISHED");
+        } else {
+            flux = productRepository.findByStatus("PUBLISHED");
         }
 
-        Flux<ProductDocument> flux = (category != null && !category.isBlank())
-                ? productRepository.findByCategoryAndStatus(category, "PUBLISHED")
-                : productRepository.findByStatus("PUBLISHED");
-
-        if (skinType != null && !skinType.isBlank()) {
-            return flux.filter(p -> p.getSuitableSkinTypes() != null && p.getSuitableSkinTypes().contains(skinType.toUpperCase()));
-        }
-        return flux;
+        return flux
+                .filter(p -> category == null || category.isBlank() || category.equalsIgnoreCase(p.getCategory()))
+                .filter(p -> skinType == null || skinType.isBlank() || (p.getSuitableSkinTypes() != null && p.getSuitableSkinTypes().contains(skinType.toUpperCase())))
+                .filter(p -> concern == null || concern.isBlank() || (p.getSkinConcerns() != null && p.getSkinConcerns().contains(concern.toUpperCase())))
+                .filter(p -> activeGroup == null || activeGroup.isBlank() || (p.getKeyActiveGroups() != null && p.getKeyActiveGroups().contains(activeGroup.toUpperCase())))
+                .filter(p -> badge == null || badge.isBlank() || (p.getSafetyEthicsBadges() != null && p.getSafetyEthicsBadges().contains(badge.toUpperCase())))
+                .filter(p -> texture == null || texture.isBlank() || texture.equalsIgnoreCase(p.getFormulationTexture()))
+                .filter(p -> origin == null || origin.isBlank() || origin.equalsIgnoreCase(p.getOriginCountry()))
+                .filter(p -> priceBucket == null || priceBucket.isBlank() || priceBucket.equalsIgnoreCase(p.getPriceRangeBucket()));
     }
 
     public Mono<ProductDocument> getById(String id) {

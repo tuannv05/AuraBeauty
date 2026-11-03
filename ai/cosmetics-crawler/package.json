@@ -1,0 +1,15 @@
+{
+  "name": "cosmetics-crawler",
+  "version": "2.0.0",
+  "description": "Enterprise-grade stealth crawler and cosmetics facet search normalizer",
+  "main": "src/scraper.js",
+  "scripts": {
+    "start": "node src/scraper.js",
+    "crawl": "node src/scraper.js",
+    "sync": "node src/dbSynchronizer.js"
+  },
+  "dependencies": {
+    "mongodb": "^6.8.0",
+    "pg": "^8.12.0"
+  }
+}

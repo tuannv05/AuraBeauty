@@ -1,5 +1,7 @@
 package com.cosmetics.catalog.adapter.out.persistence;
 
+import com.cosmetics.catalog.domain.model.VtoConfig;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.index.TextIndexed;
@@ -13,6 +15,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @Document(collection = "products")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductDocument {
     @Id
     private String id;
@@ -37,11 +40,31 @@ public class ProductDocument {
     @Indexed
     private List<String> suitableSkinTypes = new ArrayList<>();
 
+    @Indexed
+    private List<String> skinConcerns = new ArrayList<>();
+
+    @Indexed
+    private List<String> keyActiveGroups = new ArrayList<>();
+
+    @Indexed
+    private List<String> safetyEthicsBadges = new ArrayList<>();
+
+    @Indexed
+    private String formulationTexture;
+
+    @Indexed
+    private String originCountry;
+
+    private String priceRangeBucket;
+    private String volumeSpec;
+
     private List<IngredientSubDoc> ingredients = new ArrayList<>();
 
     private List<VariantSubDoc> variants = new ArrayList<>();
 
     private List<String> images = new ArrayList<>();
+
+    private VtoConfig vtoConfig;
 
     @Indexed
     private String status; // DRAFT, SUBMITTED, PUBLISHED, REJECTED, DEACTIVATED
@@ -49,6 +72,7 @@ public class ProductDocument {
     private Instant createdAt = Instant.now();
     private Instant updatedAt = Instant.now();
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class IngredientSubDoc {
         private String inciName;
         private String purpose;
@@ -69,6 +93,7 @@ public class ProductDocument {
         public void setPotentialIrritant(boolean potentialIrritant) { this.potentialIrritant = potentialIrritant; }
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class VariantSubDoc {
         @Indexed
         private String skuCode;
@@ -116,12 +141,36 @@ public class ProductDocument {
     public void setRegistrationNo(String registrationNo) { this.registrationNo = registrationNo; }
     public List<String> getSuitableSkinTypes() { return suitableSkinTypes; }
     public void setSuitableSkinTypes(List<String> suitableSkinTypes) { this.suitableSkinTypes = suitableSkinTypes; }
+
+    public List<String> getSkinConcerns() { return skinConcerns; }
+    public void setSkinConcerns(List<String> skinConcerns) { this.skinConcerns = skinConcerns; }
+
+    public List<String> getKeyActiveGroups() { return keyActiveGroups; }
+    public void setKeyActiveGroups(List<String> keyActiveGroups) { this.keyActiveGroups = keyActiveGroups; }
+
+    public List<String> getSafetyEthicsBadges() { return safetyEthicsBadges; }
+    public void setSafetyEthicsBadges(List<String> safetyEthicsBadges) { this.safetyEthicsBadges = safetyEthicsBadges; }
+
+    public String getFormulationTexture() { return formulationTexture; }
+    public void setFormulationTexture(String formulationTexture) { this.formulationTexture = formulationTexture; }
+
+    public String getOriginCountry() { return originCountry; }
+    public void setOriginCountry(String originCountry) { this.originCountry = originCountry; }
+
+    public String getPriceRangeBucket() { return priceRangeBucket; }
+    public void setPriceRangeBucket(String priceRangeBucket) { this.priceRangeBucket = priceRangeBucket; }
+
+    public String getVolumeSpec() { return volumeSpec; }
+    public void setVolumeSpec(String volumeSpec) { this.volumeSpec = volumeSpec; }
+
     public List<IngredientSubDoc> getIngredients() { return ingredients; }
     public void setIngredients(List<IngredientSubDoc> ingredients) { this.ingredients = ingredients; }
     public List<VariantSubDoc> getVariants() { return variants; }
     public void setVariants(List<VariantSubDoc> variants) { this.variants = variants; }
     public List<String> getImages() { return images; }
     public void setImages(List<String> images) { this.images = images; }
+    public VtoConfig getVtoConfig() { return vtoConfig; }
+    public void setVtoConfig(VtoConfig vtoConfig) { this.vtoConfig = vtoConfig; }
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
     public Instant getCreatedAt() { return createdAt; }

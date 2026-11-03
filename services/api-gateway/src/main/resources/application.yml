@@ -15,7 +15,7 @@ spring:
         - id: account-service-users
           uri: http://localhost:8081
           predicates:
-            - Path=/api/users/**
+            - Path=/api/users/**, /api/v1/accounts/**
 
         - id: account-service-shops
           uri: http://localhost:8081

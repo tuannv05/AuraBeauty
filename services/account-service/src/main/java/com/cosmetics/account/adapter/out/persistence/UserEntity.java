@@ -1,6 +1,8 @@
 package com.cosmetics.account.adapter.out.persistence;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -8,7 +10,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Table("users")
-public class UserEntity {
+public class UserEntity implements Persistable<UUID> {
     @Id
     private UUID id;
 
@@ -36,6 +38,9 @@ public class UserEntity {
     @Column("updated_at")
     private Instant updatedAt;
 
+    @Transient
+    private boolean isNew = false;
+
     public UserEntity() {}
 
     public UserEntity(UUID id, String email, String passwordHash, String fullName, String phone, String roles, String status) {
@@ -48,6 +53,16 @@ public class UserEntity {
         this.status = status != null ? status : "ACTIVE";
         this.createdAt = Instant.now();
         this.updatedAt = Instant.now();
+        this.isNew = true;
+    }
+
+    @Override
+    public boolean isNew() {
+        return isNew || id == null;
+    }
+
+    public void setNew(boolean isNew) {
+        this.isNew = isNew;
     }
 
     public UUID getId() { return id; }

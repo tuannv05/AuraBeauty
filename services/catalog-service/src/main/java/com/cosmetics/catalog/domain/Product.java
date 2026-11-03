@@ -1,5 +1,7 @@
 package com.cosmetics.catalog.domain;
 
+import com.cosmetics.catalog.domain.model.VtoConfig;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +16,17 @@ public class Product {
     private String category; // Serum, Toner, Cream, Sunscreen, Cleanser
     private String registrationNo; // cosmetic registration certificate number
     private List<String> suitableSkinTypes = new ArrayList<>();
+    private List<String> skinConcerns = new ArrayList<>();
+    private List<String> keyActiveGroups = new ArrayList<>();
+    private List<String> safetyEthicsBadges = new ArrayList<>();
+    private String formulationTexture;
+    private String originCountry;
+    private String priceRangeBucket;
+    private String volumeSpec;
     private List<Ingredient> ingredients = new ArrayList<>();
     private List<Variant> variants = new ArrayList<>();
     private List<String> images = new ArrayList<>();
+    private VtoConfig vtoConfig;
     private ProductStatus status = ProductStatus.DRAFT;
     private Instant createdAt = Instant.now();
     private Instant updatedAt = Instant.now();
@@ -81,12 +91,36 @@ public class Product {
     public void setRegistrationNo(String registrationNo) { this.registrationNo = registrationNo; }
     public List<String> getSuitableSkinTypes() { return suitableSkinTypes; }
     public void setSuitableSkinTypes(List<String> suitableSkinTypes) { this.suitableSkinTypes = suitableSkinTypes; }
+
+    public List<String> getSkinConcerns() { return skinConcerns; }
+    public void setSkinConcerns(List<String> skinConcerns) { this.skinConcerns = skinConcerns; }
+
+    public List<String> getKeyActiveGroups() { return keyActiveGroups; }
+    public void setKeyActiveGroups(List<String> keyActiveGroups) { this.keyActiveGroups = keyActiveGroups; }
+
+    public List<String> getSafetyEthicsBadges() { return safetyEthicsBadges; }
+    public void setSafetyEthicsBadges(List<String> safetyEthicsBadges) { this.safetyEthicsBadges = safetyEthicsBadges; }
+
+    public String getFormulationTexture() { return formulationTexture; }
+    public void setFormulationTexture(String formulationTexture) { this.formulationTexture = formulationTexture; }
+
+    public String getOriginCountry() { return originCountry; }
+    public void setOriginCountry(String originCountry) { this.originCountry = originCountry; }
+
+    public String getPriceRangeBucket() { return priceRangeBucket; }
+    public void setPriceRangeBucket(String priceRangeBucket) { this.priceRangeBucket = priceRangeBucket; }
+
+    public String getVolumeSpec() { return volumeSpec; }
+    public void setVolumeSpec(String volumeSpec) { this.volumeSpec = volumeSpec; }
+
     public List<Ingredient> getIngredients() { return ingredients; }
     public void setIngredients(List<Ingredient> ingredients) { this.ingredients = ingredients; }
     public List<Variant> getVariants() { return variants; }
     public void setVariants(List<Variant> variants) { this.variants = variants; }
     public List<String> getImages() { return images; }
     public void setImages(List<String> images) { this.images = images; }
+    public VtoConfig getVtoConfig() { return vtoConfig; }
+    public void setVtoConfig(VtoConfig vtoConfig) { this.vtoConfig = vtoConfig; }
     public ProductStatus getStatus() { return status; }
     public void setStatus(ProductStatus status) { this.status = status; }
     public Instant getCreatedAt() { return createdAt; }

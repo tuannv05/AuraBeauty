@@ -1,6 +1,8 @@
 package com.cosmetics.ai.adapter.out.persistence;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -8,7 +10,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Table("chat_messages")
-public class ChatMessageEntity {
+public class ChatMessageEntity implements Persistable<UUID> {
     @Id
     private UUID id;
 
@@ -27,6 +29,9 @@ public class ChatMessageEntity {
     @Column("created_at")
     private Instant createdAt;
 
+    @Transient
+    private boolean isNew = false;
+
     public ChatMessageEntity() {}
 
     public ChatMessageEntity(UUID id, UUID conversationId, String role, String content, String citations) {
@@ -36,10 +41,22 @@ public class ChatMessageEntity {
         this.content = content;
         this.citations = citations;
         this.createdAt = Instant.now();
+        this.isNew = true;
     }
 
+    @Override
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
+
+    @Override
+    public boolean isNew() {
+        return isNew;
+    }
+
+    public void setNew(boolean isNew) {
+        this.isNew = isNew;
+    }
+
     public UUID getConversationId() { return conversationId; }
     public void setConversationId(UUID conversationId) { this.conversationId = conversationId; }
     public String getRole() { return role; }

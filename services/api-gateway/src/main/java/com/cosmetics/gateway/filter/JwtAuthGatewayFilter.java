@@ -30,6 +30,7 @@ public class JwtAuthGatewayFilter implements GlobalFilter, Ordered {
 
     private static final List<String> PUBLIC_PREFIXES = List.of(
             "/api/auth/",
+            "/api/advisor/",
             "/actuator/"
     );
 

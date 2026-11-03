@@ -1,6 +1,8 @@
 package com.cosmetics.account.application;
 
 import com.cosmetics.account.adapter.out.jwt.JwtTokenProvider;
+import com.cosmetics.account.adapter.out.persistence.ShopEntity;
+import com.cosmetics.account.adapter.out.persistence.ShopRepository;
 import com.cosmetics.account.adapter.out.persistence.UserEntity;
 import com.cosmetics.account.adapter.out.persistence.UserRepository;
 import com.cosmetics.account.application.dto.AuthResponse;
@@ -19,47 +21,74 @@ import java.util.UUID;
 @Service
 public class AuthService {
     private final UserRepository userRepository;
+    private final ShopRepository shopRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider tokenProvider;
 
-    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtTokenProvider tokenProvider) {
+    public AuthService(UserRepository userRepository,
+                       ShopRepository shopRepository,
+                       PasswordEncoder passwordEncoder,
+                       JwtTokenProvider tokenProvider) {
         this.userRepository = userRepository;
+        this.shopRepository = shopRepository;
         this.passwordEncoder = passwordEncoder;
         this.tokenProvider = tokenProvider;
     }
 
-    public Mono<AuthResponse> registerBuyer(RegisterRequest request) {
-        return userRepository.findByEmail(request.getEmail())
+    public Mono<AuthResponse> register(RegisterRequest request) {
+        return userRepository.findByEmail(request.getEmail().trim().toLowerCase())
                 .flatMap(existing -> Mono.<AuthResponse>error(
-                        new BusinessException(HttpStatus.CONFLICT, "ACCOUNT_001", "Email already exists in system")
+                        new BusinessException(HttpStatus.CONFLICT, "ACCOUNT_001", "Email đã tồn tại trong hệ thống")
                 ))
                 .switchIfEmpty(Mono.defer(() -> {
                     String hashed = passwordEncoder.encode(request.getPassword());
-                    UserEntity entity = new UserEntity(
-                            UUID.randomUUID(),
-                            request.getEmail(),
+                    boolean isSeller = "SELLER".equalsIgnoreCase(request.getRole());
+                    String rolesStr = isSeller ? "ROLE_SELLER,ROLE_BUYER" : "ROLE_BUYER";
+                    UUID userId = UUID.randomUUID();
+
+                    UserEntity user = new UserEntity(
+                            userId,
+                            request.getEmail().trim().toLowerCase(),
                             hashed,
-                            request.getFullName(),
-                            request.getPhone(),
-                            "ROLE_BUYER",
+                            request.getFullName().trim(),
+                            request.getPhone() != null ? request.getPhone().trim() : "",
+                            rolesStr,
                             "ACTIVE"
                     );
-                    return userRepository.save(entity)
-                            .map(saved -> {
-                                List<String> roles = List.of("ROLE_BUYER");
-                                String accessToken = tokenProvider.generateAccessToken(saved.getId(), saved.getEmail(), roles);
-                                String refreshToken = tokenProvider.generateRefreshToken(saved.getId());
-                                return new AuthResponse(saved.getId(), saved.getEmail(), saved.getFullName(), roles, accessToken, refreshToken);
+
+                    return userRepository.save(user)
+                            .flatMap(savedUser -> {
+                                List<String> roles = Arrays.stream(rolesStr.split(",")).toList();
+                                String accessToken = tokenProvider.generateAccessToken(savedUser.getId(), savedUser.getEmail(), roles);
+                                String refreshToken = tokenProvider.generateRefreshToken(savedUser.getId());
+
+                                if (isSeller) {
+                                    String sName = (request.getShopName() != null && !request.getShopName().isBlank())
+                                            ? request.getShopName().trim()
+                                            : "Gian Hàng " + savedUser.getFullName();
+                                    ShopEntity shop = new ShopEntity(
+                                            UUID.randomUUID(),
+                                            savedUser.getId(),
+                                            sName,
+                                            "Gian hàng mỹ phẩm đăng ký mới",
+                                            "PENDING",
+                                            "DKKD-" + Math.floor(100000 + Math.random() * 900000)
+                                    );
+                                    return shopRepository.save(shop)
+                                            .thenReturn(new AuthResponse(savedUser.getId(), savedUser.getEmail(), savedUser.getFullName(), roles, accessToken, refreshToken));
+                                }
+
+                                return Mono.just(new AuthResponse(savedUser.getId(), savedUser.getEmail(), savedUser.getFullName(), roles, accessToken, refreshToken));
                             });
                 }));
     }
 
     public Mono<AuthResponse> login(LoginRequest request) {
-        return userRepository.findByEmail(request.getEmail())
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.UNAUTHORIZED, "AUTH_001", "Invalid email or password")))
+        return userRepository.findByEmail(request.getEmail().trim().toLowerCase())
+                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.UNAUTHORIZED, "AUTH_001", "Email hoặc mật khẩu không chính xác")))
                 .flatMap(user -> {
                     if (!passwordEncoder.matches(request.getPassword(), user.getPasswordHash())) {
-                        return Mono.error(new BusinessException(HttpStatus.UNAUTHORIZED, "AUTH_001", "Invalid email or password"));
+                        return Mono.error(new BusinessException(HttpStatus.UNAUTHORIZED, "AUTH_001", "Email hoặc mật khẩu không chính xác"));
                     }
                     List<String> roles = Arrays.stream(user.getRoles().split(","))
                             .map(String::trim)
@@ -72,11 +101,11 @@ public class AuthService {
 
     public Mono<AuthResponse> refreshToken(String refreshToken) {
         if (!tokenProvider.validateToken(refreshToken)) {
-            return Mono.error(new BusinessException(HttpStatus.UNAUTHORIZED, "AUTH_002", "Refresh token is invalid or expired"));
+            return Mono.error(new BusinessException(HttpStatus.UNAUTHORIZED, "AUTH_002", "Refresh token không hợp lệ hoặc đã hết hạn"));
         }
         UUID userId = tokenProvider.getUserId(refreshToken);
         return userRepository.findById(userId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.UNAUTHORIZED, "AUTH_003", "User not found")))
+                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.UNAUTHORIZED, "AUTH_003", "Người dùng không tồn tại")))
                 .map(user -> {
                     List<String> roles = Arrays.stream(user.getRoles().split(","))
                             .map(String::trim)

@@ -23,7 +23,7 @@ public class AuthController {
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<ApiResponse<AuthResponse>> register(@Valid @RequestBody RegisterRequest request) {
-        return authService.registerBuyer(request).map(ApiResponse::ok);
+        return authService.register(request).map(ApiResponse::ok);
     }
 
     @PostMapping("/login")
