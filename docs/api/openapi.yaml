@@ -1,0 +1,158 @@
+openapi: 3.0.3
+info:
+  title: Aura Beauty Mall (WebBanMP) API Gateway
+  description: Hệ thống API REST & SSE cho Sàn Thương Mại Điện Tử Mỹ Phẩm Đa Người Bán
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: API Gateway (Spring Cloud Gateway WebFlux)
+
+paths:
+  /api/auth/register:
+    post:
+      summary: Đăng ký tài khoản người dùng
+      tags: [Account & Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: { type: string }
+                password: { type: string }
+                fullName: { type: string }
+      responses:
+        '201':
+          description: Đăng ký thành công
+
+  /api/auth/login:
+    post:
+      summary: Đăng nhập cấp mã định danh JWT
+      tags: [Account & Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: { type: string }
+                password: { type: string }
+      responses:
+        '200':
+          description: Đăng nhập thành công, trả về JWT Token và User Profile
+
+  /api/products:
+    get:
+      summary: Tìm kiếm và lọc sản phẩm theo 8 phân hệ Facet
+      tags: [Catalog & Search]
+      parameters:
+        - name: query
+          in: query
+          schema: { type: string }
+        - name: skinType
+          in: query
+          schema: { type: string }
+        - name: page
+          in: query
+          schema: { type: integer, default: 0 }
+        - name: size
+          in: query
+          schema: { type: integer, default: 12 }
+      responses:
+        '200':
+          description: Danh sách sản phẩm và tổng hợp bộ lọc Facet
+
+  /api/products/{id}:
+    get:
+      summary: Chi tiết sản phẩm, bảng INCI và biến thể SKU
+      tags: [Catalog & Search]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Chi tiết sản phẩm
+
+  /api/inventory/{sku}:
+    get:
+      summary: Tra cứu số lượng tồn kho khả dụng của SKU
+      tags: [Inventory]
+      parameters:
+        - name: sku
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Thông tin tồn kho (on_hand, reserved)
+
+  /api/orders:
+    post:
+      summary: Tạo đơn hàng tách đơn (Split Order) và kích hoạt Saga
+      tags: [Order & Checkout]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      sku: { type: string }
+                      quantity: { type: integer }
+                      shopId: { type: string }
+      responses:
+        '201':
+          description: Tạo Master Order và các Sub-orders thành công
+
+  /api/orders/my:
+    get:
+      summary: Danh sách đơn hàng của khách mua
+      tags: [Order & Checkout]
+      responses:
+        '200':
+          description: Danh sách đơn hàng cá nhân
+
+  /api/payments:
+    post:
+      summary: Tiếp nhận thanh toán và hạch toán Sổ cái kép
+      tags: [Payment & Ledger]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderId: { type: string }
+                amount: { type: number }
+                paymentMethod: { type: string }
+      responses:
+        '200':
+          description: Thanh toán thành công, ghi sổ cái 10/90
+
+  /api/v1/ai/chat/stream:
+    get:
+      summary: Chat tư vấn da liễu streaming thời gian thực (SSE)
+      tags: [AI Cosmetic Advisor]
+      parameters:
+        - name: prompt
+          in: query
+          required: true
+          schema: { type: string }
+        - name: skinType
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: Luồng Server-Sent Events (text/event-stream)

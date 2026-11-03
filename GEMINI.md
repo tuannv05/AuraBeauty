@@ -6,7 +6,7 @@
 ---
 
 ## 1. KỶ LUẬT THÉP TẠI THƯ MỤC GỐC & VÙNG TRÁCH NHIỆM
-1. **White-list tại Root**: Chỉ chấp nhận `AGENTS.md`, `GEMINI.md`, `pom.xml` (Maven Aggregator bắt buộc), `.gitignore`, `.antigravity/` (và `.mvn/` nếu có).
+1. **White-list tại Root**: Chỉ chấp nhận `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `pom.xml` (Maven Aggregator bắt buộc), `.gitignore`, `.antigravity/` (và `.mvn/` nếu có).
 2. **CẤM TUYỆT ĐỐI**: Không để file code, file thử (`temp.*`), log, script rác hoặc `.md` lẻ tại root. `README.md` lưu tại `docs/README.md`.
 3. **Cấu trúc vùng trách nhiệm**:
    - `docs/`: Trung tâm tài liệu (`flows/`, `blueprints/`, `architecture/`, `evidence/`, `guides/`).
