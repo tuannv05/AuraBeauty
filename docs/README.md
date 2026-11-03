@@ -90,19 +90,19 @@ Truy cập ứng dụng: [http://localhost:3000](http://localhost:3000)
 
 | Tuần | Nội dung | Thư mục minh chứng |
 | :--- | :--- | :--- |
-| **Tuần 1** | Phân tích, thiết kế DDD, Backlog, 4 ADR, Docker Compose hạ tầng | [docs/evidence/week-1/evidence-log.md](file:///d:/A_javaFW/WebBanMP/docs/evidence/week-1/evidence-log.md) |
-| **Tuần 2** | Service template Hexagonal, 3 common libs, account-service (JWT, ArchUnit) | [docs/evidence/week-2/evidence-log.md](file:///d:/A_javaFW/WebBanMP/docs/evidence/week-2/evidence-log.md) |
-| **Tuần 3** | catalog-service, INCI, MongoDB Reactive, Seed 120+ sản phẩm mỹ phẩm | [docs/evidence/week-3/evidence-log.md](file:///d:/A_javaFW/WebBanMP/docs/evidence/week-3/evidence-log.md) |
-| **Tuần 4** | Đăng ký/duyệt Shop, đăng hàng kèm Số công bố mỹ phẩm (CBMP), UI Buyer duyệt | [docs/evidence/week-4/evidence-log.md](file:///d:/A_javaFW/WebBanMP/docs/evidence/week-4/evidence-log.md) |
-| **Tuần 5** | inventory-service, giữ hàng nguyên tử (CAS), test đồng thời tồn không âm | [docs/evidence/week-5/evidence-log.md](file:///d:/A_javaFW/WebBanMP/docs/evidence/week-5/evidence-log.md) |
-| **Tuần 6** | order-service: Giỏ hàng đa Shop, snapshot giá từ catalog | [docs/evidence/week-6/evidence-log.md](file:///d:/A_javaFW/WebBanMP/docs/evidence/week-6/evidence-log.md) |
-| **Tuần 7** | Tách đơn (Split Order), State Machine, Outbox Relay worker | [docs/evidence/week-7/evidence-log.md](file:///d:/A_javaFW/WebBanMP/docs/evidence/week-7/evidence-log.md) |
-| **Tuần 8** | payment-service mock + Saga Choreography hoàn chỉnh + bù trừ | [docs/evidence/week-8/evidence-log.md](file:///d:/A_javaFW/WebBanMP/docs/evidence/week-8/evidence-log.md) |
-| **Tuần 9** | Seller xử lý Sub-order, Sổ cái kép (Double-Entry Ledger) & Hoa hồng 10% | [docs/evidence/week-9/evidence-log.md](file:///d:/A_javaFW/WebBanMP/docs/evidence/week-9/evidence-log.md) |
-| **Tuần 10-11** | ai-advisor RAG với pgvector, đánh chỉ mục INCI, chat SSE streaming | [docs/evidence/week-10-11/evidence-log.md](file:///d:/A_javaFW/WebBanMP/docs/evidence/week-10-11/evidence-log.md) |
-| **Tuần 12** | Test Chaos Saga, Test tải k6, Resilience4j Circuit Breaker | [docs/evidence/week-12/evidence-log.md](file:///d:/A_javaFW/WebBanMP/docs/evidence/week-12/evidence-log.md) |
-| **Tuần 13** | Observability (Actuator, Kafka UI), Dựng máy sạch (Clean-Slate) | [docs/evidence/week-13/evidence-log.md](file:///d:/A_javaFW/WebBanMP/docs/evidence/week-13/evidence-log.md) |
-| **Tuần 14** | Đóng băng mã nguồn, kịch bản demo bảo vệ đồ án trước Hội đồng | [docs/evidence/week-14/evidence-log.md](file:///d:/A_javaFW/WebBanMP/docs/evidence/week-14/evidence-log.md) |
+| **Tuần 1** | Phân tích, thiết kế DDD, Backlog, 4 ADR, Docker Compose hạ tầng | [evidence/week-1/evidence-log.md](evidence/week-1/evidence-log.md) |
+| **Tuần 2** | Service template Hexagonal, 3 common libs, account-service (JWT, ArchUnit) | [evidence/week-2/evidence-log.md](evidence/week-2/evidence-log.md) |
+| **Tuần 3** | catalog-service, INCI, MongoDB Reactive, Seed 120+ sản phẩm mỹ phẩm | [evidence/week-3/evidence-log.md](evidence/week-3/evidence-log.md) |
+| **Tuần 4** | Đăng ký/duyệt Shop, đăng hàng kèm Số công bố mỹ phẩm (CBMP), UI Buyer duyệt | [evidence/week-4/evidence-log.md](evidence/week-4/evidence-log.md) |
+| **Tuần 5** | inventory-service, giữ hàng nguyên tử (CAS), test đồng thời tồn không âm | [evidence/week-5/evidence-log.md](evidence/week-5/evidence-log.md) |
+| **Tuần 6** | order-service: Giỏ hàng đa Shop, snapshot giá từ catalog | [evidence/week-6/evidence-log.md](evidence/week-6/evidence-log.md) |
+| **Tuần 7** | Tách đơn (Split Order), State Machine, Outbox Relay worker | [evidence/week-7/evidence-log.md](evidence/week-7/evidence-log.md) |
+| **Tuần 8** | payment-service mock + Saga Choreography hoàn chỉnh + bù trừ | [evidence/week-8/evidence-log.md](evidence/week-8/evidence-log.md) |
+| **Tuần 9** | Seller xử lý Sub-order, Sổ cái kép (Double-Entry Ledger) & Hoa hồng 10% | [evidence/week-9/evidence-log.md](evidence/week-9/evidence-log.md) |
+| **Tuần 10-11** | ai-advisor RAG với pgvector, đánh chỉ mục INCI, chat SSE streaming | [evidence/week-10-11/evidence-log.md](evidence/week-10-11/evidence-log.md) |
+| **Tuần 12** | Test Chaos Saga, Test tải k6, Resilience4j Circuit Breaker | [evidence/week-12/evidence-log.md](evidence/week-12/evidence-log.md) |
+| **Tuần 13** | Observability (Actuator, Kafka UI), Dựng máy sạch (Clean-Slate) | [evidence/week-13/evidence-log.md](evidence/week-13/evidence-log.md) |
+| **Tuần 14** | Đóng băng mã nguồn, kịch bản demo bảo vệ đồ án trước Hội đồng | [evidence/week-14/evidence-log.md](evidence/week-14/evidence-log.md) |
 
 ---
 
