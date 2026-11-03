@@ -11,11 +11,10 @@
 3. **Cấu trúc vùng trách nhiệm**:
    - `docs/`: Trung tâm tài liệu (`flows/`, `blueprints/`, `architecture/`, `evidence/`, `guides/`).
    - `frontend/`: Giao diện React 18 + Vite (Port 3000), Animate UI, AR Virtual Try-On.
-   - `services/`: Vùng Backend gồm 7 Microservices Spring Boot 3 WebFlux Reactive (Port 8080-8086).
+   - `backend/`: Vùng Backend gồm 7 Microservices Spring Boot 3 WebFlux Reactive (Port 8080-8086) và các thư viện dùng chung (common-web, common-events, common-outbox).
    - `infra/`: Hạ tầng Docker Compose (`docker-compose.yml`), DB init, script vận hành, k6 test.
    - `ai/`: Cosmetics Crawler, INCI dataset, Prompts, RAG embeddings.
    - `agents/`: Các mini-rules chuyên sâu cho từng phân hệ.
-   - `libs/`: Thư viện dùng chung (`common-domain`, `common-web`, `common-events`, `common-outbox`).
 
 ---
 
@@ -29,7 +28,7 @@
 ---
 
 ## 3. VÙNG BẤT KHẢ XÂM PHẠM (ZERO-BREAKAGE)
-1. **pom.xml gốc**: Giữ nguyên danh sách `<modules>` trỏ vào `libs/` và `services/`.
+1. **pom.xml gốc**: Giữ nguyên danh sách `<modules>` trỏ vào `backend/`.
 2. **infra/docker/docker-compose.yml**: Không sửa (hash SHA-256 trước/sau phải trùng). Bảng cổng bất biến: Gateway 8080, Account 8081, Catalog 8082, Order 8083, Inventory 8084, Payment 8085, AI 8086, Frontend 3000, Postgres 5432, Mongo 27017, Kafka 9092, Kafka-UI 8090.
 3. Không đổi mã Java, cấu trúc Hexagonal Package, dependencies. Mọi refactor di chuyển file phải cập nhật đầy đủ import/alias.
 
@@ -38,8 +37,8 @@
 ## 4. QUY CHUẨN NGHIỆP VỤ & PHÂN CHIA RANH GIỚI
 1. **Ranh giới công nghệ**:
    - `frontend/`: Chỉ viết UI/UX, state hiển thị, gọi API. CẤM gọi DB trực tiếp, CẤM xử lý tiền/quyền nhạy cảm, CẤM lưu secret key.
-   - `services/`: Viết API, Business logic, RBAC, R2DBC/MongoDB Reactive, Outbox/Kafka worker. CẤM nhúng code UI.
-   - Khi nhận lệnh nghiệp vụ: Tự tách vào 3 nơi: Đặc tả $\rightarrow$ `docs/flows/QT-xx-...md`, API/Logic $\rightarrow$ `services/<service>`, Màn hình $\rightarrow$ `frontend/src/features/<tên>/`.
+   - `backend/`: Viết API, Business logic, RBAC, R2DBC/MongoDB Reactive, Outbox/Kafka worker. CẤM nhúng code UI.
+   - Khi nhận lệnh nghiệp vụ: Tự tách vào 3 nơi: Đặc tả $\rightarrow$ `docs/flows/QT-xx-...md`, API/Logic $\rightarrow$ `backend/<service>`, Màn hình $\rightarrow$ `frontend/src/features/<tên>/`.
 2. **Quy trình 5 bước**:
    - B1 - Học dự án âm thầm (nhẹ đến nặng: AGENTS/docs $\rightarrow$ data models $\rightarrow$ RBAC $\rightarrow$ API/Kafka/SSE/Outbox $\rightarrow$ Glossary, Đã có vs Mới).
    - B2 - Gap Check (yêu cầu phải rõ Actor, Trigger, Outcome, Quyền, Lỗi; thiếu thì hỏi tối đa 5 câu).

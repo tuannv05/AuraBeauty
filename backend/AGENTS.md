@@ -1,6 +1,6 @@
 # ⚙️ BACKEND SERVICES CONSTITUTION (AURA BEAUTY MALL)
 
-> **Phạm vi:** `/services/` & `/libs/` | Java 21 | Spring Boot 3 WebFlux Reactive
+> **Phạm vi:** `/backend/` | Java 21 | Spring Boot 3 WebFlux Reactive
 
 ## 1. RANH GIỚI BẤT KHẢ XÂM PHẠM
 - **Chỉ phụ trách:** API REST/SSE, Domain logic, Port & Adapters, R2DBC / MongoDB Reactive, Transactional Outbox Relay, Kafka Messaging.

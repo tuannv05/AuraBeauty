@@ -18,16 +18,16 @@
     <name>Cosmetics Platform Multi-Module</name>
 
     <modules>
-        <module>libs/common-web</module>
-        <module>libs/common-events</module>
-        <module>libs/common-outbox</module>
-        <module>services/account-service</module>
-        <module>services/catalog-service</module>
-        <module>services/inventory-service</module>
-        <module>services/order-service</module>
-        <module>services/payment-service</module>
-        <module>services/ai-advisor-service</module>
-        <module>services/api-gateway</module>
+        <module>backend/common-web</module>
+        <module>backend/common-events</module>
+        <module>backend/common-outbox</module>
+        <module>backend/account-service</module>
+        <module>backend/catalog-service</module>
+        <module>backend/inventory-service</module>
+        <module>backend/order-service</module>
+        <module>backend/payment-service</module>
+        <module>backend/ai-advisor-service</module>
+        <module>backend/api-gateway</module>
     </modules>
 
     <properties>
