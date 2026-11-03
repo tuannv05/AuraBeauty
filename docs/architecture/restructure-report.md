@@ -16,7 +16,7 @@
 | **Hiến pháp dự án** | Chưa có luật tập trung cho Agents | `AGENTS.md` & `GEMINI.md` đồng bộ (77 dòng tiếng Việt) | **ĐẠT** |
 | **Trung tâm tài liệu** | Phân tán ở root và docs | Toàn bộ quy trình `docs/flows/QT-01..05`, `docs/architecture/`, `docs/evidence/` | **ĐẠT** |
 | **Frontend Architecture** | Gộp nhiều component vào `components/` | Chuẩn hóa `features/` (auth, catalog, cart, checkout, ai-advisor, skin-profile, vto), `pages/`, `frontend/AGENTS.md` | **ĐẠT** |
-| **Backend Services** | Chưa có file luật cục bộ | Bảo toàn `services/`, thêm `services/AGENTS.md`, bảo toàn `pom.xml` | **ĐẠT (Zero-Breakage)** |
+| **Backend Services** | Phân tán tại `services/` và `libs/` | Gom 100% trọn gói vào `backend/` (7 services + 3 libs), cập nhật `pom.xml` hợp chuẩn | **ĐẠT (Clean Architecture)** |
 | **Hạ tầng Docker** | `infra/docker-compose.yml` phân tán | Giữ nguyên SHA-256 baseline `CC2B8CF...`, thêm `infra/AGENTS.md` | **ĐẠT** |
 | **Hệ thống Mini-Rules** | Chưa có | Tạo đầy đủ 6 mini-rules trong `agents/` | **ĐẠT** |
 | **Các stub dự phòng** | Chưa có | Tạo `mcp/`, `mobile/`, `desktop/` kèm `AGENTS.md` "Chưa sử dụng" | **ĐẠT** |

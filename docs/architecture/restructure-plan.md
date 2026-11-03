@@ -41,8 +41,9 @@
 | `DESIGN.md` (root) | `docs/DESIGN.md` | **DI CHUYỂN** | Chuyển tài liệu đặc tả thiết kế vào `docs/` |
 | `docs/` | `docs/` | **GIỮ** | Trung tâm tài liệu |
 | `frontend/` | `frontend/` | **GIỮ** | Thư mục giao diện chuẩn |
-| `services/` | `services/` | **GIỮ** | Vùng backend theo quyết định Q2 |
-| `libs/` | `libs/` | **GIỮ** | 4 thư viện Java dùng chung |
+| `services/` | `backend/` | **ĐÃ DI CHUYỂN** | Đã gom toàn bộ 7 Microservices vào `backend/` |
+| `libs/` | `backend/` | **ĐÃ DI CHUYỂN** | Đã gom toàn bộ 3 thư viện dùng chung vào `backend/` |
+| `backend/` | `backend/` | **GIỮ** | Vùng Backend tập trung theo phê duyệt Cách 1 |
 | `infra/` | `infra/` | **GIỮ** | Hạ tầng Docker Compose |
 | `ai/` | `ai/` | **GIỮ** | AI & Cosmetics Crawler pipeline |
 | `tools/` | `ai/tools/` | **ĐÃ DI CHUYỂN** | Đã chuyển vào `ai/tools/`, cập nhật tham chiếu `ai/cosmetics-crawler/src/scraper.js:85` |
