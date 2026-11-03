@@ -82,7 +82,7 @@ function loadCurated150PlusDataset() {
   console.log('🔄 Engaging Layer 4 Smart Fallback Engine: Curated 150+ Real-Brand Dataset...');
   
   // Read existing crawled catalog (130 products)
-  const legacyCatalogPath = path.join(__dirname, '../../../tools/cosmetics-crawler/output/products_catalog.json');
+  const legacyCatalogPath = path.join(__dirname, '../../tools/cosmetics-crawler/output/products_catalog.json');
   let products = [];
   if (fs.existsSync(legacyCatalogPath)) {
     try {
