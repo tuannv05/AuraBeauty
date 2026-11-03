@@ -12,7 +12,7 @@
 
 | Hạng mục | Trước tái cấu trúc (`pre-restructure`) | Sau tái cấu trúc (`restructure/zero-breakage`) | Đánh giá |
 | :--- | :--- | :--- | :---: |
-| **Thư mục gốc (Root)** | Chứa file rác tài liệu: `README.md`, `DESIGN.md` | Chỉ còn: `AGENTS.md`, `GEMINI.md`, `pom.xml`, `.gitignore`, `.idea` | **ĐẠT (Clean Root)** |
+| **Thư mục gốc (Root)** | Chứa file rác tài liệu (`README.md`, `DESIGN.md`) và thư mục `tools/` | Chỉ còn: `AGENTS.md`, `GEMINI.md`, `pom.xml`, `.gitignore`, `.idea` và các thư mục chuẩn | **ĐẠT (Clean Root 100%)** |
 | **Hiến pháp dự án** | Chưa có luật tập trung cho Agents | `AGENTS.md` & `GEMINI.md` đồng bộ (77 dòng tiếng Việt) | **ĐẠT** |
 | **Trung tâm tài liệu** | Phân tán ở root và docs | Toàn bộ quy trình `docs/flows/QT-01..05`, `docs/architecture/`, `docs/evidence/` | **ĐẠT** |
 | **Frontend Architecture** | Gộp nhiều component vào `components/` | Chuẩn hóa `features/` (auth, catalog, cart, checkout, ai-advisor, skin-profile, vto), `pages/`, `frontend/AGENTS.md` | **ĐẠT** |

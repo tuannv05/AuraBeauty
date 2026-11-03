@@ -45,7 +45,7 @@
 | `libs/` | `libs/` | **GIỮ** | 4 thư viện Java dùng chung |
 | `infra/` | `infra/` | **GIỮ** | Hạ tầng Docker Compose |
 | `ai/` | `ai/` | **GIỮ** | AI & Cosmetics Crawler pipeline |
-| `tools/` | `ai/tools/` hoặc giữ ghi chú | **HỎI TÔI** / **GIỮ** | Có tham chiếu tại `ai/cosmetics-crawler/src/scraper.js:85`, giữ nguyên an toàn |
+| `tools/` | `ai/tools/` | **ĐÃ DI CHUYỂN** | Đã chuyển vào `ai/tools/`, cập nhật tham chiếu `ai/cosmetics-crawler/src/scraper.js:85` |
 | `agents/` | `agents/` | **TẠO MỚI** | Chứa mini-rules (G7) |
 
 ---
