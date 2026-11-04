@@ -14,6 +14,8 @@ public class Product {
     private String brand;
     private String description;
     private String category; // Serum, Toner, Cream, Sunscreen, Cleanser
+    private List<String> categoryPath = new ArrayList<>();
+    private String subCategory;
     private String registrationNo; // cosmetic registration certificate number
     private List<String> suitableSkinTypes = new ArrayList<>();
     private List<String> skinConcerns = new ArrayList<>();
@@ -87,6 +89,10 @@ public class Product {
     public void setDescription(String description) { this.description = description; }
     public String getCategory() { return category; }
     public void setCategory(String category) { this.category = category; }
+    public List<String> getCategoryPath() { return categoryPath; }
+    public void setCategoryPath(List<String> categoryPath) { this.categoryPath = categoryPath; }
+    public String getSubCategory() { return subCategory; }
+    public void setSubCategory(String subCategory) { this.subCategory = subCategory; }
     public String getRegistrationNo() { return registrationNo; }
     public void setRegistrationNo(String registrationNo) { this.registrationNo = registrationNo; }
     public List<String> getSuitableSkinTypes() { return suitableSkinTypes; }

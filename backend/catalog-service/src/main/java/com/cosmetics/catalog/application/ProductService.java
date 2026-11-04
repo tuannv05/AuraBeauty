@@ -103,13 +103,13 @@ public class ProductService {
         if (query != null && !query.isBlank()) {
             flux = productRepository.searchPublished(query);
         } else if (category != null && !category.isBlank()) {
-            flux = productRepository.findByCategoryAndStatus(category, "PUBLISHED");
+            flux = productRepository.findByCategoryHierarchyAndStatus(category, "PUBLISHED");
         } else {
             flux = productRepository.findByStatus("PUBLISHED");
         }
 
         return flux
-                .filter(p -> category == null || category.isBlank() || category.equalsIgnoreCase(p.getCategory()))
+                .filter(p -> category == null || category.isBlank() || matchesCategory(p, category))
                 .filter(p -> skinType == null || skinType.isBlank() || (p.getSuitableSkinTypes() != null && p.getSuitableSkinTypes().contains(skinType.toUpperCase())))
                 .filter(p -> concern == null || concern.isBlank() || (p.getSkinConcerns() != null && p.getSkinConcerns().contains(concern.toUpperCase())))
                 .filter(p -> activeGroup == null || activeGroup.isBlank() || (p.getKeyActiveGroups() != null && p.getKeyActiveGroups().contains(activeGroup.toUpperCase())))
@@ -141,5 +141,24 @@ public class ProductService {
                     return Mono.empty();
                 })
                 .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "SKU_NOT_FOUND", "SKU variant not found: " + skuCode)));
+    }
+
+    private boolean matchesCategory(ProductDocument p, String category) {
+        if (category == null || category.isBlank()) return true;
+        String clean = category.trim();
+        if (p.getCategory() != null && p.getCategory().equalsIgnoreCase(clean)) {
+            return true;
+        }
+        if (p.getSubCategory() != null && p.getSubCategory().equalsIgnoreCase(clean)) {
+            return true;
+        }
+        if (p.getCategoryPath() != null) {
+            for (String path : p.getCategoryPath()) {
+                if (path.equalsIgnoreCase(clean)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -35,6 +35,12 @@ public class ProductDocument {
     @Indexed
     private String category;
 
+    @Indexed
+    private List<String> categoryPath = new ArrayList<>();
+
+    @Indexed
+    private String subCategory;
+
     private String registrationNo;
 
     @Indexed
@@ -137,6 +143,12 @@ public class ProductDocument {
     public void setDescription(String description) { this.description = description; }
     public String getCategory() { return category; }
     public void setCategory(String category) { this.category = category; }
+
+    public List<String> getCategoryPath() { return categoryPath; }
+    public void setCategoryPath(List<String> categoryPath) { this.categoryPath = categoryPath; }
+
+    public String getSubCategory() { return subCategory; }
+    public void setSubCategory(String subCategory) { this.subCategory = subCategory; }
     public String getRegistrationNo() { return registrationNo; }
     public void setRegistrationNo(String registrationNo) { this.registrationNo = registrationNo; }
     public List<String> getSuitableSkinTypes() { return suitableSkinTypes; }

@@ -6,7 +6,7 @@
     "brand": "Dove",
     "description": "Kem tắm tẩy tế bào chết toàn thân Dove Exfoliating Body Polish Pomegranate Seeds & Shea Butter chiết xuất hạt lựu đỏ và bơ hạt mỡ. Công thức giàu độ ẩm với 1/4 kem dưỡng ẩm của Dove tạo sự mềm mại tức thì, hạt tẩy tế bào chết kích thước cát mịn nhẹ nhàng loại bỏ lớp da chết xỉn màu và phục hồi dưỡng chất tự nhiên của làn da.",
     "category": "Chăm sóc cơ thể",
-    "subCategory": "Tẩy da chết toàn thân",
+    "subCategory": "BODY_SCRUB",
     "registrationNumber": "CBMP-19834/23/CBMP-QLD",
     "rating": 4.9,
     "soldCount": 14500,
@@ -29,16 +29,6 @@
       "/products/dove-pomegranate-side-view.jpg",
       "/products/dove-pomegranate-barcode.jpg",
       "/products/dove-pomegranate-model.jpg"
-    ],
-    "targetSkinTypes": [
-      "ALL_SKIN_TYPES",
-      "DRY",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "DULLNESS",
-      "DRYNESS",
-      "PORES"
     ],
     "safetyEthicsBadges": [
       "PARABEN_FREE",
@@ -120,7 +110,15 @@
         "comedogenicRating": 2,
         "irritationRating": 0
       }
-    ]
+    ],
+    "categoryPath": [
+      "BODY_CARE",
+      "BODY_SCRUB",
+      "BODY_EXFOLIANT"
+    ],
+    "vtoConfig": null,
+    "keyActiveGroups": [],
+    "status": "PUBLISHED"
   },
   {
     "id": "PROD-WAKEMAKE-BLURRING",
@@ -129,7 +127,7 @@
     "brand": "WAKEMAKE",
     "description": "Son thỏi thuần chay WAKEMAKE Soft Blurring Balm Stick tạo hiệu ứng môi mờ ảo tự nhiên, mịn màng che phủ rãnh môi hoàn hảo, giàu dưỡng chất với 10 tông màu chuẩn Hàn Quốc.",
     "category": "Lipstick",
-    "subCategory": "Son thỏi",
+    "subCategory": "LIP",
     "registrationNumber": "289410/24/CBMP-QLD",
     "rating": 4.9,
     "soldCount": 6890,
@@ -155,14 +153,6 @@
       "/products/SKU-WAKEMAKE-08.jpg",
       "/products/SKU-WAKEMAKE-09.jpg",
       "/products/SKU-WAKEMAKE-10.jpg"
-    ],
-    "suitableSkinTypes": [
-      "ALL_SKIN_TYPES",
-      "DRY",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
     ],
     "variants": [
       {
@@ -402,7 +392,14 @@
           "bestUndertone": "ALL"
         }
       ]
-    }
+    },
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "keyActiveGroups": [],
+    "status": "PUBLISHED"
   },
   {
     "id": "PROD-LIP-ON-LIP",
@@ -411,7 +408,7 @@
     "brand": "Lip On Lip",
     "description": "Son thỏi trang điểm dưỡng môi chất son satin bóng nhẹ, dưỡng ẩm vượt trội với dầu olive và bơ hạt mỡ, lên màu chuẩn sắc tự nhiên suốt 6H.",
     "category": "Lipstick",
-    "subCategory": "Son thỏi",
+    "subCategory": "LIP",
     "registrationNumber": "214589/23/CBMP-QLD",
     "rating": 4.9,
     "soldCount": 7420,
@@ -431,14 +428,6 @@
       "/products/SKU-LIPONLIP-05.jpg",
       "/products/SKU-LIPONLIP-01.jpg",
       "/products/SKU-LIPONLIP-03.jpg"
-    ],
-    "suitableSkinTypes": [
-      "ALL_SKIN_TYPES",
-      "DRY",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
     ],
     "variants": [
       {
@@ -563,7 +552,14 @@
           "bestUndertone": "WARM"
         }
       ]
-    }
+    },
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "keyActiveGroups": [],
+    "status": "PUBLISHED"
   },
   {
     "id": "PROD-CRW-001",
@@ -573,12 +569,6 @@
     "description": "Son kem lì mềm mịn như nhung, hiệu ứng mờ viền môi tự nhiên, che phủ vân môi hoàn hảo mà không làm khô môi.",
     "category": "Lipstick",
     "registrationNo": "393663/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -770,18 +760,6 @@
     "image": "/products/PROD-CRW-001.jpg",
     "imageUrl": "/products/PROD-CRW-001.jpg",
     "cbmpNumber": "393663/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -862,7 +840,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-002",
@@ -872,11 +856,6 @@
     "description": "Son tint bóng căng mọng như nước ép trái cây mùa hè, giữ lớp bóng thủy tinh bền màu suốt cả ngày.",
     "category": "Lipstick",
     "registrationNo": "299622/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Octyldodecanol",
@@ -1068,19 +1047,6 @@
     "image": "/products/PROD-CRW-002.jpg",
     "imageUrl": "/products/PROD-CRW-002.jpg",
     "cbmpNumber": "299622/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Octyldodecanol",
@@ -1139,10 +1105,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -1164,7 +1127,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_GLOSS"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-003",
@@ -1174,11 +1143,6 @@
     "description": "Biểu tượng son lì huyền thoại với độ chuẩn màu tuyệt đối, giữ màu bền bỉ 10 giờ không lem trôi.",
     "category": "Lipstick",
     "registrationNo": "632146/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -1370,17 +1334,6 @@
     "image": "/products/PROD-CRW-003.jpg",
     "imageUrl": "/products/PROD-CRW-003.jpg",
     "cbmpNumber": "632146/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -1461,7 +1414,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-004",
@@ -1471,11 +1430,6 @@
     "description": "Kết cấu mousse mỏng nhẹ như nhung, hiệu ứng làm mờ rãnh môi mềm mượt, cấp ẩm suốt 10 giờ.",
     "category": "Lipstick",
     "registrationNo": "336954/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -1636,17 +1590,6 @@
     "image": "/products/PROD-CRW-004.jpg",
     "imageUrl": "/products/PROD-CRW-004.jpg",
     "cbmpNumber": "336954/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -1719,7 +1662,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-005",
@@ -1729,11 +1678,6 @@
     "description": "Chất son velvet tan chảy ngay khi chạm môi, công thức lưu giữ sắc tố tươi tắn phong cách Hàn Quốc.",
     "category": "Lipstick",
     "registrationNo": "788315/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -1894,19 +1838,6 @@
     "image": "/products/PROD-CRW-005.jpg",
     "imageUrl": "/products/PROD-CRW-005.jpg",
     "cbmpNumber": "788315/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -1980,7 +1911,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-006",
@@ -1990,10 +1927,6 @@
     "description": "Dòng son thỏi lì thế hệ mới, hạt phấn siêu mịn nhẹ tênh như không khí, không gây bột môi.",
     "category": "Lipstick",
     "registrationNo": "547329/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Silica",
@@ -2154,16 +2087,6 @@
     "image": "/products/PROD-CRW-006.jpg",
     "imageUrl": "/products/PROD-CRW-006.jpg",
     "cbmpNumber": "547329/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Silica",
@@ -2237,7 +2160,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-007",
@@ -2247,11 +2176,6 @@
     "description": "Son kem lì chống trôi đỉnh cao suốt 16 giờ, ăn uống không dây dính, chống thấm nước tuyệt đối.",
     "category": "Lipstick",
     "registrationNo": "134998/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -2412,17 +2336,6 @@
     "image": "/products/PROD-CRW-007.jpg",
     "imageUrl": "/products/PROD-CRW-007.jpg",
     "cbmpNumber": "134998/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -2473,9 +2386,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -2497,7 +2408,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-008",
@@ -2507,11 +2424,6 @@
     "description": "Công nghệ khóa màu đột phá vừa mang lại lớp finish bóng nước vừa giữ màu 16h không xê dịch.",
     "category": "Lipstick",
     "registrationNo": "191371/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Octyldodecanol",
@@ -2672,17 +2584,6 @@
     "image": "/products/PROD-CRW-008.jpg",
     "imageUrl": "/products/PROD-CRW-008.jpg",
     "cbmpNumber": "191371/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Octyldodecanol",
@@ -2733,9 +2634,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -2757,7 +2656,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-009",
@@ -2767,11 +2672,6 @@
     "description": "Chất son feather-light êm ái như lông vũ, hương quả mọng ngọt ngào và khả năng bám màu 8h.",
     "category": "Lipstick",
     "registrationNo": "446862/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -2924,19 +2824,6 @@
     "image": "/products/PROD-CRW-009.jpg",
     "imageUrl": "/products/PROD-CRW-009.jpg",
     "cbmpNumber": "446862/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -3002,7 +2889,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-010",
@@ -3012,10 +2905,6 @@
     "description": "Son thỏi nhung lì bán nguyệt ôm sát bờ môi, màu sắc lấy cảm hứng từ ánh sáng hoàng hôn.",
     "category": "Lipstick",
     "registrationNo": "967192/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY"
-    ],
     "ingredients": [
       {
         "inciName": "Diisostearyl Malate",
@@ -3168,18 +3057,6 @@
     "image": "/products/PROD-CRW-010.png",
     "imageUrl": "/products/PROD-CRW-010.png",
     "cbmpNumber": "967192/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Diisostearyl Malate",
@@ -3245,7 +3122,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-011",
@@ -3255,11 +3138,6 @@
     "description": "Dòng son mực quốc dân xứ kim chi với độ bám màu siêu bền và hiệu ứng nhung mờ mịn môi.",
     "category": "Lipstick",
     "registrationNo": "930426/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -3412,19 +3290,6 @@
     "image": "/products/PROD-CRW-011.jpg",
     "imageUrl": "/products/PROD-CRW-011.jpg",
     "cbmpNumber": "930426/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -3489,7 +3354,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-012",
@@ -3499,11 +3370,6 @@
     "description": "Son tint bóng ngậm nước như hồ thu tĩnh lặng, tạo đôi môi căng tròn đầy sức sống.",
     "category": "Lipstick",
     "registrationNo": "287436/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Octyldodecanol",
@@ -3664,19 +3530,6 @@
     "image": "/products/PROD-CRW-012.jpg",
     "imageUrl": "/products/PROD-CRW-012.jpg",
     "cbmpNumber": "287436/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Octyldodecanol",
@@ -3727,10 +3580,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -3752,7 +3602,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_GLOSS"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-013",
@@ -3762,11 +3618,6 @@
     "description": "Chất son kem lì bám chặt tôn da, sắc son đỏ gạch và đỏ đất cá tính thời thượng.",
     "category": "Lipstick",
     "registrationNo": "586221/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -3919,19 +3770,6 @@
     "image": "/products/PROD-CRW-013.jpg",
     "imageUrl": "/products/PROD-CRW-013.jpg",
     "cbmpNumber": "586221/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -3997,7 +3835,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-014",
@@ -4007,10 +3851,6 @@
     "description": "Vỏ đen huyền bí quyền lực kết hợp chất son nhung mịn semi-matte không khô căng môi.",
     "category": "Lipstick",
     "registrationNo": "186170/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Diisostearyl Malate",
@@ -4163,16 +4003,6 @@
     "image": "/products/PROD-CRW-014.png",
     "imageUrl": "/products/PROD-CRW-014.png",
     "cbmpNumber": "186170/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Diisostearyl Malate",
@@ -4238,7 +4068,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-015",
@@ -4248,11 +4084,6 @@
     "description": "Bản màu chuẩn da Châu Á, chất son nam châm bám chặt lên môi mềm mượt như cánh hoa.",
     "category": "Lipstick",
     "registrationNo": "595211/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -4405,19 +4236,6 @@
     "image": "/products/PROD-CRW-015.jpg",
     "imageUrl": "/products/PROD-CRW-015.jpg",
     "cbmpNumber": "595211/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -4482,7 +4300,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-016",
@@ -4492,11 +4316,6 @@
     "description": "Son thỏi lì cao cấp nhẹ tênh như không thoa son, bảng màu chuẩn thần thái Seoul quyến rũ.",
     "category": "Lipstick",
     "registrationNo": "386687/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Silica",
@@ -4626,17 +4445,6 @@
     "image": "/products/PROD-CRW-016.webp",
     "imageUrl": "/products/PROD-CRW-016.webp",
     "cbmpNumber": "386687/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Silica",
@@ -4701,7 +4509,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-017",
@@ -4711,10 +4525,6 @@
     "description": "Chất son nhung cao cấp che phủ rãnh môi mềm như lụa, độ ẩm dồi dào từ bơ hạt mỡ.",
     "category": "Lipstick",
     "registrationNo": "574512/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -4836,18 +4646,6 @@
     "image": "/products/PROD-CRW-017.jpg",
     "imageUrl": "/products/PROD-CRW-017.jpg",
     "cbmpNumber": "574512/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -4904,7 +4702,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-018",
@@ -4914,11 +4718,6 @@
     "description": "Thiết kế 2 đầu tiện lợi gồm Lip Filler làm đầy rãnh môi và Lip Tint kem lì chuẩn sắc.",
     "category": "Lipstick",
     "registrationNo": "961087/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -5071,19 +4870,6 @@
     "image": "/products/PROD-CRW-018.jpg",
     "imageUrl": "/products/PROD-CRW-018.jpg",
     "cbmpNumber": "961087/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -5126,9 +4912,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -5151,7 +4935,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-019",
@@ -5161,10 +4951,6 @@
     "description": "Sắc son dành riêng cho làn da phụ nữ Việt Nam, dưỡng ẩm dồi dào, không lộ khuyết điểm môi.",
     "category": "Lipstick",
     "registrationNo": "621796/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -5309,16 +5095,6 @@
     "image": "/products/PROD-CRW-019.jpg",
     "imageUrl": "/products/PROD-CRW-019.jpg",
     "cbmpNumber": "621796/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -5376,7 +5152,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-020",
@@ -5386,12 +5168,6 @@
     "description": "Son thỏi vuông siêu mẫu couture thanh mảnh, chất son lì mịn như da thuộc cao cấp.",
     "category": "Lipstick",
     "registrationNo": "379826/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -5552,20 +5328,6 @@
     "image": "/products/PROD-CRW-020.jpg",
     "imageUrl": "/products/PROD-CRW-020.jpg",
     "cbmpNumber": "379826/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -5638,7 +5400,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-021",
@@ -5648,11 +5416,6 @@
     "description": "Huyền thoại son dưỡng tự thức tỉnh sắc hồng môi tự nhiên theo độ pH, nuôi dưỡng 24h.",
     "category": "Lipstick",
     "registrationNo": "533723/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Butyrospermum Parkii (Shea) Butter",
@@ -5805,19 +5568,6 @@
     "image": "/products/PROD-CRW-021.jpg",
     "imageUrl": "/products/PROD-CRW-021.jpg",
     "cbmpNumber": "533723/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Butyrospermum Parkii (Shea) Butter",
@@ -5882,7 +5632,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_BALM"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-022",
@@ -5892,11 +5648,6 @@
     "description": "Son kem lì không trọng lượng, không dây dính khẩu trang, sắc màu rạng rỡ suốt ngày dài.",
     "category": "Lipstick",
     "registrationNo": "916607/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -6049,17 +5800,6 @@
     "image": "/products/PROD-CRW-022.jpg",
     "imageUrl": "/products/PROD-CRW-022.jpg",
     "cbmpNumber": "916607/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -6124,7 +5864,13 @@
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-023",
@@ -6134,11 +5880,6 @@
     "description": "Cảm hứng từ lụa tơ tằm Nhật Bản Kinu, kết cấu satin óng mượt và hương gỗ Hinoki thư giãn.",
     "category": "Lipstick",
     "registrationNo": "114311/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Diisostearyl Malate",
@@ -6291,19 +6032,6 @@
     "image": "/products/PROD-CRW-023.jpg",
     "imageUrl": "/products/PROD-CRW-023.jpg",
     "cbmpNumber": "114311/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Diisostearyl Malate",
@@ -6369,7 +6097,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-024",
@@ -6379,10 +6113,6 @@
     "description": "Son kem mỏng như mây với công thức kháng nước, dễ tán đều viền môi ombre xinh xắn.",
     "category": "Lipstick",
     "registrationNo": "787421/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -6527,18 +6257,6 @@
     "image": "/products/PROD-CRW-024.jpg",
     "imageUrl": "/products/PROD-CRW-024.jpg",
     "cbmpNumber": "787421/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -6596,7 +6314,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-025",
@@ -6606,11 +6330,6 @@
     "description": "Kết cấu bùn mịn che phủ hoàn hảo vân môi, đa năng dùng được cho cả môi và má hồng.",
     "category": "Lipstick",
     "registrationNo": "899136/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Silica",
@@ -6763,19 +6482,6 @@
     "image": "/products/PROD-CRW-025.jpg",
     "imageUrl": "/products/PROD-CRW-025.jpg",
     "cbmpNumber": "899136/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Silica",
@@ -6841,7 +6547,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-026",
@@ -6851,11 +6563,6 @@
     "description": "Son dưỡng có màu 100% thuần chay từ dầu dừa Bến Tre và bơ hạt mỡ, nuôi dưỡng đôi môi mềm mại.",
     "category": "Lipstick",
     "registrationNo": "628665/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Butyrospermum Parkii (Shea) Butter",
@@ -7000,19 +6707,6 @@
     "image": "/products/PROD-CRW-026.jpg",
     "imageUrl": "/products/PROD-CRW-026.jpg",
     "cbmpNumber": "628665/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Butyrospermum Parkii (Shea) Butter",
@@ -7069,7 +6763,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-027",
@@ -7079,11 +6779,6 @@
     "description": "Bổ sung collagen thủy phân tái tạo độ căng bóng khỏe mạnh, không gây thâm môi.",
     "category": "Lipstick",
     "registrationNo": "568962/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -7236,19 +6931,6 @@
     "image": "/products/PROD-CRW-027.jpg",
     "imageUrl": "/products/PROD-CRW-027.jpg",
     "cbmpNumber": "568962/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "HYPERPIGMENTATION",
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "HYPERPIGMENTATION",
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -7291,9 +6973,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -7316,7 +6996,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-028",
@@ -7326,11 +7012,6 @@
     "description": "Chiết xuất dầu hạt trà xanh đảo Jeju cấp ẩm cho lớp son lì mỏng nhẹ, màu sắc tươi tắn.",
     "category": "Lipstick",
     "registrationNo": "132192/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Camellia Sinensis Leaf Extract",
@@ -7475,17 +7156,6 @@
     "image": "/products/PROD-CRW-028.jpg",
     "imageUrl": "/products/PROD-CRW-028.jpg",
     "cbmpNumber": "132192/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Camellia Sinensis Leaf Extract",
@@ -7542,7 +7212,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-029",
@@ -7552,11 +7228,6 @@
     "description": "Son dưỡng bóng nhẹ chiết xuất dầu hạt bạch đàn và hoa sơn trà, tạo độ bóng ẩm trong trẻo.",
     "category": "Lipstick",
     "registrationNo": "418564/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Simmondsia Chinensis (Jojoba) Seed Oil",
@@ -7701,19 +7372,6 @@
     "image": "/products/PROD-CRW-029.jpg",
     "imageUrl": "/products/PROD-CRW-029.jpg",
     "cbmpNumber": "418564/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Simmondsia Chinensis (Jojoba) Seed Oil",
@@ -7771,7 +7429,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-030",
@@ -7781,11 +7445,6 @@
     "description": "Son kem nhẹ tựa mây chiffon, công nghệ hạt màu khuếch tán tạo hiệu ứng mờ nhạt ảo diệu.",
     "category": "Lipstick",
     "registrationNo": "524850/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -7938,19 +7597,6 @@
     "image": "/products/PROD-CRW-030.jpg",
     "imageUrl": "/products/PROD-CRW-030.jpg",
     "cbmpNumber": "524850/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -8016,7 +7662,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-031",
@@ -8026,11 +7678,6 @@
     "description": "Hạt phấn siêu mịn tiệp vào da, kiềm dầu nhẹ và tạo sắc hồng cam tự nhiên tôn lên gò má rạng rỡ.",
     "category": "Blush",
     "registrationNo": "419299/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -8170,17 +7817,6 @@
     "image": "/products/PROD-CRW-031.jpg",
     "imageUrl": "/products/PROD-CRW-031.jpg",
     "cbmpNumber": "419299/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -8254,7 +7890,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-032",
@@ -8264,11 +7906,6 @@
     "description": "Huyền thoại má hồng màu hồng đào ánh nhũ vàng quyến rũ, tạo gò má ửng hồng tỏa sáng tự nhiên.",
     "category": "Blush",
     "registrationNo": "230978/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -8408,19 +8045,6 @@
     "image": "/products/PROD-CRW-032.webp",
     "imageUrl": "/products/PROD-CRW-032.webp",
     "cbmpNumber": "230978/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -8471,9 +8095,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -8496,7 +8118,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-033",
@@ -8506,11 +8134,6 @@
     "description": "Bảng má 5 ô hoa nở rạng ngời xứ Phù Tang, phối hợp giữa màu lì và ánh ngọc trai trong veo.",
     "category": "Blush",
     "registrationNo": "697724/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -8642,19 +8265,6 @@
     "image": "/products/PROD-CRW-033.jpg",
     "imageUrl": "/products/PROD-CRW-033.jpg",
     "cbmpNumber": "697724/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -8697,9 +8307,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -8722,7 +8330,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-034",
@@ -8732,11 +8346,6 @@
     "description": "Hạt phấn lấy cảm hứng từ quả sấy khô, làm mờ lỗ chân lông và kiềm dầu hoàn hảo cho gò má.",
     "category": "Blush",
     "registrationNo": "881263/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -8868,21 +8477,6 @@
     "image": "/products/PROD-CRW-034.jpg",
     "imageUrl": "/products/PROD-CRW-034.jpg",
     "cbmpNumber": "881263/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "PORES",
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "PORES",
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -8948,7 +8542,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-035",
@@ -8958,12 +8558,6 @@
     "description": "Chất kem mỏng nhẹ tán êm ái, sắc tố siêu đậm chỉ cần 1 chấm nhỏ cho đôi má ửng hồng cả ngày.",
     "category": "Blush",
     "registrationNo": "453958/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -9095,20 +8689,6 @@
     "image": "/products/PROD-CRW-035.jpg",
     "imageUrl": "/products/PROD-CRW-035.jpg",
     "cbmpNumber": "453958/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -9151,10 +8731,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -9177,7 +8754,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-036",
@@ -9187,11 +8770,6 @@
     "description": "Sắc hồng phấn hoa bồ công anh baby dịu dàng làm sáng bừng gương mặt mệt mỏi.",
     "category": "Blush",
     "registrationNo": "873435/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -9323,19 +8901,6 @@
     "image": "/products/PROD-CRW-036.jpg",
     "imageUrl": "/products/PROD-CRW-036.jpg",
     "cbmpNumber": "873435/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -9378,9 +8943,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -9403,7 +8966,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-037",
@@ -9413,11 +8982,6 @@
     "description": "Công nghệ nướng độc quyền cho hạt phấn trong suốt tiệp vào da như màu ửng hồng tự nhiên.",
     "category": "Blush",
     "registrationNo": "179240/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL",
-      "SENSITIVE",
-      "DRY"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -9549,19 +9113,6 @@
     "image": "/products/PROD-CRW-037.jpg",
     "imageUrl": "/products/PROD-CRW-037.jpg",
     "cbmpNumber": "179240/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL",
-      "SENSITIVE",
-      "DRY"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -9604,9 +9155,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -9629,7 +9178,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-038",
@@ -9639,11 +9194,6 @@
     "description": "Sắc màu ánh nắng dịu nhẹ, chất phấn mỏng mịn kiểm soát bã nhờn không gây bết dính.",
     "category": "Blush",
     "registrationNo": "720012/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -9775,19 +9325,6 @@
     "image": "/products/PROD-CRW-038.jpg",
     "imageUrl": "/products/PROD-CRW-038.jpg",
     "cbmpNumber": "720012/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -9853,7 +9390,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-039",
@@ -9863,10 +9406,6 @@
     "description": "Chất kem mềm mại dễ tán bằng ngón tay, tạo hiệu ứng má say rượu đáng yêu.",
     "category": "Blush",
     "registrationNo": "459433/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -9990,18 +9529,6 @@
     "image": "/products/PROD-CRW-039.jpg",
     "imageUrl": "/products/PROD-CRW-039.jpg",
     "cbmpNumber": "459433/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -10059,7 +9586,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-040",
@@ -10069,10 +9602,6 @@
     "description": "Tone màu chuẩn phong cách Douyin nhẹ nhàng, làm đầy hõm má và tạo khối sáng cho khuôn mặt.",
     "category": "Blush",
     "registrationNo": "724770/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -10204,18 +9733,6 @@
     "image": "/products/PROD-CRW-040.jpg",
     "imageUrl": "/products/PROD-CRW-040.jpg",
     "cbmpNumber": "724770/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -10281,7 +9798,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-041",
@@ -10291,10 +9814,6 @@
     "description": "Phấn má thuần chay mỏng nhẹ chiết xuất khoáng chất thiên nhiên đảo Jeju an toàn lành tính.",
     "category": "Blush",
     "registrationNo": "103953/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -10418,18 +9937,6 @@
     "image": "/products/PROD-CRW-041.jpg",
     "imageUrl": "/products/PROD-CRW-041.jpg",
     "cbmpNumber": "103953/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -10487,7 +9994,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-042",
@@ -10497,11 +10010,6 @@
     "description": "Công thức hạt phấn siêu nhỏ chuẩn sắc tự nhiên, bền màu không phai suốt 16 giờ.",
     "category": "Blush",
     "registrationNo": "990947/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -10633,17 +10141,6 @@
     "image": "/products/PROD-CRW-042.jpg",
     "imageUrl": "/products/PROD-CRW-042.jpg",
     "cbmpNumber": "990947/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -10709,7 +10206,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-043",
@@ -10719,10 +10222,6 @@
     "description": "Tông màu trong trẻo tươi mới giúp khuôn mặt trẻ trung rạng rỡ cả ngày mà không bị xỉn màu.",
     "category": "Blush",
     "registrationNo": "738977/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -10854,18 +10353,6 @@
     "image": "/products/PROD-CRW-043.jpg",
     "imageUrl": "/products/PROD-CRW-043.jpg",
     "cbmpNumber": "738977/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "DULLNESS"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "DULLNESS"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -10908,9 +10395,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -10933,7 +10418,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-044",
@@ -10943,11 +10434,6 @@
     "description": "Kết cấu hạt phấn siêu mịn kèm cọ chuyên dụng, tạo độ bắt sáng tự nhiên và gò má thon gọn.",
     "category": "Blush",
     "registrationNo": "266337/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -11079,19 +10565,6 @@
     "image": "/products/PROD-CRW-044.png",
     "imageUrl": "/products/PROD-CRW-044.png",
     "cbmpNumber": "266337/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -11157,7 +10630,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-045",
@@ -11167,11 +10646,6 @@
     "description": "Kết cấu kem thạch mềm dẻo như bánh flan, tan mướt vào da tạo đôi má ửng màu mọng nước.",
     "category": "Blush",
     "registrationNo": "500227/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -11295,19 +10769,6 @@
     "image": "/products/PROD-CRW-045.jpg",
     "imageUrl": "/products/PROD-CRW-045.jpg",
     "cbmpNumber": "500227/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -11342,9 +10803,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -11367,7 +10826,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-046",
@@ -11377,11 +10842,6 @@
     "description": "Màng lưới lọc kem nền siêu mịn mang lại lớp nền căng bóng mọng nước Glass-skin suốt 54 giờ.",
     "category": "Foundation",
     "registrationNo": "798463/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -11521,19 +10981,6 @@
     "image": "/products/PROD-CRW-046.jpg",
     "imageUrl": "/products/PROD-CRW-046.jpg",
     "cbmpNumber": "798463/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -11584,11 +11031,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "BRIGHTENING",
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -11611,7 +11054,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-047",
@@ -11621,11 +11070,6 @@
     "description": "Che phủ đỉnh cao khuyết điểm và lỗ chân lông to, công thức bán lì semi-matte kiềm dầu suốt 72h.",
     "category": "Foundation",
     "registrationNo": "182771/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION",
-      "NORMAL"
-    ],
     "ingredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -11765,19 +11209,6 @@
     "image": "/products/PROD-CRW-047.jpg",
     "imageUrl": "/products/PROD-CRW-047.jpg",
     "cbmpNumber": "182771/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "PORES",
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "PORES",
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -11828,10 +11259,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "BRIGHTENING"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -11854,7 +11282,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-048",
@@ -11864,10 +11298,6 @@
     "description": "Kem nền kiềm dầu quốc dân với hạt đất sét khoáng hút bã nhờn, che phủ lỗ chân lông tự nhiên.",
     "category": "Foundation",
     "registrationNo": "602253/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Water",
@@ -12015,18 +11445,6 @@
     "image": "/products/PROD-CRW-048.jpg",
     "imageUrl": "/products/PROD-CRW-048.jpg",
     "cbmpNumber": "602253/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "PORES",
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "PORES",
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Water",
@@ -12085,9 +11503,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -12109,7 +11525,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-049",
@@ -12119,11 +11541,6 @@
     "description": "Chống nước, chống mồ hôi và không lem khẩu trang suốt 30 giờ, độ che phủ từ trung bình đến cao.",
     "category": "Foundation",
     "registrationNo": "448228/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -12255,17 +11672,6 @@
     "image": "/products/PROD-CRW-049.jpg",
     "imageUrl": "/products/PROD-CRW-049.jpg",
     "cbmpNumber": "448228/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -12308,9 +11714,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -12333,7 +11737,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-050",
@@ -12343,10 +11753,6 @@
     "description": "Thiết kế bo tròn thời thượng, lớp nền mỏng nhẹ không dính khẩu trang và bảo vệ da khỏi ánh sáng xanh.",
     "category": "Foundation",
     "registrationNo": "274648/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -12486,18 +11892,6 @@
     "image": "/products/PROD-CRW-050.jpg",
     "imageUrl": "/products/PROD-CRW-050.jpg",
     "cbmpNumber": "274648/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -12548,10 +11942,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -12573,7 +11964,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-051",
@@ -12583,11 +11980,6 @@
     "description": "Cấp ẩm dồi dào với công nghệ Liquid Diamond cho làn da rạng rỡ tỏa sáng 360 độ suốt cả ngày.",
     "category": "Foundation",
     "registrationNo": "928324/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -12727,17 +12119,6 @@
     "image": "/products/PROD-CRW-051.png",
     "imageUrl": "/products/PROD-CRW-051.png",
     "cbmpNumber": "928324/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -12788,11 +12169,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS",
-      "BRIGHTENING"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -12815,7 +12192,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-052",
@@ -12825,11 +12208,6 @@
     "description": "Độ che phủ vượt trội nhưng mỏng mịn như nhung, chứng nhận thuần chay an toàn cho da mụn nhạy cảm.",
     "category": "Foundation",
     "registrationNo": "180709/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "COMBINATION",
-      "OILY",
-      "NORMAL"
-    ],
     "ingredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -12961,17 +12339,6 @@
     "image": "/products/PROD-CRW-052.jpg",
     "imageUrl": "/products/PROD-CRW-052.jpg",
     "cbmpNumber": "180709/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "COMBINATION",
-      "OILY",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "ACNE"
-    ],
-    "concerns": [
-      "ACNE"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -13014,10 +12381,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -13040,7 +12404,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-053",
@@ -13050,10 +12420,6 @@
     "description": "Kem nền dạng lỏng cho hiệu ứng bóng bẩy tự nhiên kiểu Hàn Quốc, nuôi dưỡng làn da ngậm nước.",
     "category": "Foundation",
     "registrationNo": "503367/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL"
-    ],
     "ingredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -13185,18 +12551,6 @@
     "image": "/products/PROD-CRW-053.jpg",
     "imageUrl": "/products/PROD-CRW-053.jpg",
     "cbmpNumber": "503367/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -13239,10 +12593,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -13265,7 +12616,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-054",
@@ -13275,10 +12632,6 @@
     "description": "Nữ hoàng kem nền kiềm dầu số 1 thế giới với khả năng che khuyết điểm hoàn mỹ suốt 24 giờ bất chấp nắng gắt.",
     "category": "Foundation",
     "registrationNo": "628076/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Water",
@@ -13426,16 +12779,6 @@
     "image": "/products/PROD-CRW-054.webp",
     "imageUrl": "/products/PROD-CRW-054.webp",
     "cbmpNumber": "628076/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Water",
@@ -13494,9 +12837,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -13518,7 +12859,13 @@
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-055",
@@ -13528,11 +12875,6 @@
     "description": "Công nghệ hạt phấn oxy siêu nhẹ cho làn da hít thở thoải mái, che phủ mịn màng suốt 32h.",
     "category": "Foundation",
     "registrationNo": "285881/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -13664,19 +13006,6 @@
     "image": "/products/PROD-CRW-055.jpg",
     "imageUrl": "/products/PROD-CRW-055.jpg",
     "cbmpNumber": "285881/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -13719,10 +13048,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "BRIGHTENING"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -13745,7 +13071,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-056",
@@ -13755,11 +13087,6 @@
     "description": "Serum trang điểm chứa 1% Hyaluronic Acid tinh khiết, vừa làm sáng đều màu da vừa dưỡng ẩm sâu.",
     "category": "Foundation",
     "registrationNo": "429345/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -13891,19 +13218,6 @@
     "image": "/products/PROD-CRW-056.jpg",
     "imageUrl": "/products/PROD-CRW-056.jpg",
     "cbmpNumber": "429345/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "DULLNESS"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "DULLNESS"
-    ],
     "inciIngredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -13946,10 +13260,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -13972,7 +13283,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-057",
@@ -13982,10 +13299,6 @@
     "description": "Chỉ số chống nắng cực cao SPF50+/PA+++, che phủ khuyết điểm mụn và thâm đỏ nhanh chóng tiện lợi.",
     "category": "Foundation",
     "registrationNo": "930140/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -14117,18 +13430,6 @@
     "image": "/products/PROD-CRW-057.jpg",
     "imageUrl": "/products/PROD-CRW-057.jpg",
     "cbmpNumber": "930140/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "ACNE",
-      "HYPERPIGMENTATION"
-    ],
-    "concerns": [
-      "ACNE",
-      "HYPERPIGMENTATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -14171,9 +13472,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -14196,7 +13495,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-058",
@@ -14206,11 +13511,6 @@
     "description": "Được mệnh danh là 'phù thủy che khuyết điểm' với khả năng che mụn và tàn nhang hoàn hảo trong 1 lần dặm.",
     "category": "Foundation",
     "registrationNo": "816883/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -14342,17 +13642,6 @@
     "image": "/products/PROD-CRW-058.jpg",
     "imageUrl": "/products/PROD-CRW-058.jpg",
     "cbmpNumber": "816883/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "ACNE"
-    ],
-    "concerns": [
-      "ACNE"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -14395,11 +13684,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "BRIGHTENING",
-      "SOOTHING_BOTANICAL"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -14422,7 +13707,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-059",
@@ -14432,11 +13723,6 @@
     "description": "Kem nền kiềm dầu chuyên nghiệp chuẩn studio chụp ảnh, kiểm soát dầu thừa và bền màu 24h.",
     "category": "Foundation",
     "registrationNo": "674027/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION",
-      "NORMAL"
-    ],
     "ingredients": [
       {
         "inciName": "Water",
@@ -14576,17 +13862,6 @@
     "image": "/products/PROD-CRW-059.jpg",
     "imageUrl": "/products/PROD-CRW-059.jpg",
     "cbmpNumber": "674027/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Water",
@@ -14637,9 +13912,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -14661,7 +13934,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-060",
@@ -14671,11 +13950,6 @@
     "description": "Kem nền sang trọng với phức hợp Hyaluronic Acid, lớp finish lì rạng rỡ suốt ngày đêm không xuống tông.",
     "category": "Foundation",
     "registrationNo": "649792/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -14807,17 +14081,6 @@
     "image": "/products/PROD-CRW-060.jpg",
     "imageUrl": "/products/PROD-CRW-060.jpg",
     "cbmpNumber": "649792/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -14860,10 +14123,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -14886,7 +14146,13 @@
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-061",
@@ -14896,9 +14162,6 @@
     "description": "Bảng phấn mắt tone hồng đất và cam nâu ánh kim bán chạy nhất Châu Á, hạt phấn mịn bám màu lâu.",
     "category": "Eyeshadow",
     "registrationNo": "665095/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -15038,17 +14301,6 @@
     "image": "/products/PROD-CRW-061.png",
     "imageUrl": "/products/PROD-CRW-061.png",
     "cbmpNumber": "665095/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -15122,7 +14374,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-062",
@@ -15132,9 +14390,6 @@
     "description": "Tone nâu cà phê và vàng đồng thanh lịch ấm áp, phù hợp cho cả trang điểm hàng ngày và tiệc tối.",
     "category": "Eyeshadow",
     "registrationNo": "597734/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -15266,17 +14521,6 @@
     "image": "/products/PROD-CRW-062.jpg",
     "imageUrl": "/products/PROD-CRW-062.jpg",
     "cbmpNumber": "597734/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -15319,9 +14563,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -15344,7 +14586,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-063",
@@ -15354,9 +14602,6 @@
     "description": "Bộ sưu tập mèo Koshort đáng yêu gồm các ô lì, nhũ mịn và kim tuyến lấp lánh như sương mai.",
     "category": "Eyeshadow",
     "registrationNo": "620932/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -15488,17 +14733,6 @@
     "image": "/products/PROD-CRW-063.jpg",
     "imageUrl": "/products/PROD-CRW-063.jpg",
     "cbmpNumber": "620932/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -15541,9 +14775,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -15566,7 +14798,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-064",
@@ -15576,9 +14814,6 @@
     "description": "10 sắc thái khu vườn bí mật với 5 cấp độ đậm nhạt khác nhau, tạo chiều sâu cuốn hút cho đôi mắt.",
     "category": "Eyeshadow",
     "registrationNo": "315228/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -15710,17 +14945,6 @@
     "image": "/products/PROD-CRW-064.jpg",
     "imageUrl": "/products/PROD-CRW-064.jpg",
     "cbmpNumber": "315228/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -15786,7 +15010,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-065",
@@ -15796,9 +15026,6 @@
     "description": "Tone be sữa latte dịu ngọt thuần khiết, hạt nhũ mịn ngọc trai bắt sáng tinh tế dưới ánh đèn.",
     "category": "Eyeshadow",
     "registrationNo": "269415/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -15930,17 +15157,6 @@
     "image": "/products/PROD-CRW-065.jpg",
     "imageUrl": "/products/PROD-CRW-065.jpg",
     "cbmpNumber": "269415/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -15983,9 +15199,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -16008,7 +15222,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-066",
@@ -16018,9 +15238,6 @@
     "description": "12 ô màu tông vàng hồng rose gold quyến rũ kinh điển, độ bám màu vượt bậc không vón cục.",
     "category": "Eyeshadow",
     "registrationNo": "329909/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -16160,15 +15377,6 @@
     "image": "/products/PROD-CRW-066.jpg",
     "imageUrl": "/products/PROD-CRW-066.jpg",
     "cbmpNumber": "329909/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -16242,7 +15450,13 @@
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-067",
@@ -16252,9 +15466,6 @@
     "description": "Bảng mắt chuyên nghiệp 35 ô tông ấm nồng cháy, phù hợp cho mọi phong cách từ công sở đến lễ hội.",
     "category": "Eyeshadow",
     "registrationNo": "435972/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -16386,17 +15597,6 @@
     "image": "/products/PROD-CRW-067.jpg",
     "imageUrl": "/products/PROD-CRW-067.jpg",
     "cbmpNumber": "435972/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -16462,7 +15662,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-068",
@@ -16472,9 +15678,6 @@
     "description": "Hạt phấn nhũ đa chiều bắt sáng lấp lánh như mắt hổ và cáo, giữ màu mắt lung linh suốt ngày dài.",
     "category": "Eyeshadow",
     "registrationNo": "816993/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -16606,17 +15809,6 @@
     "image": "/products/PROD-CRW-068.webp",
     "imageUrl": "/products/PROD-CRW-068.webp",
     "cbmpNumber": "816993/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -16659,9 +15851,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -16684,7 +15874,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-069",
@@ -16694,9 +15890,6 @@
     "description": "Tone nâu dừa trung tính hoàn hảo cho mọi tông da, chất phấn bơ mịn dễ tán ngay cả với người mới bắt đầu.",
     "category": "Eyeshadow",
     "registrationNo": "434405/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -16828,17 +16021,6 @@
     "image": "/products/PROD-CRW-069.jpg",
     "imageUrl": "/products/PROD-CRW-069.jpg",
     "cbmpNumber": "434405/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -16904,7 +16086,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-070",
@@ -16914,9 +16102,6 @@
     "description": "Bộ 4 ô tiện lợi gồm 3 ô lì và 1 ô nhũ kim cương bắt sáng, phối màu chuẩn gu tinh tế.",
     "category": "Eyeshadow",
     "registrationNo": "901629/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -17048,17 +16233,6 @@
     "image": "/products/PROD-CRW-070.jpg",
     "imageUrl": "/products/PROD-CRW-070.jpg",
     "cbmpNumber": "901629/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -17101,9 +16275,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -17126,7 +16298,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-071",
@@ -17136,9 +16314,6 @@
     "description": "Sắc thái tone nude đỏ mận và sô cô la đậm đà, chất nhũ duo-chrome chuyển màu kỳ ảo theo góc nhìn.",
     "category": "Eyeshadow",
     "registrationNo": "995121/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -17270,17 +16445,6 @@
     "image": "/products/PROD-CRW-071.jpg",
     "imageUrl": "/products/PROD-CRW-071.jpg",
     "cbmpNumber": "995121/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -17346,7 +16510,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-072",
@@ -17356,9 +16526,6 @@
     "description": "Cảm hứng từ những chiếc bánh nướng thơm lừng mộc mạc, hạt phấn bám chắc vào mí mắt.",
     "category": "Eyeshadow",
     "registrationNo": "130373/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -17490,17 +16657,6 @@
     "image": "/products/PROD-CRW-072.jpg",
     "imageUrl": "/products/PROD-CRW-072.jpg",
     "cbmpNumber": "130373/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -17543,9 +16699,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -17568,7 +16722,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-073",
@@ -17578,9 +16738,6 @@
     "description": "Hạt kim tuyến lấp lánh phản chiếu ánh sáng rực rỡ, đầu cọ mảnh dễ nhấn khóe mắt và bọng mắt dưới.",
     "category": "Eyeshadow",
     "registrationNo": "588638/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Water",
@@ -17704,17 +16861,6 @@
     "image": "/products/PROD-CRW-073.jpg",
     "imageUrl": "/products/PROD-CRW-073.jpg",
     "cbmpNumber": "588638/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Water",
@@ -17749,10 +16895,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -17775,7 +16918,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "LIQUID_EYESHADOW"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-074",
@@ -17785,9 +16934,6 @@
     "description": "16 ô màu bình minh nhiệt đới với độ lên màu ấn tượng, phù hợp cho các buổi tiệc tùng sống động.",
     "category": "Eyeshadow",
     "registrationNo": "630632/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -17919,17 +17065,6 @@
     "image": "/products/PROD-CRW-074.jpg",
     "imageUrl": "/products/PROD-CRW-074.jpg",
     "cbmpNumber": "630632/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -17995,7 +17130,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-075",
@@ -18005,9 +17146,6 @@
     "description": "Tông đồng ánh hoàng hôn New York thời thượng, hạt phấn mượt mà không bị rơi bụi phấn xuống bọng mắt.",
     "category": "Eyeshadow",
     "registrationNo": "843202/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -18139,15 +17277,6 @@
     "image": "/products/PROD-CRW-075.jpg",
     "imageUrl": "/products/PROD-CRW-075.jpg",
     "cbmpNumber": "843202/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -18213,7 +17342,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-076",
@@ -18405,7 +17540,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-077",
@@ -18580,7 +17721,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-078",
@@ -18739,7 +17886,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-079",
@@ -18882,7 +18035,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-080",
@@ -19028,7 +18187,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-081",
@@ -19171,7 +18336,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-082",
@@ -19333,7 +18504,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-083",
@@ -19481,7 +18658,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-084",
@@ -19640,7 +18823,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-085",
@@ -19783,7 +18972,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-086",
@@ -19925,7 +19120,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-087",
@@ -20069,7 +19270,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-088",
@@ -20215,7 +19422,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-089",
@@ -20359,7 +19572,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-090",
@@ -20502,7 +19721,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-091",
@@ -20642,7 +19867,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-092",
@@ -20786,7 +20017,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-093",
@@ -20914,7 +20151,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-094",
@@ -21061,7 +20304,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-095",
@@ -21206,7 +20455,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-096",
@@ -21329,7 +20584,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-097",
@@ -21470,7 +20731,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-098",
@@ -21614,7 +20881,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-099",
@@ -21760,7 +21033,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-100",
@@ -21904,7 +21183,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-101",
@@ -22030,7 +21315,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "FACE_SCRUB",
+      "CHEMICAL_PEEL"
+    ],
+    "subCategory": "FACE_SCRUB"
   },
   {
     "id": "PROD-CRW-102",
@@ -22179,7 +21470,13 @@
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "BRIGHTENING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-103",
@@ -22325,7 +21622,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "RECOVERY_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-104",
@@ -22473,7 +21776,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-105",
@@ -22483,10 +21792,6 @@
     "description": "Toner dưỡng ẩm không mùi hương liệu, cân bằng độ pH và cung cấp độ ẩm sâu tức thì sau khi rửa mặt.",
     "category": "Skincare",
     "registrationNo": "994690/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -22545,16 +21850,6 @@
     "image": "/products/PROD-CRW-105.png",
     "imageUrl": "/products/PROD-CRW-105.png",
     "cbmpNumber": "994690/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -22589,10 +21884,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "SOOTHING_BOTANICAL"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -22615,7 +21907,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "PERFUME",
+      "WOMEN_PERFUME",
+      "EDP"
+    ],
+    "subCategory": "WOMEN_PERFUME"
   },
   {
     "id": "PROD-CRW-106",
@@ -22625,11 +21923,6 @@
     "description": "Toner bán chạy số 1 tại Olive Young Hàn Quốc với 77% diếp cá giúp hạ nhiệt và giảm đỏ da mụn nhạy cảm.",
     "category": "Skincare",
     "registrationNo": "454585/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "SENSITIVE",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Houttuynia Cordata Extract",
@@ -22688,17 +21981,6 @@
     "image": "/products/PROD-CRW-106.png",
     "imageUrl": "/products/PROD-CRW-106.png",
     "cbmpNumber": "454585/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "SENSITIVE",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "ACNE"
-    ],
-    "concerns": [
-      "ACNE"
-    ],
     "inciIngredients": [
       {
         "inciName": "Houttuynia Cordata Extract",
@@ -22733,10 +22015,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "SOOTHING_BOTANICAL",
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -22759,7 +22038,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "PERFUME",
+      "WOMEN_PERFUME",
+      "EDP"
+    ],
+    "subCategory": "WOMEN_PERFUME"
   },
   {
     "id": "PROD-CRW-107",
@@ -22903,7 +22188,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "ACNE_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-108",
@@ -23049,7 +22340,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "ACNE_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-109",
@@ -23193,7 +22490,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-110",
@@ -23318,7 +22621,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "RECOVERY_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-111",
@@ -23480,7 +22789,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-112",
@@ -23611,7 +22926,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "BRIGHTENING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-113",
@@ -23756,7 +23077,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "RECOVERY_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-114",
@@ -23897,7 +23224,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-115",
@@ -24040,7 +23373,13 @@
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "RECOVERY_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-116",
@@ -24201,7 +23540,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-117",
@@ -24344,7 +23689,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "ACNE_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-118",
@@ -24487,7 +23838,13 @@
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-119",
@@ -24614,7 +23971,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-120",
@@ -24757,7 +24120,13 @@
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-121",
@@ -24899,7 +24268,13 @@
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-122",
@@ -25042,7 +24417,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-123",
@@ -25204,7 +24585,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-124",
@@ -25348,7 +24735,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-125",
@@ -25493,7 +24886,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-126",
@@ -25654,7 +25053,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-127",
@@ -25799,7 +25204,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SUNSCREEN",
+      "FACIAL_SUNSCREEN"
+    ],
+    "subCategory": "SUNSCREEN"
   },
   {
     "id": "PROD-CRW-128",
@@ -25944,7 +25355,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-129",
@@ -26071,7 +25488,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "GEL_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-130",
@@ -26214,7 +25637,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-131",
@@ -26364,7 +25793,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-132",
@@ -26496,7 +25931,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "FACE_SCRUB",
+      "CHEMICAL_PEEL"
+    ],
+    "subCategory": "FACE_SCRUB"
   },
   {
     "id": "PROD-CRW-133",
@@ -26553,28 +25994,6 @@
     "registrationNo": "118221/26/CBMP-QLD",
     "cbmpNumber": "118221/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Sodium Hyaluronate",
@@ -26601,10 +26020,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "SOOTHING_BOTANICAL"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -26628,7 +26044,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "PERFUME",
+      "WOMEN_PERFUME",
+      "EDP"
+    ],
+    "subCategory": "WOMEN_PERFUME"
   },
   {
     "id": "PROD-CRW-134",
@@ -26760,7 +26182,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "BRIGHTENING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-135",
@@ -26888,7 +26316,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-136",
@@ -27015,7 +26449,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-137",
@@ -27156,7 +26596,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SUNSCREEN",
+      "FACIAL_SUNSCREEN"
+    ],
+    "subCategory": "SUNSCREEN"
   },
   {
     "id": "PROD-CRW-138",
@@ -27276,30 +26722,6 @@
     "registrationNo": "118906/26/CBMP-QLD",
     "cbmpNumber": "118906/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -27396,7 +26818,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-139",
@@ -27516,30 +26944,6 @@
     "registrationNo": "119043/26/CBMP-QLD",
     "cbmpNumber": "119043/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone Crosspolymer",
@@ -27636,7 +27040,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-140",
@@ -27763,7 +27173,13 @@
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-141",
@@ -27888,7 +27304,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-142",
@@ -27961,30 +27383,6 @@
     "registrationNo": "119454/26/CBMP-QLD",
     "cbmpNumber": "119454/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -28060,7 +27458,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-143",
@@ -28133,30 +27537,6 @@
     "registrationNo": "119591/26/CBMP-QLD",
     "cbmpNumber": "119591/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Nelumbo Nucifera (Lotus) Flower Extract",
@@ -28232,7 +27612,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-144",
@@ -28291,28 +27677,6 @@
     "registrationNo": "119728/26/CBMP-QLD",
     "cbmpNumber": "119728/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -28379,7 +27743,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-145",
@@ -28438,30 +27808,6 @@
     "registrationNo": "119865/26/CBMP-QLD",
     "cbmpNumber": "119865/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -28488,9 +27834,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -28530,7 +27874,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-146",
@@ -28603,24 +27953,6 @@
     "registrationNo": "120002/26/CBMP-QLD",
     "cbmpNumber": "120002/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -28647,10 +27979,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "BRIGHTENING"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -28699,7 +28028,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-147",
@@ -28758,30 +28093,6 @@
     "registrationNo": "120139/26/CBMP-QLD",
     "cbmpNumber": "120139/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Water",
@@ -28808,10 +28119,7 @@
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -28851,7 +28159,13 @@
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-148",
@@ -28980,7 +28294,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "RECOVERY_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-149",
@@ -29113,7 +28433,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "GEL_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-150",
@@ -29246,7 +28572,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-151",
@@ -29371,7 +28703,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "TONER",
+      "HYDRATING_TONER"
+    ],
+    "subCategory": "TONER"
   },
   {
     "id": "PROD-CRW-152",
@@ -29496,7 +28834,13 @@
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-153",
@@ -29634,7 +28978,13 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-154",
@@ -29746,6 +29096,12 @@
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   }
 ]

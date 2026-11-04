@@ -1816,12 +1816,56 @@ export function getSubmenuMetadata(query) {
 }
 
 // =========================================================================
+// HELPER: SUY LUẬN CATEGORY PATH CHUẨN CLIENT-SIDE (NULL-SAFE)
+// =========================================================================
+export function resolveClientCategoryPath(p) {
+  if (Array.isArray(p?.categoryPath) && p.categoryPath.length > 0) {
+    return p.categoryPath;
+  }
+  const name = (p?.name || '').toLowerCase();
+  const cat = (p?.category || '').toLowerCase();
+
+  if (cat.includes('body') || cat.includes('cơ thể') || name.includes('sữa tắm') || name.includes('dưỡng thể') || name.includes('body polish')) {
+    if (name.includes('tẩy tế bào chết') || name.includes('scrub') || name.includes('polish')) return ['BODY_CARE', 'BODY_SCRUB'];
+    if (name.includes('sữa tắm') || name.includes('shower')) return ['BODY_CARE', 'BODY_WASH'];
+    return ['BODY_CARE', 'BODY_MOISTURIZER'];
+  }
+  if (cat.includes('hair') || cat.includes('tóc') || name.includes('dầu gội') || name.includes('dầu xả') || name.includes('da đầu')) {
+    if (name.includes('da đầu') || name.includes('scalp')) return ['HAIR_CARE', 'SCALP_TREATMENT'];
+    if (name.includes('dầu gội') || name.includes('shampoo')) return ['HAIR_CARE', 'SHAMPOO'];
+    return ['HAIR_CARE', 'CONDITIONER'];
+  }
+  if (cat.includes('nước hoa') || cat.includes('perfume') || name.includes('nước hoa') || name.includes('body mist')) {
+    return ['PERFUME', 'WOMEN_PERFUME'];
+  }
+  if (cat === 'lipstick' || name.includes('son ') || name.includes('son kem') || name.includes('son thỏi') || name.includes('tint')) {
+    if (name.includes('son kem') || name.includes('tint')) return ['MAKEUP', 'LIP', 'LIP_TINT'];
+    return ['MAKEUP', 'LIP', 'LIPSTICK'];
+  }
+  if (cat === 'blush' || name.includes('má hồng')) return ['MAKEUP', 'FACE', 'BLUSH'];
+  if (cat === 'foundation' || name.includes('kem nền') || name.includes('phấn nước') || name.includes('cushion')) return ['MAKEUP', 'FACE', 'FOUNDATION'];
+  if (cat === 'eyeshadow' || name.includes('phấn mắt') || name.includes('mascara')) return ['MAKEUP', 'EYE', 'EYESHADOW'];
+  if (cat === 'cleanser' || name.includes('sữa rửa mặt') || name.includes('tẩy trang')) return ['SKINCARE', 'CLEANSER', 'GEL_CLEANSER'];
+  if (name.includes('tẩy tế bào chết') || name.includes('bha') || name.includes('aha')) return ['SKINCARE', 'FACE_SCRUB', 'CHEMICAL_PEEL'];
+  if (cat === 'toner' || name.includes('toner') || name.includes('nước hoa hồng')) return ['SKINCARE', 'TONER'];
+  if (cat === 'serum' || name.includes('serum') || name.includes('tinh chất')) return ['SKINCARE', 'SERUM'];
+  if (cat === 'cream' || name.includes('kem dưỡng')) return ['SKINCARE', 'MOISTURIZER'];
+  if (cat === 'sunscreen' || name.includes('chống nắng')) return ['SKINCARE', 'SUNSCREEN'];
+  return ['SKINCARE', 'GENERAL_SKINCARE'];
+}
+
+// =========================================================================
 // HELPER: LỌC VÀ LÀM GIÀU DỮ LIỆU SẢN PHẨM KHÔNG BAO GIỜ RỖNG
 // =========================================================================
 export function getEnrichedCatalog(allProducts = []) {
   // Kết hợp danh sách gốc và danh mục ngách đã làm giàu
   const existingIds = new Set(allProducts.map((p) => p.id));
-  const newNiche = CURATED_NICHE_PRODUCTS.filter((p) => !existingIds.has(p.id));
+  const newNiche = CURATED_NICHE_PRODUCTS.filter((p) => !existingIds.has(p.id)).map((p) => {
+    if (!p.categoryPath) {
+      p.categoryPath = resolveClientCategoryPath(p);
+    }
+    return p;
+  });
   return [...allProducts, ...newNiche];
 }
 
@@ -1836,10 +1880,12 @@ export function searchAndFilterProducts(allProducts = [], query = '', category =
   const meta = getSubmenuMetadata(qClean || catClean);
 
   let results = merged.filter((p) => {
+    if (!p) return false;
     const pName = (p.name || '').toLowerCase();
     const pBrand = (p.brand || '').toLowerCase();
     const pCat = (p.category || '').toLowerCase();
     const pSubCat = (p.subCategory || '').toLowerCase();
+    const pPaths = (p.categoryPath || resolveClientCategoryPath(p)).map((x) => String(x).toLowerCase());
 
     // Helper lấy tên INCI an toàn
     const getInciText = (i) => {
@@ -1848,11 +1894,20 @@ export function searchAndFilterProducts(allProducts = [], query = '', category =
       return i.inciName || i.name || '';
     };
 
+    // Khớp categoryPath trực tiếp (Null-Safe)
+    if (catClean && pPaths.some((cp) => cp === catClean || cp.includes(catClean))) {
+      return true;
+    }
+    if (qClean && pPaths.some((cp) => cp === qClean || cp.includes(qClean))) {
+      return true;
+    }
+
     // Nếu có meta keywords, kiểm tra khớp từ khóa
     if (meta) {
       const matchKeyword = meta.keywords.some((kw) => {
         const kwLow = (kw || '').toLowerCase();
         return (
+          pPaths.some((cp) => cp.includes(kwLow)) ||
           pSubCat.includes(kwLow) ||
           pName.includes(kwLow) ||
           pCat.includes(kwLow) ||
@@ -1860,9 +1915,14 @@ export function searchAndFilterProducts(allProducts = [], query = '', category =
         );
       });
       if (matchKeyword) {
-        // Nếu danh mục cha là chuyên biệt (chăm sóc cơ thể, tóc, nước hoa...), đảm bảo sản phẩm không phải danh mục mặt/môi đi lạc
+        // Cách ly phân hệ chéo: Chăm sóc cơ thể / Tóc không bị lẫn mặt / môi
         if (meta.parent && meta.parent.toLowerCase().includes('cơ thể')) {
-          if (pCat.includes('mặt') || pCat === 'Lipstick' || pCat === 'Skincare') {
+          if (pPaths.includes('skincare') || pPaths.includes('lip') || pCat.includes('mặt') || pCat === 'Lipstick' || pCat === 'Skincare') {
+            return false;
+          }
+        }
+        if (meta.parent && (meta.parent.toLowerCase().includes('tóc') || meta.parent.toLowerCase().includes('da đầu'))) {
+          if (pPaths.includes('skincare') || pPaths.includes('lip')) {
             return false;
           }
         }
@@ -1872,7 +1932,7 @@ export function searchAndFilterProducts(allProducts = [], query = '', category =
 
     // Khớp thông thường
     if (qClean) {
-      if (pSubCat.includes(qClean) || pName.includes(qClean) || pBrand.includes(qClean) || pCat.includes(qClean)) {
+      if (pPaths.some((cp) => cp.includes(qClean)) || pSubCat.includes(qClean) || pName.includes(qClean) || pBrand.includes(qClean) || pCat.includes(qClean)) {
         return true;
       }
       if (p.inciIngredients && p.inciIngredients.some((i) => getInciText(i).toLowerCase().includes(qClean))) {
@@ -1881,7 +1941,7 @@ export function searchAndFilterProducts(allProducts = [], query = '', category =
     }
 
     if (catClean) {
-      if (pCat.includes(catClean) || pSubCat.includes(catClean)) return true;
+      if (pPaths.some((cp) => cp.includes(catClean)) || pCat.includes(catClean) || pSubCat.includes(catClean)) return true;
     }
 
     return false;

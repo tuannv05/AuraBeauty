@@ -12,6 +12,9 @@ public interface ProductRepository extends ReactiveMongoRepository<ProductDocume
     Flux<ProductDocument> findByShopId(UUID shopId);
     Flux<ProductDocument> findByCategoryAndStatus(String category, String status);
 
+    @Query("{ 'status': ?1, $or: [ { 'categoryPath': { $regex: ?0, $options: 'i' } }, { 'category': { $regex: ?0, $options: 'i' } }, { 'subCategory': { $regex: ?0, $options: 'i' } } ] }")
+    Flux<ProductDocument> findByCategoryHierarchyAndStatus(String category, String status);
+
     @Query("{ 'variants.skuCode': ?0 }")
     Mono<ProductDocument> findByVariantSkuCode(String skuCode);
 
