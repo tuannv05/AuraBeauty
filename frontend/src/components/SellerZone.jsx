@@ -9,8 +9,16 @@ import {
   Building, MapPin, Target, Eye, Home
 } from 'lucide-react';
 
-export default function SellerZone({ user, onNavigateHome }) {
-  const [activeTab, setActiveTab] = useState('overview'); 
+export default function SellerZone({ user, onNavigateHome, activeTab: propTab, onTabChange }) {
+  const [internalTab, setInternalTab] = useState('overview'); 
+  const activeTab = propTab !== undefined ? propTab : internalTab;
+  const setActiveTab = (tab) => {
+    if (onTabChange) {
+      onTabChange(tab);
+    } else {
+      setInternalTab(tab);
+    }
+  }; 
   // 'overview' | 'products' | 'inventory' | 'orders' | 'marketing' | 'cs' | 'finance' | 'profile'
 
   // =========================================================================

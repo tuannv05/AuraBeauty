@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import {
   Filter, SlidersHorizontal, Grid, List, ChevronDown, X, Star, Heart,
-  ShoppingBag, Eye, Check, ArrowRight, RotateCcw, ShieldCheck, Sparkles
+  ShoppingBag, Eye, Check, ArrowRight, RotateCcw, ShieldCheck, Sparkles, ArrowLeft
 } from 'lucide-react';
 import { MOCK_PRODUCTS } from '../api';
 import { getEnrichedCatalog, getSubmenuMetadata, searchAndFilterProducts } from '../lib/submenuCatalogMapper';
@@ -141,7 +141,8 @@ export default function CatalogView({
   onToggleWishlist,
   wishlistIds = [],
   onNavigateHome,
-  onOpenTryOn
+  onOpenTryOn,
+  onBack
 }) {
   // Filter States
   const [selectedBrands, setSelectedBrands] = useState(initialBrand ? [initialBrand] : []);
@@ -359,18 +360,42 @@ export default function CatalogView({
 
   return (
     <div style={{ marginTop: '16px', paddingBottom: '40px' }}>
-      {/* 3.1.1 Breadcrumb */}
-      <nav style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--text-muted)', marginBottom: '16px' }}>
-        <button onClick={onNavigateHome} style={{ color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>Trang chủ</button>
-        <span>/</span>
-        <button onClick={() => {}} style={{ color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'default', padding: 0 }}>
-          {currentCategory || 'Mỹ phẩm chính hãng'}
+      {/* 3.1.1 Back Button & Breadcrumb */}
+      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '14px', marginBottom: '16px' }}>
+        <button
+          onClick={onBack || (() => window.history.back())}
+          className="btn-back-nav"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '6px 14px',
+            borderRadius: 'var(--radius-full)',
+            border: '1px solid var(--border-soft)',
+            background: 'var(--canvas)',
+            color: 'var(--ink)',
+            fontSize: '13px',
+            fontWeight: 600,
+            cursor: 'pointer',
+            boxShadow: 'var(--shadow-xs)',
+            transition: 'all 0.15s ease'
+          }}
+          title="Quay lại trang trước"
+        >
+          <ArrowLeft size={16} /> Quay lại
         </button>
-        <span>/</span>
-        <span style={{ color: 'var(--ink)', fontWeight: 600 }}>
-          {currentSubmenuMeta?.name || initialSearch || 'Tất cả sản phẩm'}
-        </span>
-      </nav>
+        <nav style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '8px', fontSize: '13px', color: 'var(--text-muted)' }}>
+          <button onClick={onNavigateHome} style={{ color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>Trang chủ</button>
+          <span>/</span>
+          <button onClick={() => {}} style={{ color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'default', padding: 0 }}>
+            {currentCategory || 'Mỹ phẩm chính hãng'}
+          </button>
+          <span>/</span>
+          <span style={{ color: 'var(--ink)', fontWeight: 600 }}>
+            {currentSubmenuMeta?.name || initialSearch || 'Tất cả sản phẩm'}
+          </span>
+        </nav>
+      </div>
 
       {/* 3.1.2 Category Banner with SEO Expander */}
       <div
@@ -815,7 +840,7 @@ export default function CatalogView({
                     whileHover={{ y: -4 }}
                     transition={{ type: 'spring', stiffness: 350, damping: 25 }}
                   >
-                    <div className="product-card-img-wrap">
+                    <div className="product-card-img-wrap" onClick={() => onSelectProduct(prod)} style={{ cursor: 'pointer' }}>
                       <img
                         src={prod.images[0]}
                         alt={prod.name}

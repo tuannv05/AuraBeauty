@@ -419,26 +419,22 @@ export default function Navbar({
             <PackageCheck size={13} />
             <span>Tra cứu đơn hàng</span>
           </div>
-          {user?.role === 'ADMIN' && (
-            <div
-              onClick={onNavigateAdmin}
-              style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#f59e0b', fontWeight: 700, background: 'rgba(245, 158, 11, 0.15)', padding: '2px 8px', borderRadius: '4px' }}
-              title="Chuyển đến Kênh Quản Trị Hệ Thống"
-            >
-              <ShieldCheck size={12} />
-              <span>Kênh Quản Trị Sàn</span>
-            </div>
-          )}
-          {user?.role === 'SELLER' && (
-            <div
-              onClick={onNavigateSeller}
-              style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#60a5fa', fontWeight: 700, background: 'rgba(96, 165, 250, 0.15)', padding: '2px 8px', borderRadius: '4px' }}
-              title="Chuyển đến Kênh Người Bán"
-            >
-              <Store size={12} />
-              <span>Kênh Người Bán</span>
-            </div>
-          )}
+          <div
+            onClick={onNavigateSeller}
+            style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#60a5fa', fontWeight: 700, background: 'rgba(96, 165, 250, 0.15)', padding: '2px 8px', borderRadius: '4px' }}
+            title="Chuyển đến Kênh Người Bán"
+          >
+            <Store size={12} />
+            <span>Kênh Người Bán</span>
+          </div>
+          <div
+            onClick={onNavigateAdmin}
+            style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#f59e0b', fontWeight: 700, background: 'rgba(245, 158, 11, 0.15)', padding: '2px 8px', borderRadius: '4px' }}
+            title="Chuyển đến Kênh Quản Trị Hệ Thống"
+          >
+            <ShieldCheck size={12} />
+            <span>Kênh Quản Trị</span>
+          </div>
         </div>
 
         {/* Center: Rotating Promotion Banner */}

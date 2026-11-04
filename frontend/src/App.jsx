@@ -12,6 +12,7 @@ import SupportChat from './components/SupportChat';
 import ErrorBoundary from './components/ErrorBoundary';
 import { TopBarModals } from './components/TopBarModals';
 import { USER_ROLES, MOCK_PRODUCTS } from './api';
+import { useBrowserHistorySync } from './hooks/useBrowserHistorySync';
 
 export default function App() {
   // Current user state (mặc định ban đầu là null khi chưa đăng nhập)
@@ -35,8 +36,41 @@ export default function App() {
   // Role được suy ra 100% từ quyền của tài khoản đăng nhập
   const activeRole = currentUser?.role || 'BUYER';
 
-  // Auth Modal State
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  // Browser History & Navigation Sync Manager (HTML5 History API + popstate sync)
+  const {
+    activeView,
+    setActiveView,
+    selectedProduct,
+    setSelectedProduct,
+    categoryFilter,
+    setCategoryFilter,
+    searchQuery,
+    setSearchQuery,
+    selectedBrand,
+    setSelectedBrand,
+    sellerTab,
+    setSellerTab,
+    adminTab,
+    setAdminTab,
+    isCartOpen,
+    setIsCartOpen,
+    isAuthModalOpen,
+    setIsAuthModalOpen,
+    isTryOnOpen,
+    setIsTryOnOpen,
+    isQuizOpen,
+    setIsQuizOpen,
+    isSkinScannerOpen,
+    setIsSkinScannerOpen,
+    isBeautyPassOpen,
+    setIsBeautyPassOpen,
+    quickViewProduct,
+    setQuickViewProduct,
+    navigateTo,
+    openModal,
+    closeModal,
+    goBack
+  } = useBrowserHistorySync();
 
   // Top Bar Announcement / Quick Link Modals
   const [activeTopBarModal, setActiveTopBarModal] = useState(null);
@@ -55,7 +89,6 @@ export default function App() {
     }
   ]);
   const [wishlistIds, setWishlistIds] = useState(['prod-002', 'prod-006']);
-  const [isCartOpen, setIsCartOpen] = useState(false);
 
   // Global Toasts
   const [toasts, setToasts] = useState([]);
@@ -72,12 +105,6 @@ export default function App() {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
-  // Global Navigation View in Buyer mode
-  const [activeView, setActiveView] = useState('home'); // 'home' | 'catalog' | 'product-detail' | 'cart' | 'checkout' | 'order-result' | 'order-tracking' | 'combos'
-  const [selectedProduct, setSelectedProduct] = useState(MOCK_PRODUCTS[0]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('');
-
   // Skin Profile
   const [skinProfile, setSkinProfile] = useState({
     skinType: 'COMBINATION',
@@ -90,24 +117,23 @@ export default function App() {
     localStorage.setItem('aura_current_user', JSON.stringify(userObj));
     const roleName = userObj.role === 'ADMIN' ? 'Quản Trị Viên' : userObj.role === 'SELLER' ? 'Người Bán (Shop)' : 'Khách Mua';
     if (userObj.role === 'ADMIN') {
-      setActiveView('admin');
+      navigateTo({ view: 'admin', adminTab: 'merchants' });
     } else if (userObj.role === 'SELLER') {
-      setActiveView('seller');
+      navigateTo({ view: 'seller', sellerTab: 'overview' });
     } else {
-      setActiveView('home');
+      navigateTo({ view: 'home' });
     }
     addToast({
       type: 'success',
       message: `Đăng nhập thành công! Giao diện đã chuyển sang quyền ${roleName}.`
     });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleLogout = () => {
     setCurrentUser(null);
     localStorage.removeItem('aura_current_user');
     localStorage.removeItem('cosmepoly_current_user');
-    setActiveView('home');
+    navigateTo({ view: 'home' });
     addToast({
       type: 'info',
       message: 'Đã đăng xuất tài khoản. Bạn đang xem giao diện Khách Mua.'
@@ -122,7 +148,7 @@ export default function App() {
       {/* 1.1 Auth Modal */}
       <AuthModal
         isOpen={isAuthModalOpen}
-        onClose={() => setIsAuthModalOpen(false)}
+        onClose={closeModal}
         onLoginSuccess={handleLoginSuccess}
       />
 
@@ -137,67 +163,27 @@ export default function App() {
           }}
           cartCount={cart.reduce((s, i) => s + i.quantity, 0)}
           wishlistCount={wishlistIds.length}
-          onOpenCart={() => setIsCartOpen(true)}
+          onOpenCart={() => openModal('cart')}
           onOpenSkinProfile={() => {
             const popup = document.querySelector('.modal-backdrop');
             if (!popup) {
               addToast({ type: 'info', message: 'Hồ sơ da liễu: ' + skinProfile.skinType });
             }
           }}
-          onOpenAuthModal={() => setIsAuthModalOpen(true)}
+          onOpenAuthModal={() => openModal('auth')}
           onLogout={handleLogout}
-          onNavigateHome={() => {
-            setActiveView('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          onNavigateCatalog={() => {
-            setSearchQuery('');
-            setCategoryFilter('');
-            setActiveView('catalog');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          onNavigateCategory={(cat) => {
-            setCategoryFilter(cat);
-            setSearchQuery('');
-            setActiveView('catalog');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          onNavigateTracking={() => {
-            setActiveView('order-tracking');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          onNavigateCombos={() => {
-            setActiveView('combos');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          onNavigateProfile={() => {
-            setActiveView('profile');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          onSelectProduct={(p) => {
-            setSelectedProduct(p);
-            setActiveView('product-detail');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          onSearchSubmit={(query) => {
-            setSearchQuery(query);
-            setCategoryFilter('');
-            setActiveView('catalog');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
+          onNavigateHome={() => navigateTo({ view: 'home', category: '', search: '' })}
+          onNavigateCatalog={() => navigateTo({ view: 'catalog', category: '', search: '' })}
+          onNavigateCategory={(cat) => navigateTo({ view: 'catalog', category: cat, search: '' })}
+          onNavigateTracking={() => navigateTo({ view: 'order-tracking' })}
+          onNavigateCombos={() => navigateTo({ view: 'combos' })}
+          onNavigateProfile={() => navigateTo({ view: 'profile' })}
+          onSelectProduct={(p) => navigateTo({ view: 'product-detail', productId: p.id, product: p })}
+          onSearchSubmit={(query) => navigateTo({ view: 'catalog', search: query, category: '' })}
           onOpenTopBarModal={(k) => setActiveTopBarModal(k)}
-          onNavigateFlashSale={() => {
-            setActiveView('flash-sale');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          onNavigateAdmin={() => {
-            setActiveView('admin');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          onNavigateSeller={() => {
-            setActiveView('seller');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
+          onNavigateFlashSale={() => navigateTo({ view: 'flash-sale' })}
+          onNavigateAdmin={() => navigateTo({ view: 'admin', adminTab: 'merchants' })}
+          onNavigateSeller={() => navigateTo({ view: 'seller', sellerTab: 'overview' })}
           user={currentUser}
         />
       )}
@@ -207,18 +193,8 @@ export default function App() {
         <ErrorBoundary
           resetKey={activeView + '-' + (currentUser?.role || 'BUYER')}
           activeView={activeView}
-          onReset={() => {
-            setSearchQuery('');
-            setCategoryFilter('');
-            setActiveView('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          onNavigateHome={() => {
-            setSearchQuery('');
-            setCategoryFilter('');
-            setActiveView('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
+          onReset={() => navigateTo({ view: 'home', category: '', search: '' })}
+          onNavigateHome={() => navigateTo({ view: 'home', category: '', search: '' })}
         >
         {activeView === 'profile' ? (
           <div style={{ marginTop: '20px' }}>
@@ -229,28 +205,25 @@ export default function App() {
                 localStorage.setItem('aura_current_user', JSON.stringify(updated));
               }}
               onAddToast={addToast}
-              onNavigateHome={() => {
-                setActiveView('home');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
+              onNavigateHome={() => navigateTo({ view: 'home' })}
               onLogout={handleLogout}
             />
           </div>
         ) : activeView === 'admin' ? (
           <div style={{ marginTop: '24px' }}>
-            <AdminZone onNavigateHome={() => {
-              setActiveView('home');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }} />
+            <AdminZone
+              activeTab={adminTab}
+              onTabChange={(tab) => navigateTo({ view: 'admin', adminTab: tab })}
+              onNavigateHome={() => navigateTo({ view: 'home' })}
+            />
           </div>
         ) : activeView === 'seller' ? (
           <div style={{ marginTop: '24px' }}>
             <SellerZone
               user={currentUser}
-              onNavigateHome={() => {
-                setActiveView('home');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
+              activeTab={sellerTab}
+              onTabChange={(tab) => navigateTo({ view: 'seller', sellerTab: tab })}
+              onNavigateHome={() => navigateTo({ view: 'home' })}
             />
           </div>
         ) : (
@@ -270,6 +243,22 @@ export default function App() {
             setSearchQuery={setSearchQuery}
             categoryFilter={categoryFilter}
             setCategoryFilter={setCategoryFilter}
+            selectedBrand={selectedBrand}
+            setSelectedBrand={setSelectedBrand}
+            isTryOnOpen={isTryOnOpen}
+            setIsTryOnOpen={setIsTryOnOpen}
+            quickViewProduct={quickViewProduct}
+            setQuickViewProduct={setQuickViewProduct}
+            isQuizOpen={isQuizOpen}
+            setIsQuizOpen={setIsQuizOpen}
+            isSkinScannerOpen={isSkinScannerOpen}
+            setIsSkinScannerOpen={setIsSkinScannerOpen}
+            isBeautyPassOpen={isBeautyPassOpen}
+            setIsBeautyPassOpen={setIsBeautyPassOpen}
+            navigateTo={navigateTo}
+            openModal={openModal}
+            closeModal={closeModal}
+            goBack={goBack}
             onAddToast={addToast}
             wishlistIds={wishlistIds}
             setWishlistIds={setWishlistIds}
@@ -281,23 +270,13 @@ export default function App() {
       {/* 4. Global MiniCart Drawer (1.5) */}
       <MiniCartDrawer
         isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
+        onClose={closeModal}
         cart={cart}
         setCart={setCart}
-        onOpenFullCart={() => {
-          setActiveView('cart');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-        onCheckout={() => {
-          setActiveView('checkout');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
+        onOpenFullCart={() => navigateTo({ view: 'cart' })}
+        onCheckout={() => navigateTo({ view: 'checkout' })}
         onAddToast={addToast}
-        onSelectProduct={(p) => {
-          setSelectedProduct(p);
-          setActiveView('product-detail');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
+        onSelectProduct={(p) => navigateTo({ view: 'product-detail', productId: p.id, product: p })}
       />
 
       {/* 5. Global Footer (1.4 - hidden in distraction-free checkout) */}

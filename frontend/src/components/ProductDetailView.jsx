@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import {
   Star, Heart, Scale, ShoppingBag, ShieldCheck, Truck, RefreshCw,
   Check, Info, Share2, AlertCircle, ChevronDown, ChevronUp, Copy,
-  CheckCircle2, ThumbsUp, MessageSquare, Play, X, Sparkles, Bell
+  CheckCircle2, ThumbsUp, MessageSquare, Play, X, Sparkles, Bell, ArrowLeft
 } from 'lucide-react';
 import { MOCK_PRODUCTS } from '../api';
 import VirtualTryOnModal from './VirtualTryOnModal';
@@ -18,7 +18,8 @@ export default function ProductDetailView({
   onSelectProduct,
   onAddToast,
   onNavigateHome,
-  onNavigateBrandStore
+  onNavigateBrandStore,
+  onBack
 }) {
   if (!product) return null;
 
@@ -146,16 +147,40 @@ export default function ProductDetailView({
 
   return (
     <div style={{ marginTop: '16px', paddingBottom: '80px' }}>
-      {/* 5.1 Breadcrumb */}
-      <nav style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
-        <button onClick={onNavigateHome} style={{ color: 'var(--text-muted)' }}>Trang chủ</button>
-        <span>/</span>
-        <span>{product.category}</span>
-        <span>/</span>
-        <span>{product.brand}</span>
-        <span>/</span>
-        <span style={{ color: 'var(--ink)', fontWeight: 600 }}>{product.name}</span>
-      </nav>
+      {/* 5.1 Back Button & Breadcrumb */}
+      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '14px', marginBottom: '20px' }}>
+        <button
+          onClick={onBack || (() => window.history.back())}
+          className="btn-back-nav"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '6px 14px',
+            borderRadius: 'var(--radius-full)',
+            border: '1px solid var(--border-soft)',
+            background: 'var(--canvas)',
+            color: 'var(--ink)',
+            fontSize: '13px',
+            fontWeight: 600,
+            cursor: 'pointer',
+            boxShadow: 'var(--shadow-xs)',
+            transition: 'all 0.15s ease'
+          }}
+          title="Quay lại trang trước"
+        >
+          <ArrowLeft size={16} /> Quay lại
+        </button>
+        <nav style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '8px', fontSize: '13px', color: 'var(--text-muted)' }}>
+          <button onClick={onNavigateHome} style={{ color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>Trang chủ</button>
+          <span>/</span>
+          <span>{product.category}</span>
+          <span>/</span>
+          <span>{product.brand}</span>
+          <span>/</span>
+          <span style={{ color: 'var(--ink)', fontWeight: 600 }}>{product.name}</span>
+        </nav>
+      </div>
 
       {/* 5.2 Top Two-Column Area: Gallery (55%) vs Purchase Info (45%) */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '40px', marginBottom: '48px' }}>

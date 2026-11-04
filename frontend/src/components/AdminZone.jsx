@@ -9,8 +9,16 @@ import {
   Activity, Server, Home
 } from 'lucide-react';
 
-export default function AdminZone({ onNavigateHome }) {
-  const [activeTab, setActiveTab] = useState('merchants'); 
+export default function AdminZone({ onNavigateHome, activeTab: propTab, onTabChange }) {
+  const [internalTab, setInternalTab] = useState('merchants'); 
+  const activeTab = propTab !== undefined ? propTab : internalTab;
+  const setActiveTab = (tab) => {
+    if (onTabChange) {
+      onTabChange(tab);
+    } else {
+      setInternalTab(tab);
+    }
+  }; 
   // 'merchants' | 'products' | 'users' | 'campaigns' | 'disputes' | 'finance' | 'analytics' | 'antifraud' | 'system'
 
   // =========================================================================

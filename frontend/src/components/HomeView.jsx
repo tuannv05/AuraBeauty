@@ -786,7 +786,7 @@ export default function HomeView({
             const isWish = wishlistIds.includes(prod.id);
             return (
               <div key={prod.id} className="squircle-card">
-                <div className="product-card-img-wrap">
+                <div className="product-card-img-wrap" onClick={() => onSelectProduct(prod)} style={{ cursor: 'pointer' }}>
                   <img
                     src={prod.images[0]}
                     alt={prod.name}

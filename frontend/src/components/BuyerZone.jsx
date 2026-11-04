@@ -37,26 +37,56 @@ export default function BuyerZone({
   setSearchQuery,
   categoryFilter,
   setCategoryFilter,
+  selectedBrand: propBrand,
+  setSelectedBrand: propSetBrand,
+  isTryOnOpen: propTryOnOpen,
+  setIsTryOnOpen: propSetTryOnOpen,
+  quickViewProduct: propQuickView,
+  setQuickViewProduct: propSetQuickView,
+  isQuizOpen: propQuizOpen,
+  setIsQuizOpen: propSetQuizOpen,
+  isSkinScannerOpen: propScannerOpen,
+  setIsSkinScannerOpen: propSetScannerOpen,
+  isBeautyPassOpen: propPassOpen,
+  setIsBeautyPassOpen: propSetPassOpen,
+  navigateTo,
+  openModal,
+  closeModal,
+  goBack,
   onAddToast,
   wishlistIds,
   setWishlistIds
 }) {
   // Quick View Modal
-  const [quickViewProduct, setQuickViewProduct] = useState(null);
+  const [internalQuickView, setInternalQuickView] = useState(null);
+  const quickViewProduct = propQuickView !== undefined ? propQuickView : internalQuickView;
+  const setQuickViewProduct = propSetQuickView || setInternalQuickView;
 
   // Compare List (Max 4)
   const [compareList, setCompareList] = useState([]);
 
   // Selected Brand Store
-  const [selectedBrand, setSelectedBrand] = useState('Innisfree');
+  const [internalBrand, setInternalBrand] = useState('Innisfree');
+  const selectedBrand = propBrand !== undefined ? propBrand : internalBrand;
+  const setSelectedBrand = propSetBrand || setInternalBrand;
 
   // Skin Quiz Modal
-  const [isQuizOpen, setIsQuizOpen] = useState(false);
+  const [internalQuizOpen, setInternalQuizOpen] = useState(false);
+  const isQuizOpen = propQuizOpen !== undefined ? propQuizOpen : internalQuizOpen;
+  const setIsQuizOpen = propSetQuizOpen || setInternalQuizOpen;
 
   // Beauty-Tech Modals
-  const [isTryOnOpen, setIsTryOnOpen] = useState(false);
-  const [isSkinScannerOpen, setIsSkinScannerOpen] = useState(false);
-  const [isBeautyPassOpen, setIsBeautyPassOpen] = useState(false);
+  const [internalTryOnOpen, setInternalTryOnOpen] = useState(false);
+  const isTryOnOpen = propTryOnOpen !== undefined ? propTryOnOpen : internalTryOnOpen;
+  const setIsTryOnOpen = propSetTryOnOpen || setInternalTryOnOpen;
+
+  const [internalScannerOpen, setInternalScannerOpen] = useState(false);
+  const isSkinScannerOpen = propScannerOpen !== undefined ? propScannerOpen : internalScannerOpen;
+  const setIsSkinScannerOpen = propSetScannerOpen || setInternalScannerOpen;
+
+  const [internalPassOpen, setInternalPassOpen] = useState(false);
+  const isBeautyPassOpen = propPassOpen !== undefined ? propPassOpen : internalPassOpen;
+  const setIsBeautyPassOpen = propSetPassOpen || setInternalPassOpen;
 
   // Checkout Data & Last Created Order
   const [checkoutData, setCheckoutData] = useState(null);
@@ -186,7 +216,11 @@ export default function BuyerZone({
       subtotal: targetPrice * qty,
       voucherDiscount: 0
     });
-    setActiveView('checkout');
+    if (navigateTo) {
+      navigateTo({ view: 'checkout' });
+    } else {
+      setActiveView('checkout');
+    }
   };
 
   const handleToggleWishlist = (productId) => {
@@ -232,42 +266,81 @@ export default function BuyerZone({
       {activeView === 'home' && (
         <HomeView
           onOpenTryOn={(p) => {
-            if (p) setSelectedProduct(p);
-            setIsTryOnOpen(true);
+            if (openModal) {
+              openModal('try-on', { product: p });
+            } else {
+              if (p) setSelectedProduct(p);
+              setIsTryOnOpen(true);
+            }
           }}
           onSelectProduct={(p) => {
-            setSelectedProduct(p);
-            setActiveView('product-detail');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) {
+              navigateTo({ view: 'product-detail', productId: p.id, product: p });
+            } else {
+              setSelectedProduct(p);
+              setActiveView('product-detail');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onAddToCart={handleAddToCart}
-          onOpenQuickView={(p) => setQuickViewProduct(p)}
+          onOpenQuickView={(p) => {
+            if (openModal) {
+              openModal('quick-view', { product: p });
+            } else {
+              setQuickViewProduct(p);
+            }
+          }}
           onToggleWishlist={handleToggleWishlist}
           wishlistIds={wishlistIds}
           onAddToCompare={handleAddToCompare}
           onNavigateCatalog={() => {
-            setSearchQuery('');
-            setCategoryFilter('');
-            setActiveView('catalog');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) {
+              navigateTo({ view: 'catalog', category: '', search: '' });
+            } else {
+              setSearchQuery('');
+              setCategoryFilter('');
+              setActiveView('catalog');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onNavigateCategory={(cat) => {
-            setCategoryFilter(cat);
-            setSearchQuery('');
-            setActiveView('catalog');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) {
+              navigateTo({ view: 'catalog', category: cat, search: '' });
+            } else {
+              setCategoryFilter(cat);
+              setSearchQuery('');
+              setActiveView('catalog');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onNavigateCombos={() => {
-            setActiveView('combos');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) {
+              navigateTo({ view: 'combos' });
+            } else {
+              setActiveView('combos');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
-          onOpenQuiz={() => setIsQuizOpen(true)}
+          onOpenQuiz={() => {
+            if (openModal) openModal('quiz');
+            else setIsQuizOpen(true);
+          }}
           skinType={skinProfile?.skinType || 'COMBINATION'}
-          onOpenSkinScanner={() => setIsSkinScannerOpen(true)}
-          onOpenBeautyPass={() => setIsBeautyPassOpen(true)}
+          onOpenSkinScanner={() => {
+            if (openModal) openModal('skin-scanner');
+            else setIsSkinScannerOpen(true);
+          }}
+          onOpenBeautyPass={() => {
+            if (openModal) openModal('beauty-pass');
+            else setIsBeautyPassOpen(true);
+          }}
           onNavigateRoutine={() => {
-            setActiveView('routine');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) {
+              navigateTo({ view: 'routine' });
+            } else {
+              setActiveView('routine');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
         />
       )}
@@ -276,29 +349,47 @@ export default function BuyerZone({
       {activeView === 'catalog' && (
         <CatalogView
           onOpenTryOn={(p) => {
-            if (p) setSelectedProduct(p);
-            setIsTryOnOpen(true);
+            if (openModal) openModal('try-on', { product: p });
+            else {
+              if (p) setSelectedProduct(p);
+              setIsTryOnOpen(true);
+            }
           }}
           initialCategory={categoryFilter}
           initialSearch={searchQuery}
           onSelectProduct={(p) => {
-            setSelectedProduct(p);
-            setActiveView('product-detail');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) {
+              navigateTo({ view: 'product-detail', productId: p.id, product: p });
+            } else {
+              setSelectedProduct(p);
+              setActiveView('product-detail');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onAddToCart={handleAddToCart}
-          onOpenQuickView={(p) => setQuickViewProduct(p)}
+          onOpenQuickView={(p) => {
+            if (openModal) openModal('quick-view', { product: p });
+            else setQuickViewProduct(p);
+          }}
           onToggleWishlist={handleToggleWishlist}
           wishlistIds={wishlistIds}
           onNavigateHome={() => {
-            setActiveView('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'home', category: '', search: '' });
+            else {
+              setActiveView('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onNavigateBrandStore={(brand) => {
-            setSelectedBrand(brand || 'Innisfree');
-            setActiveView('brand-store');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) {
+              navigateTo({ view: 'brand-store', brand: brand || 'Innisfree' });
+            } else {
+              setSelectedBrand(brand || 'Innisfree');
+              setActiveView('brand-store');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
+          onBack={goBack || (() => window.history.back())}
         />
       )}
 
@@ -312,19 +403,31 @@ export default function BuyerZone({
           isWishlisted={wishlistIds.includes(selectedProduct.id)}
           onAddToCompare={handleAddToCompare}
           onSelectProduct={(p) => {
-            setSelectedProduct(p);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) {
+              navigateTo({ view: 'product-detail', productId: p.id, product: p });
+            } else {
+              setSelectedProduct(p);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onAddToast={onAddToast}
           onNavigateHome={() => {
-            setActiveView('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'home', category: '', search: '' });
+            else {
+              setActiveView('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onNavigateBrandStore={(brand) => {
-            setSelectedBrand(brand || 'Innisfree');
-            setActiveView('brand-store');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) {
+              navigateTo({ view: 'brand-store', brand: brand || 'Innisfree' });
+            } else {
+              setSelectedBrand(brand || 'Innisfree');
+              setActiveView('brand-store');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
+          onBack={goBack || (() => window.history.back())}
         />
       )}
 
@@ -335,22 +438,38 @@ export default function BuyerZone({
           setCart={setCart}
           onProceedCheckout={(data) => {
             setCheckoutData(data);
-            setActiveView('checkout');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'checkout' });
+            else {
+              if (navigateTo) {
+      navigateTo({ view: 'checkout' });
+    } else {
+      setActiveView('checkout');
+    }
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onSelectProduct={(p) => {
-            setSelectedProduct(p);
-            setActiveView('product-detail');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'product-detail', productId: p.id, product: p });
+            else {
+              setSelectedProduct(p);
+              setActiveView('product-detail');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onNavigateHome={() => {
-            setActiveView('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'home', category: '', search: '' });
+            else {
+              setActiveView('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onNavigateBrandStore={(brand) => {
-            setSelectedBrand(brand || 'Innisfree');
-            setActiveView('brand-store');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'brand-store', brand: brand || 'Innisfree' });
+            else {
+              setSelectedBrand(brand || 'Innisfree');
+              setActiveView('brand-store');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onAddToast={onAddToast}
         />
@@ -364,12 +483,18 @@ export default function BuyerZone({
           onOrderSuccess={(order) => {
             setCreatedOrder(order);
             setCart([]); // Clear cart
-            setActiveView('order-result');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'order-result' });
+            else {
+              setActiveView('order-result');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onBackToCart={() => {
-            setActiveView('cart');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'cart' });
+            else {
+              setActiveView('cart');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onAddToast={onAddToast}
         />
@@ -381,17 +506,26 @@ export default function BuyerZone({
           orderData={createdOrder}
           onNavigateTracking={(orderId, phone) => {
             setTrackingLookupTarget({ orderId, phone });
-            setActiveView('order-tracking');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'order-tracking' });
+            else {
+              setActiveView('order-tracking');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onNavigateHome={() => {
-            setActiveView('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'home', category: '', search: '' });
+            else {
+              setActiveView('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onNavigateBrandStore={(brand) => {
-            setSelectedBrand(brand || 'Innisfree');
-            setActiveView('brand-store');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'brand-store', brand: brand || 'Innisfree' });
+            else {
+              setSelectedBrand(brand || 'Innisfree');
+              setActiveView('brand-store');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onAddToast={onAddToast}
         />
@@ -405,13 +539,19 @@ export default function BuyerZone({
           onOpenSupportChat={() => {}}
           onAddToast={onAddToast}
           onNavigateHome={() => {
-            setActiveView('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'home', category: '', search: '' });
+            else {
+              setActiveView('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onNavigateBrandStore={(brand) => {
-            setSelectedBrand(brand || 'Innisfree');
-            setActiveView('brand-store');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'brand-store', brand: brand || 'Innisfree' });
+            else {
+              setSelectedBrand(brand || 'Innisfree');
+              setActiveView('brand-store');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
         />
       )}
@@ -422,13 +562,19 @@ export default function BuyerZone({
           onAddToCart={handleAddToCart}
           onAddToast={onAddToast}
           onNavigateHome={() => {
-            setActiveView('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'home', category: '', search: '' });
+            else {
+              setActiveView('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onNavigateBrandStore={(brand) => {
-            setSelectedBrand(brand || 'Innisfree');
-            setActiveView('brand-store');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'brand-store', brand: brand || 'Innisfree' });
+            else {
+              setSelectedBrand(brand || 'Innisfree');
+              setActiveView('brand-store');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
         />
       )}
@@ -438,13 +584,19 @@ export default function BuyerZone({
         <BrandStoreView
           brandName={selectedBrand}
           onBack={() => {
-            setActiveView('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (goBack) goBack();
+            else {
+              setActiveView('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onSelectProduct={(p) => {
-            setSelectedProduct(p);
-            setActiveView('product-detail');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'product-detail', productId: p.id, product: p });
+            else {
+              setSelectedProduct(p);
+              setActiveView('product-detail');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onAddToCart={handleAddToCart}
           onOpenChat={() => {
@@ -461,9 +613,12 @@ export default function BuyerZone({
           onAddToCart={handleAddToCart}
           onAddToast={onAddToast}
           onSelectProduct={(p) => {
-            setSelectedProduct(p);
-            setActiveView('product-detail');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'product-detail', productId: p.id, product: p });
+            else {
+              setSelectedProduct(p);
+              setActiveView('product-detail');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
         />
       )}
@@ -472,19 +627,31 @@ export default function BuyerZone({
       {activeView === 'flash-sale' && (
         <FlashSaleView
           onSelectProduct={(p) => {
-            setSelectedProduct(p);
-            setActiveView('product-detail');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'product-detail', productId: p.id, product: p });
+            else {
+              setSelectedProduct(p);
+              setActiveView('product-detail');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onAddToCart={handleAddToCart}
-          onOpenQuickView={(p) => setQuickViewProduct(p)}
+          onOpenQuickView={(p) => {
+            if (openModal) openModal('quick-view', { product: p });
+            else setQuickViewProduct(p);
+          }}
           onOpenTryOn={(p) => {
-            if (p) setSelectedProduct(p);
-            setIsTryOnOpen(true);
+            if (openModal) openModal('try-on', { product: p });
+            else {
+              if (p) setSelectedProduct(p);
+              setIsTryOnOpen(true);
+            }
           }}
           onNavigateHome={() => {
-            setActiveView('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigateTo) navigateTo({ view: 'home', category: '', search: '' });
+            else {
+              setActiveView('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onAddToast={onAddToast}
           wishlistIds={wishlistIds}
@@ -498,7 +665,7 @@ export default function BuyerZone({
       {/* Virtual Try-On AR Modal */}
       <VirtualTryOnModal
         isOpen={isTryOnOpen}
-        onClose={() => setIsTryOnOpen(false)}
+        onClose={closeModal || (() => setIsTryOnOpen(false))}
         initialProduct={selectedProduct}
         onAddToCart={(item) => {
           handleAddToCart(
@@ -514,7 +681,7 @@ export default function BuyerZone({
       {/* AI Skin Scanner Modal */}
       <SkinScannerModal
         isOpen={isSkinScannerOpen}
-        onClose={() => setIsSkinScannerOpen(false)}
+        onClose={closeModal || (() => setIsSkinScannerOpen(false))}
         onUpdateSkinProfile={(newProfile) => {
           setSkinProfile({ ...skinProfile, ...newProfile });
         }}
@@ -527,16 +694,19 @@ export default function BuyerZone({
         }}
         onAddToast={onAddToast}
         onSelectProduct={(p) => {
-          setSelectedProduct(p);
-          setActiveView('product-detail');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          if (navigateTo) navigateTo({ view: 'product-detail', productId: p.id, product: p });
+          else {
+            setSelectedProduct(p);
+            setActiveView('product-detail');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
         }}
       />
 
       {/* Beauty Pass Loyalty Modal */}
       <BeautyPassModal
         isOpen={isBeautyPassOpen}
-        onClose={() => setIsBeautyPassOpen(false)}
+        onClose={closeModal || (() => setIsBeautyPassOpen(false))}
         user={user}
         onAddToast={onAddToast}
       />
@@ -545,14 +715,20 @@ export default function BuyerZone({
       {quickViewProduct && (
         <QuickViewModal
           product={quickViewProduct}
-          onClose={() => setQuickViewProduct(null)}
+          onClose={closeModal || (() => setQuickViewProduct(null))}
           onAddToCart={handleAddToCart}
           onViewFullDetail={(p) => {
-            setSelectedProduct(p);
-            setActiveView('product-detail');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (closeModal) closeModal();
+            if (navigateTo) navigateTo({ view: 'product-detail', productId: p.id, product: p });
+            else {
+              setSelectedProduct(p);
+              setActiveView('product-detail');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           onAddToast={onAddToast}
+          onToggleWishlist={handleToggleWishlist}
+          isWishlisted={wishlistIds.includes(quickViewProduct.id)}
         />
       )}
 
