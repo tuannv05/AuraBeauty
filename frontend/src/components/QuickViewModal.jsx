@@ -275,11 +275,21 @@ export default function QuickViewModal({
                     -
                   </button>
                   <input
-                    type="number"
-                    readOnly
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
                     value={!isAvailable ? 0 : quantity}
+                    onChange={(e) => {
+                      const raw = e.target.value.replace(/\D/g, '');
+                      if (raw === '') {
+                        setQuantity(1);
+                      } else {
+                        const num = parseInt(raw, 10);
+                        setQuantity(Math.max(1, Math.min(stockCount, num)));
+                      }
+                    }}
                     style={{
-                      width: '42px',
+                      width: '48px',
                       height: '28px',
                       textAlign: 'center',
                       fontSize: '13px',
@@ -287,7 +297,10 @@ export default function QuickViewModal({
                       color: '#111827',
                       border: 'none',
                       background: '#ffffff',
-                      outline: 'none'
+                      outline: 'none',
+                      padding: '0 4px',
+                      margin: 0,
+                      boxSizing: 'border-box'
                     }}
                   />
                   <button

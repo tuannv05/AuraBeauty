@@ -400,11 +400,21 @@ export default function ProductDetailView({
                       -
                     </button>
                     <input
-                      type="number"
-                      readOnly
+                      type="text"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       value={isOutOfStock ? 0 : quantity}
+                      onChange={(e) => {
+                        const raw = e.target.value.replace(/\D/g, '');
+                        if (raw === '') {
+                          setQuantity(1);
+                        } else {
+                          const num = parseInt(raw, 10);
+                          setQuantity(Math.max(1, Math.min(stockCount, num)));
+                        }
+                      }}
                       style={{
-                        width: '50px',
+                        width: '56px',
                         height: '32px',
                         textAlign: 'center',
                         fontSize: '14px',
@@ -412,7 +422,10 @@ export default function ProductDetailView({
                         color: '#111827',
                         border: 'none',
                         background: '#ffffff',
-                        outline: 'none'
+                        outline: 'none',
+                        padding: '0 4px',
+                        margin: 0,
+                        boxSizing: 'border-box'
                       }}
                     />
                     <button
