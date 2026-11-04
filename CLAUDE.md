@@ -1,20 +1,25 @@
 # 🏛️ HIẾN PHÁP DỰ ÁN — QUY CHUẨN VIBE CODING, NGHIỆP VỤ & KIẾN TRÚC HỆ THỐNG
-> **MÔI TRƯỜNG**: Windows 11 | Antigravity IDE / VS Code | Multi-Agent System
+> **MÔI TRƯỜNG**: Windows 11 | Antigravity IDE (Gemini Models) | Multi-Agent System
 > **DỰ ÁN**: Sàn TMĐT Mỹ Phẩm Đa Người Bán (Aura Beauty Mall / WebBanMP)
 > **MỆNH LỆNH TỐI CAO**: Mọi AI Agent BẮT BUỘC tuân thủ tuyệt đối tài liệu này.
 
 ---
 
-## 1. KỶ LUẬT THÉP TẠI THƯ MỤC GỐC & VÙNG TRÁCH NHIỆM
-1. **White-list tại Root**: Chỉ chấp nhận `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `pom.xml` (Maven Aggregator bắt buộc), `.gitignore`, `.antigravity/` (và `.mvn/` nếu có).
-2. **CẤM TUYỆT ĐỐI**: Không để file code, file thử (`temp.*`), log, script rác hoặc `.md` lẻ tại root. `README.md` lưu tại `docs/README.md`.
+## 1. KỶ LUẬT THÉP CLEAN ROOT & ÁNH XẠ THƯ MỤC SPEC KIT (ZERO-BREAKAGE)
+1. **White-list tại Root**: Chỉ chấp nhận `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `pom.xml` (Maven Aggregator bắt buộc), `.gitignore`, `.antigravity/`, và thư mục ẩn `.specify/`.
+2. **CẤM TUYỆT ĐỐI**: Không để file code, file chạy thử (`test.js`, `temp.py`), log, script rác hoặc `.md` lẻ tại root. `README.md` lưu tại `docs/README.md`.
 3. **Cấu trúc vùng trách nhiệm**:
-   - `docs/`: Trung tâm tài liệu (`flows/`, `blueprints/`, `architecture/`, `evidence/`, `guides/`).
-   - `frontend/`: Giao diện React 18 + Vite (Port 3000), Animate UI, AR Virtual Try-On.
-   - `backend/`: Vùng Backend gồm 7 Microservices Spring Boot 3 WebFlux Reactive (Port 8080-8086) và các thư viện dùng chung (common-web, common-events, common-outbox).
-   - `infra/`: Hạ tầng Docker Compose (`docker-compose.yml`), DB init, script vận hành, k6 test.
+   - `docs/`: **Trung tâm tài liệu duy nhất** (tuyệt đối không viết code thực thi ở đây):
+     - `docs/flows/`: Quy trình nghiệp vụ chuẩn (`QT-<nn>-<slug>.md`, `_phieu-yeu-cau.md`) và đặc tả SDD của Spec Kit (`spec.md`, `plan.md`, `tasks.md`). (Đồng bộ song song `.specify/specs/<slug>/`).
+     - `docs/blueprints/`: Bản thiết kế bóc tách từ Open Source (`OSS-BLUEPRINT-<project>.md`).
+     - `docs/architecture/`: Sơ đồ kiến trúc, DB Schema và các `ADR-00x` (`ADR-001` -> `ADR-005`).
+     - `docs/modules/`: Tài liệu theo tính năng, hồ sơ sửa lỗi (`docs/modules/bugs/<slug>/`) và đánh giá ý tưởng (`docs/modules/assessments/<slug>/`).
+     - `docs/evidence/`: Toàn bộ minh chứng 14 tuần (`week-1` -> `week-14`).
+   - `frontend/`: Giao diện React 18 + Vite 5 (Port 3000), Tailwind CSS, Animate UI, AR Virtual Try-On (@mediapipe 478 điểm 3D + Canvas/WebGL 60 FPS), Variant Selector chuẩn Shopee Mall, Browser History Sync.
+   - `backend/` (hoặc `services/`): 7 Microservices Spring Boot 3 WebFlux Reactive (Port 8080-8086) và các thư viện dùng chung (common-web, common-events, common-outbox).
+   - `infra/`: Hạ tầng Docker Compose (`infra/docker/docker-compose.yml`), DB init, script vận hành, k6 test.
    - `ai/`: Cosmetics Crawler, INCI dataset, Prompts, RAG embeddings.
-   - `agents/`: Các mini-rules chuyên sâu cho từng phân hệ.
+   - `agents/`: Các mini-rules chuyên sâu cho từng phân hệ (`backend-hexagonal.md`, `frontend.md`, `ledger.md`, `saga-outbox.md`, `ai-rag.md`, `windows-safety.md`).
 
 ---
 
@@ -29,34 +34,63 @@
 
 ## 3. VÙNG BẤT KHẢ XÂM PHẠM (ZERO-BREAKAGE)
 1. **pom.xml gốc**: Giữ nguyên danh sách `<modules>` trỏ vào `backend/`.
-2. **infra/docker/docker-compose.yml**: Không sửa (hash SHA-256 trước/sau phải trùng). Bảng cổng bất biến: Gateway 8080, Account 8081, Catalog 8082, Order 8083, Inventory 8084, Payment 8085, AI 8086, Frontend 3000, Postgres 5432, Mongo 27017, Kafka 9092, Kafka-UI 8090.
+2. **infra/docker/docker-compose.yml**: Không sửa (hash SHA-256 trước/sau phải trùng). Bảng cổng bất biến: Gateway 8080, Account 8081, Catalog 8082, Inventory 8083, Order 8084, Payment 8085, AI 8086, Frontend 3000, Postgres 5432, Mongo 27017, Kafka 9092, Kafka-UI 8090.
 3. Không đổi mã Java, cấu trúc Hexagonal Package, dependencies. Mọi refactor di chuyển file phải cập nhật đầy đủ import/alias.
 
 ---
 
-## 4. QUY CHUẨN NGHIỆP VỤ & PHÂN CHIA RANH GIỚI
-1. **Ranh giới công nghệ**:
-   - `frontend/`: Chỉ viết UI/UX, state hiển thị, gọi API. CẤM gọi DB trực tiếp, CẤM xử lý tiền/quyền nhạy cảm, CẤM lưu secret key.
-   - `backend/`: Viết API, Business logic, RBAC, R2DBC/MongoDB Reactive, Outbox/Kafka worker. CẤM nhúng code UI.
-   - Khi nhận lệnh nghiệp vụ: Tự tách vào 3 nơi: Đặc tả $\rightarrow$ `docs/flows/QT-xx-...md`, API/Logic $\rightarrow$ `backend/<service>`, Màn hình $\rightarrow$ `frontend/src/features/<tên>/`.
-2. **Quy trình 5 bước**:
-   - B1 - Học dự án âm thầm (nhẹ đến nặng: AGENTS/docs $\rightarrow$ data models $\rightarrow$ RBAC $\rightarrow$ API/Kafka/SSE/Outbox $\rightarrow$ Glossary, Đã có vs Mới).
-   - B2 - Gap Check (yêu cầu phải rõ Actor, Trigger, Outcome, Quyền, Lỗi; thiếu thì hỏi tối đa 5 câu).
-   - B3 - Spec trước, code sau.
-   - B4 - Thực thi sạch (đúng thư mục trách nhiệm, giữ Ubiquitous Language, clean diff).
-   - B5 - Tự kiểm tra root sạch rác; phản hồi tiếng Việt $\le 6$ dòng kèm link file.
+## 4. QUY TRÌNH 5 BƯỚC CHỐNG BỊA ĐẶT & 4 NGUYÊN TẮC KỸ THUẬT CỐT LÕI
+1. **Bước 1 - Học dự án âm thầm (Silent Project Learning) & Think Before Coding:**
+   - Quét từ nhẹ đến nặng: `AGENTS.md`, `GEMINI.md`, `docs/README.md`, `agents/` $\rightarrow$ Data Models (R2DBC, MongoDB Document `ProductDocument`, `VtoConfig`) $\rightarrow$ RBAC (`ROLE_ADMIN`, `STAFF_AUDITOR`, `STAFF_ACCOUNTANT`, Buyer/Seller) $\rightarrow$ API & cơ chế nền (SSE, Kafka Outbox, Saga).
+   - Nắm vững: Glossary (Từ điển thuật ngữ), Roles (Bảng vai trò), và Danh sách tính năng Đã có vs Mới.
+2. **Bước 2 - Gap Check (Kiểm tra lỗ hổng & Hỏi lại):**
+   - Yêu cầu chỉ đủ điều kiện thực thi khi rõ: (1) Actor (Ai làm), (2) Trigger (Khi nào bắt đầu), (3) Outcome (Kết quả là gì), Quyền hạn và Luồng lỗi.
+   - Nếu thiếu hoặc mập mờ: **DỪNG LẠI VÀ HỎI TỐI ĐA 5 CÂU** bằng tiếng Việt bình dân, có gợi ý phương án và đánh dấu **(Khuyến nghị)**. Chi tiết phụ chưa rõ ghi thành Giả định (`GD-xx`).
+3. **Bước 3 - Spec trước, Code sau (Spec-First & Simplicity First):**
+   - Không viết code khi đang phân tích. Tối giản mã nguồn, giải quyết đúng phạm vi, triệt tiêu over-engineering.
+4. **Bước 4 - Thực thi phẫu thuật sạch sẽ (Surgical Changes & Clean Execution):**
+   - **Clean diff tuyệt đối:** Chỉ chỉnh sửa đúng vị trí cần can thiệp, không reformat toàn file, không đổi naming/style, không xóa code không liên quan.
+   - **Bảo vệ chốt chặn Backend:** Package `domain` thuần Java 21 100% (pass `HexagonalArchitectureTest` qua ArchUnit), 100% Non-blocking (pass `BlockHound`), giữ kho nguyên tử **CAS (`AtomicStockConcurrencyTest`)**, **Split Order**, và **Sổ cái kép (Double-Entry Ledger: Debit = Credit, 10% hoa hồng sàn / 90% Seller)**.
+   - **Bảo vệ chốt chặn Frontend:** Cam kết **0% màn hình trắng (Zero Blank-Screen)** trên toàn bộ 51 Sub-menu, 9 phân hệ Seller, 9 phân hệ Admin, 15 liên kết Footer. Đủ **4 trạng thái (Loading, Empty, Error, Data)**, nút API chống double-submit (`disabled` + spinner), xóa/hủy bắt buộc có Confirm Modal.
+5. **Bước 5 - Kiểm chứng & Báo cáo ngắn gọn (Goal-Driven Execution & Concise Reply):**
+   - Chu trình: `[Bước thực hiện] -> Verify: [Tiêu chí kiểm chứng]`.
+   - Tự kiểm tra Root sạch rác; phản hồi tiếng Việt $\le 6$ dòng kèm link file trực tiếp.
 
 ---
 
-## 5. CHUẨN ĐẶC TẢ NGHIỆP VỤ (`/business-flow`) & BÓC TÁCH OSS (`/oss-blueprint`)
-1. **Đặc tả quy trình (`docs/flows/QT-<nn>-<slug>.md`)**:
-   - Chế độ: `form` (xuất `_phieu-yeu-cau.md`), văn bản tự do, hoặc `existing <tính năng>` (dịch ngược từ code, lệch/rủi ro đánh ⚠).
-   - Khung 15 mục: Thông tin chung, 1. Tóm tắt, 2. Tác nhân & quyền, 3. Điều kiện trước, 4. Luồng chính (mỗi bước 1 dòng), 5. Sơ đồ Mermaid (`flowchart TD`), 6. Luồng phụ & lỗi (tối thiểu E1-Không quyền, E2-Không tìm thấy, E3-Không hợp lệ), 7. Trạng thái (`stateDiagram-v2`), 8. Quy tắc `BR-xx`, 9. Thông báo/SSE/Audit log, 10. Dữ liệu, 11. Màn hình liên quan, 12. Tiêu chí nghiệm thu `AC-xx` (Cho/Khi/Thì), 13. Ảnh hưởng phần có sẵn, 14. Giả định `GD-xx` & Câu hỏi mở `Q-xx`, 15. Ghi chú kỹ thuật (`file:line`) + Lịch sử thay đổi.
-   - 12 luật cốt lõi: Không bịa; dùng đúng vai trò/thực thể; quyền do server quyết định; Mermaid node ASCII không dấu.
-2. **Bóc tách mã nguồn mở (`docs/blueprints/OSS-BLUEPRINT-<project>.md`)**:
-   - Chỉ đọc tĩnh (Read-only), CẤM chạy npm/pip/make/docker trên repo lạ. Hỏi 6 câu intake.
-   - License Gate: Kiểm tra license, dependencies, thư mục pro/ee; chốt A-Adopt, B-Fork, C-Lấy ý tưởng+tự viết, D-Clean-room.
-   - 6 nguồn sự thật: Migrations/Schema $\rightarrow$ Tests $\rightarrow$ Service/Domain $\rightarrow$ API/Workers/Cron $\rightarrow$ i18n $\rightarrow$ CHANGELOG/ADR. Đánh nhãn LẤY/THAY/BỎ/HOÃN. Đủ 17 mục chuẩn.
+## 5. HỆ THỐNG LỆNH SPEC KIT TÍCH HỢP VÀO AGENT
+
+### 1. QUY TRÌNH SPEC-DRIVEN DEVELOPMENT (SDD — XÂY DỰNG TÍNH NĂNG MỚI)
+- **`/speckit-constitution [nội dung]`**: Cập nhật Hiến pháp dự án đồng bộ vào `AGENTS.md`, `GEMINI.md`, `/agents/` và `.specify/memory/constitution.md`.
+- **`/speckit-specify [mô tả tính năng]`** (kết hợp `/business-flow`):
+  - Chạy *Silent Project Learning* & *Gap Check* (hỏi $\le 5$ câu nếu chưa rõ Actor/Trigger/Outcome).
+  - Xuất đặc tả `docs/flows/QT-<nn>-<slug>.md` (và `.specify/specs/<slug>/spec.md`) đủ 12 luật `/business-flow`: Bảng luồng chính, tối thiểu 3 luồng lỗi (E1-Không quyền, E2-Không tìm thấy, E3-Không hợp lệ), sơ đồ Mermaid (`flowchart TD`, `stateDiagram-v2` ID ASCII), tiêu chí nghiệm thu Cho/Khi/Thì, đối chiếu tính năng cũ, trích dẫn `path:line` thực tế.
+- **`/speckit-plan [ràng buộc công nghệ]`**: Lập thiết kế kỹ thuật `docs/flows/<slug>-plan.md` (hoặc `.specify/specs/<slug>/plan.md`), xác định danh sách file can thiệp phẫu thuật, API, Schema R2DBC/MongoDB, sự kiện Kafka/SSE và trade-offs.
+- **`/speckit-tasks`**: Chia nhỏ `plan.md` thành danh sách công việc tuần tự trong `tasks.md`, mỗi task kèm lệnh `Verify: [Lệnh cụ thể]`.
+- **`/speckit-implement`**: Viết code tuần tự theo `tasks.md` theo nguyên tắc *Simplicity First* & *Surgical Changes*, đủ 4 trạng thái UI, giữ Clean Root.
+- **`/speckit-converge`**: Chạy bộ kiểm thử tự động toàn diện đối chiếu code thực tế với `spec.md`:
+  - Backend: `mvn clean test-compile`, `mvn test -pl services/account-service,services/catalog-service -Dtest=HexagonalArchitectureTest`, `mvn test -pl services/inventory-service -Dtest=AtomicStockConcurrencyTest`.
+  - Frontend: `npm --prefix frontend run build`.
+  - Clean Root: Kiểm tra root chỉ có file trong whitelist.
+  - Xuất báo cáo hội tụ: **`Converged`** (đạt 100%) hoặc chỉ rõ điểm lệch cần chạy lại `/speckit-implement`.
+
+### 2. QUY TRÌNH BUG FIXING (CHẨN ĐOÁN & SỬA LỖI PHẪU THUẬT)
+- **`/speckit-bug-assess "[triệu chứng]" slug=[tên-lỗi]`**: Khoanh vùng Root Cause Analysis với trích dẫn `path:line` chính xác trước khi sửa. Lưu tại `docs/modules/bugs/<slug>/assessment.md` (và `.specify/bugs/<slug>/`).
+- **`/speckit-bug-fix slug=[tên-lỗi]`**: Sửa lỗi phẫu thuật sạch sẽ (chỉ chạm đúng dòng gây lỗi, không reformat, không hiệu ứng phụ).
+- **`/speckit-bug-test slug=[tên-lỗi]`**: Chạy test xác nhận lỗi đã hết và không ảnh hưởng ArchUnit, CAS, hay Frontend build. Đánh giá: **`verified`**, **`partial`**, hoặc **`failed`**.
+
+### 3. QUY TRÌNH IDEA ASSESSMENT & BÓC TÁCH OSS
+- **Đánh giá ý tưởng (`/speckit-assess-*`)**: Tuần tự 5 lệnh:
+  1. `/speckit-assess-intake "[ý tưởng]" slug=[tên-ý-tưởng]`
+  2. `/speckit-assess-research slug=[tên-ý-tưởng]`
+  3. `/speckit-assess-define slug=[tên-ý-tưởng]`
+  4. `/speckit-assess-shape slug=[tên-ý-tưởng]`
+  5. `/speckit-assess-decide slug=[tên-ý-tưởng]`
+  Lưu tại `docs/modules/assessments/<slug>/` (và `.specify/assessments/<slug>/`), kết luận: **`go`**, **`needs-clarification`**, hoặc **`kill`**.
+- **Bóc tách mã nguồn mở (`/oss-blueprint [link-repo]`)**:
+  - Chỉ đọc tĩnh (Read-only), CẤM chạy npm/pip/make/docker trên repo lạ. Hỏi 6 câu intake.
+  - License Gate: Kiểm tra license, dependencies; chốt A-Adopt, B-Fork, C-Ý tưởng+tự viết, D-Clean-room.
+  - Lưu bản thiết kế đủ 17 mục chuẩn tại `docs/blueprints/OSS-BLUEPRINT-<project>.md`.
 
 ---
 
