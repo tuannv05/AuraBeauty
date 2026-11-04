@@ -207,9 +207,9 @@ export default function CheckoutView({
 
       {/* Main 2-column checkout body */}
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '32px' }}>
+        <div className="checkout-grid">
           {/* Left Form Area */}
-          <div style={{ flex: '1.8' }}>
+          <div style={{ minWidth: 0 }}>
             {/* STEP 1: THÔNG TIN GIAO HÀNG */}
             {step === 1 && (
               <div className="squircle-card" style={{ padding: '32px' }}>
@@ -365,9 +365,9 @@ export default function CheckoutView({
 
             {/* STEP 2: VẬN CHUYỂN & THANH TOÁN */}
             {step === 2 && (
-              <div className="squircle-card" style={{ padding: '32px' }}>
-                <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '18px' }}>2. Phương Thức Vận Chuyển</h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px' }}>
+              <div className="squircle-card" style={{ padding: '28px 24px' }}>
+                <h3 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '14px', letterSpacing: '-0.01em' }}>2. Phương Thức Vận Chuyển</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px' }}>
                   {[
                     { id: 'STANDARD', title: 'Giao Tiêu Chuẩn (2–3 ngày)', price: subtotal >= 299000 ? 'Miễn phí' : '30.000 đ', desc: 'Đơn vị vận chuyển GHTK / Viettel Post' },
                     { id: 'EXPRESS', title: 'Giao Hàng Nhanh (1–2 ngày)', price: '45.000 đ', desc: 'Ưu tiên đóng gói và điều phối trong ngày' },
@@ -377,80 +377,125 @@ export default function CheckoutView({
                       key={s.id}
                       onClick={() => setShippingMethod(s.id)}
                       style={{
-                        padding: '14px 18px',
-                        border: shippingMethod === s.id ? '2px solid var(--ink)' : '1px solid var(--hairline)',
+                        padding: '12px 16px',
+                        border: shippingMethod === s.id ? '1.5px solid var(--ink)' : '1px solid var(--hairline)',
                         borderRadius: 'var(--radius-md)',
                         background: shippingMethod === s.id ? 'var(--canvas-soft)' : '#ffffff',
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        transition: 'all 0.15s ease',
+                        boxShadow: shippingMethod === s.id ? '0 1px 4px rgba(0,0,0,0.04)' : 'none'
                       }}
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                        <input type="radio" name="shipping" checked={shippingMethod === s.id} onChange={() => {}} />
-                        <div>
-                          <p style={{ fontSize: '14px', fontWeight: 650 }}>{s.title}</p>
-                          <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{s.desc}</p>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1, minWidth: 0 }}>
+                        <input
+                          type="radio"
+                          name="shipping"
+                          checked={shippingMethod === s.id}
+                          onChange={() => {}}
+                          style={{ width: '18px', height: '18px', minWidth: '18px', flexShrink: 0, margin: 0, cursor: 'pointer' }}
+                        />
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <p style={{ fontSize: '13.5px', fontWeight: 650, margin: 0, color: 'var(--ink)' }}>{s.title}</p>
+                          <p style={{ fontSize: '12px', color: 'var(--text-muted)', margin: '2px 0 0 0' }}>{s.desc}</p>
                         </div>
                       </div>
-                      <span style={{ fontSize: '14px', fontWeight: 700, color: s.price === 'Miễn phí' ? '#10b981' : 'var(--ink)' }}>
+                      <span style={{ fontSize: '13.5px', fontWeight: 700, color: s.price === 'Miễn phí' ? '#10b981' : 'var(--ink)', flexShrink: 0, marginLeft: '12px', whiteSpace: 'nowrap' }}>
                         {s.price}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '18px' }}>3. Phương Thức Thanh Toán</h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
+                <h3 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '14px', letterSpacing: '-0.01em' }}>3. Phương Thức Thanh Toán</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
                   {[
-                    { id: 'QR', title: 'Chuyển Khoản Ngân Hàng Tự Động (VietQR 24/7)', desc: 'Tạo mã QR có sẵn số tiền & nội dung, hệ thống duyệt tự động sau 30 giây', icon: '📱' },
-                    { id: 'COD', title: 'Thanh toán khi nhận hàng (COD)', desc: 'Kiểm tra hàng trước khi thanh toán tiền mặt cho bưu tá', icon: '💵' },
-                    { id: 'WALLET', title: 'Ví điện tử MoMo / ZaloPay / VNPay', desc: 'Thanh toán tức thời qua ứng dụng ví điện tử', icon: '👛' },
+                    { id: 'QR', title: 'Chuyển Khoản Ngân Hàng Tự Động (VietQR 24/7)', desc: 'Tạo mã QR có sẵn số tiền & nội dung, hệ thống duyệt tự động sau 30 giây', icon: '📱', badge: 'Khuyên dùng' },
+                    { id: 'COD', title: 'Thanh toán khi nhận hàng (COD)', desc: 'Kiểm tra hàng trước khi thanh toán tiền mặt cho bưu tá', icon: '💵', badge: 'Tiện lợi' },
+                    { id: 'WALLET', title: 'Ví điện tử MoMo / ZaloPay / VNPay', desc: 'Thanh toán tức thời qua ứng dụng ví điện tử liên kết', icon: '👛' },
                     { id: 'CARD', title: 'Thẻ quốc tế Visa / MasterCard / JCB', desc: 'Cổng thanh toán bảo mật chuẩn PCI-DSS quốc tế', icon: '💳' },
-                    { id: 'BNPL', title: 'Mua Trước Trả Sau 0% Lãi Suất (Fundiin / Kredivo / Home PayLater)', desc: 'Chia nhỏ đơn hàng thành 3 kỳ thanh toán nhẹ nhàng, không phụ phí ẩn', icon: '⚡' }
+                    { id: 'BNPL', title: 'Mua Trước Trả Sau 0% Lãi Suất (Fundiin / Kredivo / Home PayLater)', desc: 'Chia nhỏ đơn hàng thành 3 kỳ thanh toán nhẹ nhàng, không phụ phí ẩn', icon: '⚡', badge: '0% Lãi suất' }
                   ].map((p) => (
                     <div
                       key={p.id}
                       onClick={() => setPaymentMethod(p.id)}
                       style={{
-                        padding: '14px 18px',
-                        border: paymentMethod === p.id ? '2px solid var(--ink)' : '1px solid var(--hairline)',
+                        padding: '12px 16px',
+                        border: paymentMethod === p.id ? '1.5px solid var(--ink)' : '1px solid var(--hairline)',
                         borderRadius: 'var(--radius-md)',
                         background: paymentMethod === p.id ? 'var(--canvas-soft)' : '#ffffff',
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '8px',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        transition: 'all 0.15s ease',
+                        boxShadow: paymentMethod === p.id ? '0 1px 4px rgba(0,0,0,0.04)' : 'none'
                       }}
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                        <input type="radio" name="payment" checked={paymentMethod === p.id} onChange={() => {}} />
-                        <span style={{ fontSize: '24px' }}>{p.icon}</span>
-                        <div style={{ flex: 1 }}>
-                          <p style={{ fontSize: '14px', fontWeight: 650, margin: 0 }}>{p.title}</p>
-                          <p style={{ fontSize: '12px', color: 'var(--text-muted)', margin: '2px 0 0 0' }}>{p.desc}</p>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <input
+                          type="radio"
+                          name="payment"
+                          checked={paymentMethod === p.id}
+                          onChange={() => {}}
+                          style={{ width: '18px', height: '18px', minWidth: '18px', flexShrink: 0, margin: 0, cursor: 'pointer' }}
+                        />
+                        <span style={{
+                          width: '32px',
+                          height: '32px',
+                          minWidth: '32px',
+                          borderRadius: '8px',
+                          background: paymentMethod === p.id ? '#ffffff' : 'rgba(0,0,0,0.03)',
+                          border: '1px solid var(--hairline)',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '16px',
+                          flexShrink: 0
+                        }}>
+                          {p.icon}
+                        </span>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                            <p style={{ fontSize: '13.5px', fontWeight: 650, margin: 0, color: 'var(--ink)' }}>{p.title}</p>
+                            {p.badge && (
+                              <span style={{
+                                fontSize: '10px',
+                                fontWeight: 700,
+                                padding: '2px 6px',
+                                borderRadius: '4px',
+                                background: p.id === 'BNPL' ? '#fef3c7' : '#ecfdf5',
+                                color: p.id === 'BNPL' ? '#92400e' : '#047857',
+                                whiteSpace: 'nowrap'
+                              }}>
+                                {p.badge}
+                              </span>
+                            )}
+                          </div>
+                          <p style={{ fontSize: '12px', color: 'var(--text-muted)', margin: '2px 0 0 0', lineHeight: 1.35 }}>{p.desc}</p>
                         </div>
                       </div>
 
                       {/* Installment breakdown if BNPL selected */}
                       {p.id === 'BNPL' && paymentMethod === 'BNPL' && (
-                        <div style={{ marginTop: '8px', padding: '12px', background: '#f0fdf4', borderRadius: '12px', border: '1px solid #bbf7d0' }}>
-                          <div style={{ fontSize: '11.5px', fontWeight: 800, color: '#166534', marginBottom: '8px' }}>
+                        <div style={{ marginTop: '4px', padding: '10px 12px', background: '#f0fdf4', borderRadius: '10px', border: '1px solid #bbf7d0' }}>
+                          <div style={{ fontSize: '11px', fontWeight: 800, color: '#166534', marginBottom: '6px' }}>
                             LỊCH THANH TOÁN DỰ KIẾN (3 KỲ - 0% LÃI SUẤT):
                           </div>
-                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', textAlign: 'center' }}>
-                            <div style={{ padding: '6px', background: '#ffffff', borderRadius: '8px', border: '1px solid #dcfce7' }}>
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', textAlign: 'center' }}>
+                            <div style={{ padding: '6px 4px', background: '#ffffff', borderRadius: '6px', border: '1px solid #dcfce7' }}>
                               <div style={{ fontSize: '10px', color: '#64748b' }}>Kỳ 1: Hôm nay</div>
-                              <div style={{ fontSize: '13px', fontWeight: 800, color: '#15803d' }}>{Math.round(finalTotal / 3).toLocaleString('vi-VN')} ₫</div>
+                              <div style={{ fontSize: '12.5px', fontWeight: 800, color: '#15803d' }}>{Math.round(finalTotal / 3).toLocaleString('vi-VN')} ₫</div>
                             </div>
-                            <div style={{ padding: '6px', background: '#ffffff', borderRadius: '8px', border: '1px solid #dcfce7' }}>
+                            <div style={{ padding: '6px 4px', background: '#ffffff', borderRadius: '6px', border: '1px solid #dcfce7' }}>
                               <div style={{ fontSize: '10px', color: '#64748b' }}>Kỳ 2: Sau 30 ngày</div>
-                              <div style={{ fontSize: '13px', fontWeight: 800, color: '#15803d' }}>{Math.round(finalTotal / 3).toLocaleString('vi-VN')} ₫</div>
+                              <div style={{ fontSize: '12.5px', fontWeight: 800, color: '#15803d' }}>{Math.round(finalTotal / 3).toLocaleString('vi-VN')} ₫</div>
                             </div>
-                            <div style={{ padding: '6px', background: '#ffffff', borderRadius: '8px', border: '1px solid #dcfce7' }}>
+                            <div style={{ padding: '6px 4px', background: '#ffffff', borderRadius: '6px', border: '1px solid #dcfce7' }}>
                               <div style={{ fontSize: '10px', color: '#64748b' }}>Kỳ 3: Sau 60 ngày</div>
-                              <div style={{ fontSize: '13px', fontWeight: 800, color: '#15803d' }}>{Math.round(finalTotal / 3).toLocaleString('vi-VN')} ₫</div>
+                              <div style={{ fontSize: '12.5px', fontWeight: 800, color: '#15803d' }}>{Math.round(finalTotal / 3).toLocaleString('vi-VN')} ₫</div>
                             </div>
                           </div>
                         </div>

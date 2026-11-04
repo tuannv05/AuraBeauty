@@ -87,7 +87,7 @@ button:active {
   transform: scale(0.98);
 }
 
-input, select, textarea {
+input:not([type="radio"]):not([type="checkbox"]):not([type="range"]):not([type="color"]), select, textarea {
   font-family: inherit;
   border: 1px solid var(--hairline);
   background: var(--field);
@@ -100,10 +100,42 @@ input, select, textarea {
   width: 100%;
 }
 
-input:focus, select:focus, textarea:focus {
+input:not([type="radio"]):not([type="checkbox"]):focus, select:focus, textarea:focus {
   background: var(--field-focus);
   border-color: var(--ink);
   box-shadow: 0 0 0 2px rgba(20, 20, 20, 0.1);
+}
+
+/* Radio & Checkbox precision sizing */
+input[type="radio"],
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  max-width: 18px;
+  max-height: 18px;
+  accent-color: var(--ink);
+  cursor: pointer;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+/* Responsive Checkout Layout */
+.checkout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
 
 /* Layout Container */
