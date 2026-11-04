@@ -12,6 +12,7 @@ import reactor.core.publisher.Mono;
 
 import java.time.Instant;
 import java.util.*;
+import java.util.regex.Pattern;
 
 @Service
 public class ProductService {
@@ -101,9 +102,11 @@ public class ProductService {
                                         String texture, String origin, String priceBucket) {
         Flux<ProductDocument> flux;
         if (query != null && !query.isBlank()) {
-            flux = productRepository.searchPublished(query);
+            String safeQuery = Pattern.quote(query.trim());
+            flux = productRepository.searchPublished(safeQuery);
         } else if (category != null && !category.isBlank()) {
-            flux = productRepository.findByCategoryHierarchyAndStatus(category, "PUBLISHED");
+            String safeCategory = Pattern.quote(category.trim());
+            flux = productRepository.findByCategoryHierarchyAndStatus(safeCategory, "PUBLISHED");
         } else {
             flux = productRepository.findByStatus("PUBLISHED");
         }

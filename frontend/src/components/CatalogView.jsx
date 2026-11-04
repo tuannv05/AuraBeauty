@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { MOCK_PRODUCTS } from '../api';
 import { getEnrichedCatalog, getSubmenuMetadata, searchAndFilterProducts } from '../lib/submenuCatalogMapper';
+import { searchCatalogProducts } from '../lib/searchEngine';
 import { AnimatedBadge } from './ui';
 
 const QUICK_PRICES = [
@@ -225,8 +226,10 @@ export default function CatalogView({
 
     if (activeSubChip && activeSubChip !== 'Tất cả') {
       pool = searchAndFilterProducts(baseCatalog, activeSubChip, currentCategory);
-    } else if (initialCategory || initialSearch) {
-      pool = searchAndFilterProducts(baseCatalog, initialSearch, initialCategory);
+    } else if (initialSearch && initialSearch.trim()) {
+      pool = searchCatalogProducts(baseCatalog, initialSearch.trim());
+    } else if (initialCategory) {
+      pool = searchAndFilterProducts(baseCatalog, '', initialCategory);
     }
 
     return pool.filter((p) => {
@@ -235,8 +238,8 @@ export default function CatalogView({
         return false;
       }
 
-      // Price Range Filter
-      const price = p.variants?.[0]?.price ?? 0;
+      // Price Range Filter (null-safe across variants or root price)
+      const price = p.variants?.[0]?.price ?? p.price ?? 0;
       if (price < selectedPriceRange.min || price > selectedPriceRange.max) {
         return false;
       }
@@ -301,8 +304,8 @@ export default function CatalogView({
 
       return true;
     }).sort((a, b) => {
-      const priceA = a.variants?.[0]?.price ?? 0;
-      const priceB = b.variants?.[0]?.price ?? 0;
+      const priceA = a.variants?.[0]?.price ?? a.price ?? 0;
+      const priceB = b.variants?.[0]?.price ?? b.price ?? 0;
       if (sortBy === 'priceAsc') return priceA - priceB;
       if (sortBy === 'priceDesc') return priceB - priceA;
       if (sortBy === 'rating') return (b.rating || 0) - (a.rating || 0);
@@ -776,9 +779,13 @@ export default function CatalogView({
               <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'var(--canvas-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
                 <Filter size={24} style={{ color: 'var(--text-faint)' }} />
               </div>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '6px' }}>Không có sản phẩm nào phù hợp</h3>
-              <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>
-                Thử nới lỏng các tiêu chí bộ lọc giá hoặc loại bỏ bớt các thương hiệu đã chọn.
+              <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '6px' }}>
+                {initialSearch ? `Không tìm thấy sản phẩm cho "${initialSearch}"` : 'Không có sản phẩm nào phù hợp'}
+              </h3>
+              <p style={{ fontSize: '13px', color: 'var(--text-muted)', maxWidth: '460px', margin: '0 auto 20px' }}>
+                {initialSearch
+                  ? 'Thử tìm với tên hoạt chất (BHA, Niacinamide, Retinol), tên thương hiệu ngắn gọn (CeraVe, La Roche-Posay, Anua) hoặc xóa các bộ lọc bên trái.'
+                  : 'Thử nới lỏng các tiêu chí bộ lọc giá hoặc loại bỏ bớt các thương hiệu đã chọn.'}
               </p>
               <button onClick={handleClearAllFilters} className="btn-pill-primary" style={{ padding: '8px 24px' }}>
                 <RotateCcw size={14} /> Xóa tất cả bộ lọc

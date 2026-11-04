@@ -5,6 +5,8 @@ import {
   PhoneCall, MapPin, PackageCheck, Globe, BookOpen, Gift, Award, Home, Store
 } from 'lucide-react';
 import { MOCK_PRODUCTS } from '../api';
+import { searchCatalogProducts } from '../lib/searchEngine';
+import { getEnrichedCatalog } from '../lib/submenuCatalogMapper';
 
 const TOP_BAR_ANNOUNCEMENTS = [
   '🚚 FREESHIP TOÀN QUỐC CHO ĐƠN TỪ 199K',
@@ -365,14 +367,15 @@ export default function Navbar({
     }, 220);
   };
 
-  // Matched products for auto-suggest in search bar
-  const matchedProducts = searchTerm.trim().length >= 2
-    ? MOCK_PRODUCTS.filter((p) =>
-        p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        p.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (p.inciIngredients && p.inciIngredients.some(i => (i.name || i.inciName || '').toLowerCase().includes(searchTerm.toLowerCase())))
-      ).slice(0, 6)
-    : [];
+  const allCatalogProducts = useMemo(() => {
+    return getEnrichedCatalog(MOCK_PRODUCTS);
+  }, []);
+
+  // Matched products for auto-suggest in search bar (token-based & multi-field)
+  const matchedProducts = useMemo(() => {
+    if (!searchTerm.trim()) return [];
+    return searchCatalogProducts(allCatalogProducts, searchTerm).slice(0, 6);
+  }, [allCatalogProducts, searchTerm]);
 
   return (
     <div style={{ position: 'sticky', top: 0, zIndex: 900, background: '#ffffff', boxShadow: isScrolled ? '0 2px 10px rgba(0,0,0,0.08)' : 'none', transition: 'all 200ms ease' }}>
@@ -818,7 +821,7 @@ export default function Navbar({
                               onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                             >
                               <img
-                                src={p.images[0]}
+                                src={p.images?.[0] || '/products/PROD-CRW-001.jpg'}
                                 alt={p.name}
                                 style={{ width: '42px', height: '42px', borderRadius: '6px', objectFit: 'contain', background: '#f8fafc', padding: '2px' }}
                               />
@@ -826,9 +829,12 @@ export default function Navbar({
                                 <p style={{ fontSize: '13px', fontWeight: 600, color: '#0f172a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                                   {p.name}
                                 </p>
-                                <span style={{ fontSize: '12px', color: '#ec4899', fontWeight: 700 }}>
-                                  {p.variants[0].price.toLocaleString('vi-VN')} đ
-                                </span>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                  {p.brand && <span style={{ fontSize: '11px', color: '#64748b' }}>{p.brand}</span>}
+                                  <span style={{ fontSize: '12px', color: '#ec4899', fontWeight: 700 }}>
+                                    {((p.variants?.[0]?.price ?? p.price) || 0).toLocaleString('vi-VN')} đ
+                                  </span>
+                                </div>
                               </div>
                             </div>
                           ))}
