@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import {
   Search, Heart, ShoppingBag, User, Menu, X, ChevronRight, ChevronDown, ArrowLeft,
   Sparkles, Camera, Mic, Trash2, ArrowUpRight, Flame, ShieldCheck, Grid, Zap,
