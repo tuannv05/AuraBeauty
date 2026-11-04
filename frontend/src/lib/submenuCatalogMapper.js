@@ -702,7 +702,7 @@ export const CURATED_NICHE_PRODUCTS = [
     originalPrice: 155000,
     inStock: true,
     badges: ['Shopee Mall', 'Xử lý bởi Mall', 'Voucher Xtra'],
-    images: ['/products/PROD-LIPONLIP.jpg', '/products/SKU-LIPONLIP-04.jpg', '/products/SKU-LIPONLIP-02.jpg', '/products/SKU-LIPONLIP-05.jpg', '/products/SKU-LIPONLIP-01.jpg', '/products/SKU-LIPONLIP-03.jpg'],
+    images: ['/products/PROD-LIPONLIP.jpg', '/products/PROD-LIPONLIP-STUDIO.jpg', '/products/SKU-LIPONLIP-04.jpg', '/products/SKU-LIPONLIP-02.jpg', '/products/SKU-LIPONLIP-05.jpg', '/products/SKU-LIPONLIP-01.jpg', '/products/SKU-LIPONLIP-03.jpg'],
     targetSkinTypes: ['ALL_SKIN_TYPES', 'DRY', 'NORMAL'],
     skinConcerns: ['DEHYDRATION'],
     keyActiveGroups: ['HYDRATION'],

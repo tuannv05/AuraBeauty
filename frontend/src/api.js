@@ -444,6 +444,7 @@ export const MOCK_PRODUCTS = [
     ],
     "images": [
       "/products/PROD-LIPONLIP.jpg",
+      "/products/PROD-LIPONLIP-STUDIO.jpg",
       "/products/SKU-LIPONLIP-04.jpg",
       "/products/SKU-LIPONLIP-02.jpg",
       "/products/SKU-LIPONLIP-05.jpg",

@@ -406,7 +406,7 @@
     "shopId": "00000000-0000-0000-0000-000000000010",
     "name": "Son thỏi dưỡng môi trang điểm chất son satin Lip On Lip Glowy Satin 2.2g",
     "brand": "Lip On Lip",
-    "description": "Son thỏi trang điểm dưỡng môi chất son satin bóng nhẹ, dưỡng ẩm vượt trội với dầu olive và bơ hạt mỡ, lên màu chuẩn sắc tự nhiên suốt 6H.",
+    "description": "Son thỏi trang điểm dưỡng môi chất son satin bóng nhẹ, dưỡng ẩm vượt trội với hệ dưỡng Ultra Moist (chứa hơn 50% thành phần dưỡng gồm dầu Olive, bơ hạt mỡ và Collagen hòa tan), lên màu chuẩn xác và giữ màu lâu phai.",
     "category": "Lipstick",
     "subCategory": "LIP",
     "registrationNumber": "214589/23/CBMP-QLD",
@@ -423,6 +423,7 @@
     ],
     "images": [
       "/products/PROD-LIPONLIP.jpg",
+      "/products/PROD-LIPONLIP-STUDIO.jpg",
       "/products/SKU-LIPONLIP-04.jpg",
       "/products/SKU-LIPONLIP-02.jpg",
       "/products/SKU-LIPONLIP-05.jpg",
@@ -559,7 +560,8 @@
       "LIPSTICK"
     ],
     "keyActiveGroups": [],
-    "status": "PUBLISHED"
+    "status": "PUBLISHED",
+    "ingredients": "Isononyl Isononanoate, Triisostearin, Diisostearyl Malate, C10-30 Cholesterol/Lanosterol Esters, Synthetic Wax, Microcrystalline Wax, Ozokerite, Olea Europaea (Olive) Fruit Oil, Polybutene, Butyrospermum Parkii (Shea) Butter, Dextrin Isostearate, Pentylene Glycol, Soluble Collagen, Tocopheryl Acetate, Alumina, Isopropyl Myristate, Isopropyl Titanium Triisostearate, Polyhydroxystearic Acid, Propylene Carbonate, Sodium Citrate, Stearalkonium Hectorite, Water, BHT, Citric Acid, Phenoxyethanol, [+/- CI 15850, CI 16035, CI 42090, CI 45370, CI 47005, CI 77491, CI 77891]"
   },
   {
     "id": "PROD-CRW-001",
