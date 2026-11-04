@@ -164,9 +164,9 @@ export default function VariantColorPicker({
             <button
               type="button"
               onClick={() => onOpenTryOn(activeNormalized?.raw || activeNormalized)}
-              className="sm:hidden inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium text-[#ee4d2d] bg-[#fff0ee] border border-[#ee4d2d]/30"
+              className="sm:hidden inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium text-[#e05370] bg-[#fff0f3] border border-[#FFABB9]/50"
             >
-              <Sparkles className="w-3 h-3 text-[#ee4d2d]" />
+              <Sparkles className="w-3 h-3 text-[#e05370]" />
               <span>Thử AR</span>
             </button>
           )}
@@ -194,9 +194,9 @@ export default function VariantColorPicker({
                   minHeight: '38px',
                   padding: '0 12px',
                   borderRadius: '2px',
-                  border: isSelected ? '1px solid #ee4d2d' : '1px solid #e5e7eb',
-                  background: '#ffffff',
-                  color: isSelected ? '#ee4d2d' : !norm.isAvailable ? '#d1d5db' : '#222222',
+                  border: isSelected ? '1px solid #FFABB9' : '1px solid #e5e7eb',
+                  background: isSelected ? 'rgba(255, 171, 185, 0.08)' : '#ffffff',
+                  color: isSelected ? '#e05370' : !norm.isAvailable ? '#d1d5db' : '#222222',
                   fontSize: '13px',
                   fontWeight: 400,
                   cursor: !norm.isAvailable ? 'not-allowed' : 'pointer',
@@ -208,8 +208,8 @@ export default function VariantColorPicker({
                 }}
                 onMouseEnter={(e) => {
                   if (norm.isAvailable && !isSelected) {
-                    e.currentTarget.style.borderColor = '#ee4d2d';
-                    e.currentTarget.style.color = '#ee4d2d';
+                    e.currentTarget.style.borderColor = '#FFABB9';
+                    e.currentTarget.style.color = '#e05370';
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -299,7 +299,7 @@ export default function VariantColorPicker({
                         right: 0,
                         width: 0,
                         height: 0,
-                        borderBottom: '12px solid #ee4d2d',
+                        borderBottom: '12px solid #FFABB9',
                         borderLeft: '12px solid transparent'
                       }}
                     />
@@ -334,14 +334,14 @@ export default function VariantColorPicker({
                 borderRadius: '2px',
                 fontSize: '12px',
                 fontWeight: 600,
-                color: '#ee4d2d',
-                background: '#fff0ee',
-                border: '1px solid rgba(238, 77, 45, 0.3)',
+                color: '#e05370',
+                background: '#fff0f3',
+                border: '1px solid rgba(255, 171, 185, 0.5)',
                 cursor: 'pointer'
               }}
               title="Thử trực tiếp màu này trên gương AR MediaPipe 3D"
             >
-              <Sparkles size={14} style={{ color: '#ee4d2d' }} />
+              <Sparkles size={14} style={{ color: '#e05370' }} />
               <span>Thử Màu AR</span>
             </button>
           )}

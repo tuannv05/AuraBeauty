@@ -459,9 +459,9 @@ export default function ProductDetailView({
                           minWidth: '200px',
                           height: '48px',
                           borderRadius: '3px',
-                          border: '1px solid #ee4d2d',
-                          background: 'rgba(238, 77, 45, 0.08)',
-                          color: '#ee4d2d',
+                          border: '1px solid #FFABB9',
+                          background: 'rgba(255, 171, 185, 0.15)',
+                          color: '#e05370',
                           fontSize: '14px',
                           fontWeight: 600,
                           display: 'flex',
@@ -502,9 +502,9 @@ export default function ProductDetailView({
                           minWidth: '190px',
                           height: '48px',
                           borderRadius: '3px',
-                          border: '1px solid #ee4d2d',
-                          background: 'rgba(238, 77, 45, 0.08)',
-                          color: '#ee4d2d',
+                          border: '1px solid #FFABB9',
+                          background: 'rgba(255, 171, 185, 0.15)',
+                          color: '#e05370',
                           fontSize: '14px',
                           fontWeight: 600,
                           display: 'flex',
@@ -514,8 +514,8 @@ export default function ProductDetailView({
                           cursor: 'pointer',
                           transition: 'background 150ms ease'
                         }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(238, 77, 45, 0.14)')}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(238, 77, 45, 0.08)')}
+                        onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 171, 185, 0.28)')}
+                        onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 171, 185, 0.15)')}
                       >
                         <ShoppingBag size={18} /> Thêm Vào Giỏ Hàng
                       </button>
@@ -528,7 +528,7 @@ export default function ProductDetailView({
                           height: '48px',
                           borderRadius: '3px',
                           border: 'none',
-                          background: '#ee4d2d',
+                          background: '#FFABB9',
                           color: '#ffffff',
                           fontSize: '14px',
                           fontWeight: 700,
@@ -537,11 +537,11 @@ export default function ProductDetailView({
                           alignItems: 'center',
                           justifyContent: 'center',
                           gap: '6px',
-                          boxShadow: '0 2px 8px rgba(238, 77, 45, 0.3)',
+                          boxShadow: '0 2px 8px rgba(255, 171, 185, 0.45)',
                           transition: 'background 150ms ease'
                         }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = '#d73211')}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = '#ee4d2d')}
+                        onMouseEnter={(e) => (e.currentTarget.style.background = '#f297a5')}
+                        onMouseLeave={(e) => (e.currentTarget.style.background = '#FFABB9')}
                       >
                         Mua Với Voucher {(selectedVariant?.price || product.price).toLocaleString('vi-VN')}₫
                       </button>
