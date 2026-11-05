@@ -564,7 +564,7 @@ export default function Navbar({
           }}
         >
           {/* Logo & Mobile Menu Toggle */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
             <button
               onClick={() => setIsMobileMenuOpen(true)}
               className="mobile-hamburger-btn"
