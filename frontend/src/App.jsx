@@ -13,8 +13,15 @@ import ErrorBoundary from './components/ErrorBoundary';
 import { TopBarModals } from './components/TopBarModals';
 import { USER_ROLES, MOCK_PRODUCTS } from './api';
 import { useBrowserHistorySync } from './hooks/useBrowserHistorySync';
+import { AuraIntroOverlay } from './components/ui';
 
 export default function App() {
+  // Luxury Editorial Intro state
+  const [forceShowIntro, setForceShowIntro] = useState(false);
+  const handleReplayIntro = () => {
+    setForceShowIntro(true);
+  };
+
   // Current user state (mặc định ban đầu là null khi chưa đăng nhập)
   const [currentUser, setCurrentUser] = useState(() => {
     try {
@@ -142,6 +149,12 @@ export default function App() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--canvas)' }}>
+      {/* 0. Luxury Editorial Brand Intro Overlay (Once-Per-Session) */}
+      <AuraIntroOverlay
+        forceShow={forceShowIntro}
+        onComplete={() => setForceShowIntro(false)}
+      />
+
       {/* 1. Global Toast Container */}
       <ToastContainer toasts={toasts} onDismiss={removeToast} />
 
@@ -184,6 +197,7 @@ export default function App() {
           onNavigateFlashSale={() => navigateTo({ view: 'flash-sale' })}
           onNavigateAdmin={() => navigateTo({ view: 'admin', adminTab: 'merchants' })}
           onNavigateSeller={() => navigateTo({ view: 'seller', sellerTab: 'overview' })}
+          onReplayIntro={handleReplayIntro}
           user={currentUser}
         />
       )}
@@ -260,6 +274,7 @@ export default function App() {
             closeModal={closeModal}
             goBack={goBack}
             onAddToast={addToast}
+            onReplayIntro={handleReplayIntro}
             wishlistIds={wishlistIds}
             setWishlistIds={setWishlistIds}
           />

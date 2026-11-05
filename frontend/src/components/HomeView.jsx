@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles, Clock, ArrowRight, ShieldCheck, Truck, RefreshCw, Headphones,
   Star, Heart, ShoppingBag, Eye, ChevronLeft, ChevronRight, Check,
@@ -7,6 +8,13 @@ import {
 import {
   MOCK_PRODUCTS, MOCK_COMBOS, MOCK_BLOG_POSTS, MOCK_CUSTOMER_FEED
 } from '../api';
+import {
+  NumberTicker,
+  AnimatedBadge,
+  SpringButton,
+  StaggerContainer,
+  StaggerItem
+} from './ui';
 
 const HERO_SLIDES = [
   {
@@ -67,7 +75,8 @@ export default function HomeView({
   onOpenTryOn,
   onOpenSkinScanner,
   onOpenBeautyPass,
-  onNavigateRoutine
+  onNavigateRoutine,
+  onReplayIntro
 }) {
   // Hero Slider
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -118,8 +127,11 @@ export default function HomeView({
 
   return (
     <div style={{ marginTop: '16px' }}>
-      {/* VÙNG A: HERO SLIDER */}
-      <section
+      {/* VÙNG A: HERO SLIDER (Staggered Reveal & Ken Burns Scale) */}
+      <motion.section
+        initial={{ opacity: 0, scale: 1.02 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         onMouseEnter={() => setIsSlidePaused(true)}
         onMouseLeave={() => setIsSlidePaused(false)}
         style={{
@@ -130,7 +142,7 @@ export default function HomeView({
           boxShadow: 'var(--shadow-md)'
         }}
       >
-        <div style={{ position: 'relative', minHeight: '440px', display: 'flex', alignItems: 'center' }}>
+        <div style={{ position: 'relative', minHeight: '460px', display: 'flex', alignItems: 'center' }}>
           {HERO_SLIDES.map((slide, idx) => {
             const isActive = currentSlide === idx;
             return (
@@ -146,64 +158,136 @@ export default function HomeView({
                   color: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
-                  padding: '48px 56px',
+                  padding: '44px 56px',
                   width: '100%'
                 }}
               >
                 <div style={{ flex: 1, zIndex: 2, maxWidth: '580px' }}>
-                  <span
-                    className="badge-pill badge-neutral"
-                    style={{
-                      background: 'rgba(255,255,255,0.15)',
-                      color: '#ffffff',
-                      border: 'none',
-                      marginBottom: '16px'
-                    }}
-                  >
-                    ✨ {slide.badge}
-                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
+                    <span
+                      className="badge-pill badge-neutral"
+                      style={{
+                        background: 'rgba(255,255,255,0.15)',
+                        color: '#ffffff',
+                        border: 'none'
+                      }}
+                    >
+                      ✨ {slide.badge}
+                    </span>
+                    {onReplayIntro && (
+                      <button
+                        type="button"
+                        onClick={onReplayIntro}
+                        style={{
+                          background: 'rgba(255, 171, 185, 0.2)',
+                          color: '#FFABB9',
+                          border: '1px solid rgba(255, 171, 185, 0.35)',
+                          borderRadius: '9999px',
+                          padding: '3px 10px',
+                          fontSize: '11px',
+                          fontWeight: 650,
+                          cursor: 'pointer',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '4px'
+                        }}
+                      >
+                        <Sparkles size={11} />
+                        <span>Xem lại Intro</span>
+                      </button>
+                    )}
+                  </div>
+
                   <h2
                     style={{
-                      fontSize: '44px',
+                      fontSize: '42px',
                       fontWeight: 750,
                       lineHeight: 1.15,
                       letterSpacing: '-0.02em',
-                      marginBottom: '16px'
+                      marginBottom: '14px'
                     }}
                   >
                     {slide.title}
                   </h2>
                   <p
                     style={{
-                      fontSize: '16px',
+                      fontSize: '15px',
                       color: 'rgba(255,255,255,0.85)',
                       lineHeight: 1.5,
-                      marginBottom: '28px',
+                      marginBottom: '22px',
                       fontWeight: 300
                     }}
                   >
                     {slide.subtitle}
                   </p>
-                  <button
-                    onClick={() => {
-                      if (slide.ctaText === 'Thử màu son' && onOpenTryOn) {
-                        onOpenTryOn();
-                      } else {
-                        onNavigateCatalog();
-                      }
-                    }}
-                    className="btn-pill-primary"
-                    style={{
-                      background: '#ffffff',
-                      color: '#141414',
-                      padding: '12px 28px',
-                      fontSize: '14px'
-                    }}
-                  >
-                    {slide.ctaText} <ArrowRight size={16} />
-                  </button>
+
+                  {/* CTA Cluster */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '22px' }}>
+                    <SpringButton
+                      variant="rose"
+                      size="md"
+                      onClick={() => {
+                        if (slide.ctaText === 'Thử màu son' && onOpenTryOn) {
+                          onOpenTryOn();
+                        } else {
+                          onNavigateCatalog();
+                        }
+                      }}
+                      className="shadow-md font-bold"
+                    >
+                      <span>{slide.ctaText}</span>
+                      <ArrowRight size={15} />
+                    </SpringButton>
+
+                    <SpringButton
+                      variant="outline"
+                      size="md"
+                      onClick={() => onOpenTryOn && onOpenTryOn()}
+                      className="bg-white/10 hover:bg-white/20 text-white border-white/20 backdrop-blur-md"
+                    >
+                      <Sparkles size={14} className="text-pink-300" />
+                      <span>Thử Màu AR 60FPS</span>
+                      <AnimatedBadge variant="danger" pulse className="text-[10px] py-0 px-1.5 bg-rose-500/20 text-rose-200 border-none">
+                        Live
+                      </AnimatedBadge>
+                    </SpringButton>
+
+                    <SpringButton
+                      variant="outline"
+                      size="md"
+                      onClick={() => onOpenSkinScanner && onOpenSkinScanner()}
+                      className="bg-white/10 hover:bg-white/20 text-white border-white/20 backdrop-blur-md"
+                    >
+                      <span>🔬 Soi Da AI</span>
+                    </SpringButton>
+                  </div>
+
+                  {/* Trust Metrics Counter */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.15)', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                      <span style={{ fontSize: '18px', fontWeight: 800, color: '#FFABB9' }}>
+                        <NumberTicker value={154} suffix="+" />
+                      </span>
+                      <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>Sản phẩm chính hãng</span>
+                    </div>
+                    <div style={{ width: '1px', height: '24px', background: 'rgba(255,255,255,0.15)' }} />
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                      <span style={{ fontSize: '18px', fontWeight: 800, color: '#38bdf8' }}>
+                        <NumberTicker value={100} suffix="%" />
+                      </span>
+                      <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>Kiểm định CBMP Bộ Y Tế</span>
+                    </div>
+                    <div style={{ width: '1px', height: '24px', background: 'rgba(255,255,255,0.15)' }} />
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                      <span style={{ fontSize: '18px', fontWeight: 800, color: '#34d399' }}>
+                        <NumberTicker value={200} suffix="%" />
+                      </span>
+                      <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>Cam kết hoàn tiền</span>
+                    </div>
+                  </div>
                 </div>
 
+                {/* Hero Image & Floating Glassmorphism Cards */}
                 <div
                   style={{
                     flex: 1,
@@ -214,9 +298,13 @@ export default function HomeView({
                   }}
                   className="hero-image-wrap"
                 >
-                  <img
+                  <motion.img
                     src={slide.image}
                     alt={slide.title}
+                    key={slide.id}
+                    initial={{ scale: 1.05, opacity: 0.8 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.8, ease: 'easeOut' }}
                     style={{
                       width: '360px',
                       height: '360px',
@@ -226,6 +314,71 @@ export default function HomeView({
                       border: '4px solid rgba(255,255,255,0.1)'
                     }}
                   />
+
+                  {/* Floating Glassmorphism Card 1: AR Live Try-On */}
+                  <motion.div
+                    whileHover={{ y: -3, scale: 1.03 }}
+                    onClick={() => onOpenTryOn && onOpenTryOn()}
+                    style={{
+                      position: 'absolute',
+                      bottom: '-10px',
+                      left: '20px',
+                      padding: '10px 14px',
+                      borderRadius: '16px',
+                      background: 'rgba(15, 23, 42, 0.82)',
+                      backdropFilter: 'blur(12px)',
+                      border: '1px solid rgba(244, 114, 182, 0.35)',
+                      color: '#ffffff',
+                      boxShadow: '0 12px 28px rgba(0,0,0,0.4)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      cursor: 'pointer',
+                      zIndex: 10
+                    }}
+                  >
+                    <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'linear-gradient(135deg, #ec4899, #db2777)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Sparkles size={16} style={{ color: '#ffffff' }} />
+                    </div>
+                    <div>
+                      <div style={{ fontSize: '11px', fontWeight: 800, color: '#f472b6', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <span>AR TRY-ON</span>
+                        <AnimatedBadge variant="danger" pulse className="text-[9px] py-0 px-1 bg-rose-500/20 text-rose-300 border-none">60 FPS</AnimatedBadge>
+                      </div>
+                      <div style={{ fontSize: '10px', color: '#cbd5e1' }}>Thử son & makeup tức thì</div>
+                    </div>
+                  </motion.div>
+
+                  {/* Floating Glassmorphism Card 2: AI Skin Analysis */}
+                  <motion.div
+                    whileHover={{ y: -3, scale: 1.03 }}
+                    onClick={() => onOpenSkinScanner && onOpenSkinScanner()}
+                    style={{
+                      position: 'absolute',
+                      top: '-10px',
+                      right: '20px',
+                      padding: '10px 14px',
+                      borderRadius: '16px',
+                      background: 'rgba(15, 23, 42, 0.82)',
+                      backdropFilter: 'blur(12px)',
+                      border: '1px solid rgba(52, 211, 153, 0.35)',
+                      color: '#ffffff',
+                      boxShadow: '0 12px 28px rgba(0,0,0,0.4)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      cursor: 'pointer',
+                      zIndex: 10
+                    }}
+                  >
+                    <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'linear-gradient(135deg, #10b981, #059669)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <ShieldCheck size={16} style={{ color: '#ffffff' }} />
+                    </div>
+                    <div>
+                      <div style={{ fontSize: '11px', fontWeight: 800, color: '#34d399' }}>AI CHẨN ĐOÁN DA</div>
+                      <div style={{ fontSize: '10px', color: '#cbd5e1' }}>Phân tích 478 điểm 3D</div>
+                    </div>
+                  </motion.div>
                 </div>
               </div>
             );
@@ -294,11 +447,11 @@ export default function HomeView({
             />
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* VÙNG B: DẢI CAM KẾT (USP BAR) */}
       <section style={{ marginBottom: '40px' }}>
-        <div
+        <StaggerContainer
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
@@ -311,40 +464,41 @@ export default function HomeView({
             { icon: <RefreshCw size={22} style={{ color: '#d97706' }} />, title: 'Đổi Trả Trong 7 Ngày', desc: 'Thủ tục nhanh chóng, miễn phí đổi lỗi' },
             { icon: <Headphones size={22} style={{ color: '#f43f5e' }} />, title: 'Dược Sĩ Tư Vấn 8h–22h', desc: 'Hỗ trợ soi da & phân tích hoạt chất INCI' }
           ].map((usp, idx) => (
-            <div
-              key={idx}
-              className="squircle-card"
-              style={{
-                padding: '16px 20px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '14px',
-                background: 'var(--canvas-soft)',
-                border: '1px solid var(--hairline-soft)'
-              }}
-            >
+            <StaggerItem key={idx}>
               <div
+                className="squircle-card"
                 style={{
-                  width: '44px',
-                  height: '44px',
-                  borderRadius: '50%',
-                  background: '#ffffff',
+                  padding: '16px 20px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: 'var(--shadow-sm)',
-                  flexShrink: 0
+                  gap: '14px',
+                  background: 'var(--canvas-soft)',
+                  border: '1px solid var(--hairline-soft)'
                 }}
               >
-                {usp.icon}
+                <div
+                  style={{
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: '50%',
+                    background: '#ffffff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: 'var(--shadow-sm)',
+                    flexShrink: 0
+                  }}
+                >
+                  {usp.icon}
+                </div>
+                <div>
+                  <h4 style={{ fontSize: '13px', fontWeight: 650, marginBottom: '2px' }}>{usp.title}</h4>
+                  <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{usp.desc}</p>
+                </div>
               </div>
-              <div>
-                <h4 style={{ fontSize: '13px', fontWeight: 650, marginBottom: '2px' }}>{usp.title}</h4>
-                <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{usp.desc}</p>
-              </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </section>
 
       {/* VÙNG B2: KHÔNG GIAN CÔNG NGHỆ LÀM ĐẸP BEAUTY-TECH QUỐC TẾ */}
@@ -373,169 +527,183 @@ export default function HomeView({
             </span>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '14px' }}>
+          <StaggerContainer
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '14px' }}
+          >
             {/* Card 1: AR Virtual Try-On */}
-            <div
-              role="button"
-              tabIndex={0}
-              onClick={() => {
-                if (onOpenTryOn) onOpenTryOn();
-              }}
-              onKeyDown={(e) => {
-                if ((e.key === 'Enter' || e.key === ' ') && onOpenTryOn) onOpenTryOn();
-              }}
-              style={{
-                padding: '18px',
-                borderRadius: '18px',
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.12)',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '8px',
-                userSelect: 'none'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(236,72,153,0.18)';
-                e.currentTarget.style.borderColor = '#f472b6';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
-              }}
-            >
-              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, #ec4899 0%, #db2777 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Sparkles size={20} style={{ color: '#ffffff' }} />
-              </div>
-              <h4 style={{ fontSize: '14.5px', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-                AR Virtual Try-On
-              </h4>
-              <p style={{ fontSize: '12px', color: '#cbd5e1', margin: 0, lineHeight: 1.4 }}>
-                Thử màu son Romand và cushion căng bóng 3D trực tiếp qua Webcam không cần đến showroom.
-              </p>
-              <span
-                onClick={(e) => {
-                  e.stopPropagation();
+            <StaggerItem>
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => {
                   if (onOpenTryOn) onOpenTryOn();
                 }}
-                style={{ fontSize: '11.5px', fontWeight: 750, color: '#f472b6', marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '4px', cursor: 'pointer' }}
+                onKeyDown={(e) => {
+                  if ((e.key === 'Enter' || e.key === ' ') && onOpenTryOn) onOpenTryOn();
+                }}
+                style={{
+                  height: '100%',
+                  padding: '18px',
+                  borderRadius: '18px',
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '8px',
+                  userSelect: 'none'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(236,72,153,0.18)';
+                  e.currentTarget.style.borderColor = '#f472b6';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
+                }}
               >
-                Thử màu son ngay →
-              </span>
-            </div>
+                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, #ec4899 0%, #db2777 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Sparkles size={20} style={{ color: '#ffffff' }} />
+                </div>
+                <h4 style={{ fontSize: '14.5px', fontWeight: 800, margin: 0, color: '#ffffff' }}>
+                  AR Virtual Try-On
+                </h4>
+                <p style={{ fontSize: '12px', color: '#cbd5e1', margin: 0, lineHeight: 1.4 }}>
+                  Thử màu son Romand và cushion căng bóng 3D trực tiếp qua Webcam không cần đến showroom.
+                </p>
+                <span
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (onOpenTryOn) onOpenTryOn();
+                  }}
+                  style={{ fontSize: '11.5px', fontWeight: 750, color: '#f472b6', marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '4px', cursor: 'pointer' }}
+                >
+                  Thử màu son ngay →
+                </span>
+              </div>
+            </StaggerItem>
 
             {/* Card 2: AI Skin Scanner */}
-            <div
-              onClick={() => onOpenSkinScanner && onOpenSkinScanner()}
-              style={{
-                padding: '18px',
-                borderRadius: '18px',
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.12)',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '8px'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(16,185,129,0.15)';
-                e.currentTarget.style.borderColor = '#34d399';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
-              }}
-            >
-              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Camera size={20} style={{ color: '#ffffff' }} />
+            <StaggerItem>
+              <div
+                onClick={() => onOpenSkinScanner && onOpenSkinScanner()}
+                style={{
+                  height: '100%',
+                  padding: '18px',
+                  borderRadius: '18px',
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '8px'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(16,185,129,0.15)';
+                  e.currentTarget.style.borderColor = '#34d399';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
+                }}
+              >
+                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Camera size={20} style={{ color: '#ffffff' }} />
+                </div>
+                <h4 style={{ fontSize: '14.5px', fontWeight: 800, margin: 0, color: '#ffffff' }}>
+                  AI Skin Scanner
+                </h4>
+                <p style={{ fontSize: '12px', color: '#cbd5e1', margin: 0, lineHeight: 1.4 }}>
+                  Chụp ảnh phân tích 5 chỉ số biểu bì da liễu: bã nhờn, mụn ẩn, thâm sạm và màng lipid.
+                </p>
+                <span style={{ fontSize: '11.5px', fontWeight: 750, color: '#34d399', marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                  Quét & chấm điểm da →
+                </span>
               </div>
-              <h4 style={{ fontSize: '14.5px', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-                AI Skin Scanner
-              </h4>
-              <p style={{ fontSize: '12px', color: '#cbd5e1', margin: 0, lineHeight: 1.4 }}>
-                Chụp ảnh phân tích 5 chỉ số biểu bì da liễu: bã nhờn, mụn ẩn, thâm sạm và màng lipid.
-              </p>
-              <span style={{ fontSize: '11.5px', fontWeight: 750, color: '#34d399', marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                Quét & chấm điểm da →
-              </span>
-            </div>
+            </StaggerItem>
 
             {/* Card 3: 28-Day Skincare Routine & Conflict Detector */}
-            <div
-              onClick={() => onNavigateRoutine && onNavigateRoutine()}
-              style={{
-                padding: '18px',
-                borderRadius: '18px',
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.12)',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '8px'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(59,130,246,0.15)';
-                e.currentTarget.style.borderColor = '#60a5fa';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
-              }}
-            >
-              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Calendar size={20} style={{ color: '#ffffff' }} />
+            <StaggerItem>
+              <div
+                onClick={() => onNavigateRoutine && onNavigateRoutine()}
+                style={{
+                  height: '100%',
+                  padding: '18px',
+                  borderRadius: '18px',
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '8px'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(59,130,246,0.15)';
+                  e.currentTarget.style.borderColor = '#60a5fa';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
+                }}
+              >
+                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Calendar size={20} style={{ color: '#ffffff' }} />
+                </div>
+                <h4 style={{ fontSize: '14.5px', fontWeight: 800, margin: 0, color: '#ffffff' }}>
+                  Routine 28 Ngày & Cảnh Báo Xung Đột
+                </h4>
+                <p style={{ fontSize: '12px', color: '#cbd5e1', margin: 0, lineHeight: 1.4 }}>
+                  Lập lịch bôi thoa Sáng/Tối chuẩn y khoa, phát hiện xung đột cấm kỵ giữa BHA & Retinol.
+                </p>
+                <span style={{ fontSize: '11.5px', fontWeight: 750, color: '#60a5fa', marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                  Xem chu trình bôi thoa →
+                </span>
               </div>
-              <h4 style={{ fontSize: '14.5px', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-                Routine 28 Ngày & Cảnh Báo Xung Đột
-              </h4>
-              <p style={{ fontSize: '12px', color: '#cbd5e1', margin: 0, lineHeight: 1.4 }}>
-                Lập lịch bôi thoa Sáng/Tối chuẩn y khoa, phát hiện xung đột cấm kỵ giữa BHA & Retinol.
-              </p>
-              <span style={{ fontSize: '11.5px', fontWeight: 750, color: '#60a5fa', marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                Xem chu trình bôi thoa →
-              </span>
-            </div>
+            </StaggerItem>
 
             {/* Card 4: Beauty Pass Loyalty Tier */}
-            <div
-              onClick={() => onOpenBeautyPass && onOpenBeautyPass()}
-              style={{
-                padding: '18px',
-                borderRadius: '18px',
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.12)',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '8px'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(245,158,11,0.15)';
-                e.currentTarget.style.borderColor = '#fde047';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
-              }}
-            >
-              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, #f59e0b 0%, #b45309 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Crown size={20} style={{ color: '#ffffff' }} />
+            <StaggerItem>
+              <div
+                onClick={() => onOpenBeautyPass && onOpenBeautyPass()}
+                style={{
+                  height: '100%',
+                  padding: '18px',
+                  borderRadius: '18px',
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '8px'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(245,158,11,0.15)';
+                  e.currentTarget.style.borderColor = '#fde047';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
+                }}
+              >
+                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, #f59e0b 0%, #b45309 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Crown size={20} style={{ color: '#ffffff' }} />
+                </div>
+                <h4 style={{ fontSize: '14.5px', fontWeight: 800, margin: 0, color: '#ffffff' }}>
+                  Aura Beauty Pass™
+                </h4>
+                <p style={{ fontSize: '12px', color: '#cbd5e1', margin: 0, lineHeight: 1.4 }}>
+                  Hệ thống 4 hạng hội viên chuẩn Sephora, tích lũy điểm đổi voucher và quà sinh nhật độc quyền.
+                </p>
+                <span style={{ fontSize: '11.5px', fontWeight: 750, color: '#fde047', marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                  Khám phá đặc quyền VIP →
+                </span>
               </div>
-              <h4 style={{ fontSize: '14.5px', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-                Aura Beauty Pass™
-              </h4>
-              <p style={{ fontSize: '12px', color: '#cbd5e1', margin: 0, lineHeight: 1.4 }}>
-                Hệ thống 4 hạng hội viên chuẩn Sephora, tích lũy điểm đổi voucher và quà sinh nhật độc quyền.
-              </p>
-              <span style={{ fontSize: '11.5px', fontWeight: 750, color: '#fde047', marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                Khám phá đặc quyền VIP →
-              </span>
-            </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
       <section style={{ marginBottom: '48px' }}>
@@ -651,7 +819,7 @@ export default function HomeView({
         </div>
 
         {/* Flash Sale Cards Grid */}
-        <div
+        <StaggerContainer
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
@@ -663,14 +831,14 @@ export default function HomeView({
             const isSoldOut = soldPercent >= 100;
 
             return (
-              <div
-                key={prod.id}
-                className="squircle-card"
-                style={{
-                  background: '#ffffff',
-                  opacity: isSoldOut ? 0.6 : 1
-                }}
-              >
+              <StaggerItem key={prod.id}>
+                <div
+                  className="squircle-card"
+                  style={{
+                    background: '#ffffff',
+                    opacity: isSoldOut ? 0.6 : 1
+                  }}
+                >
                 <div className="product-card-img-wrap" onClick={() => onSelectProduct(prod)} style={{ cursor: 'pointer' }}>
                   <img src={prod.images[0]} alt={prod.name} />
                   <span className="badge-pill badge-sale" style={{ position: 'absolute', top: '10px', left: '10px' }}>
@@ -734,10 +902,11 @@ export default function HomeView({
                   </button>
                 </div>
               </div>
-            );
-          })}
-        </div>
-      </section>
+            </StaggerItem>
+          );
+        })}
+      </StaggerContainer>
+    </section>
 
       {/* VÙNG E: SẢN PHẨM THEO TAB */}
       <section style={{ marginBottom: '48px' }}>

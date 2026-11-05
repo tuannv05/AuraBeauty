@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import {
   Search, Heart, ShoppingBag, User, Menu, X, ChevronRight, ChevronDown, ArrowLeft,
   Sparkles, Camera, Mic, Trash2, ArrowUpRight, Flame, ShieldCheck, Grid, Zap,
@@ -253,6 +254,7 @@ export default function Navbar({
   onOpenTopBarModal,
   onNavigateFlashSale,
   onCurrencyChange,
+  onReplayIntro,
   wishlistCount = 0,
   user
 }) {
@@ -378,7 +380,12 @@ export default function Navbar({
   }, [allCatalogProducts, searchTerm]);
 
   return (
-    <div style={{ position: 'sticky', top: 0, zIndex: 900, background: '#ffffff', boxShadow: isScrolled ? '0 2px 10px rgba(0,0,0,0.08)' : 'none', transition: 'all 200ms ease' }}>
+    <motion.div
+      initial={{ opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      style={{ position: 'sticky', top: 0, zIndex: 900, background: '#ffffff', boxShadow: isScrolled ? '0 2px 10px rgba(0,0,0,0.08)' : 'none', transition: 'box-shadow 200ms ease' }}
+    >
       
       {/* =========================================================================
           TẦNG 1: TOP BAR (Tầng trên cùng: 30px - 36px)
@@ -464,6 +471,19 @@ export default function Navbar({
 
         {/* Right: Hệ thống cửa hàng & Đa tiền tệ / Đa ngôn ngữ Quốc tế */}
         <div className="top-bar-right" style={{ display: 'flex', alignItems: 'center', gap: '14px', color: '#cbd5e1' }}>
+          {onReplayIntro && (
+            <div
+              onClick={onReplayIntro}
+              style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#fbcfe8', fontWeight: 650, fontSize: '11px', background: 'rgba(236, 72, 153, 0.15)', padding: '2px 8px', borderRadius: '4px' }}
+              title="Xem lại màn giới thiệu thương hiệu Aura"
+              onMouseEnter={(e) => { e.currentTarget.style.color = '#ffffff'; e.currentTarget.style.background = 'rgba(236, 72, 153, 0.25)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = '#fbcfe8'; e.currentTarget.style.background = 'rgba(236, 72, 153, 0.15)'; }}
+            >
+              <Sparkles size={11} style={{ color: '#f472b6' }} />
+              <span>Xem lại Intro</span>
+            </div>
+          )}
+
           <div
             onClick={() => onOpenTopBarModal && onOpenTopBarModal('showrooms')}
             style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
@@ -2056,6 +2076,6 @@ export default function Navbar({
           }
         }
       `}</style>
-    </div>
+    </motion.div>
   );
 }
