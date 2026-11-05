@@ -17,7 +17,8 @@ import { apiSaveSkinProfile } from '../../api';
 import {
   renderCompleteMakeupLook,
   analyzeSkinToneFromCanvas,
-  hexToRgba
+  hexToRgba,
+  FaceMeshJitterFilter
 } from './vtoEngine';
 import { LIP_OUTER_LOOP } from './faceLandmarks';
 import presetLandmarksData from './presetLandmarks.json';
@@ -210,7 +211,17 @@ export default function VirtualTryOnModal({
   const videoRef = useRef(null);
   const cachedImgRef = useRef(null);
   const landmarkerRef = useRef(null);
+  const jitterFilterRef = useRef(new FaceMeshJitterFilter(478, 1.0, 0.007));
   const [cameraError, setCameraError] = useState(null);
+
+  // GPU Optimization: Pause background animations while VTO Studio is active
+  useEffect(() => {
+    document.body.classList.add('vto-active-no-anim');
+    return () => {
+      document.body.classList.remove('vto-active-no-anim');
+      jitterFilterRef.current?.reset();
+    };
+  }, []);
 
   // Initialize with initialProduct & initialVariant when modal opens
   useEffect(() => {
@@ -298,7 +309,9 @@ export default function VirtualTryOnModal({
             const rawLandmarks = res.faceLandmarks[0];
             // Mirror x coordinate because video is mirrored
             const mirrored = rawLandmarks.map(p => ({ x: 1 - p.x, y: p.y, z: p.z }));
-            renderCompleteMakeupLook(ctx, mirrored, w, h, activeLooks, splitRatio);
+            // Apply 1€ Filter for real-time 60 FPS jitter-free tracking
+            const smoothed = jitterFilterRef.current.filterLandmarks(mirrored);
+            renderCompleteMakeupLook(ctx, smoothed, w, h, activeLooks, splitRatio);
           }
         } catch (e) {}
       }
@@ -527,6 +540,33 @@ export default function VirtualTryOnModal({
     setActiveLooks(prev => ({ ...prev, [catKey]: null }));
   };
 
+  // Snapshot PNG export
+  const handleDownloadSnapshot = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    try {
+      const dataUrl = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.download = `aura-tryon-look-${Date.now()}.png`;
+      link.href = dataUrl;
+      link.click();
+      if (onAddToast) {
+        onAddToast({
+          type: 'success',
+          message: 'Đã lưu ảnh chân dung thử màu về thiết bị!'
+        });
+      }
+    } catch (err) {
+      console.error('Snapshot export error:', err);
+      if (onAddToast) {
+        onAddToast({
+          type: 'error',
+          message: 'Không thể xuất ảnh do giới hạn bảo mật trình duyệt.'
+        });
+      }
+    }
+  };
+
   if (!isOpen) return null;
 
   const currentTabShades = (activeProducts[activeTab]?.vtoConfig?.shades)
@@ -736,10 +776,35 @@ export default function VirtualTryOnModal({
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
+                cursor: 'pointer',
                 transition: 'all 150ms ease'
               }}
             >
               ⬌ {isSplitView ? 'Tắt So Sánh' : 'So Sánh'}
+            </button>
+
+            {/* Snapshot Download Button */}
+            <button
+              onClick={handleDownloadSnapshot}
+              title="Lưu ảnh thử màu về máy"
+              style={{
+                padding: '6px 12px',
+                borderRadius: '10px',
+                fontSize: '11.5px',
+                fontWeight: 650,
+                border: '1px solid #334155',
+                backgroundColor: '#1e293b',
+                color: '#cbd5e1',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                cursor: 'pointer',
+                transition: 'all 150ms ease'
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#334155'; e.currentTarget.style.color = '#ffffff'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#1e293b'; e.currentTarget.style.color = '#cbd5e1'; }}
+            >
+              📸 Chụp Ảnh
             </button>
 
             {/* Close Button */}
@@ -1179,27 +1244,85 @@ export default function VirtualTryOnModal({
                   </div>
 
                   {activeTab === 'LIPSTICK' && (
-                    <div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', color: '#cbd5e1', marginBottom: '4px' }}>
-                        <span>Độ bóng (Glossiness)</span>
-                        <span>{Math.round((activeLooks[activeTab].glossiness || 0.2) * 100)}%</span>
+                    <>
+                      <div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', color: '#cbd5e1', marginBottom: '4px' }}>
+                          <span>Độ bóng (Glossiness)</span>
+                          <span>{Math.round((activeLooks[activeTab].glossiness || 0.2) * 100)}%</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="0.0"
+                          max="1.0"
+                          step="0.05"
+                          value={activeLooks[activeTab].glossiness || 0.2}
+                          onChange={(e) => {
+                            const val = parseFloat(e.target.value);
+                            setActiveLooks(prev => ({
+                              ...prev,
+                              [activeTab]: { ...prev[activeTab], glossiness: val }
+                            }));
+                          }}
+                          style={{ width: '100%', accentColor: '#e11d48', cursor: 'pointer' }}
+                        />
                       </div>
-                      <input
-                        type="range"
-                        min="0.0"
-                        max="1.0"
-                        step="0.05"
-                        value={activeLooks[activeTab].glossiness || 0.2}
-                        onChange={(e) => {
-                          const val = parseFloat(e.target.value);
-                          setActiveLooks(prev => ({
-                            ...prev,
-                            [activeTab]: { ...prev[activeTab], glossiness: val }
-                          }));
-                        }}
-                        style={{ width: '100%', accentColor: '#e11d48', cursor: 'pointer' }}
-                      />
-                    </div>
+
+                      {/* Lip Style Toggle: Full vs Ombre */}
+                      <div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', color: '#cbd5e1', marginBottom: '6px' }}>
+                          <span>Kiểu thoa son</span>
+                          <span style={{ color: '#fda4af', fontWeight: 600 }}>
+                            {activeLooks[activeTab]?.lipStyle === 'gradient' ? 'Lòng môi Ombré' : 'Full môi quyến rũ'}
+                          </span>
+                        </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px' }}>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setActiveLooks(prev => ({
+                                ...prev,
+                                LIPSTICK: { ...prev.LIPSTICK, lipStyle: 'full' }
+                              }));
+                            }}
+                            style={{
+                              padding: '5px 8px',
+                              borderRadius: '6px',
+                              fontSize: '10.5px',
+                              fontWeight: 650,
+                              border: (activeLooks[activeTab]?.lipStyle || 'full') === 'full' ? '1px solid #e11d48' : '1px solid #334155',
+                              backgroundColor: (activeLooks[activeTab]?.lipStyle || 'full') === 'full' ? 'rgba(225, 29, 72, 0.2)' : '#1e293b',
+                              color: (activeLooks[activeTab]?.lipStyle || 'full') === 'full' ? '#fda4af' : '#94a3b8',
+                              cursor: 'pointer',
+                              transition: 'all 120ms ease'
+                            }}
+                          >
+                            💋 Full Môi
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setActiveLooks(prev => ({
+                                ...prev,
+                                LIPSTICK: { ...prev.LIPSTICK, lipStyle: 'gradient' }
+                              }));
+                            }}
+                            style={{
+                              padding: '5px 8px',
+                              borderRadius: '6px',
+                              fontSize: '10.5px',
+                              fontWeight: 650,
+                              border: activeLooks[activeTab]?.lipStyle === 'gradient' ? '1px solid #e11d48' : '1px solid #334155',
+                              backgroundColor: activeLooks[activeTab]?.lipStyle === 'gradient' ? 'rgba(225, 29, 72, 0.2)' : '#1e293b',
+                              color: activeLooks[activeTab]?.lipStyle === 'gradient' ? '#fda4af' : '#94a3b8',
+                              cursor: 'pointer',
+                              transition: 'all 120ms ease'
+                            }}
+                          >
+                            🌸 Lòng Môi (Ombré)
+                          </button>
+                        </div>
+                      </div>
+                    </>
                   )}
                 </div>
               )}

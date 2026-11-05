@@ -531,3 +531,9 @@ input[type="number"] {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
+
+/* Aura VTO 2.0 GPU Optimization: Pause background animations during AR session */
+body.vto-active-no-anim * {
+  animation-play-state: paused !important;
+}
+
