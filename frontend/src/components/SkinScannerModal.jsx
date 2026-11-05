@@ -13,9 +13,66 @@ import {
   Droplets,
   Flame,
   Award,
-  ArrowRight
+  ArrowRight,
+  UserCheck
 } from 'lucide-react';
 import { MOCK_PRODUCTS } from '../api';
+import { PRESET_MODELS } from '../features/vto/VirtualTryOnModal';
+
+// Dedicated Clinical Dermatological Diagnostic Profiles for the 3 Standard Studio Models
+const MODEL_DIAGNOSTIC_PROFILES = {
+  'model-1-warm': {
+    skinScore: 78,
+    skinType: 'Da Hỗn Hợp Thiên Dầu (Oily-Dehydrated)',
+    skinConcerns: ['Mụn ẩn bã nhờn vùng chữ T', 'Thâm mụn sau viêm (PIE)', 'Lỗ chân lông vùng cánh mũi'],
+    metrics: [
+      { name: 'Chỉ số bã nhờn (Sebum)', score: 72, level: 'Thừa dầu vùng T', status: 'warning', icon: '💧' },
+      { name: 'Mụn viêm & mụn ẩn', score: 65, level: 'Mức độ nhẹ - trung bình', status: 'warning', icon: '🌿' },
+      { name: 'Hàng rào màng ẩm (Barrier)', score: 84, level: 'Khá khỏe mạnh', status: 'good', icon: '🛡️' },
+      { name: 'Sắc tố thâm nám (Melanin)', score: 70, level: 'Vết thâm mới cần phục hồi', status: 'warning', icon: '✨' },
+      { name: 'Độ đàn hồi & Nếp nhăn', score: 92, level: 'Rất tốt (Dưới 25 tuổi)', status: 'good', icon: '🌸' }
+    ],
+    prescribedRoutine: [
+      MOCK_PRODUCTS[1] || MOCK_PRODUCTS[0],
+      MOCK_PRODUCTS[0],
+      MOCK_PRODUCTS[3] || MOCK_PRODUCTS[0]
+    ]
+  },
+  'model-2-fair': {
+    skinScore: 85,
+    skinType: 'Da Nhạy Cảm Sáng Màu (Sensitive & Fair)',
+    skinConcerns: ['Đỏ da mao mạch gò má', 'Dễ kích ứng khi đổi thời tiết', 'Cần tăng cường màng lipid B5'],
+    metrics: [
+      { name: 'Chỉ số bã nhờn (Sebum)', score: 88, level: 'Rất cân bằng', status: 'good', icon: '💧' },
+      { name: 'Mụn viêm & mụn ẩn', score: 86, level: 'Làn da sạch mịn', status: 'good', icon: '🌿' },
+      { name: 'Hàng rào màng ẩm (Barrier)', score: 68, level: 'Cần phục hồi cấp ẩm B5', status: 'warning', icon: '🛡️' },
+      { name: 'Sắc tố thâm nám (Melanin)', score: 90, level: 'Sáng hồng, ít hắc tố', status: 'good', icon: '✨' },
+      { name: 'Độ đàn hồi & Nếp nhăn', score: 94, level: 'Rất săn chắc', status: 'good', icon: '🌸' }
+    ],
+    prescribedRoutine: [
+      MOCK_PRODUCTS[2] || MOCK_PRODUCTS[0],
+      MOCK_PRODUCTS[0],
+      MOCK_PRODUCTS[3] || MOCK_PRODUCTS[1]
+    ]
+  },
+  'model-3-medium': {
+    skinScore: 89,
+    skinType: 'Da Thường Khỏe Mạnh (Balanced & Healthy)',
+    skinConcerns: ['Bảo vệ chống oxy hóa', 'Duy trì màng bảo vệ tự nhiên', 'Cấp ẩm nhẹ ban đêm'],
+    metrics: [
+      { name: 'Chỉ số bã nhờn (Sebum)', score: 85, level: 'Cân bằng lý tưởng', status: 'good', icon: '💧' },
+      { name: 'Mụn viêm & mụn ẩn', score: 88, level: 'Không có ổ viêm', status: 'good', icon: '🌿' },
+      { name: 'Hàng rào màng ẩm (Barrier)', score: 90, level: 'Màng lipid vững chắc', status: 'good', icon: '🛡️' },
+      { name: 'Sắc tố thâm nám (Melanin)', score: 82, level: 'Đều màu, sáng khỏe', status: 'good', icon: '✨' },
+      { name: 'Độ đàn hồi & Nếp nhăn', score: 91, level: 'Căng bóng tự nhiên', status: 'good', icon: '🌸' }
+    ],
+    prescribedRoutine: [
+      MOCK_PRODUCTS[0],
+      MOCK_PRODUCTS[3] || MOCK_PRODUCTS[0],
+      MOCK_PRODUCTS[1] || MOCK_PRODUCTS[0]
+    ]
+  }
+};
 
 export default function SkinScannerModal({
   isOpen,
@@ -32,13 +89,16 @@ export default function SkinScannerModal({
   const [analyzingStatus, setAnalyzingStatus] = useState('Khởi tạo mô hình AI...');
   const [capturedImage, setCapturedImage] = useState(null);
   const [isCameraActive, setIsCameraActive] = useState(false);
+  const [cameraError, setCameraError] = useState(null);
 
   const videoRef = useRef(null);
+  const streamRef = useRef(null);
   const fileInputRef = useRef(null);
 
   // Mock analysis result based on scanning
   const [analysisResult, setAnalysisResult] = useState(null);
 
+  // Stop camera tracks cleanly on unmount or when modal is closed
   useEffect(() => {
     return () => {
       stopCamera();
@@ -46,25 +106,63 @@ export default function SkinScannerModal({
   }, []);
 
   const startCamera = async () => {
+    setCameraError(null);
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { width: { ideal: 640 }, height: { ideal: 640 }, facingMode: 'user' }
-      });
+      let stream = null;
+      // Tier 1: Ideal 720p 16:9 for modern laptop webcams
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { width: { ideal: 1280 }, height: { ideal: 720 }, facingMode: 'user' },
+          audio: false
+        });
+      } catch (tier1Err) {
+        // Tier 2: Flexible user-facing video
+        try {
+          stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: 'user' },
+            audio: false
+          });
+        } catch (tier2Err) {
+          // Tier 3: Basic video true
+          stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false
+          });
+        }
+      }
+
+      streamRef.current = stream;
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
-        videoRef.current.play();
+        videoRef.current.onloadedmetadata = () => {
+          videoRef.current.play().catch(e => console.warn('Autoplay prevented:', e));
+        };
         setIsCameraActive(true);
       }
     } catch (err) {
       console.warn('Cannot open webcam:', err);
+      let message = 'Không thể mở Camera.';
+      if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
+        message = 'Trình duyệt chưa được cấp quyền Camera. Vui lòng nhấn vào biểu tượng ổ khóa 🔒 trên thanh địa chỉ và chọn "Cho phép" (Allow Camera).';
+      } else if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
+        message = 'Không tìm thấy thiết bị Webcam trên laptop/máy tính của bạn.';
+      } else if (err.name === 'NotReadableError' || err.name === 'TrackStartError') {
+        message = 'Webcam đang bị phần mềm khác (Zoom, Teams, Meet hoặc tab khác) chiếm dụng.';
+      } else {
+        message = `Không thể kết nối webcam: ${err.message || 'Lỗi thiết bị'}.`;
+      }
+      setCameraError(message);
+      setIsCameraActive(false);
     }
   };
 
   const stopCamera = () => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach((t) => t.stop());
+      streamRef.current = null;
+    }
     if (videoRef.current && videoRef.current.srcObject) {
-      const stream = videoRef.current.srcObject;
-      const tracks = stream.getTracks();
-      tracks.forEach((t) => t.stop());
+      videoRef.current.srcObject.getTracks().forEach((t) => t.stop());
       videoRef.current.srcObject = null;
     }
     setIsCameraActive(false);
@@ -93,13 +191,14 @@ export default function SkinScannerModal({
     }
   };
 
-  const handleSelectDemoSelfie = () => {
-    setCapturedImage('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&auto=format&fit=crop&q=80');
+  const handleSelectModel = (model) => {
+    setCapturedImage(model.img);
     stopCamera();
-    startAnalysis();
+    const profile = MODEL_DIAGNOSTIC_PROFILES[model.id] || MODEL_DIAGNOSTIC_PROFILES['model-1-warm'];
+    startAnalysis(profile);
   };
 
-  const startAnalysis = () => {
+  const startAnalysis = (customResult = null) => {
     setStep('analyzing');
     setAnalyzingProgress(10);
     setAnalyzingStatus('Đang quét lưới điểm gương mặt (Face Landmark 468)...');
@@ -121,23 +220,7 @@ export default function SkinScannerModal({
 
     setTimeout(() => {
       setAnalyzingProgress(100);
-      setAnalysisResult({
-        skinScore: 78,
-        skinType: 'Hỗn hợp thiên dầu (Oily-Dehydrated)',
-        skinConcerns: ['Mụn ẩn bã nhờn', 'Thâm mụn sau viêm (PIE)', 'Lỗ chân lông vùng mũi'],
-        metrics: [
-          { name: 'Chỉ số bã nhờn (Sebum)', score: 72, level: 'Thừa dầu vùng T', status: 'warning', icon: '💧' },
-          { name: 'Mụn viêm & mụn ẩn', score: 65, level: 'Mức độ nhẹ - trung bình', status: 'warning', icon: '🌿' },
-          { name: 'Hàng rào màng ẩm (Barrier)', score: 84, level: 'Khá khỏe mạnh', status: 'good', icon: '🛡️' },
-          { name: 'Sắc tố thâm nám (Melanin)', score: 70, level: 'Vết thâm mới cần phục hồi', status: 'warning', icon: '✨' },
-          { name: 'Độ đàn hồi & Nếp nhăn', score: 92, level: 'Rất tốt (Dưới 25 tuổi)', status: 'good', icon: '🌸' }
-        ],
-        prescribedRoutine: [
-          MOCK_PRODUCTS[1], // La Roche-Posay Effaclar Duo+M
-          MOCK_PRODUCTS[0], // Innisfree Green Tea Seed Serum
-          MOCK_PRODUCTS[3]  // Anessa Perfect UV Sunscreen
-        ]
-      });
+      setAnalysisResult(customResult || MODEL_DIAGNOSTIC_PROFILES['model-1-warm']);
       setStep('result');
     }, 2800);
   };
@@ -274,22 +357,78 @@ export default function SkinScannerModal({
           </button>
         </div>
 
+        {/* Camera error notification banner */}
+        {cameraError && (
+          <div
+            style={{
+              padding: '10px 24px',
+              backgroundColor: 'rgba(239, 68, 68, 0.08)',
+              borderBottom: '1px solid rgba(239, 68, 68, 0.2)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '12px',
+              fontSize: '12.5px',
+              color: '#b91c1c'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <AlertTriangle size={16} style={{ color: '#ef4444', flexShrink: 0 }} />
+              <span>{cameraError}</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <button
+                type="button"
+                onClick={startCamera}
+                style={{
+                  background: '#ef4444',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '6px',
+                  padding: '3px 10px',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                Thử lại
+              </button>
+              <button
+                type="button"
+                onClick={() => setCameraError(null)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#64748b',
+                  fontSize: '11px',
+                  cursor: 'pointer',
+                  textDecoration: 'underline'
+                }}
+              >
+                Bỏ qua
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Body Content */}
         <div style={{ flex: 1, overflowY: 'auto', padding: '24px' }}>
-          {/* STEP 1: CAPTURE / UPLOAD */}
+          {/* STEP 1: CAPTURE / UPLOAD / SMART FALLBACK STUDIO */}
           {step === 'capture' && (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignItems: 'center' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.15fr', gap: '24px', alignItems: 'start' }}>
               {/* Left Viewfinder */}
               <div
                 style={{
-                  height: '360px',
-                  background: '#090d16',
+                  height: '380px',
+                  background: 'linear-gradient(135deg, #090d16 0%, #0f172a 100%)',
                   borderRadius: '20px',
                   position: 'relative',
                   overflow: 'hidden',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center'
+                  justifyContent: 'center',
+                  border: '1px solid #1e293b',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
                 }}
               >
                 {isCameraActive ? (
@@ -300,12 +439,14 @@ export default function SkinScannerModal({
                     style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scaleX(-1)' }}
                   />
                 ) : (
-                  <div style={{ textAlign: 'center', color: '#94a3b8', padding: '20px' }}>
-                    <div style={{ width: '120px', height: '150px', border: '2px dashed #ec4899', borderRadius: '50%', margin: '0 auto 16px auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Camera size={36} style={{ color: '#ec4899' }} />
+                  <div style={{ textAlign: 'center', color: '#94a3b8', padding: '24px' }}>
+                    <div style={{ width: '110px', height: '140px', border: '2px dashed #ec4899', borderRadius: '50%', margin: '0 auto 16px auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Camera size={34} style={{ color: '#ec4899' }} />
                     </div>
-                    <div style={{ fontSize: '13px', fontWeight: 600, color: '#e2e8f0' }}>Khung canh chuẩn khuôn mặt</div>
-                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '4px' }}>Chụp nơi đủ sáng, không đeo kính râm</div>
+                    <div style={{ fontSize: '13.5px', fontWeight: 700, color: '#f1f5f9' }}>Khung Scan Biểu Bì Chuẩn 3D</div>
+                    <div style={{ fontSize: '11.5px', color: '#94a3b8', marginTop: '4px' }}>
+                      Bật webcam hoặc chọn người mẫu chuẩn bên phải để bắt đầu quét
+                    </div>
                   </div>
                 )}
 
@@ -315,123 +456,206 @@ export default function SkinScannerModal({
                     position: 'absolute',
                     width: '180px',
                     height: '240px',
-                    border: '2px solid rgba(16, 185, 129, 0.6)',
+                    border: '2px solid rgba(16, 185, 129, 0.65)',
                     borderRadius: '50%',
-                    boxShadow: '0 0 20px rgba(16, 185, 129, 0.3)',
+                    boxShadow: '0 0 24px rgba(16, 185, 129, 0.35)',
                     pointerEvents: 'none'
                   }}
                 />
+
+                {/* Live stream badge */}
+                {isCameraActive && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '12px',
+                      left: '12px',
+                      background: 'rgba(15, 23, 42, 0.85)',
+                      backdropFilter: 'blur(6px)',
+                      color: '#34d399',
+                      border: '1px solid rgba(16, 185, 129, 0.4)',
+                      borderRadius: '20px',
+                      padding: '4px 10px',
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px'
+                    }}
+                  >
+                    <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
+                    Webcam Live HD
+                  </div>
+                )}
               </div>
 
-              {/* Right Options */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                <h4 style={{ fontSize: '17px', fontWeight: 800, color: '#0f172a', margin: 0 }}>
-                  Chọn cách chụp ảnh khuôn mặt:
-                </h4>
-                <p style={{ fontSize: '13px', color: '#64748b', lineHeight: 1.5, margin: 0 }}>
-                  Thuật toán Computer Vision sẽ quét 468 điểm tọa độ trên gương mặt để đo lường độ phản chiếu bã nhờn, mật độ sắc tố melanin và tình trạng mụn ẩn.
-                </p>
+              {/* Right Options & Smart Fallback Studio */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div>
+                  <h4 style={{ fontSize: '16px', fontWeight: 800, color: '#0f172a', margin: 0 }}>
+                    Phương thức quét phân tích làn da:
+                  </h4>
+                  <p style={{ fontSize: '12.5px', color: '#64748b', lineHeight: 1.45, margin: '4px 0 0 0' }}>
+                    Thuật toán AI Computer Vision sẽ lập bản đồ 468 điểm tọa độ biểu bì để đo lường độ phản chiếu bã nhờn, mật độ melanin và vi điểm mụn ẩn.
+                  </p>
+                </div>
 
-                {isCameraActive ? (
-                  <button
-                    type="button"
-                    onClick={capturePhotoFromVideo}
-                    style={{
-                      background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                      color: '#ffffff',
-                      border: 'none',
-                      borderRadius: '14px',
-                      padding: '14px',
-                      fontSize: '14px',
-                      fontWeight: 750,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px',
-                      boxShadow: '0 4px 14px rgba(16,185,129,0.3)'
-                    }}
-                  >
-                    <Camera size={18} /> Chụp & Bắt Đầu Phân Tích Ngay
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={startCamera}
-                    style={{
-                      background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-                      color: '#ffffff',
-                      border: 'none',
-                      borderRadius: '14px',
-                      padding: '14px',
-                      fontSize: '14px',
-                      fontWeight: 750,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px'
-                    }}
-                  >
-                    <Camera size={18} /> Bật Webcam Thiết Bị
-                  </button>
-                )}
+                {/* Primary Actions */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {isCameraActive ? (
+                    <button
+                      type="button"
+                      onClick={capturePhotoFromVideo}
+                      style={{
+                        background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                        color: '#ffffff',
+                        border: 'none',
+                        borderRadius: '12px',
+                        padding: '13px',
+                        fontSize: '13.5px',
+                        fontWeight: 750,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '8px',
+                        boxShadow: '0 4px 14px rgba(16,185,129,0.3)'
+                      }}
+                    >
+                      <Camera size={18} /> Chụp & Bắt Đầu Phân Tích Ngay
+                    </button>
+                  ) : (
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '10px' }}>
+                      <button
+                        type="button"
+                        onClick={startCamera}
+                        style={{
+                          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+                          color: '#ffffff',
+                          border: 'none',
+                          borderRadius: '12px',
+                          padding: '12px',
+                          fontSize: '13px',
+                          fontWeight: 750,
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '8px',
+                          boxShadow: '0 4px 12px rgba(15,23,42,0.2)'
+                        }}
+                      >
+                        <Camera size={16} /> Bật Webcam Laptop
+                      </button>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <button
+                        type="button"
+                        onClick={() => fileInputRef.current?.click()}
+                        style={{
+                          padding: '12px',
+                          borderRadius: '12px',
+                          border: '1px solid #cbd5e1',
+                          background: '#ffffff',
+                          color: '#334155',
+                          fontSize: '13px',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '6px'
+                        }}
+                      >
+                        <Upload size={16} /> Tải ảnh lên
+                      </button>
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileUpload}
+                        style={{ display: 'none' }}
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* Divider */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '4px 0' }}>
                   <div style={{ flex: 1, height: '1px', background: '#e2e8f0' }} />
-                  <span style={{ fontSize: '12px', color: '#94a3b8' }}>hoặc</span>
+                  <span style={{ fontSize: '11.5px', color: '#94a3b8', fontWeight: 650, textTransform: 'uppercase' }}>
+                    Hoặc chọn Người mẫu chuẩn Studio (Khuyên dùng)
+                  </span>
                   <div style={{ flex: 1, height: '1px', background: '#e2e8f0' }} />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    style={{
-                      padding: '12px',
-                      borderRadius: '12px',
-                      border: '1px solid #cbd5e1',
-                      background: '#ffffff',
-                      color: '#334155',
-                      fontSize: '12.5px',
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px'
-                    }}
-                  >
-                    <Upload size={16} /> Tải ảnh chân dung
-                  </button>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileUpload}
-                    style={{ display: 'none' }}
-                  />
+                {/* 3 PRESET MODELS STUDIO (ZERO-BLANK SCREEN GUARANTEE) */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+                  {PRESET_MODELS.map((model) => {
+                    const isWarm = model.skinTone === 'WARM';
+                    const isCool = model.skinTone === 'COOL';
+                    const badgeBg = isWarm ? '#fef3c7' : isCool ? '#ede9fe' : '#e0f2fe';
+                    const badgeColor = isWarm ? '#b45309' : isCool ? '#6d28d9' : '#0369a1';
+                    const subDesc = isWarm ? 'Châu Á / Dầu mụn' : isCool ? 'Trắng hồng / Nhạy cảm' : 'Khỏe khoắn / Cân bằng';
 
-                  <button
-                    type="button"
-                    onClick={handleSelectDemoSelfie}
-                    style={{
-                      padding: '12px',
-                      borderRadius: '12px',
-                      border: '1px solid #fbcfe8',
-                      background: '#fdf2f8',
-                      color: '#db2777',
-                      fontSize: '12.5px',
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px'
-                    }}
-                  >
-                    <Sparkles size={16} /> Dùng ảnh mẫu thử
-                  </button>
+                    return (
+                      <button
+                        key={model.id}
+                        type="button"
+                        onClick={() => handleSelectModel(model)}
+                        style={{
+                          padding: '10px 8px',
+                          borderRadius: '14px',
+                          border: '1.5px solid #e2e8f0',
+                          background: '#f8fafc',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          textAlign: 'center',
+                          gap: '6px',
+                          transition: 'all 150ms ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = '#10b981';
+                          e.currentTarget.style.backgroundColor = '#ffffff';
+                          e.currentTarget.style.transform = 'translateY(-2px)';
+                          e.currentTarget.style.boxShadow = '0 6px 16px rgba(16,185,129,0.15)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = '#e2e8f0';
+                          e.currentTarget.style.backgroundColor = '#f8fafc';
+                          e.currentTarget.style.transform = 'translateY(0)';
+                          e.currentTarget.style.boxShadow = 'none';
+                        }}
+                      >
+                        <div style={{ position: 'relative', width: '54px', height: '54px', borderRadius: '50%', overflow: 'hidden', border: `2px solid ${model.skinHex}` }}>
+                          <img
+                            src={model.img}
+                            alt={model.name}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                          />
+                        </div>
+                        <span
+                          style={{
+                            fontSize: '10px',
+                            fontWeight: 800,
+                            padding: '2px 6px',
+                            borderRadius: '8px',
+                            background: badgeBg,
+                            color: badgeColor
+                          }}
+                        >
+                          Tone {model.skinTone}
+                        </span>
+                        <div style={{ fontSize: '11.5px', fontWeight: 750, color: '#1e293b', lineHeight: 1.2 }}>
+                          {model.id === 'model-1-warm' ? 'Mẫu 1 (Ấm)' : model.id === 'model-2-fair' ? 'Mẫu 2 (Sáng)' : 'Mẫu 3 (Tự Nhiên)'}
+                        </div>
+                        <div style={{ fontSize: '10px', color: '#64748b' }}>
+                          {subDesc}
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>

@@ -74,14 +74,16 @@ export function renderLipstick(ctx, landmarks, options = {}, width, height) {
   // --- LAYER 1: Deep Pigment Base (Multiply) to lock color into lip valleys ---
   ctx.save();
   ctx.globalCompositeOperation = 'multiply';
+  ctx.filter = `blur(${Math.max(1.0, width * 0.002)}px)`;
   const multAlpha = finish === 'MATTE' ? op * 0.72 : op * 0.60;
   ctx.fillStyle = hexToRgba(hexColor, multAlpha);
   ctx.fill(lipPath, 'evenodd');
   ctx.restore();
 
-  // --- LAYER 2: Luminous Surface Tint (Soft-Light) preserving natural lip texture ---
+  // --- LAYER 2: Luminous Surface Tint (Soft-Light) with 1.5px feathering mask ---
   ctx.save();
   ctx.globalCompositeOperation = 'soft-light';
+  ctx.filter = `blur(${Math.max(1.5, width * 0.003)}px)`;
   ctx.fillStyle = hexToRgba(hexColor, Math.min(1.0, op * 0.85));
   ctx.fill(lipPath, 'evenodd');
   ctx.restore();
@@ -203,6 +205,7 @@ export function renderBlush(ctx, landmarks, options = {}, width, height) {
 
   ctx.save();
   ctx.globalCompositeOperation = 'soft-light';
+  ctx.filter = `blur(${Math.max(3.0, width * 0.008)}px)`;
 
   const leftPt = landmarks[CHEEK_CENTERS.LEFT];
   const rightPt = landmarks[CHEEK_CENTERS.RIGHT];
@@ -246,6 +249,7 @@ export function renderFoundation(ctx, landmarks, options = {}, width, height) {
 
   ctx.save();
   ctx.globalCompositeOperation = 'soft-light';
+  ctx.filter = `blur(${Math.max(2.0, width * 0.005)}px)`;
 
   const facePath = new Path2D();
   tracePathToPath2D(facePath, FACE_OVAL, landmarks, width, height);
@@ -267,8 +271,14 @@ export function renderFoundation(ctx, landmarks, options = {}, width, height) {
 export function renderEyeshadow(ctx, landmarks, options = {}, width, height) {
   if (!landmarks || landmarks.length < 400 || !ctx) return;
 
-  const { hexColor = '#9333EA', opacity = 0.50 } = options;
+  const {
+    hexColor = '#9333EA',
+    opacity = 0.50,
+    finishType = 'MATTE',
+    shimmerIntensity = 0.0
+  } = options;
   const op = Math.max(0.05, Math.min(1.0, opacity));
+  const finish = String(finishType || '').toUpperCase();
 
   ctx.save();
   ctx.globalCompositeOperation = 'soft-light';
@@ -285,6 +295,22 @@ export function renderEyeshadow(ctx, landmarks, options = {}, width, height) {
   tracePath(ctx, EYESHADOW_RIGHT, landmarks, width, height);
   ctx.fillStyle = hexToRgba(hexColor, op * 0.75);
   ctx.fill();
+
+  // Shimmer eyelid highlight
+  if (finish === 'SHIMMER' || shimmerIntensity > 0.1) {
+    const shim = Math.max(0.15, Math.min(1.0, shimmerIntensity || 0.5));
+    ctx.globalCompositeOperation = 'screen';
+    ctx.filter = `blur(${Math.max(1.5, width * 0.004)}px)`;
+    ctx.fillStyle = `rgba(255, 245, 225, ${Math.min(0.35, shim * 0.4)})`;
+
+    ctx.beginPath();
+    tracePath(ctx, EYESHADOW_LEFT, landmarks, width, height);
+    ctx.fill();
+
+    ctx.beginPath();
+    tracePath(ctx, EYESHADOW_RIGHT, landmarks, width, height);
+    ctx.fill();
+  }
 
   ctx.restore();
 }

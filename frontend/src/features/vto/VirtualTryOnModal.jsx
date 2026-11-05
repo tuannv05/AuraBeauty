@@ -209,6 +209,7 @@ export default function VirtualTryOnModal({
   // Refs
   const canvasRef = useRef(null);
   const videoRef = useRef(null);
+  const streamRef = useRef(null);
   const cachedImgRef = useRef(null);
   const landmarkerRef = useRef(null);
   const jitterFilterRef = useRef(new FaceMeshJitterFilter(478, 1.0, 0.007));
@@ -361,33 +362,81 @@ export default function VirtualTryOnModal({
     }
   }, [mode, selectedModel, isMacroView, isSplitView, splitPos, activeLooks, uploadedLandmarks]);
 
-  // Camera Management
+  // Camera Management with 3-tier resilient constraints & leak-free track cleanup
   const startCamera = async () => {
     try {
       setCameraError(null);
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { width: { ideal: 640 }, height: { ideal: 640 }, facingMode: 'user' },
-        audio: false
-      });
+      let stream = null;
+
+      // Tier 1: Ideal 720p HD 16:9 for modern laptop webcams
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { width: { ideal: 1280 }, height: { ideal: 720 }, facingMode: 'user' },
+          audio: false
+        });
+      } catch (tier1Err) {
+        // Tier 2: Flexible user-facing video
+        try {
+          stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: 'user' },
+            audio: false
+          });
+        } catch (tier2Err) {
+          // Tier 3: Basic unconstrained video
+          stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false
+          });
+        }
+      }
+
+      streamRef.current = stream;
+
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
-        videoRef.current.play();
+        videoRef.current.onloadedmetadata = () => {
+          videoRef.current.play().catch(e => console.warn('Autoplay prevented:', e));
+        };
         setMode('camera');
         setIsMacroView(false);
       }
     } catch (err) {
-      console.warn('Webcam error:', err);
-      setCameraError('Không thể mở Camera (thiết bị không có webcam hoặc chưa cấp quyền). Vui lòng chọn ảnh mẫu cận môi bên dưới.');
+      console.warn('Webcam connection error:', err);
+      let message = 'Không thể mở Camera.';
+      if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
+        message = 'Trình duyệt đang chặn quyền truy cập Camera. Vui lòng nhấn vào biểu tượng ổ khóa 🔒 trên thanh địa chỉ và chọn "Cho phép" (Allow Camera).';
+      } else if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
+        message = 'Không tìm thấy thiết bị Webcam trên laptop của bạn. Đã tự động chuyển sang chế độ Người mẫu chuẩn Studio.';
+      } else if (err.name === 'NotReadableError' || err.name === 'TrackStartError') {
+        message = 'Webcam đang bị ứng dụng khác (Zoom, Teams, Meet) chiếm dụng. Đã tự động chuyển sang chế độ Người mẫu chuẩn Studio.';
+      } else {
+        message = `Không thể kết nối camera (${err.message || 'Lỗi thiết bị'}). Đã chuyển sang chế độ Người mẫu chuẩn Studio.`;
+      }
+      setCameraError(message);
       setMode('preset');
     }
   };
 
   const stopCamera = () => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(t => t.stop());
+      streamRef.current = null;
+    }
     if (videoRef.current && videoRef.current.srcObject) {
       videoRef.current.srcObject.getTracks().forEach(t => t.stop());
       videoRef.current.srcObject = null;
     }
   };
+
+  // Always release camera when modal is closed or unmounted
+  useEffect(() => {
+    if (!isOpen) {
+      stopCamera();
+    }
+    return () => {
+      stopCamera();
+    };
+  }, [isOpen]);
 
   // Image preloading without CORS restriction
   useEffect(() => {
