@@ -321,86 +321,87 @@ export function renderCompleteMakeupLook(ctx, landmarks, width, height, activeLo
       ctx.fill('evenodd');
     }
 
-    // 4d. Layer 4: Specular Gloss Highlights (Glossy & Satin) on BOTH Upper and Lower Lips
-    if (gloss > 0.12 || finish === 'GLOSSY' || finish === 'SATIN') {
-      ctx.save();
-      ctx.filter = 'blur(2.6px)';
-      ctx.globalCompositeOperation = 'screen';
+    // 4d. Layer 4: Natural Continuous Dewy Specular Reflection (Glossy & Satin)
+    // Loại bỏ hoàn toàn 13 đốm sáng tròn trắng rời rạc (hiệu ứng đom đóm)
+    // Thay thế bằng dải phản quang elip mềm mại tự nhiên dọc theo lòng môi dưới và nhân trung
+    if ((gloss > 0.15 || finish === 'GLOSSY' || finish === 'SATIN') && finish !== 'MATTE') {
+      const pt14 = landmarks[14] || landmarks[17];
+      const pt17 = landmarks[17];
+      const pt84 = landmarks[84];
+      const pt314 = landmarks[314];
 
-      // Lower Lip: Căng mọng bóng nước dọc theo đường cong bờ môi dưới
-      LOWER_LIP_HIGHLIGHTS.forEach((ptIdx, idx) => {
-        const pt = landmarks[ptIdx];
-        if (!pt) return;
-        const hx = pt.x * width;
-        const hy = pt.y * height - 2;
-        const hr = Math.max(5, width * 0.016);
-        const intensity = (idx === 0 || idx === 1 || idx === 2) ? gloss : gloss * 0.7;
+      if (pt17 && pt84 && pt314) {
+        ctx.save();
 
-        const hGrad = ctx.createRadialGradient(hx, hy, 1, hx, hy, hr);
-        hGrad.addColorStop(0, `rgba(255, 255, 255, ${Math.min(0.9, intensity * 0.95)})`);
-        hGrad.addColorStop(0.4, `rgba(255, 240, 245, ${intensity * 0.4})`);
-        hGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        // 1. Dải bắt sáng lòng môi dưới (Plump lower-lip cushion highlight)
+        const lxCenter = (pt84.x + pt314.x) / 2 * width;
+        const lyCenter = (pt17.y * 0.65 + (pt14 ? pt14.y : pt17.y) * 0.35) * height;
+        const lipCushionW = Math.max(14, Math.abs(pt314.x - pt84.x) * width * 0.45);
+        const lipCushionH = Math.max(3, Math.abs(pt17.y - (pt14 ? pt14.y : pt17.y)) * height * 0.32);
 
-        ctx.fillStyle = hGrad;
+        // Soft dewy sheen with soft-light so it blends smoothly into the underlying lipstick
+        ctx.filter = `blur(${Math.max(2.5, width * 0.007)}px)`;
+        ctx.globalCompositeOperation = 'soft-light';
+
+        const maxGlareAlpha = Math.min(0.40, gloss * 0.42);
+        const glareGrad = ctx.createRadialGradient(lxCenter, lyCenter, 1, lxCenter, lyCenter, lipCushionW);
+        glareGrad.addColorStop(0, `rgba(255, 248, 250, ${maxGlareAlpha})`);
+        glareGrad.addColorStop(0.45, `rgba(255, 240, 245, ${maxGlareAlpha * 0.6})`);
+        glareGrad.addColorStop(0.85, `rgba(255, 235, 240, ${maxGlareAlpha * 0.15})`);
+        glareGrad.addColorStop(1, 'rgba(255, 235, 240, 0)');
+
+        ctx.fillStyle = glareGrad;
         ctx.beginPath();
-        ctx.arc(hx, hy, hr, 0, Math.PI * 2);
+        ctx.ellipse(lxCenter, lyCenter, lipCushionW, lipCushionH, 0, 0, Math.PI * 2);
         ctx.fill();
-      });
 
-      // Upper Lip: Bắt sáng căng mọng viền nhân trung Cupid's bow và 2 gò môi trên
-      UPPER_LIP_HIGHLIGHTS.forEach((ptIdx) => {
-        const pt = landmarks[ptIdx];
-        if (!pt) return;
-        const hx = pt.x * width;
-        const hy = pt.y * height + 1;
-        const hr = Math.max(3.5, width * 0.012);
-        const isCupidPeak = (ptIdx === 0 || ptIdx === 37 || ptIdx === 267);
-        const intensity = isCupidPeak ? gloss * 0.90 : gloss * 0.60;
+        // 2. Nếu là chất son siêu bóng (GLOSSY cao cấp), thêm vệt bắt sáng căng mọng trong suốt (không dùng đốm trắng)
+        if (finish === 'GLOSSY' && gloss > 0.45) {
+          ctx.globalCompositeOperation = 'screen';
+          ctx.filter = `blur(${Math.max(1.8, width * 0.005)}px)`;
+          const dewyGrad = ctx.createLinearGradient(lxCenter - lipCushionW * 0.6, lyCenter, lxCenter + lipCushionW * 0.6, lyCenter);
+          dewyGrad.addColorStop(0, 'rgba(255, 255, 255, 0)');
+          dewyGrad.addColorStop(0.5, `rgba(255, 250, 252, ${Math.min(0.32, gloss * 0.35)})`);
+          dewyGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+          ctx.fillStyle = dewyGrad;
+          ctx.beginPath();
+          ctx.ellipse(lxCenter, lyCenter, lipCushionW * 0.55, Math.max(1.8, lipCushionH * 0.4), 0, 0, Math.PI * 2);
+          ctx.fill();
+        }
 
-        const hGrad = ctx.createRadialGradient(hx, hy, 0.5, hx, hy, hr);
-        hGrad.addColorStop(0, `rgba(255, 255, 255, ${Math.min(0.88, intensity * 0.95)})`);
-        hGrad.addColorStop(0.45, `rgba(255, 240, 245, ${intensity * 0.35})`);
-        hGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        // 3. Ánh sáng nhẹ ở đỉnh viền nhân trung (Cupid's bow - landmark 0), lan tỏa tự nhiên, không thành hạt
+        if (finish === 'GLOSSY' && gloss > 0.35 && landmarks[0]) {
+          const pt0 = landmarks[0];
+          const cxCupid = pt0.x * width;
+          const cyCupid = pt0.y * height + 1;
+          const rCupid = Math.max(3, width * 0.008);
 
-        ctx.fillStyle = hGrad;
-        ctx.beginPath();
-        ctx.arc(hx, hy, hr, 0, Math.PI * 2);
-        ctx.fill();
-      });
+          ctx.globalCompositeOperation = 'soft-light';
+          ctx.filter = 'blur(2px)';
+          const cupidGrad = ctx.createRadialGradient(cxCupid, cyCupid, 0.5, cxCupid, cyCupid, rCupid);
+          cupidGrad.addColorStop(0, `rgba(255, 248, 250, ${Math.min(0.28, gloss * 0.30)})`);
+          cupidGrad.addColorStop(1, 'rgba(255, 248, 250, 0)');
 
-      ctx.restore();
+          ctx.fillStyle = cupidGrad;
+          ctx.beginPath();
+          ctx.arc(cxCupid, cyCupid, rCupid, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        ctx.restore();
+      }
     }
 
-    // 4e. Layer 5: Micro-shimmer particles on BOTH Upper and Lower Lips
-    if (shimmer > 0.15 || finish === 'SHIMMER') {
+    // 4e. Layer 5: Micro-shimmer (Ánh nhũ mịn tự nhiên, phủ đều thay vì chấm hạt đom đóm)
+    if ((shimmer > 0.15 || finish === 'SHIMMER') && finish !== 'MATTE') {
       ctx.save();
-      ctx.filter = 'blur(0.8px)';
-      ctx.globalCompositeOperation = 'lighter';
-
-      // Lower lip shimmer
-      LOWER_LIP_HIGHLIGHTS.forEach((ptIdx, i) => {
-        const pt = landmarks[ptIdx];
-        if (!pt) return;
-        const sx = pt.x * width + (i % 2 === 0 ? 2 : -2);
-        const sy = pt.y * height;
-        ctx.fillStyle = `rgba(255, 240, 200, ${shimmer * 0.75})`;
-        ctx.beginPath();
-        ctx.arc(sx, sy, 1.8, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      // Upper lip shimmer
-      UPPER_LIP_HIGHLIGHTS.forEach((ptIdx, i) => {
-        const pt = landmarks[ptIdx];
-        if (!pt) return;
-        const sx = pt.x * width + (i % 2 === 0 ? 1.5 : -1.5);
-        const sy = pt.y * height;
-        ctx.fillStyle = `rgba(255, 245, 210, ${shimmer * 0.70})`;
-        ctx.beginPath();
-        ctx.arc(sx, sy, 1.5, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
+      ctx.filter = 'blur(1.2px)';
+      ctx.globalCompositeOperation = 'soft-light';
+      ctx.fillStyle = `rgba(255, 240, 215, ${Math.min(0.35, shimmer * 0.45)})`;
+      ctx.beginPath();
+      tracePath(ctx, LIP_OUTER_LOOP, landmarks, width, height);
+      tracePath(ctx, LIP_INNER_LOOP, landmarks, width, height);
+      ctx.fill('evenodd');
       ctx.restore();
     }
 

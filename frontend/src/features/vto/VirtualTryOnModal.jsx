@@ -218,7 +218,8 @@ export default function VirtualTryOnModal({
 
     const vto = initialProduct.vtoConfig;
     if (vto && vto.category && vto.shades && vto.shades.length > 0) {
-      const cat = vto.category;
+      const rawCat = String(vto.category || '').toUpperCase();
+      const cat = DEFAULT_VTO_CATALOG[rawCat] ? rawCat : 'LIPSTICK';
       setActiveTab(cat);
 
       // Match chosen variant if provided
@@ -237,15 +238,23 @@ export default function VirtualTryOnModal({
       setActiveProducts(prev => ({ ...prev, [cat]: initialProduct }));
     } else {
       const catName = (initialProduct.category || '').toLowerCase();
-      let detectedCat = 'LIPSTICK';
-      if (catName.includes('son')) detectedCat = 'LIPSTICK';
-      else if (catName.includes('má') || catName.includes('blush')) detectedCat = 'BLUSH';
-      else if (catName.includes('nền') || catName.includes('cushion') || catName.includes('bb')) detectedCat = 'FOUNDATION';
-      else if (catName.includes('mắt') || catName.includes('shadow')) detectedCat = 'EYESHADOW';
+      const prodName = (initialProduct.name || '').toLowerCase();
+      let detectedCat = null;
+      if (catName.includes('son') || prodName.includes('son') || prodName.includes('lip')) detectedCat = 'LIPSTICK';
+      else if (catName.includes('má') || catName.includes('blush') || prodName.includes('má')) detectedCat = 'BLUSH';
+      else if (catName.includes('nền') || catName.includes('cushion') || catName.includes('bb') || prodName.includes('cushion')) detectedCat = 'FOUNDATION';
+      else if (catName.includes('mắt') || catName.includes('shadow') || prodName.includes('mắt')) detectedCat = 'EYESHADOW';
 
-      setActiveTab(detectedCat);
-      setActiveLooks(prev => ({ ...prev, [detectedCat]: DEFAULT_VTO_CATALOG[detectedCat].shades[0] }));
-      setActiveProducts(prev => ({ ...prev, [detectedCat]: initialProduct }));
+      if (detectedCat) {
+        setActiveTab(detectedCat);
+        setActiveLooks(prev => ({ ...prev, [detectedCat]: DEFAULT_VTO_CATALOG[detectedCat].shades[0] }));
+        setActiveProducts(prev => ({ ...prev, [detectedCat]: initialProduct }));
+      } else {
+        // If product is skincare/bodycare, keep elegant default VTO lipstick
+        setActiveTab('LIPSTICK');
+        setActiveLooks(prev => ({ ...prev, LIPSTICK: DEFAULT_VTO_CATALOG.LIPSTICK.shades[0] }));
+        setActiveProducts(prev => ({ ...prev, LIPSTICK: DEFAULT_VTO_CATALOG.LIPSTICK.defaultProduct }));
+      }
     }
   }, [initialProduct, initialVariant, isOpen]);
 
@@ -446,7 +455,7 @@ export default function VirtualTryOnModal({
     setIsAiDrawerOpen(true);
     setIsAiStreaming(true);
 
-    const product = activeProducts[activeTab] || { name: DEFAULT_VTO_CATALOG[activeTab].defaultProduct.name, id: 'vto-item' };
+    const product = activeProducts[activeTab] || { name: DEFAULT_VTO_CATALOG[activeTab]?.defaultProduct?.name || 'Son Môi', id: 'vto-item' };
     setAiChatMessages([{ role: 'ASSISTANT', content: '' }]);
 
     const params = new URLSearchParams({
@@ -521,12 +530,13 @@ export default function VirtualTryOnModal({
   if (!isOpen) return null;
 
   const currentTabShades = (activeProducts[activeTab]?.vtoConfig?.shades)
-    || DEFAULT_VTO_CATALOG[activeTab].shades;
+    || DEFAULT_VTO_CATALOG[activeTab]?.shades
+    || DEFAULT_VTO_CATALOG.LIPSTICK.shades;
 
   const activeLookCount = Object.values(activeLooks).filter(Boolean).length;
   const totalActivePrice = Object.entries(activeLooks).reduce((sum, [catKey, shade]) => {
     if (!shade) return sum;
-    const p = activeProducts[catKey] || DEFAULT_VTO_CATALOG[catKey].defaultProduct;
+    const p = activeProducts[catKey] || DEFAULT_VTO_CATALOG[catKey]?.defaultProduct || DEFAULT_VTO_CATALOG.LIPSTICK.defaultProduct;
     return sum + (p.price || (p.variants?.[0]?.price) || 290000);
   }, 0);
 
@@ -1051,13 +1061,13 @@ export default function VirtualTryOnModal({
               >
                 <div style={{ minWidth: 0, flex: 1, marginRight: '8px' }}>
                   <div style={{ fontSize: '10.5px', color: '#fda4af', fontWeight: 750, textTransform: 'uppercase' }}>
-                    {DEFAULT_VTO_CATALOG[activeTab].categoryName}
+                    {DEFAULT_VTO_CATALOG[activeTab]?.categoryName || 'Son môi'}
                   </div>
                   <div style={{ fontSize: '12.5px', fontWeight: 700, color: '#ffffff', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    {activeProducts[activeTab]?.name || DEFAULT_VTO_CATALOG[activeTab].defaultProduct.name}
+                    {activeProducts[activeTab]?.name || DEFAULT_VTO_CATALOG[activeTab]?.defaultProduct?.name || 'Son Lì Cao Cấp'}
                   </div>
                   <div style={{ fontSize: '11px', color: '#94a3b8' }}>
-                    {(activeProducts[activeTab]?.price || activeProducts[activeTab]?.variants?.[0]?.price || DEFAULT_VTO_CATALOG[activeTab].defaultProduct.price)?.toLocaleString('vi-VN')} đ
+                    {(activeProducts[activeTab]?.price || activeProducts[activeTab]?.variants?.[0]?.price || DEFAULT_VTO_CATALOG[activeTab]?.defaultProduct?.price || 290000)?.toLocaleString('vi-VN')} đ
                   </div>
                 </div>
 
