@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/scraper.js",
     "crawl": "node src/scraper.js",
+    "crawl:shopee": "node src/crawlShopeeBodyProducts.js",
     "sync": "node src/dbSynchronizer.js"
   },
   "dependencies": {
