@@ -54,7 +54,6 @@ export default function BuyerZone({
   closeModal,
   goBack,
   onAddToast,
-  onReplayIntro,
   wishlistIds,
   setWishlistIds
 }) {
@@ -266,7 +265,6 @@ export default function BuyerZone({
       {/* VIEW: HOME */}
       {activeView === 'home' && (
         <HomeView
-          onReplayIntro={onReplayIntro}
           onOpenTryOn={(p) => {
             if (openModal) {
               openModal('try-on', { product: p });

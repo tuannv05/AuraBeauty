@@ -75,8 +75,7 @@ export default function HomeView({
   onOpenTryOn,
   onOpenSkinScanner,
   onOpenBeautyPass,
-  onNavigateRoutine,
-  onReplayIntro
+  onNavigateRoutine
 }) {
   // Hero Slider
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -174,28 +173,6 @@ export default function HomeView({
                     >
                       ✨ {slide.badge}
                     </span>
-                    {onReplayIntro && (
-                      <button
-                        type="button"
-                        onClick={onReplayIntro}
-                        style={{
-                          background: 'rgba(255, 171, 185, 0.2)',
-                          color: '#FFABB9',
-                          border: '1px solid rgba(255, 171, 185, 0.35)',
-                          borderRadius: '9999px',
-                          padding: '3px 10px',
-                          fontSize: '11px',
-                          fontWeight: 650,
-                          cursor: 'pointer',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '4px'
-                        }}
-                      >
-                        <Sparkles size={11} />
-                        <span>Xem lại Intro</span>
-                      </button>
-                    )}
                   </div>
 
                   <h2
@@ -221,7 +198,7 @@ export default function HomeView({
                     {slide.subtitle}
                   </p>
 
-                  {/* CTA Cluster */}
+                  {/* CTA */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '22px' }}>
                     <SpringButton
                       variant="rose"
@@ -237,28 +214,6 @@ export default function HomeView({
                     >
                       <span>{slide.ctaText}</span>
                       <ArrowRight size={15} />
-                    </SpringButton>
-
-                    <SpringButton
-                      variant="outline"
-                      size="md"
-                      onClick={() => onOpenTryOn && onOpenTryOn()}
-                      className="bg-white/10 hover:bg-white/20 text-white border-white/20 backdrop-blur-md"
-                    >
-                      <Sparkles size={14} className="text-pink-300" />
-                      <span>Thử Màu AR 60FPS</span>
-                      <AnimatedBadge variant="danger" pulse className="text-[10px] py-0 px-1.5 bg-rose-500/20 text-rose-200 border-none">
-                        Live
-                      </AnimatedBadge>
-                    </SpringButton>
-
-                    <SpringButton
-                      variant="outline"
-                      size="md"
-                      onClick={() => onOpenSkinScanner && onOpenSkinScanner()}
-                      className="bg-white/10 hover:bg-white/20 text-white border-white/20 backdrop-blur-md"
-                    >
-                      <span>🔬 Soi Da AI</span>
                     </SpringButton>
                   </div>
 
@@ -287,7 +242,7 @@ export default function HomeView({
                   </div>
                 </div>
 
-                {/* Hero Image & Floating Glassmorphism Cards */}
+                {/* Hero Product Image */}
                 <div
                   style={{
                     flex: 1,
@@ -314,71 +269,6 @@ export default function HomeView({
                       border: '4px solid rgba(255,255,255,0.1)'
                     }}
                   />
-
-                  {/* Floating Glassmorphism Card 1: AR Live Try-On */}
-                  <motion.div
-                    whileHover={{ y: -3, scale: 1.03 }}
-                    onClick={() => onOpenTryOn && onOpenTryOn()}
-                    style={{
-                      position: 'absolute',
-                      bottom: '-10px',
-                      left: '20px',
-                      padding: '10px 14px',
-                      borderRadius: '16px',
-                      background: 'rgba(15, 23, 42, 0.82)',
-                      backdropFilter: 'blur(12px)',
-                      border: '1px solid rgba(244, 114, 182, 0.35)',
-                      color: '#ffffff',
-                      boxShadow: '0 12px 28px rgba(0,0,0,0.4)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '10px',
-                      cursor: 'pointer',
-                      zIndex: 10
-                    }}
-                  >
-                    <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'linear-gradient(135deg, #ec4899, #db2777)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Sparkles size={16} style={{ color: '#ffffff' }} />
-                    </div>
-                    <div>
-                      <div style={{ fontSize: '11px', fontWeight: 800, color: '#f472b6', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <span>AR TRY-ON</span>
-                        <AnimatedBadge variant="danger" pulse className="text-[9px] py-0 px-1 bg-rose-500/20 text-rose-300 border-none">60 FPS</AnimatedBadge>
-                      </div>
-                      <div style={{ fontSize: '10px', color: '#cbd5e1' }}>Thử son & makeup tức thì</div>
-                    </div>
-                  </motion.div>
-
-                  {/* Floating Glassmorphism Card 2: AI Skin Analysis */}
-                  <motion.div
-                    whileHover={{ y: -3, scale: 1.03 }}
-                    onClick={() => onOpenSkinScanner && onOpenSkinScanner()}
-                    style={{
-                      position: 'absolute',
-                      top: '-10px',
-                      right: '20px',
-                      padding: '10px 14px',
-                      borderRadius: '16px',
-                      background: 'rgba(15, 23, 42, 0.82)',
-                      backdropFilter: 'blur(12px)',
-                      border: '1px solid rgba(52, 211, 153, 0.35)',
-                      color: '#ffffff',
-                      boxShadow: '0 12px 28px rgba(0,0,0,0.4)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '10px',
-                      cursor: 'pointer',
-                      zIndex: 10
-                    }}
-                  >
-                    <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'linear-gradient(135deg, #10b981, #059669)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <ShieldCheck size={16} style={{ color: '#ffffff' }} />
-                    </div>
-                    <div>
-                      <div style={{ fontSize: '11px', fontWeight: 800, color: '#34d399' }}>AI CHẨN ĐOÁN DA</div>
-                      <div style={{ fontSize: '10px', color: '#cbd5e1' }}>Phân tích 478 điểm 3D</div>
-                    </div>
-                  </motion.div>
                 </div>
               </div>
             );

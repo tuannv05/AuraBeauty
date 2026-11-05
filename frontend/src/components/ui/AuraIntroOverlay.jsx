@@ -1,34 +1,38 @@
 // frontend/src/components/ui/AuraIntroOverlay.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, ShieldCheck, Dna, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Sparkles, Dna, ArrowRight } from 'lucide-react';
 
-const INTRO_STORAGE_KEY = 'aura_intro_seen_v2';
-const INTRO_DURATION_MS = 1400;
+const INTRO_DURATION_MS = 1350;
 
-export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
-  const [isVisible, setIsVisible] = useState(() => forceShow);
-
+export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
+  const [isVisible, setIsVisible] = useState(isOpen);
   const [progress, setProgress] = useState(0);
   const startTimeRef = useRef(null);
   const animFrameRef = useRef(null);
 
-  // Synchronize when parent triggers replay
   useEffect(() => {
-    if (forceShow) {
-      setIsVisible(true);
+    setIsVisible(isOpen);
+    if (isOpen) {
       startTimeRef.current = null;
       setProgress(0);
     }
-  }, [forceShow]);
+  }, [isOpen]);
 
   const handleDismiss = () => {
-    try {
-      sessionStorage.setItem(INTRO_STORAGE_KEY, 'true');
-    } catch {}
     setIsVisible(false);
     if (onComplete) onComplete();
   };
+
+  // Keyboard shortcut: Escape to dismiss instantly
+  useEffect(() => {
+    if (!isVisible) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') handleDismiss();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isVisible]);
 
   useEffect(() => {
     if (!isVisible) return;
@@ -36,7 +40,7 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
     // Hard fallback timer: guarantees auto-dismissal even if tab is unfocused or requestAnimationFrame throttled
     const fallbackTimer = setTimeout(() => {
       handleDismiss();
-    }, INTRO_DURATION_MS + 200);
+    }, INTRO_DURATION_MS + 250);
 
     const tick = (timestamp) => {
       if (!startTimeRef.current) startTimeRef.current = timestamp;
@@ -59,20 +63,17 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
     };
   }, [isVisible]);
 
-  // If not visible, return null immediately so it never occupies the DOM or blocks pointer events
-  if (!isVisible) return null;
-
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={onComplete}>
       {isVisible && (
         <motion.div
-          key="aura-intro-overlay"
+          key="aura-luxury-intro-curtain"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{
-            opacity: 0,
             y: '-100%',
-            transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
+            opacity: 0,
+            transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] }
           }}
           onClick={handleDismiss}
           style={{
@@ -83,20 +84,19 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#09090b',
+            backgroundColor: '#08080a',
             color: '#ffffff',
             overflow: 'hidden',
             userSelect: 'none',
-            pointerEvents: isVisible ? 'auto' : 'none',
             cursor: 'pointer'
           }}
         >
-          {/* Subtle Luxury Radial Glow */}
+          {/* Ambient Lighting & High-Fashion Aura Glow */}
           <div
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'radial-gradient(circle at 50% 45%, rgba(255, 171, 185, 0.14) 0%, rgba(212, 175, 55, 0.08) 35%, rgba(9, 9, 11, 0.98) 75%)',
+              background: 'radial-gradient(circle at 50% 42%, rgba(255, 171, 185, 0.18) 0%, rgba(229, 192, 123, 0.12) 35%, rgba(8, 8, 10, 0.98) 72%)',
               pointerEvents: 'none'
             }}
           />
@@ -111,30 +111,34 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
             }}
           >
             <button
-              onClick={handleDismiss}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDismiss();
+              }}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
                 padding: '6px 16px',
                 borderRadius: '9999px',
-                fontSize: '12px',
+                fontSize: '11.5px',
                 fontWeight: 650,
-                color: 'rgba(255, 255, 255, 0.8)',
+                letterSpacing: '0.04em',
+                color: 'rgba(255, 255, 255, 0.85)',
                 background: 'rgba(255, 255, 255, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                backdropFilter: 'blur(8px)',
+                border: '1px solid rgba(255, 255, 255, 0.18)',
+                backdropFilter: 'blur(10px)',
                 cursor: 'pointer',
-                transition: 'all 180ms ease'
+                transition: 'all 200ms ease'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = '#ffffff';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.35)';
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.18)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.18)';
                 e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
               }}
             >
@@ -142,7 +146,7 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
             </button>
           </div>
 
-          {/* Central Luxury Emblem & Typographic Reveal */}
+          {/* Central Luxury Jewel Emblem & Haute Couture Reveal */}
           <div
             style={{
               position: 'relative',
@@ -152,35 +156,34 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
               alignItems: 'center',
               textAlign: 'center',
               padding: '0 24px',
-              maxWidth: '680px'
+              maxWidth: '720px'
             }}
           >
-            {/* Animated SVG Diamond & Monogram */}
+            {/* Jewel Diamond Monogram with Golden Light Trace */}
             <motion.div
-              initial={{ scale: 0.85, opacity: 0 }}
+              initial={{ scale: 0.82, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              style={{ marginBottom: '20px' }}
+              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              style={{ marginBottom: '22px', position: 'relative' }}
             >
               <div
                 style={{
-                  width: '68px',
-                  height: '68px',
-                  borderRadius: '22px',
-                  background: 'linear-gradient(135deg, rgba(255, 171, 185, 0.25) 0%, rgba(212, 175, 55, 0.2) 100%)',
-                  border: '1px solid rgba(255, 255, 255, 0.25)',
+                  width: '74px',
+                  height: '74px',
+                  borderRadius: '24px',
+                  background: 'linear-gradient(135deg, rgba(255, 171, 185, 0.28) 0%, rgba(229, 192, 123, 0.22) 100%)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: '0 12px 32px rgba(255, 171, 185, 0.25)',
-                  backdropFilter: 'blur(12px)'
+                  boxShadow: '0 16px 38px rgba(255, 171, 185, 0.28)',
+                  backdropFilter: 'blur(16px)'
                 }}
               >
-                <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Aura Diamond Emblem */}
+                <svg width="38" height="38" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <motion.path
-                    d="M20 4L34 16L20 36L6 16L20 4Z"
-                    stroke="url(#aura-gold-grad)"
+                    d="M20 3L35 15L20 37L5 15L20 3Z"
+                    stroke="url(#aura-gold-prism)"
                     strokeWidth="2.2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -188,19 +191,18 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 0.7, ease: 'easeInOut' }}
                   />
-                  {/* Inner Facet */}
                   <motion.path
-                    d="M6 16H34M20 4V36M11 16L20 36M29 16L20 36"
-                    stroke="rgba(255, 255, 255, 0.55)"
+                    d="M5 15H35M20 3V37M10 15L20 37M30 15L20 37"
+                    stroke="rgba(255, 255, 255, 0.65)"
                     strokeWidth="1.2"
                     initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 0.75 }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: 'easeInOut' }}
+                    animate={{ pathLength: 1, opacity: 0.8 }}
+                    transition={{ duration: 0.8, delay: 0.15, ease: 'easeInOut' }}
                   />
                   <defs>
-                    <linearGradient id="aura-gold-grad" x1="6" y1="4" x2="34" y2="36" gradientUnits="userSpaceOnUse">
+                    <linearGradient id="aura-gold-prism" x1="5" y1="3" x2="35" y2="37" gradientUnits="userSpaceOnUse">
                       <stop stopColor="#FFABB9" />
-                      <stop offset="0.5" stopColor="#FFFFFF" />
+                      <stop offset="0.45" stopColor="#FFFFFF" />
                       <stop offset="1" stopColor="#E5C07B" />
                     </linearGradient>
                   </defs>
@@ -208,22 +210,23 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
               </div>
             </motion.div>
 
-            {/* Editorial Brand Name with Shimmer */}
+            {/* Haute Couture Brand Typography */}
             <motion.h1
               initial={{ y: 16, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
               style={{
-                fontSize: 'clamp(28px, 5vw, 42px)',
-                fontWeight: 850,
-                letterSpacing: '0.12em',
+                fontSize: 'clamp(28px, 5.5vw, 44px)',
+                fontWeight: 900,
+                letterSpacing: '0.22em',
                 lineHeight: 1.15,
                 margin: '0 0 10px 0',
-                background: 'linear-gradient(90deg, #FFFFFF 0%, #FFABB9 40%, #E5C07B 70%, #FFFFFF 100%)',
+                background: 'linear-gradient(90deg, #FFFFFF 0%, #FFD1D9 30%, #F5D79E 65%, #FFFFFF 100%)',
                 backgroundSize: '200% auto',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                textTransform: 'uppercase'
+                textTransform: 'uppercase',
+                fontFamily: 'system-ui, -apple-system, sans-serif'
               }}
             >
               Aura Beauty Mall
@@ -232,60 +235,61 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
             <motion.p
               initial={{ y: 12, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={{ duration: 0.45, delay: 0.25 }}
               style={{
-                fontSize: '13.5px',
-                color: 'rgba(255, 255, 255, 0.7)',
-                letterSpacing: '0.04em',
-                fontWeight: 350,
+                fontSize: '12px',
+                color: 'rgba(255, 255, 255, 0.75)',
+                letterSpacing: '0.18em',
+                fontWeight: 400,
+                textTransform: 'uppercase',
                 margin: '0 0 24px 0'
               }}
             >
-              Hệ sinh thái Mỹ phẩm Đa Người Bán & Công nghệ Làm đẹp Đột phá
+              Sàn TMĐT Mỹ Phẩm Đa Người Bán & Công Nghệ Derma-Tech
             </motion.p>
 
-            {/* 3 Staggered Assurance Badges */}
+            {/* 3 Staggered Crystal Badges */}
             <div
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 justifyContent: 'center',
                 gap: '10px',
-                marginBottom: '28px'
+                marginBottom: '24px'
               }}
             >
               {[
                 {
-                  icon: <ShieldCheck size={14} style={{ color: '#38bdf8' }} />,
-                  text: '100% Chính Hãng CBMP Bộ Y Tế',
-                  border: 'rgba(56, 189, 248, 0.25)',
+                  icon: <ShieldCheck size={13} style={{ color: '#38bdf8' }} />,
+                  text: '100% Chính Hãng CBMP',
+                  border: 'rgba(56, 189, 248, 0.28)',
                   bg: 'rgba(56, 189, 248, 0.08)'
                 },
                 {
-                  icon: <Sparkles size={14} style={{ color: '#f472b6' }} />,
-                  text: 'Thử Son & Makeup AR 60FPS',
-                  border: 'rgba(244, 114, 182, 0.25)',
+                  icon: <Sparkles size={13} style={{ color: '#f472b6' }} />,
+                  text: 'AR Try-On 60 FPS',
+                  border: 'rgba(244, 114, 182, 0.28)',
                   bg: 'rgba(244, 114, 182, 0.08)'
                 },
                 {
-                  icon: <Dna size={14} style={{ color: '#34d399' }} />,
+                  icon: <Dna size={13} style={{ color: '#34d399' }} />,
                   text: 'Trợ Lý AI Phân Tích INCI',
-                  border: 'rgba(52, 211, 153, 0.25)',
+                  border: 'rgba(52, 211, 153, 0.28)',
                   bg: 'rgba(52, 211, 153, 0.08)'
                 }
               ].map((badge, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ y: 14, opacity: 0 }}
+                  initial={{ y: 12, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.4, delay: 0.35 + idx * 0.12 }}
+                  transition={{ duration: 0.35, delay: 0.3 + idx * 0.1 }}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '6px',
-                    padding: '6px 14px',
+                    padding: '5px 13px',
                     borderRadius: '9999px',
-                    fontSize: '11.5px',
+                    fontSize: '11px',
                     fontWeight: 650,
                     color: '#ffffff',
                     background: badge.bg,
@@ -300,7 +304,7 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
             </div>
           </div>
 
-          {/* Bottom Hairline Progress Bar */}
+          {/* Bottom Hairline Gold Laser Progress Bar */}
           <div
             style={{
               position: 'absolute',
@@ -308,7 +312,7 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
               left: 0,
               right: 0,
               height: '3px',
-              background: 'rgba(255, 255, 255, 0.1)',
+              background: 'rgba(255, 255, 255, 0.08)',
               overflow: 'hidden'
             }}
           >
@@ -317,8 +321,8 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
                 height: '100%',
                 width: `${progress}%`,
                 background: 'linear-gradient(90deg, #FFABB9 0%, #E5C07B 50%, #FFABB9 100%)',
-                boxShadow: '0 0 10px rgba(255, 171, 185, 0.8)',
-                transition: 'width 30ms linear'
+                boxShadow: '0 0 12px rgba(255, 171, 185, 0.9)',
+                transition: 'width 25ms linear'
               }}
             />
           </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
 import BuyerZone from './components/BuyerZone';
 import SellerZone from './components/SellerZone';
@@ -16,11 +16,9 @@ import { useBrowserHistorySync } from './hooks/useBrowserHistorySync';
 import { AuraIntroOverlay } from './components/ui';
 
 export default function App() {
-  // Luxury Editorial Intro state
-  const [forceShowIntro, setForceShowIntro] = useState(false);
-  const handleReplayIntro = () => {
-    setForceShowIntro(true);
-  };
+  // Luxury Editorial Intro state: kích hoạt khi mới vào web hoặc khi quay lại trang chủ
+  const [showIntro, setShowIntro] = useState(true);
+  const prevViewRef = useRef(null);
 
   // Current user state (mặc định ban đầu là null khi chưa đăng nhập)
   const [currentUser, setCurrentUser] = useState(() => {
@@ -78,6 +76,14 @@ export default function App() {
     closeModal,
     goBack
   } = useBrowserHistorySync();
+
+  // Kích hoạt Intro khi quay lại trang chủ từ các view khác
+  useEffect(() => {
+    if (prevViewRef.current && prevViewRef.current !== 'home' && activeView === 'home') {
+      setShowIntro(true);
+    }
+    prevViewRef.current = activeView;
+  }, [activeView]);
 
   // Top Bar Announcement / Quick Link Modals
   const [activeTopBarModal, setActiveTopBarModal] = useState(null);
@@ -149,10 +155,10 @@ export default function App() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--canvas)' }}>
-      {/* 0. Luxury Editorial Brand Intro Overlay (Once-Per-Session) */}
+      {/* 0. Luxury Editorial Brand Intro Overlay (khi mới vào web hoặc quay lại trang chủ) */}
       <AuraIntroOverlay
-        forceShow={forceShowIntro}
-        onComplete={() => setForceShowIntro(false)}
+        isOpen={showIntro}
+        onComplete={() => setShowIntro(false)}
       />
 
       {/* 1. Global Toast Container */}
@@ -197,7 +203,6 @@ export default function App() {
           onNavigateFlashSale={() => navigateTo({ view: 'flash-sale' })}
           onNavigateAdmin={() => navigateTo({ view: 'admin', adminTab: 'merchants' })}
           onNavigateSeller={() => navigateTo({ view: 'seller', sellerTab: 'overview' })}
-          onReplayIntro={handleReplayIntro}
           user={currentUser}
         />
       )}
@@ -274,7 +279,6 @@ export default function App() {
             closeModal={closeModal}
             goBack={goBack}
             onAddToast={addToast}
-            onReplayIntro={handleReplayIntro}
             wishlistIds={wishlistIds}
             setWishlistIds={setWishlistIds}
           />
