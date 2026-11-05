@@ -1,123 +1,248 @@
-# Multi-Vendor Cosmetics Platform (Sàn Thương Mại Điện Tử Mỹ Phẩm Đa Người Bán)
+<div align="center">
 
-Dự án đồ án tốt nghiệp / chuyên đề kỹ thuật phần mềm xây dựng nền tảng sàn thương mại điện tử mỹ phẩm đa người bán theo kiến trúc **Microservices Reactive 100% Non-blocking**, áp dụng thiết kế hướng tên miền (**Domain-Driven Design - DDD**), mô hình **Hexagonal Architecture (Ports and Adapters)**, mẫu giao dịch phân tán **Saga Choreography** kết hợp **Transactional Outbox**, và trợ lý trí tuệ nhân tạo **AI Advisor (RAG)** tư vấn thành phần mỹ phẩm (INCI) qua Server-Sent Events (SSE).
+# ✨ AURA BEAUTY MALL — MULTI-VENDOR DERMA-TECH PLATFORM
+### Nền Tảng Thương Mại Điện Tử Mỹ Phẩm Đa Người Bán & Công Nghệ Thực Tế Ảo AR Virtual Try-On 3D
+
+[![Spring Boot 3](https://img.shields.io/badge/Spring_Boot-3.3.4-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
+[![Spring WebFlux](https://img.shields.io/badge/Spring_WebFlux-100%25_Non--blocking-brightgreen?style=for-the-badge&logo=spring&logoColor=white)](https://docs.spring.io/spring-framework/reference/web/webflux.html)
+[![Java 21](https://img.shields.io/badge/Java-21_LTS-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/projects/jdk/21/)
+[![Apache Kafka](https://img.shields.io/badge/Apache_Kafka-Saga_Choreography-231F20?style=for-the-badge&logo=apachekafka&logoColor=white)](https://kafka.apache.org/)
+[![React 18](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![MediaPipe 3D](https://img.shields.io/badge/MediaPipe-478_3D_FaceMesh-007ACC?style=for-the-badge&logo=google&logoColor=white)](https://developers.google.com/mediapipe)
+[![Docker](https://img.shields.io/badge/Docker_Compose-Infrastructure-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+
+<p align="center">
+  <b>Hệ sinh thái TMĐT mỹ phẩm cao cấp kết hợp Kiến trúc Microservices Reactive phân tán chịu tải cao, Giao dịch nhất quán Saga Outbox và Trải nghiệm AR Makeup Try-On 60 FPS + AI RAG Tra cứu thành phần mỹ phẩm (INCI).</b>
+</p>
+
+[🌟 Giới Thiệu](#-tổng-quan-dự-án) • [💎 Điểm Nhấn Kỹ Thuật](#-điểm-nhấn-kỹ-thuật-cốt-lõi) • [🏛️ Kiến Trúc Hệ Thống](#️-kiến-trúc-hệ-thống) • [🚀 Hướng Dẫn Cài Đặt & Chạy](#-hướng-dẫn-cài-đặt--khởi-chạy) • [🔑 Tài Khoản Thử Nghiệm](#-tài-khoản-thử-nghiệm)
+
+---
+</div>
+
+## 🌟 TỔNG QUAN DỰ ÁN
+
+**Aura Beauty Mall (WebBanMP)** là nền tảng thương mại điện tử chuyên biệt cho ngành làm đẹp và mỹ phẩm đa người bán (Multi-Vendor Marketplace). Hệ thống giải quyết hai bài toán cốt lõi:
+1. **Trải nghiệm khách hàng vượt trội (Client Experience):** Ứng dụng công nghệ **Aura Virtual Try-On 2.0** với camera AR 60 FPS nhận diện 478 điểm 3D khuôn mặt giúp khách hàng thử trực tiếp son môi, phấn má, kem nền, phấn mắt theo thời gian thực; kết hợp cùng **Trợ lý AI Da Liễu (Cosmetic RAG)** tư vấn thành phần chuẩn quốc tế **INCI**.
+2. **Kỹ thuật phần mềm chuẩn doanh nghiệp (Enterprise Architecture):** Xây dựng trên nền tảng **Microservices Reactive 100% Non-blocking**, tự động tách đơn đa người bán (**Split Order**), đồng bộ sự kiện phân tán qua **Kafka Transactional Outbox**, giữ kho nguyên tử **CAS** và kiểm soát tài chính minh bạch bằng **Sổ cái kép (Double-Entry Ledger)**.
 
 ---
 
-## 1. Cấu Trúc Hệ Thống (6 Services + 1 Gateway + React Frontend)
+## 💎 ĐIỂM NHẤN KỸ THUẬT CỐT LÕI
 
-| STT | Service | Bounded Context | Công Nghệ Chính | Cơ Sở Dữ Liệu | Cổng Mặc Định |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | **account-service** | Identity, Shop & Skin Profile | Spring Boot 3 WebFlux, Spring Security, R2DBC | PostgreSQL (`account_db`) | `8081` |
-| 2 | **catalog-service** | Product, INCI & Search | Spring Boot 3 WebFlux, Spring Data MongoDB Reactive | MongoDB (`catalog_db`) | `8082` |
-| 3 | **order-service** | Cart, Split Order & Outbox Relay | Spring Boot 3 WebFlux, R2DBC, Reactor Kafka | PostgreSQL (`order_db`) | `8083` |
-| 4 | **inventory-service**| Stock & Atomic Reservation (CAS) | Spring Boot 3 WebFlux, R2DBC, Reactor Kafka | PostgreSQL (`inventory_db`) | `8084` |
-| 5 | **payment-service**  | Mock Payment, Ledger & Commission | Spring Boot 3 WebFlux, R2DBC, Reactor Kafka | PostgreSQL (`payment_db`) | `8085` |
-| 6 | **ai-advisor-service**| Cosmetic RAG, pgvector & SSE Chat | Spring Boot 3 WebFlux, pgvector R2DBC | PostgreSQL + pgvector (`ai_db`) | `8086` |
-| 7 | **api-gateway**      | Routing, CORS & JWT Validation Filter | Spring Cloud Gateway Reactive | Không dùng DB | `8080` |
-| 8 | **frontend**         | SPA Buyer, Seller & Admin Zones | React 18, Vite, Lucide Icons, SSE Stream | — | `3000` |
+### 1. 💄 Edge-AI Virtual Try-On 2.0 & Chẩn Đoán Da 3D
+* **Phối màu trang điểm đa lớp (Multi-Category Makeup):** Thử trực tiếp 4 vùng makeup (Son môi, Phấn má, Kem nền, Phấn mắt) với đa dạng chất son (Matte, Glossy, Velvet, Satin).
+* **Canvas PBR Renderer 60 FPS:** Khử đốm sáng giả (glare artifact removal), giữ nguyên vân môi tự nhiên và hòa trộn sắc độ theo giá trị độ sáng tự nhiên (Luminance preserving).
+* **AI Skincare Advisor:** Phân tích tông da (Warm / Cool / Neutral) bằng mô hình `MediaPipe FaceMesh 478 3D landmarks`, đề xuất màu sắc hài hòa nhất với làn da người dùng.
+* **Chế độ so sánh Trước/Sau:** Split Slider hoặc giữ chuột để đối chiếu ảnh gốc và ảnh sau trang điểm.
 
----
+### 2. ⚡ 100% Non-blocking Reactive Microservices
+* **Reactive Streams toàn diện:** 7 Microservices viết bằng **Spring Boot 3 + Java 21 LTS + Spring WebFlux**, sử dụng trình điều khiển phản ứng **R2DBC** (PostgreSQL) và **Spring Data MongoDB Reactive**, triệt tiêu nguy cơ nghẽn thread pool.
+* **Chốt chặn an toàn luồng:** Tích hợp **BlockHound** để phát hiện và ngăn chặn mọi tác vụ blocking trên Netty EventLoop threads; kiểm chứng kiến trúc Hexagonal (Ports & Adapters) bằng **ArchUnit**.
 
-## 2. Điểm Nhấn Kỹ Thuật Cốt Lõi
+### 3. 🔄 Phân Tách Đơn Hàng (Split Order) & Saga Choreography
+* **Giỏ hàng đa Shop:** Đặt chung sản phẩm từ nhiều Shop khác nhau trong một lần thanh toán. Hệ thống tự động phân tách thành các Sub-order độc lập cho từng người bán.
+* **Đảm bảo tính nhất quán cuối cùng (Eventual Consistency):** Điều phối giao dịch phân tán qua **Reactor Kafka**, quản lý trạng thái đơn hàng bằng **Transactional Outbox Pattern** và cơ chế **Idempotent Consumer** chống xử lý trùng lặp sự kiện.
 
-1. **Saga Choreography + Transactional Outbox:**
-   - Đặt hàng đa người bán (**Split Order**) tự động phân tách giỏ hàng thành các Sub-order độc lập cho từng Shop.
-   - Quản lý giao dịch phân tán qua Apache Kafka, đảm bảo tính nhất quán cuối cùng (Eventual Consistency), chống mất sự kiện bằng Outbox Pattern và chống lặp bằng Idempotent Consumer.
-2. **100% Non-blocking Reactive Streams:**
-   - Không sử dụng JDBC blocking; toàn bộ kết nối cơ sở dữ liệu qua R2DBC và MongoDB Reactive Streams.
-   - Giám sát luồng EventLoop bằng **BlockHound** và kiểm tra kiến trúc bằng **ArchUnit**.
-3. **Trợ Lý Mỹ Phẩm RAG (Retrieval-Augmented Generation):**
-   - Phân tích thành phần mỹ phẩm theo chuẩn quốc tế INCI và cá nhân hóa gợi ý sản phẩm dựa trên Skin Profile của Buyer.
-   - Tìm kiếm ngữ nghĩa qua `pgvector` và phản hồi streaming theo thời gian thực qua Server-Sent Events (SSE).
-4. **Sổ Cái Kép Đối Soát (Double-Entry Ledger):**
-   - Invariant kế toán bất biến: `Tổng Nợ (Debit) = Tổng Có (Credit)`.
-   - Trích hoa hồng sàn 10% tự động, 90% phân bổ vào công nợ phải trả Seller.
+### 4. ⚖️ Sổ Cái Kép Kế Toán (Double-Entry Ledger) & Giữ Kho CAS
+* **Luật bất biến kế toán:** Cơ chế ghi sổ kép tự động đảm bảo `Tổng Nợ (Debit) = Tổng Có (Credit)`. Tự động khấu trừ 10% hoa hồng sàn và phân bổ 90% doanh thu vào công nợ phải trả cho từng Seller.
+* **Giữ kho nguyên tử (Atomic Stock Reservation):** Sử dụng thuật toán so sánh và hoán đổi **CAS (`(on_hand - reserved) >= N`)** cùng chiến lược xuất kho ưu tiên hạn dùng **FEFO**, đảm bảo không bao giờ bị bán âm kho khi chịu tải cao.
+
+### 5. 🤖 Trợ Lý Mỹ Phẩm RAG (Retrieval-Augmented Generation)
+* Tra cứu và phân tích an toàn thành phần mỹ phẩm theo tiêu chuẩn **INCI** (International Nomenclature of Cosmetic Ingredients).
+* Tìm kiếm ngữ nghĩa sản phẩm phù hợp với loại da qua vector embeddings lưu trữ tại **PostgreSQL pgvector**, truyền phát câu trả lời trực tiếp qua **Server-Sent Events (SSE)**.
 
 ---
 
-## 3. Khởi Chạy Hạ Tầng (Docker Compose)
+## 🏛️ KIẾN TRÚC HỆ THỐNG
 
-### Yêu cầu tiên quyết
-- **Docker** & **Docker Compose**
-- **Java 21+**
-- **Node.js 20+** & **npm**
+### Sơ Đồ Điều Phối Dịch Vụ
 
-### Khởi động hạ tầng:
+```
+                              [ Khách hàng (Buyer) / Chủ shop (Seller) / Quản trị viên (Admin) ]
+                                                            │
+                                                            ▼ (HTTP / SSE / WebSocket)
+                                          ┌────────────────────────────────────┐
+                                          │   React 18 SPA + Vite 5 (Port 3000)│
+                                          │   (MediaPipe AR 3D 60FPS + Tailwind)│
+                                          └─────────────────┬──────────────────┘
+                                                            │
+                                                            ▼ (Reverse Proxy / Routing)
+                                          ┌────────────────────────────────────┐
+                                          │     API Gateway (Port 8080)        │
+                                          │  Spring Cloud Gateway (Reactive)   │
+                                          └─────────────────┬──────────────────┘
+                                                            │
+                        ┌───────────────────────────────────┼──────────────────────────────────┐
+                        ▼                                   ▼                                  ▼
+             ┌─────────────────────┐             ┌─────────────────────┐            ┌─────────────────────┐
+             │   account-service   │             │   catalog-service   │            │    order-service    │
+             │     (Port 8081)     │             │     (Port 8082)     │            │     (Port 8083)     │
+             │   PostgreSQL R2DBC  │             │   MongoDB Reactive  │            │   PostgreSQL R2DBC  │
+             └──────────┬──────────┘             └──────────┬──────────┘            └──────────┬──────────┘
+                        │                                   │                                  │
+                        └─────────────────────────────┐     │     ┌────────────────────────────┘
+                                                      ▼     ▼     ▼
+                                             ┌─────────────────────────┐
+                                             │   Apache Kafka Clustered│
+                                             │ (Saga Choreography Bus) │
+                                             └────────┬────────┬───────┘
+                                                      │        │
+                        ┌─────────────────────────────┘        └──────────────────────────┐
+                        ▼                                                                 ▼
+             ┌─────────────────────┐             ┌─────────────────────┐            ┌─────────────────────┐
+             │  inventory-service  │             │   payment-service   │            │  ai-advisor-service │
+             │     (Port 8084)     │             │     (Port 8085)     │            │     (Port 8086)     │
+             │   PostgreSQL R2DBC  │             │   PostgreSQL R2DBC  │            │ PostgreSQL+pgvector │
+             └─────────────────────┘             └─────────────────────┘            └─────────────────────┘
+```
+
+### Bảng Danh Mục Dịch Vụ & Cổng Kết Nối
+
+| STT | Dịch Vụ | Cổng | Cơ Sở Dữ Liệu | Nhiệm Vụ & Bounded Context |
+| :---: | :--- | :---: | :--- | :--- |
+| **1** | **`api-gateway`** | `8080` | *Không dùng DB* | Gateway điều hướng, xác thực JWT Filter, cấu hình CORS phản ứng |
+| **2** | **`account-service`** | `8081` | PostgreSQL (`account_db`) | Quản lý người dùng, hồ sơ shop, phân quyền RBAC & Skin Profile |
+| **3** | **`catalog-service`** | `8082` | MongoDB (`catalog_db`) | Quản lý sản phẩm, thương hiệu, thành phần INCI, cấu hình VTO |
+| **4** | **`order-service`** | `8083` | PostgreSQL (`order_db`) | Quản lý giỏ hàng, tách đơn (Split Order), Outbox Relay Worker |
+| **5** | **`inventory-service`**| `8084` | PostgreSQL (`inventory_db`) | Kiểm soát tồn kho nguyên tử CAS, quản lý hạn dùng FEFO |
+| **6** | **`payment-service`** | `8085` | PostgreSQL (`payment_db`) | Thanh toán giả lập, Sổ cái kép Double-Entry, trích hoa hồng 10% |
+| **7** | **`ai-advisor-service`**| `8086` | PostgreSQL (`ai_db` + pgvector) | AI RAG tư vấn mỹ phẩm theo chuẩn INCI, streaming phản hồi qua SSE |
+| **8** | **`frontend`** | `3000` | *Browser Storage* | Giao diện React 18, Vite 5, Tailwind CSS, MediaPipe AR Try-On |
+
+---
+
+## 🚀 HƯỚNG DẪN CÀI ĐẶT & KHỞI CHẠY
+
+### 1. Yêu Cầu Môi Trường (Prerequisites)
+- **Java Development Kit (JDK):** Phiên bản **Java 21 LTS** trở lên
+- **Node.js:** Phiên bản **20.x** hoặc **22.x** (kèm `npm`)
+- **Docker & Docker Compose:** Đã cài đặt và đang chạy Docker Desktop
+- **Apache Maven:** Phiên bản 3.9+ (hoặc dùng `mvn` có sẵn trong PATH)
+
+---
+
+### 2. Bước 1: Khởi Động Hạ Tầng (Docker Compose)
+Khởi động cụm 4 dịch vụ hạ tầng gồm PostgreSQL (kèm `pgvector`), MongoDB, Apache Kafka và giao diện quản lý Kafka UI:
+
 ```bash
-# 1. Khởi động 4 container hạ tầng (PostgreSQL pgvector, MongoDB, Kafka, Kafka-UI)
+# Di chuyển vào thư mục gốc dự án và khởi động container ngầm
 docker compose -f infra/docker/docker-compose.yml up -d
 
-# 2. Kiểm tra container
+# Kiểm tra trạng thái toàn bộ container (tất cả phải ở trạng thái Up)
 docker compose -f infra/docker/docker-compose.yml ps
 ```
 
-Các cổng dịch vụ hạ tầng:
-- **PostgreSQL 16 (kèm pgvector):** `localhost:5432` (User: `app`, Pass: `app_secret`)
-- **MongoDB 7:** `localhost:27017`
-- **Apache Kafka 3.8:** `localhost:9092` (Host) / `kafka:19092` (Docker Network)
+*Địa chỉ dịch vụ hạ tầng:*
+- **PostgreSQL 16 (pgvector):** `localhost:5432` *(User: `app`, Pass: `app_secret`)*
+- **MongoDB 7:** `localhost:27017` *(User: `app`, Pass: `app_secret`)*
+- **Apache Kafka:** `localhost:9092`
 - **Kafka UI:** [http://localhost:8090](http://localhost:8090)
 
 ---
 
-## 4. Biên Dịch & Chạy Ứng Dụng
+### 3. Bước 2: Biên Dịch Mã Nguồn Backend
 
-### Biên dịch toàn bộ Backend:
 ```bash
+# Biên dịch và kiểm tra dependencies của 7 Microservices
 mvn clean test-compile
 ```
 
-### Chạy Unit & Integration Tests:
+*(Tùy chọn) Chạy kiểm thử kiến trúc Hexagonal và Concurrency CAS:*
 ```bash
-# Kiểm thử kiến trúc Hexagonal (ArchUnit)
-mvn test -pl services/account-service -Dtest=HexagonalArchitectureTest
+# Kiểm thử kiến trúc Hexagonal Ports & Adapters (ArchUnit)
+mvn test -pl backend/account-service -Dtest=HexagonalArchitectureTest
 
-# Kiểm thử giữ hàng nguyên tử không âm (CAS Concurrency Test)
-mvn test -pl services/inventory-service -Dtest=AtomicStockConcurrencyTest
+# Kiểm thử giữ hàng nguyên tử không âm (AtomicStockConcurrencyTest)
+mvn test -pl backend/inventory-service -Dtest=AtomicStockConcurrencyTest
 ```
 
-### Khởi chạy Frontend React (Cổng 3000):
+---
+
+### 4. Bước 3: Khởi Chạy Các Microservices
+
+Đóng gói các dịch vụ thành file `.jar`:
 ```bash
+mvn package -DskipTests
+```
+
+Khởi chạy từng service (mỗi service mở một cửa sổ Terminal riêng hoặc chạy nền):
+
+```bash
+# 1. API Gateway (Port 8080)
+java -jar backend/api-gateway/target/api-gateway-1.0.0-SNAPSHOT.jar
+
+# 2. Account Service (Port 8081)
+java -jar backend/account-service/target/account-service-1.0.0-SNAPSHOT.jar
+
+# 3. Catalog Service (Port 8082)
+java -jar backend/catalog-service/target/catalog-service-1.0.0-SNAPSHOT.jar
+
+# 4. Inventory Service (Port 8083)
+java -jar backend/inventory-service/target/inventory-service-1.0.0-SNAPSHOT.jar
+
+# 5. Order Service (Port 8084)
+java -jar backend/order-service/target/order-service-1.0.0-SNAPSHOT.jar
+
+# 6. Payment Service (Port 8085)
+java -jar backend/payment-service/target/payment-service-1.0.0-SNAPSHOT.jar
+
+# 7. AI Advisor Service (Port 8086)
+java -jar backend/ai-advisor-service/target/ai-advisor-service-1.0.0-SNAPSHOT.jar
+```
+
+---
+
+### 5. Bước 4: Khởi Chạy Frontend React
+
+Mở một cửa sổ Terminal mới và thực hiện:
+
+```bash
+# Di chuyển vào thư mục frontend
 cd frontend
+
+# Cài đặt thư viện dependencies
 npm install
+
+# Khởi chạy máy chủ phát triển Vite (Port 3000)
 npm run dev
 ```
-Truy cập ứng dụng: [http://localhost:3000](http://localhost:3000)
+
+Truy cập ứng dụng ngay tại: **[http://localhost:3000](http://localhost:3000)**
 
 ---
 
-## 5. Lộ Trình 14 Tuần & Minh Chứng (Evidence Logs)
+## 🔑 TÀI KHOẢN THỬ NGHIỆM (DEMO ACCOUNTS)
 
-| Tuần | Nội dung | Thư mục minh chứng |
-| :--- | :--- | :--- |
-| **Tuần 1** | Phân tích, thiết kế DDD, Backlog, 4 ADR, Docker Compose hạ tầng | [evidence/week-1/evidence-log.md](evidence/week-1/evidence-log.md) |
-| **Tuần 2** | Service template Hexagonal, 3 common libs, account-service (JWT, ArchUnit) | [evidence/week-2/evidence-log.md](evidence/week-2/evidence-log.md) |
-| **Tuần 3** | catalog-service, INCI, MongoDB Reactive, Seed 120+ sản phẩm mỹ phẩm | [evidence/week-3/evidence-log.md](evidence/week-3/evidence-log.md) |
-| **Tuần 4** | Đăng ký/duyệt Shop, đăng hàng kèm Số công bố mỹ phẩm (CBMP), UI Buyer duyệt | [evidence/week-4/evidence-log.md](evidence/week-4/evidence-log.md) |
-| **Tuần 5** | inventory-service, giữ hàng nguyên tử (CAS), test đồng thời tồn không âm | [evidence/week-5/evidence-log.md](evidence/week-5/evidence-log.md) |
-| **Tuần 6** | order-service: Giỏ hàng đa Shop, snapshot giá từ catalog | [evidence/week-6/evidence-log.md](evidence/week-6/evidence-log.md) |
-| **Tuần 7** | Tách đơn (Split Order), State Machine, Outbox Relay worker | [evidence/week-7/evidence-log.md](evidence/week-7/evidence-log.md) |
-| **Tuần 8** | payment-service mock + Saga Choreography hoàn chỉnh + bù trừ | [evidence/week-8/evidence-log.md](evidence/week-8/evidence-log.md) |
-| **Tuần 9** | Seller xử lý Sub-order, Sổ cái kép (Double-Entry Ledger) & Hoa hồng 10% | [evidence/week-9/evidence-log.md](evidence/week-9/evidence-log.md) |
-| **Tuần 10-11** | ai-advisor RAG với pgvector, đánh chỉ mục INCI, chat SSE streaming | [evidence/week-10-11/evidence-log.md](evidence/week-10-11/evidence-log.md) |
-| **Tuần 12** | Test Chaos Saga, Test tải k6, Resilience4j Circuit Breaker | [evidence/week-12/evidence-log.md](evidence/week-12/evidence-log.md) |
-| **Tuần 13** | Observability (Actuator, Kafka UI), Dựng máy sạch (Clean-Slate) | [evidence/week-13/evidence-log.md](evidence/week-13/evidence-log.md) |
-| **Tuần 14** | Đóng băng mã nguồn, kịch bản demo bảo vệ đồ án trước Hội đồng | [evidence/week-14/evidence-log.md](evidence/week-14/evidence-log.md) |
+Hệ thống đã chuẩn bị sẵn các tài khoản tương ứng với từng phân quyền trong sàn:
+
+| Vai Trò | Tên Đăng Nhập | Mật Khẩu | Quyền Hạn & Tính Năng Trải Nghiệm |
+| :--- | :--- | :--- | :--- |
+| **Buyer (Khách Mua)** | `buyer1` | `password` | Xem danh mục, thử son & makeup AR 60 FPS, chat AI RAG, đặt đơn đa Shop |
+| **Seller (Chủ Shop)** | `seller1` | `password` | Đăng ký mở shop, đăng sản phẩm duyệt số CBMP, xác nhận đơn con (Sub-orders) |
+| **Admin (Quản Trị)** | `admin` | `password` | Phê duyệt mở Shop, duyệt sản phẩm lên sàn, đối soát Sổ cái kép (Ledger) |
 
 ---
 
-## 6. Kịch Bản Demo (Demonstration Script)
+## 🎯 KỊCH BẢN TRẢI NGHIỆM TÍNH NĂNG TIÊU BIỂU
 
-- **Khu vực Khách Mua (Buyer Zone):**
-  - Xem danh mục sản phẩm, lọc theo loại da và thành phần INCI (Comedogenic Rating, Irritation).
-  - Trò chuyện với **AI Cosmetic Advisor** nhận phản hồi tư vấn streaming qua Server-Sent Events.
-  - Cập nhật **Hồ Sơ Da (Skin Profile)** cá nhân.
-  - Chọn sản phẩm từ nhiều Shop, xem giỏ hàng và đặt hàng kích hoạt **Split Order**.
-- **Khu vực Người Bán (Seller Zone):**
-  - Quản lý gian hàng đã được phê duyệt.
-  - Đăng sản phẩm mới có kiểm định Số công bố mỹ phẩm (CBMP).
-  - Xem và cập nhật trạng thái đơn con (**Sub-orders**) của gian hàng mình (Giao hàng / Từ chối).
-- **Khu vực Quản Trị Viên (Admin Zone):**
-  - Phê duyệt gian hàng mới đăng ký.
-  - Thẩm định và duyệt sản phẩm công bố lên sàn.
-  - Kiểm toán **Sổ cái kép (Double-Entry Ledger)** và hoa hồng sàn 10%.
+1. **Trải Nghiệm Thử Son & Makeup Thực Tế Ảo (Aura Virtual Try-On 2.0):**
+   - Truy cập trang chủ, bấm nút **"Thử màu AR 60 FPS"** tại banner hoặc mở chi tiết sản phẩm son môi/phấn bất kỳ.
+   - Chọn chế độ **Ảnh Mẫu** (3 mẫu khuôn mặt độ nét cao) hoặc bật **Webcam**.
+   - Thử nghiệm các hiệu ứng: Son môi (chọn chất son Matte / Glossy / Velvet), Phấn má, Kem nền, Phấn mắt.
+   - Xem AI phân tích sắc độ da (Warm/Cool/Neutral) và điều chỉnh độ bóng (Glossiness), độ đậm (Opacity).
+2. **Trải Nghiệm Trợ Lý AI Tư Vấn Thành Phần (Cosmetic RAG):**
+   - Bấm vào widget trò chuyện ở góc phải màn hình.
+   - Đặt các câu hỏi về làn da, ví dụ: *"Da mình đang bị mụn viêm và dầu nhiều, nên dùng serum chứa Niacinamide hay BHA?"*. Trợ lý sẽ phân tích và streaming câu trả lời từ bảng thành phần INCI qua SSE.
+3. **Trải Nghiệm Đặt Đơn Đa Shop & Tách Đơn (Split Order):**
+   - Đăng nhập tài khoản `buyer1`, chọn 2 sản phẩm từ 2 Shop khác nhau vào giỏ hàng.
+   - Bấm Thanh Toán. Hệ thống kích hoạt Saga Choreography: tạo 1 Master Order và tự động tách thành 2 Sub-order độc lập, giữ kho CAS và cập nhật trạng thái theo thời gian thực.
+4. **Đối Soát Tài Chính & Hoa Hồng Sàn:**
+   - Đăng nhập tài khoản `admin`, truy cập phân hệ Sổ cái kế toán để xem các bút toán ghi nợ/ghi có và trích 10% hoa hồng sàn tự động.
+
+---
+
+<div align="center">
+  <b>Aura Beauty Mall — Đỉnh Cao Công Nghệ Thương Mại Điện Tử Mỹ Phẩm Phản Ứng</b><br>
+  <i>Phát triển trên nền tảng Spring Boot 3 WebFlux, Kafka Saga Outbox & React 18 MediaPipe 3D</i>
+</div>
