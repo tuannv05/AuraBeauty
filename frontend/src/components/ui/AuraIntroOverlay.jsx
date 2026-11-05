@@ -7,18 +7,20 @@ const INTRO_STORAGE_KEY = 'aura_intro_seen_v2';
 const INTRO_DURATION_MS = 1400;
 
 export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
-  const [isVisible, setIsVisible] = useState(() => {
-    if (forceShow) return true;
-    try {
-      return !sessionStorage.getItem(INTRO_STORAGE_KEY);
-    } catch {
-      return false;
-    }
-  });
+  const [isVisible, setIsVisible] = useState(() => forceShow);
 
   const [progress, setProgress] = useState(0);
   const startTimeRef = useRef(null);
   const animFrameRef = useRef(null);
+
+  // Synchronize when parent triggers replay
+  useEffect(() => {
+    if (forceShow) {
+      setIsVisible(true);
+      startTimeRef.current = null;
+      setProgress(0);
+    }
+  }, [forceShow]);
 
   const handleDismiss = () => {
     try {
@@ -30,6 +32,11 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
 
   useEffect(() => {
     if (!isVisible) return;
+
+    // Hard fallback timer: guarantees auto-dismissal even if tab is unfocused or requestAnimationFrame throttled
+    const fallbackTimer = setTimeout(() => {
+      handleDismiss();
+    }, INTRO_DURATION_MS + 200);
 
     const tick = (timestamp) => {
       if (!startTimeRef.current) startTimeRef.current = timestamp;
@@ -47,21 +54,27 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
     animFrameRef.current = requestAnimationFrame(tick);
 
     return () => {
+      clearTimeout(fallbackTimer);
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
   }, [isVisible]);
+
+  // If not visible, return null immediately so it never occupies the DOM or blocks pointer events
+  if (!isVisible) return null;
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
           key="aura-intro-overlay"
-          initial={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           exit={{
+            opacity: 0,
             y: '-100%',
-            opacity: 0.95,
-            transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+            transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
           }}
+          onClick={handleDismiss}
           style={{
             position: 'fixed',
             inset: 0,
@@ -73,7 +86,9 @@ export default function AuraIntroOverlay({ onComplete, forceShow = false }) {
             backgroundColor: '#09090b',
             color: '#ffffff',
             overflow: 'hidden',
-            userSelect: 'none'
+            userSelect: 'none',
+            pointerEvents: isVisible ? 'auto' : 'none',
+            cursor: 'pointer'
           }}
         >
           {/* Subtle Luxury Radial Glow */}

@@ -532,8 +532,10 @@ input[type="number"] {
   outline-offset: 2px;
 }
 
-/* Aura VTO 2.0 GPU Optimization: Pause background animations during AR session */
-body.vto-active-no-anim * {
+/* Aura VTO 2.0 GPU Optimization: Pause background animations during AR session without breaking UI/modals */
+body.vto-active-no-anim .hero-bg-anim,
+body.vto-active-no-anim .ambient-glow,
+body.vto-active-no-anim [data-bg-anim="true"] {
   animation-play-state: paused !important;
 }
 

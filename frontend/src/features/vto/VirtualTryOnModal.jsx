@@ -214,14 +214,18 @@ export default function VirtualTryOnModal({
   const jitterFilterRef = useRef(new FaceMeshJitterFilter(478, 1.0, 0.007));
   const [cameraError, setCameraError] = useState(null);
 
-  // GPU Optimization: Pause background animations while VTO Studio is active
+  // GPU Optimization: Pause background animations ONLY while VTO Studio modal is actually OPEN
   useEffect(() => {
+    if (!isOpen) {
+      document.body.classList.remove('vto-active-no-anim');
+      return;
+    }
     document.body.classList.add('vto-active-no-anim');
     return () => {
       document.body.classList.remove('vto-active-no-anim');
       jitterFilterRef.current?.reset();
     };
-  }, []);
+  }, [isOpen]);
 
   // Initialize with initialProduct & initialVariant when modal opens
   useEffect(() => {
