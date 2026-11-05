@@ -203,6 +203,7 @@ export default function App() {
           onNavigateFlashSale={() => navigateTo({ view: 'flash-sale' })}
           onNavigateAdmin={() => navigateTo({ view: 'admin', adminTab: 'merchants' })}
           onNavigateSeller={() => navigateTo({ view: 'seller', sellerTab: 'overview' })}
+          onReplayIntro={() => setShowIntro(true)}
           user={currentUser}
         />
       )}

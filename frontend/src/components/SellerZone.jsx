@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { NumberTicker, MotionCard, AnimatedBadge, SpringButton } from './ui';
+import { NumberTicker, MotionCard, AnimatedBadge, SpringButton, AuraBrandLogo } from './ui';
 import {
   Store, Package, Layers, AlertTriangle, Truck, Printer, RotateCcw,
   Tag, Gift, Zap, MessageSquare, Star, Wallet, TrendingUp, CheckCircle2,
@@ -411,9 +411,7 @@ export default function SellerZone({ user, onNavigateHome, activeTab: propTab, o
         <div style={{ padding: '10px 12px', borderBottom: '1px solid #f1f5f9', marginBottom: '8px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: '#ec4899', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-                <Store size={20} />
-              </div>
+              <AuraBrandLogo variant="compact" size={36} onClick={onNavigateHome} />
               <div>
                 <h3 style={{ fontSize: '13px', fontWeight: 800, margin: 0, color: '#0f172a' }}>Kênh Người Bán</h3>
                 <span style={{ fontSize: '11px', color: '#10b981', fontWeight: 700 }}>● Gian hàng chính thức</span>

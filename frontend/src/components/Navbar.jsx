@@ -8,6 +8,7 @@ import {
 import { MOCK_PRODUCTS } from '../api';
 import { searchCatalogProducts } from '../lib/searchEngine';
 import { getEnrichedCatalog } from '../lib/submenuCatalogMapper';
+import { AuraBrandLogo } from './ui';
 
 const TOP_BAR_ANNOUNCEMENTS = [
   '🚚 FREESHIP TOÀN QUỐC CHO ĐƠN TỪ 199K',
@@ -254,6 +255,7 @@ export default function Navbar({
   onOpenTopBarModal,
   onNavigateFlashSale,
   onCurrencyChange,
+  onReplayIntro,
   wishlistCount = 0,
   user
 }) {
@@ -470,6 +472,19 @@ export default function Navbar({
 
         {/* Right: Hệ thống cửa hàng & Đa tiền tệ / Đa ngôn ngữ Quốc tế */}
         <div className="top-bar-right" style={{ display: 'flex', alignItems: 'center', gap: '14px', color: '#cbd5e1' }}>
+          {onReplayIntro && (
+            <div
+              onClick={onReplayIntro}
+              style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#ffabb9' }}
+              title="Phát lại màn hình vén rèm thương hiệu 5 cảnh"
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#ffabb9')}
+            >
+              <Sparkles size={12} style={{ color: '#f59e0b' }} />
+              <span style={{ fontSize: '11px', fontWeight: 700 }}>Phát lại Intro</span>
+            </div>
+          )}
+
           <div
             onClick={() => onOpenTopBarModal && onOpenTopBarModal('showrooms')}
             style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
@@ -566,36 +581,11 @@ export default function Navbar({
               <Menu size={24} />
             </button>
 
-            <div
+            <AuraBrandLogo
+              variant="dark"
+              size="md"
               onClick={onNavigateHome}
-              style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', userSelect: 'none' }}
-            >
-              <div
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '10px',
-                  background: 'linear-gradient(135deg, #ec4899, #db2777)',
-                  color: '#ffffff',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: 800,
-                  fontSize: '20px',
-                  boxShadow: '0 2px 8px rgba(236,72,153,0.3)'
-                }}
-              >
-                A
-              </div>
-              <div>
-                <h1 style={{ fontSize: '22px', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1, color: '#0f172a' }}>
-                  Aura <span style={{ color: '#ec4899' }}>Beauty Mall</span>
-                </h1>
-                <p style={{ fontSize: '11px', fontWeight: 600, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.04em', marginTop: '2px' }}>
-                  Sàn Mỹ Phẩm Chính Hãng & AI Da Liễu
-                </p>
-              </div>
-            </div>
+            />
           </div>
 
           {/* Search Bar (Chiếm 45-50% chiều ngang kèm Auto-Suggest & Trending) */}
@@ -1444,21 +1434,17 @@ export default function Navbar({
                               onSearchSubmit(subItem);
                               setHoveredNav(null);
                             }}
+                            className="group relative flex items-center gap-1.5 py-1 text-left w-full text-[13px] text-slate-500 hover:text-rose-600 transition-all duration-200 outline-none"
                             style={{
-                              fontSize: '13px',
-                              color: '#64748b',
-                              textAlign: 'left',
                               background: 'none',
                               border: 'none',
-                              padding: '2px 0',
-                              cursor: 'pointer',
-                              display: 'block',
-                              width: '100%'
+                              cursor: 'pointer'
                             }}
-                            onMouseEnter={(e) => (e.currentTarget.style.color = '#ec4899')}
-                            onMouseLeave={(e) => (e.currentTarget.style.color = '#64748b')}
                           >
-                            {subItem}
+                            <span className="w-1.5 h-1.5 rounded-full bg-rose-500 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 flex-shrink-0" />
+                            <span className="group-hover:translate-x-1 transition-transform duration-200">
+                              {subItem}
+                            </span>
                           </button>
                         </li>
                       ))}
@@ -1746,10 +1732,14 @@ export default function Navbar({
           >
             {/* Drawer Header */}
             <div style={{ padding: '16px 20px', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#ec4899', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800 }}>A</div>
-                <span style={{ fontWeight: 800, fontSize: '16px' }}>Aura Beauty Mall</span>
-              </div>
+              <AuraBrandLogo
+                variant="dark"
+                size="sm"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  if (onNavigateHome) onNavigateHome();
+                }}
+              />
               <button onClick={() => setIsMobileMenuOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#64748b' }}>
                 <X size={22} />
               </button>

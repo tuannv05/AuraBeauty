@@ -2,6 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
+/**
+ * SpringButton — Luxury Tactile Button with Spring Physics & Shimmer Sweep
+ */
 export function SpringButton({
   children,
   variant = 'primary',
@@ -9,6 +12,7 @@ export function SpringButton({
   className,
   disabled = false,
   onClick,
+  shimmer = false,
   ...props
 }) {
   const variants = {
@@ -22,6 +26,8 @@ export function SpringButton({
       'bg-rose-500 text-white hover:bg-rose-600 border-rose-500 shadow-sm shadow-rose-200',
     ghost:
       'bg-transparent text-neutral-700 hover:bg-neutral-100 border-transparent',
+    gold:
+      'bg-gradient-to-r from-amber-500 to-amber-600 text-white hover:from-amber-600 hover:to-amber-700 border-amber-500 shadow-sm shadow-amber-200'
   };
 
   const sizes = {
@@ -38,14 +44,24 @@ export function SpringButton({
       disabled={disabled}
       onClick={onClick}
       className={cn(
-        'inline-flex items-center justify-center font-semibold border transition-colors outline-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed select-none',
+        'group relative inline-flex items-center justify-center font-semibold border transition-all outline-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed select-none overflow-hidden',
         variants[variant] || variants.primary,
         sizes[size] || sizes.md,
         className
       )}
       {...props}
     >
-      {children}
+      {/* Subtle Shimmer Sweep on Hover */}
+      <span
+        className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent)',
+        }}
+      />
+      <span className="relative z-10 inline-flex items-center gap-1.5">
+        {children}
+      </span>
     </motion.button>
   );
 }

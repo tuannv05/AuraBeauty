@@ -1,9 +1,26 @@
 // frontend/src/components/ui/AuraIntroOverlay.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, Sparkles, Dna, ArrowRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Sparkles, Dna } from 'lucide-react';
 
-const INTRO_DURATION_MS = 1350;
+/**
+ * AuraIntroOverlay — 5-Scene Master Timeline Intro (React 18 + Framer Motion)
+ * 
+ * Re-creates the iconic 5-scene master SVG mask morphing & cutting animation:
+ * - Scene 1 & 2: Rhombus scale & morph from circle (rx: 50) to rotated diamond (rx: 15, rot: -45deg)
+ * - Scene 3: 3 SVG <mask id="..."> cutting ellipses sweeping in and thinning strokeWidth 60 -> 2
+ * - Scene 4: 3 nodal intersection circles staggering into existence
+ * - Scene 5: Letters stagger in with spring elasticity (Elastic.easeOut)
+ * - Final Scene: Smooth luxury curtain reveal into homepage
+ * 
+ * Performance & Guardrails:
+ * - 100% Pure React 18 + Framer Motion (Zero jQuery / GSAP legacy)
+ * - Escape key & Skip button support
+ * - Automatically stores sessionStorage('aura_intro_seen_v3')
+ * - GPU friendly & cleanly unmounts upon completion
+ */
+
+const INTRO_DURATION_MS = 2100; // ~2.1s optimal for full 5-scene master choreography
 
 export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
   const [isVisible, setIsVisible] = useState(isOpen);
@@ -20,6 +37,9 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
   }, [isOpen]);
 
   const handleDismiss = () => {
+    try {
+      sessionStorage.setItem('aura_intro_seen_v3', 'true');
+    } catch (e) {}
     setIsVisible(false);
     if (onComplete) onComplete();
   };
@@ -34,13 +54,13 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isVisible]);
 
+  // Master timeline driver with safety fallback
   useEffect(() => {
     if (!isVisible) return;
 
-    // Hard fallback timer: guarantees auto-dismissal even if tab is unfocused or requestAnimationFrame throttled
     const fallbackTimer = setTimeout(() => {
       handleDismiss();
-    }, INTRO_DURATION_MS + 250);
+    }, INTRO_DURATION_MS + 350);
 
     const tick = (timestamp) => {
       if (!startTimeRef.current) startTimeRef.current = timestamp;
@@ -63,17 +83,22 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
     };
   }, [isVisible]);
 
+  // Letters for Scene 5 Staggered Elastic Entrance
+  const auraLetters = ['A', 'U', 'R', 'A'];
+  const beautyLetters = ['B', 'E', 'A', 'U', 'T', 'Y'];
+  const mallLetters = ['M', 'A', 'L', 'L'];
+
   return (
     <AnimatePresence onExitComplete={onComplete}>
       {isVisible && (
         <motion.div
-          key="aura-luxury-intro-curtain"
+          key="aura-master-intro-curtain"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{
             y: '-100%',
             opacity: 0,
-            transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] }
+            transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
           }}
           onClick={handleDismiss}
           style={{
@@ -84,19 +109,19 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#08080a',
+            backgroundColor: '#070709',
             color: '#ffffff',
             overflow: 'hidden',
             userSelect: 'none',
             cursor: 'pointer'
           }}
         >
-          {/* Ambient Lighting & High-Fashion Aura Glow */}
+          {/* 1. Ambient Lighting & Deep Space Luxury Glow */}
           <div
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'radial-gradient(circle at 50% 42%, rgba(255, 171, 185, 0.18) 0%, rgba(229, 192, 123, 0.12) 35%, rgba(8, 8, 10, 0.98) 72%)',
+              background: 'radial-gradient(circle at 50% 45%, rgba(255, 171, 185, 0.22) 0%, rgba(245, 158, 11, 0.14) 35%, rgba(7, 7, 9, 0.98) 75%)',
               pointerEvents: 'none'
             }}
           />
@@ -107,7 +132,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
               position: 'absolute',
               top: '24px',
               right: '28px',
-              zIndex: 10
+              zIndex: 20
             }}
           >
             <button
@@ -118,193 +143,435 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
-                padding: '6px 16px',
+                gap: '8px',
+                padding: '8px 18px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255, 255, 255, 0.16)',
                 borderRadius: '9999px',
-                fontSize: '11.5px',
+                color: '#e2e8f0',
+                fontSize: '12px',
                 fontWeight: 650,
                 letterSpacing: '0.04em',
-                color: 'rgba(255, 255, 255, 0.85)',
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.18)',
-                backdropFilter: 'blur(10px)',
                 cursor: 'pointer',
-                transition: 'all 200ms ease'
+                transition: 'all 0.2s ease'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#ffffff';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)';
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.18)';
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.16)';
+                e.currentTarget.style.borderColor = 'rgba(255, 171, 185, 0.4)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.18)';
                 e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.16)';
               }}
             >
-              Bỏ qua (Skip) <ArrowRight size={13} />
+              <span>Bỏ qua</span>
+              <ArrowRight size={13} />
             </button>
           </div>
 
-          {/* Central Luxury Jewel Emblem & Haute Couture Reveal */}
+          {/* 2. Main Stage: The 5-Scene SVG Mask Choreography */}
           <div
             style={{
               position: 'relative',
-              zIndex: 2,
+              zIndex: 10,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              textAlign: 'center',
-              padding: '0 24px',
-              maxWidth: '720px'
+              justifyContent: 'center',
+              maxWidth: '92vw',
+              padding: '20px'
             }}
           >
-            {/* Jewel Diamond Monogram with Golden Light Trace */}
+            <svg
+              viewBox="0 0 740 180"
+              style={{
+                width: '100%',
+                maxWidth: '680px',
+                height: 'auto',
+                overflow: 'visible'
+              }}
+            >
+              <defs>
+                {/* Luxury Multi-stop Gold & Rose Gradient */}
+                <linearGradient id="aura-intro-iso-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FFABB9" />
+                  <stop offset="45%" stopColor="#F59E0B" />
+                  <stop offset="100%" stopColor="#FDE68A" />
+                </linearGradient>
+
+                {/* Master SVG Mask: Cutting through the Rhombus */}
+                <mask id="aura-intro-master-mask">
+                  {/* #alpha: Base Solid White Fill */}
+                  <rect x="-200" y="-200" width="1000" height="600" fill="#FFFFFF" />
+
+                  {/* Scene 3: 3 SVG Cutting Ellipses (Sweep & Thin) */}
+                  {/* Ellipse 1 */}
+                  <motion.ellipse
+                    initial={{
+                      cx: 140 + 100,
+                      cy: 90 + 150,
+                      rx: 180,
+                      ry: 180,
+                      strokeWidth: 60,
+                      opacity: 0
+                    }}
+                    animate={{
+                      cx: 140 + 6,
+                      cy: 90 - 64,
+                      rx: 140,
+                      ry: 140,
+                      strokeWidth: 2.2,
+                      opacity: 1
+                    }}
+                    transition={{
+                      duration: 0.7,
+                      delay: 0.45,
+                      ease: [0.16, 1, 0.3, 1]
+                    }}
+                    fill="none"
+                    stroke="#000000"
+                  />
+
+                  {/* Ellipse 2 */}
+                  <motion.ellipse
+                    initial={{
+                      cx: 140 + 100,
+                      cy: 90 + 150,
+                      rx: 180,
+                      ry: 180,
+                      strokeWidth: 60,
+                      opacity: 0
+                    }}
+                    animate={{
+                      cx: 140 + 138,
+                      cy: 90 - 80,
+                      rx: 140,
+                      ry: 140,
+                      strokeWidth: 2.2,
+                      opacity: 1
+                    }}
+                    transition={{
+                      duration: 0.7,
+                      delay: 0.62,
+                      ease: [0.16, 1, 0.3, 1]
+                    }}
+                    fill="none"
+                    stroke="#000000"
+                  />
+
+                  {/* Ellipse 3 */}
+                  <motion.ellipse
+                    initial={{
+                      cx: 140 + 100,
+                      cy: 90 + 150,
+                      rx: 180,
+                      ry: 180,
+                      strokeWidth: 60,
+                      opacity: 0
+                    }}
+                    animate={{
+                      cx: 140 + 190,
+                      cy: 90 + 15,
+                      rx: 140,
+                      ry: 140,
+                      strokeWidth: 2.2,
+                      opacity: 1
+                    }}
+                    transition={{
+                      duration: 0.7,
+                      delay: 0.78,
+                      ease: [0.16, 1, 0.3, 1]
+                    }}
+                    fill="none"
+                    stroke="#000000"
+                  />
+
+                  {/* Scene 4: 3 Nodal Intersection Circles (Staggered Entrance) */}
+                  <motion.circle
+                    cx={140 + 16}
+                    cy={90 - 14}
+                    r={6.5}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{
+                      duration: 0.4,
+                      delay: 0.85,
+                      ease: [0.65, 0, 0.35, 1]
+                    }}
+                    fill="#000000"
+                  />
+                  <motion.circle
+                    cx={140 - 18}
+                    cy={90 + 18}
+                    r={5.5}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{
+                      duration: 0.4,
+                      delay: 0.95,
+                      ease: [0.65, 0, 0.35, 1]
+                    }}
+                    fill="#000000"
+                  />
+                  <motion.circle
+                    cx={140 + 28}
+                    cy={90 + 22}
+                    r={6}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{
+                      duration: 0.4,
+                      delay: 1.05,
+                      ease: [0.65, 0, 0.35, 1]
+                    }}
+                    fill="#000000"
+                  />
+                </mask>
+              </defs>
+
+              {/* =========================================================================
+                  SCENE 1 & 2: #iso Rhombus Morph & Rotation
+                  - Starts as circle (rx: 46), scale: 0 -> 1, rot: 90deg -> -45deg, rx: 46 -> 14
+                  ========================================================================= */}
+              <g transform="translate(140, 90)">
+                <motion.rect
+                  id="iso"
+                  x="-46.6"
+                  y="-46.6"
+                  width="93.2"
+                  height="93.2"
+                  initial={{
+                    rx: 46.6,
+                    ry: 46.6,
+                    rotate: 90,
+                    scale: 0,
+                    opacity: 0
+                  }}
+                  animate={{
+                    rx: [46.6, 46.6, 14, 14],
+                    ry: [46.6, 46.6, 14, 14],
+                    rotate: [90, 45, -45, -45],
+                    scale: [0, 1.05, 1, 1],
+                    opacity: [0, 1, 1, 1]
+                  }}
+                  transition={{
+                    duration: 1.0,
+                    times: [0, 0.45, 0.85, 1],
+                    ease: 'easeInOut'
+                  }}
+                  fill="url(#aura-intro-iso-gradient)"
+                  mask="url(#aura-intro-master-mask)"
+                  style={{
+                    transformOrigin: '0px 0px',
+                    filter: 'drop-shadow(0 0 16px rgba(255,171,185,0.5))'
+                  }}
+                />
+              </g>
+
+              {/* =========================================================================
+                  SCENE 5: Staggered Elastic Text Entrance (.word)
+                  ========================================================================= */}
+              <g transform="translate(240, 98)">
+                {/* AURA */}
+                {auraLetters.map((char, index) => (
+                  <motion.text
+                    key={`aura-${index}`}
+                    x={index * 38}
+                    y="0"
+                    className="word"
+                    initial={{ opacity: 0, scale: 0.8, x: -16 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 260,
+                      damping: 14,
+                      delay: 0.95 + index * 0.05
+                    }}
+                    style={{
+                      fontFamily: "'Inter', -apple-system, sans-serif",
+                      fontSize: '44px',
+                      fontWeight: 900,
+                      letterSpacing: '-0.02em',
+                      fill: '#FFFFFF',
+                      textAnchor: 'start'
+                    }}
+                  >
+                    {char}
+                  </motion.text>
+                ))}
+
+                {/* BEAUTY */}
+                {beautyLetters.map((char, index) => (
+                  <motion.text
+                    key={`beauty-${index}`}
+                    x={162 + index * 32}
+                    y="0"
+                    className="word"
+                    initial={{ opacity: 0, scale: 0.8, x: -16 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 260,
+                      damping: 14,
+                      delay: 1.15 + index * 0.05
+                    }}
+                    style={{
+                      fontFamily: "'Inter', -apple-system, sans-serif",
+                      fontSize: '44px',
+                      fontWeight: 900,
+                      letterSpacing: '-0.02em',
+                      fill: '#FFABB9',
+                      textAnchor: 'start'
+                    }}
+                  >
+                    {char}
+                  </motion.text>
+                ))}
+
+                {/* MALL */}
+                {mallLetters.map((char, index) => (
+                  <motion.text
+                    key={`mall-${index}`}
+                    x={364 + index * 26}
+                    y="0"
+                    className="word"
+                    initial={{ opacity: 0, scale: 0.8, x: -16 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 260,
+                      damping: 14,
+                      delay: 1.4 + index * 0.05
+                    }}
+                    style={{
+                      fontFamily: "'Inter', -apple-system, sans-serif",
+                      fontSize: '32px',
+                      fontWeight: 700,
+                      letterSpacing: '0.04em',
+                      fill: '#FDE68A',
+                      textAnchor: 'start'
+                    }}
+                  >
+                    {char}
+                  </motion.text>
+                ))}
+
+                {/* TM Symbol */}
+                <motion.text
+                  x={474}
+                  y="-18"
+                  className="word"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 300,
+                    damping: 15,
+                    delay: 1.62
+                  }}
+                  style={{
+                    fontFamily: "'Inter', -apple-system, sans-serif",
+                    fontSize: '15px',
+                    fontWeight: 900,
+                    fill: '#FFABB9'
+                  }}
+                >
+                  ™
+                </motion.text>
+
+                {/* Subtitle: High-Fashion Credential */}
+                <motion.text
+                  x="2"
+                  y="30"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 0.85, y: 0 }}
+                  transition={{ duration: 0.45, delay: 1.65 }}
+                  style={{
+                    fontFamily: "'Inter', -apple-system, sans-serif",
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    fill: '#CBD5E1'
+                  }}
+                >
+                  DERMA-TECH MULTI-VENDOR MALL • OFFICIAL CBMP
+                </motion.text>
+              </g>
+            </svg>
+
+            {/* 3. Three Quality Guarantee Badges (Staggered Fade-in) */}
             <motion.div
-              initial={{ scale: 0.82, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              style={{ marginBottom: '22px', position: 'relative' }}
-            >
-              <div
-                style={{
-                  width: '74px',
-                  height: '74px',
-                  borderRadius: '24px',
-                  background: 'linear-gradient(135deg, rgba(255, 171, 185, 0.28) 0%, rgba(229, 192, 123, 0.22) 100%)',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 16px 38px rgba(255, 171, 185, 0.28)',
-                  backdropFilter: 'blur(16px)'
-                }}
-              >
-                <svg width="38" height="38" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <motion.path
-                    d="M20 3L35 15L20 37L5 15L20 3Z"
-                    stroke="url(#aura-gold-prism)"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{ duration: 0.7, ease: 'easeInOut' }}
-                  />
-                  <motion.path
-                    d="M5 15H35M20 3V37M10 15L20 37M30 15L20 37"
-                    stroke="rgba(255, 255, 255, 0.65)"
-                    strokeWidth="1.2"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 0.8 }}
-                    transition={{ duration: 0.8, delay: 0.15, ease: 'easeInOut' }}
-                  />
-                  <defs>
-                    <linearGradient id="aura-gold-prism" x1="5" y1="3" x2="35" y2="37" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#FFABB9" />
-                      <stop offset="0.45" stopColor="#FFFFFF" />
-                      <stop offset="1" stopColor="#E5C07B" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-            </motion.div>
-
-            {/* Haute Couture Brand Typography */}
-            <motion.h1
-              initial={{ y: 16, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              style={{
-                fontSize: 'clamp(28px, 5.5vw, 44px)',
-                fontWeight: 900,
-                letterSpacing: '0.22em',
-                lineHeight: 1.15,
-                margin: '0 0 10px 0',
-                background: 'linear-gradient(90deg, #FFFFFF 0%, #FFD1D9 30%, #F5D79E 65%, #FFFFFF 100%)',
-                backgroundSize: '200% auto',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                textTransform: 'uppercase',
-                fontFamily: 'system-ui, -apple-system, sans-serif'
-              }}
-            >
-              Aura Beauty Mall
-            </motion.h1>
-
-            <motion.p
-              initial={{ y: 12, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.45, delay: 0.25 }}
-              style={{
-                fontSize: '12px',
-                color: 'rgba(255, 255, 255, 0.75)',
-                letterSpacing: '0.18em',
-                fontWeight: 400,
-                textTransform: 'uppercase',
-                margin: '0 0 24px 0'
-              }}
-            >
-              Sàn TMĐT Mỹ Phẩm Đa Người Bán & Công Nghệ Derma-Tech
-            </motion.p>
-
-            {/* 3 Staggered Crystal Badges */}
-            <div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 1.5 }}
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
+                alignItems: 'center',
                 justifyContent: 'center',
-                gap: '10px',
-                marginBottom: '24px'
+                gap: '12px',
+                marginTop: '28px'
               }}
             >
-              {[
-                {
-                  icon: <ShieldCheck size={13} style={{ color: '#38bdf8' }} />,
-                  text: '100% Chính Hãng CBMP',
-                  border: 'rgba(56, 189, 248, 0.28)',
-                  bg: 'rgba(56, 189, 248, 0.08)'
-                },
-                {
-                  icon: <Sparkles size={13} style={{ color: '#f472b6' }} />,
-                  text: 'AR Try-On 60 FPS',
-                  border: 'rgba(244, 114, 182, 0.28)',
-                  bg: 'rgba(244, 114, 182, 0.08)'
-                },
-                {
-                  icon: <Dna size={13} style={{ color: '#34d399' }} />,
-                  text: 'Trợ Lý AI Phân Tích INCI',
-                  border: 'rgba(52, 211, 153, 0.28)',
-                  bg: 'rgba(52, 211, 153, 0.08)'
-                }
-              ].map((badge, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ y: 12, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.35, delay: 0.3 + idx * 0.1 }}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '5px 13px',
-                    borderRadius: '9999px',
-                    fontSize: '11px',
-                    fontWeight: 650,
-                    color: '#ffffff',
-                    background: badge.bg,
-                    border: `1px solid ${badge.border}`,
-                    backdropFilter: 'blur(8px)'
-                  }}
-                >
-                  {badge.icon}
-                  <span>{badge.text}</span>
-                </motion.div>
-              ))}
-            </div>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '6px 14px',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '9999px',
+                  fontSize: '11.5px',
+                  color: '#e2e8f0',
+                  fontWeight: 600
+                }}
+              >
+                <Sparkles size={13} style={{ color: '#FFABB9' }} />
+                <span>AR Try-On 60 FPS PBR</span>
+              </div>
+
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '6px 14px',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '9999px',
+                  fontSize: '11.5px',
+                  color: '#e2e8f0',
+                  fontWeight: 600
+                }}
+              >
+                <Dna size={13} style={{ color: '#F59E0B' }} />
+                <span>AI RAG Phân Tích INCI</span>
+              </div>
+
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '6px 14px',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '9999px',
+                  fontSize: '11.5px',
+                  color: '#e2e8f0',
+                  fontWeight: 600
+                }}
+              >
+                <ShieldCheck size={13} style={{ color: '#10B981' }} />
+                <span>100% CBMP Bộ Y Tế</span>
+              </div>
+            </motion.div>
           </div>
 
-          {/* Bottom Hairline Gold Laser Progress Bar */}
+          {/* 4. Bottom Progress Line */}
           <div
             style={{
               position: 'absolute',
@@ -312,17 +579,15 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
               left: 0,
               right: 0,
               height: '3px',
-              background: 'rgba(255, 255, 255, 0.08)',
-              overflow: 'hidden'
+              background: 'rgba(255, 255, 255, 0.08)'
             }}
           >
             <div
               style={{
-                height: '100%',
                 width: `${progress}%`,
-                background: 'linear-gradient(90deg, #FFABB9 0%, #E5C07B 50%, #FFABB9 100%)',
-                boxShadow: '0 0 12px rgba(255, 171, 185, 0.9)',
-                transition: 'width 25ms linear'
+                height: '100%',
+                background: 'linear-gradient(90deg, #FFABB9, #F59E0B, #10B981)',
+                transition: 'width 0.08s linear'
               }}
             />
           </div>

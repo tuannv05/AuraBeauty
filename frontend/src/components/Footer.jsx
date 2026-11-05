@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Mail, Send, CheckCircle2, ShieldCheck, Lock, ExternalLink } from 'lucide-react';
 import { FooterInfoModal } from './FooterInfoModal';
+import { AuraBrandLogo } from './ui';
 
 export default function Footer({ onAddToast, onNavigateTracking, onOpenSellerRegistration }) {
   const [email, setEmail] = useState('');
@@ -41,6 +42,9 @@ export default function Footer({ onAddToast, onNavigateTracking, onOpenSellerReg
           
           {/* CỘT 1: VỀ AURA BEAUTY MALL */}
           <div>
+            <div style={{ marginBottom: '18px' }}>
+              <AuraBrandLogo variant="light" size="md" />
+            </div>
             <div
               onClick={() => setAboutOpen(!aboutOpen)}
               style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', marginBottom: '14px' }}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { NumberTicker, MotionCard, AnimatedBadge, SpringButton } from './ui';
+import { NumberTicker, MotionCard, AnimatedBadge, SpringButton, AuraBrandLogo } from './ui';
 import {
   Shield, ShieldCheck, Store, Package, Users, Tag, Scale, DollarSign,
   TrendingUp, CheckCircle2, XCircle, AlertTriangle, FileText,
@@ -265,9 +265,7 @@ export default function AdminZone({ onNavigateHome, activeTab: propTab, onTabCha
         <div style={{ padding: '10px 12px', borderBottom: '1px solid #f1f5f9', marginBottom: '8px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-                <Shield size={20} style={{ color: '#f59e0b' }} />
-              </div>
+              <AuraBrandLogo variant="compact" size={36} onClick={onNavigateHome} />
               <div>
                 <h3 style={{ fontSize: '13px', fontWeight: 800, margin: 0, color: '#0f172a' }}>Admin Console</h3>
                 <span style={{ fontSize: '11px', color: '#f59e0b', fontWeight: 700 }}>● Ban Quản Trị Sàn</span>
