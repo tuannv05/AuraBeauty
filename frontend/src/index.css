@@ -150,39 +150,14 @@ input[type="number"] {
 
 /* Layout Container */
 .container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
 }
 
 @media (max-width: 768px) {
   .container {
     padding: 0 14px;
-  }
-}
-
-/* Hero Section with Shopee-Style Right Promo Sidebar */
-.hero-section-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.88fr) 350px;
-  gap: 16px;
-  margin-bottom: 32px;
-  align-items: stretch;
-}
-
-@media (max-width: 1080px) {
-  .hero-section-grid {
-    grid-template-columns: 1fr;
-  }
-  .hero-promo-sidebar {
-    grid-template-columns: 1fr 1fr;
-    display: grid !important;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-promo-sidebar {
-    grid-template-columns: 1fr !important;
   }
 }
 

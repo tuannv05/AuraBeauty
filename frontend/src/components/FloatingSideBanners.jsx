@@ -5,19 +5,21 @@ import {
   Sparkles,
   Zap,
   Camera,
-  ShieldCheck,
-  Truck,
-  Headphones,
+  Flame,
   Tag,
   X,
+  ArrowRight,
   ChevronRight,
-  Flame
+  ChevronLeft
 } from 'lucide-react';
+import { MOCK_PRODUCTS } from '../api';
 
 /**
- * FloatingSideBanners — Quảng cáo 2 bên sườn trang web (Floating Skyscraper Ads)
- * Chuẩn phong cách sàn TMĐT cao cấp (Shopee Mall / Hasaki / Thegioididong)
- * Tự động căn chỉnh bám sát 2 bên mép lề của Main Container trên màn hình lớn (>= 1400px)
+ * FloatingSideBanners — Quảng Cáo Sản Phẩm 2 Bên Sườn (Floating Skyscraper Product Ads)
+ * - Tự động trượt theo trang khi người dùng cuộn (smooth floating sticky)
+ * - Chống che khuất tuyệt đối: luôn nằm ngoài biên của container (max-w 1200px)
+ * - Tự động thu gọn thành Tab nam châm siêu mỏng khi màn hình không đủ khoảng đệm
+ * - Quảng cáo sản phẩm chính hãng cả 2 bên (Trái: Romand, Innisfree, Voucher | Phải: La Roche-Posay, CeraVe, AI Scan)
  */
 export default function FloatingSideBanners({
   onOpenTryOn,
@@ -26,22 +28,43 @@ export default function FloatingSideBanners({
   onSelectProduct,
   onAddToast
 }) {
-  const [isRightVisible, setIsRightVisible] = useState(true);
-  const [isLeftVisible, setIsLeftVisible] = useState(true);
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== 'undefined' ? window.innerWidth : 1600
   );
+  const [isRightExpanded, setIsRightExpanded] = useState(true);
+  const [isLeftExpanded, setIsLeftExpanded] = useState(true);
 
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
+    const handleResize = () => {
+      const w = window.innerWidth;
+      setWindowWidth(w);
+      // Tự động thu gọn nếu độ rộng màn hình < 1480px để bảo vệ 100% không che khuất sản phẩm
+      if (w < 1480) {
+        setIsRightExpanded(false);
+        setIsLeftExpanded(false);
+      } else {
+        setIsRightExpanded(true);
+        setIsLeftExpanded(true);
+      }
+    };
+
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Chỉ hiển thị trên màn hình rộng >= 1380px để không đè vào nội dung chính
-  if (windowWidth < 1380) {
+  // Chỉ kích hoạt trên màn hình từ 1280px trở lên
+  if (windowWidth < 1280) {
     return null;
   }
+
+  // Helper tìm sản phẩm trong mock catalog
+  const findProduct = (keyword) => {
+    return (
+      MOCK_PRODUCTS.find((p) => p.name.toLowerCase().includes(keyword.toLowerCase())) ||
+      MOCK_PRODUCTS[0]
+    );
+  };
 
   const handleCopyVoucher = (code) => {
     if (navigator.clipboard) {
@@ -55,35 +78,38 @@ export default function FloatingSideBanners({
     }
   };
 
+  const isWideScreen = windowWidth >= 1480;
+
   return (
     <>
       {/* =========================================================================
-          CỘT QUẢNG CÁO PHẢI (RIGHT SIDEBAR ADVERT — VÙNG KHOANH TRÒN CỦA NGƯỜI DÙNG)
+          CỘT QUẢNG CÁO SẢN PHẨM BÊN TRÁI (LEFT SIDE PRODUCT ADS — TRƯỢT THEO WEB)
          ========================================================================= */}
       <div
-        className="floating-ad-right"
+        className="floating-ad-left"
         style={{
           position: 'fixed',
-          top: '210px',
-          left: 'calc(50% + 655px)',
-          width: '144px',
-          zIndex: 80,
+          top: '175px',
+          right: isWideScreen ? 'calc(50% + 616px)' : 'auto',
+          left: !isWideScreen ? '0' : 'auto',
+          zIndex: 85,
           pointerEvents: 'auto'
         }}
       >
         <AnimatePresence mode="wait">
-          {isRightVisible ? (
+          {isLeftExpanded ? (
             <motion.div
-              key="right-expanded"
-              initial={{ opacity: 0, x: 24, scale: 0.95 }}
+              key="left-full"
+              initial={{ opacity: 0, x: -20, scale: 0.96 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: 24, scale: 0.95 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
+              exit={{ opacity: 0, x: -20, scale: 0.96 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
               style={{
+                width: '136px',
                 background: '#ffffff',
                 borderRadius: '16px',
                 border: '1.5px solid #fbcfe8',
-                boxShadow: '0 12px 32px -4px rgba(236,72,153,0.18), 0 4px 12px rgba(0,0,0,0.06)',
+                boxShadow: '0 12px 30px -4px rgba(244,63,94,0.18), 0 4px 12px rgba(0,0,0,0.06)',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column'
@@ -94,243 +120,20 @@ export default function FloatingSideBanners({
                 style={{
                   background: 'linear-gradient(135deg, #ec4899 0%, #db2777 100%)',
                   color: '#ffffff',
-                  padding: '8px 10px',
+                  padding: '7px 9px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'space-between',
-                  borderBottom: '1px solid rgba(255,255,255,0.2)'
+                  justifyContent: 'space-between'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                  <Flame size={14} style={{ color: '#fef08a' }} />
-                  <span style={{ fontSize: '10.5px', fontWeight: 800, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-                    Aura Hot Deal
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <Flame size={13} style={{ color: '#fef08a' }} />
+                  <span style={{ fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    Hot Deals
                   </span>
                 </div>
                 <button
-                  onClick={() => setIsRightVisible(false)}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    color: '#ffffff',
-                    cursor: 'pointer',
-                    padding: '2px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    opacity: 0.85
-                  }}
-                  title="Thu gọn quảng cáo"
-                  aria-label="Thu gọn quảng cáo"
-                >
-                  <X size={13} />
-                </button>
-              </div>
-
-              {/* Promo Item 1: AR Try-On Son Romand */}
-              <div
-                onClick={() => onOpenTryOn && onOpenTryOn()}
-                style={{
-                  padding: '10px 8px',
-                  borderBottom: '1px solid #fdf2f8',
-                  cursor: 'pointer',
-                  textAlign: 'center',
-                  transition: 'background 0.2s ease',
-                  background: 'linear-gradient(180deg, #fff1f2 0%, #ffffff 100%)'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#ffe4e6'}
-                onMouseLeave={(e) => e.currentTarget.style.background = 'linear-gradient(180deg, #fff1f2 0%, #ffffff 100%)'}
-              >
-                <div style={{ position: 'relative', width: '56px', height: '56px', margin: '0 auto 6px', borderRadius: '10px', overflow: 'hidden', boxShadow: '0 3px 8px rgba(244,63,94,0.2)' }}>
-                  <img
-                    src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=160&auto=format&fit=crop&q=80"
-                    alt="Son Romand"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                  <span style={{ position: 'absolute', bottom: '0', left: '0', right: '0', background: 'rgba(236,72,153,0.9)', color: '#ffffff', fontSize: '8px', fontWeight: 800, padding: '1px 0' }}>
-                    AR 60 FPS
-                  </span>
-                </div>
-                <div style={{ fontSize: '11px', fontWeight: 750, color: '#0f172a', lineHeight: 1.25, marginBottom: '2px' }}>
-                  Son Romand Tint
-                </div>
-                <div style={{ fontSize: '9.5px', color: '#ec4899', fontWeight: 800, marginBottom: '4px' }}>
-                  Mua 1 Tặng 1
-                </div>
-                <span
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '2px',
-                    fontSize: '9px',
-                    fontWeight: 700,
-                    color: '#ffffff',
-                    background: '#ec4899',
-                    padding: '3px 8px',
-                    borderRadius: '9999px',
-                    boxShadow: '0 2px 4px rgba(236,72,153,0.3)'
-                  }}
-                >
-                  <Sparkles size={9} /> Thử Son
-                </span>
-              </div>
-
-              {/* Promo Item 2: Voucher 50k */}
-              <div
-                onClick={() => handleCopyVoucher('AURA50K')}
-                style={{
-                  padding: '9px 8px',
-                  borderBottom: '1px solid #fdf2f8',
-                  cursor: 'pointer',
-                  textAlign: 'center',
-                  background: '#fafafa',
-                  transition: 'background 0.2s ease'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#f5f3ff'}
-                onMouseLeave={(e) => e.currentTarget.style.background = '#fafafa'}
-                title="Bấm để sao chép mã"
-              >
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', color: '#7c3aed', fontSize: '9.5px', fontWeight: 800, marginBottom: '2px' }}>
-                  <Tag size={10} /> VOUCHER SÀN
-                </div>
-                <div style={{ fontSize: '12px', fontWeight: 850, color: '#db2777', letterSpacing: '0.02em' }}>
-                  GIẢM 50.000₫
-                </div>
-                <div style={{ fontSize: '9px', color: '#64748b', marginBottom: '4px' }}>
-                  Đơn từ 299K
-                </div>
-                <div
-                  style={{
-                    fontSize: '8.5px',
-                    fontWeight: 800,
-                    background: '#ede9fe',
-                    color: '#6d28d9',
-                    padding: '2px 6px',
-                    borderRadius: '4px',
-                    border: '1px dashed #c4b5fd',
-                    display: 'inline-block'
-                  }}
-                >
-                  MÃ: AURA50K 📋
-                </div>
-              </div>
-
-              {/* Promo Item 3: AI Skin Scanner */}
-              <div
-                onClick={() => onOpenSkinScanner && onOpenSkinScanner()}
-                style={{
-                  padding: '9px 8px',
-                  cursor: 'pointer',
-                  textAlign: 'center',
-                  background: 'linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%)',
-                  transition: 'background 0.2s ease'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#dcfce7'}
-                onMouseLeave={(e) => e.currentTarget.style.background = 'linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%)'}
-              >
-                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#10b981', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 4px' }}>
-                  <Camera size={14} />
-                </div>
-                <div style={{ fontSize: '10.5px', fontWeight: 750, color: '#0f172a', lineHeight: 1.2 }}>
-                  AI Soi Da 5 Chỉ Số
-                </div>
-                <div style={{ fontSize: '9px', color: '#059669', fontWeight: 700, marginTop: '2px' }}>
-                  Miễn phí 100% →
-                </div>
-              </div>
-            </motion.div>
-          ) : (
-            /* Minimized Tab */
-            <motion.button
-              key="right-minimized"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20 }}
-              onClick={() => setIsRightVisible(true)}
-              style={{
-                background: 'linear-gradient(135deg, #ec4899 0%, #db2777 100%)',
-                color: '#ffffff',
-                border: 'none',
-                borderRadius: '8px 0 0 8px',
-                padding: '10px 8px',
-                cursor: 'pointer',
-                boxShadow: '0 4px 12px rgba(236,72,153,0.3)',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '4px'
-              }}
-              title="Mở bảng khuyến mãi hot"
-            >
-              <Flame size={16} style={{ color: '#fef08a' }} />
-              <span
-                style={{
-                  writingMode: 'vertical-rl',
-                  textOrientation: 'mixed',
-                  fontSize: '10px',
-                  fontWeight: 800,
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase'
-                }}
-              >
-                Khuyến Mãi
-              </span>
-            </motion.button>
-          )}
-        </AnimatePresence>
-      </div>
-
-      {/* =========================================================================
-          CỘT QUẢNG CÁO TRÁI (LEFT SIDEBAR TRUST BADGES — ĐỐI XỨNG CÂN BẰNG)
-         ========================================================================= */}
-      <div
-        className="floating-ad-left"
-        style={{
-          position: 'fixed',
-          top: '210px',
-          right: 'calc(50% + 655px)',
-          width: '144px',
-          zIndex: 80,
-          pointerEvents: 'auto'
-        }}
-      >
-        <AnimatePresence mode="wait">
-          {isLeftVisible ? (
-            <motion.div
-              key="left-expanded"
-              initial={{ opacity: 0, x: -24, scale: 0.95 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: -24, scale: 0.95 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-              style={{
-                background: '#ffffff',
-                borderRadius: '16px',
-                border: '1.5px solid #bfdbfe',
-                boxShadow: '0 12px 32px -4px rgba(59,130,246,0.18), 0 4px 12px rgba(0,0,0,0.06)',
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column'
-              }}
-            >
-              {/* Header Ribbon */}
-              <div
-                style={{
-                  background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-                  color: '#ffffff',
-                  padding: '8px 10px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  borderBottom: '1px solid rgba(255,255,255,0.15)'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                  <ShieldCheck size={14} style={{ color: '#38bdf8' }} />
-                  <span style={{ fontSize: '10.5px', fontWeight: 800, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-                    Chuẩn Y Khoa
-                  </span>
-                </div>
-                <button
-                  onClick={() => setIsLeftVisible(false)}
+                  onClick={() => setIsLeftExpanded(false)}
                   style={{
                     background: 'none',
                     border: 'none',
@@ -348,116 +151,464 @@ export default function FloatingSideBanners({
                 </button>
               </div>
 
-              {/* Trust 1: 100% CBMP */}
+              {/* Sản phẩm 1: Son Romand (AR Try-On) */}
               <div
-                onClick={() => onNavigateCatalog && onNavigateCatalog()}
-                style={{
-                  padding: '10px 8px',
-                  borderBottom: '1px solid #f1f5f9',
-                  cursor: 'pointer',
-                  textAlign: 'center',
-                  background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)',
-                  transition: 'background 0.2s ease'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#eff6ff'}
-                onMouseLeave={(e) => e.currentTarget.style.background = 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)'}
-              >
-                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#0284c7', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 4px' }}>
-                  <ShieldCheck size={15} />
-                </div>
-                <div style={{ fontSize: '11px', fontWeight: 750, color: '#0f172a', lineHeight: 1.25 }}>
-                  100% Chính Hãng
-                </div>
-                <div style={{ fontSize: '9px', color: '#0284c7', fontWeight: 700, marginTop: '2px' }}>
-                  Bộ Y Tế CBMP
-                </div>
-                <div style={{ fontSize: '8.5px', color: '#64748b', marginTop: '2px' }}>
-                  Đền 200% nếu giả
-                </div>
-              </div>
-
-              {/* Trust 2: Freeship 2H */}
-              <div
+                onClick={() => onOpenTryOn && onOpenTryOn()}
                 style={{
                   padding: '9px 8px',
-                  borderBottom: '1px solid #f1f5f9',
+                  borderBottom: '1px solid #fdf2f8',
+                  cursor: 'pointer',
                   textAlign: 'center',
-                  background: '#fafafa'
+                  background: 'linear-gradient(180deg, #fff1f2 0%, #ffffff 100%)',
+                  transition: 'background 0.2s ease'
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#ffe4e6')}
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background = 'linear-gradient(180deg, #fff1f2 0%, #ffffff 100%)')
+                }
               >
-                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#059669', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 4px' }}>
-                  <Truck size={14} />
+                <div
+                  style={{
+                    position: 'relative',
+                    width: '52px',
+                    height: '52px',
+                    margin: '0 auto 5px',
+                    borderRadius: '10px',
+                    overflow: 'hidden',
+                    boxShadow: '0 3px 8px rgba(244,63,94,0.2)'
+                  }}
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=160&auto=format&fit=crop&q=80"
+                    alt="Son Romand"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                  <span
+                    style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      background: 'rgba(236,72,153,0.92)',
+                      color: '#ffffff',
+                      fontSize: '7.5px',
+                      fontWeight: 800,
+                      padding: '1px 0'
+                    }}
+                  >
+                    AR 60 FPS
+                  </span>
                 </div>
-                <div style={{ fontSize: '11px', fontWeight: 750, color: '#0f172a', lineHeight: 1.2 }}>
-                  Giao Nhanh 2H
+                <div style={{ fontSize: '10.5px', fontWeight: 750, color: '#0f172a', lineHeight: 1.25 }}>
+                  Son Romand Tint
                 </div>
-                <div style={{ fontSize: '8.5px', color: '#059669', fontWeight: 700, marginTop: '2px' }}>
-                  Freeship từ 0đ
+                <div style={{ fontSize: '9px', color: '#db2777', fontWeight: 800, margin: '2px 0 3px' }}>
+                  179.000₫ <span style={{ fontSize: '8px', color: '#94a3b8', textDecoration: 'line-through' }}>275k</span>
                 </div>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '2px',
+                    fontSize: '8.5px',
+                    fontWeight: 750,
+                    color: '#ffffff',
+                    background: '#ec4899',
+                    padding: '3px 8px',
+                    borderRadius: '9999px',
+                    boxShadow: '0 2px 4px rgba(236,72,153,0.3)'
+                  }}
+                >
+                  <Sparkles size={8} /> Thử Son
+                </span>
               </div>
 
-              {/* Trust 3: Dược sĩ tư vấn */}
+              {/* Sản phẩm 2: Serum Innisfree */}
               <div
                 onClick={() => {
-                  const chatBtn = document.querySelector('[aria-label="Mở Trợ Lý AI"]');
-                  if (chatBtn) chatBtn.click();
+                  const p = findProduct('Innisfree');
+                  if (onSelectProduct) onSelectProduct(p);
                 }}
                 style={{
                   padding: '9px 8px',
+                  borderBottom: '1px solid #fdf2f8',
                   cursor: 'pointer',
                   textAlign: 'center',
-                  background: 'linear-gradient(180deg, #fdf4ff 0%, #ffffff 100%)',
+                  background: '#ffffff',
                   transition: 'background 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#fae8ff'}
-                onMouseLeave={(e) => e.currentTarget.style.background = 'linear-gradient(180deg, #fdf4ff 0%, #ffffff 100%)'}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#f8fafc')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = '#ffffff')}
               >
-                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#a855f7', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 4px' }}>
-                  <Headphones size={14} />
+                <div
+                  style={{
+                    width: '48px',
+                    height: '48px',
+                    margin: '0 auto 4px',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    background: '#f8fafc'
+                  }}
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=160&auto=format&fit=crop&q=80"
+                    alt="Serum Innisfree"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
                 </div>
                 <div style={{ fontSize: '10.5px', fontWeight: 750, color: '#0f172a', lineHeight: 1.2 }}>
-                  Dược Sĩ 24/7
+                  Serum Trà Xanh
                 </div>
-                <div style={{ fontSize: '8.5px', color: '#9333ea', fontWeight: 700, marginTop: '2px' }}>
-                  Hỏi đáp INCI →
+                <div style={{ fontSize: '8.5px', color: '#059669', fontWeight: 700, margin: '2px 0' }}>
+                  Best Seller • Innisfree
+                </div>
+                <div style={{ fontSize: '10px', color: '#0f172a', fontWeight: 800 }}>
+                  620.000₫
+                </div>
+              </div>
+
+              {/* Item 3: Voucher 50K */}
+              <div
+                onClick={() => handleCopyVoucher('AURA50K')}
+                style={{
+                  padding: '8px 8px',
+                  cursor: 'pointer',
+                  textAlign: 'center',
+                  background: 'linear-gradient(180deg, #faf5ff 0%, #ffffff 100%)',
+                  transition: 'background 0.2s ease'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#f3e8ff')}
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background = 'linear-gradient(180deg, #faf5ff 0%, #ffffff 100%)')
+                }
+                title="Bấm để sao chép mã"
+              >
+                <div style={{ fontSize: '8.5px', fontWeight: 800, color: '#7c3aed', marginBottom: '2px' }}>
+                  <Tag size={9} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '2px' }} />
+                  VOUCHER SÀN
+                </div>
+                <div style={{ fontSize: '11px', fontWeight: 850, color: '#9333ea' }}>
+                  GIẢM 50.000₫
+                </div>
+                <div
+                  style={{
+                    fontSize: '8px',
+                    fontWeight: 800,
+                    background: '#ede9fe',
+                    color: '#6d28d9',
+                    padding: '2px 5px',
+                    borderRadius: '4px',
+                    border: '1px dashed #c4b5fd',
+                    display: 'inline-block',
+                    marginTop: '3px'
+                  }}
+                >
+                  MÃ: AURA50K 📋
                 </div>
               </div>
             </motion.div>
           ) : (
-            /* Minimized Left Tab */
+            /* Minimized Left Badge */
             <motion.button
-              key="left-minimized"
-              initial={{ opacity: 0, x: -20 }}
+              key="left-tab"
+              initial={{ opacity: 0, x: -15 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              onClick={() => setIsLeftVisible(true)}
+              exit={{ opacity: 0, x: -15 }}
+              onClick={() => setIsLeftExpanded(true)}
               style={{
-                background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+                background: 'linear-gradient(135deg, #ec4899 0%, #db2777 100%)',
                 color: '#ffffff',
                 border: 'none',
                 borderRadius: '0 8px 8px 0',
-                padding: '10px 8px',
+                padding: '10px 7px',
                 cursor: 'pointer',
-                boxShadow: '0 4px 12px rgba(15,23,42,0.3)',
+                boxShadow: '0 4px 14px rgba(236,72,153,0.35)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: '4px'
+                gap: '5px'
               }}
-              title="Mở cam kết chuẩn y khoa"
+              title="Mở quảng cáo hot deals"
             >
-              <ShieldCheck size={16} style={{ color: '#38bdf8' }} />
+              <Flame size={15} style={{ color: '#fef08a' }} />
               <span
                 style={{
                   writingMode: 'vertical-rl',
                   textOrientation: 'mixed',
-                  fontSize: '10px',
+                  fontSize: '9.5px',
                   fontWeight: 800,
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase'
                 }}
               >
-                Cam Kết
+                Hot Deals
+              </span>
+            </motion.button>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* =========================================================================
+          CỘT QUẢNG CÁO SẢN PHẨM BÊN PHẢI (RIGHT SIDE PRODUCT ADS — TRƯỢT THEO WEB)
+         ========================================================================= */}
+      <div
+        className="floating-ad-right"
+        style={{
+          position: 'fixed',
+          top: '175px',
+          left: isWideScreen ? 'calc(50% + 616px)' : 'auto',
+          right: !isWideScreen ? '0' : 'auto',
+          zIndex: 85,
+          pointerEvents: 'auto'
+        }}
+      >
+        <AnimatePresence mode="wait">
+          {isRightExpanded ? (
+            <motion.div
+              key="right-full"
+              initial={{ opacity: 0, x: 20, scale: 0.96 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: 20, scale: 0.96 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              style={{
+                width: '136px',
+                background: '#ffffff',
+                borderRadius: '16px',
+                border: '1.5px solid #fed7aa',
+                boxShadow: '0 12px 30px -4px rgba(234,88,12,0.18), 0 4px 12px rgba(0,0,0,0.06)',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+            >
+              {/* Header Ribbon */}
+              <div
+                style={{
+                  background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
+                  color: '#ffffff',
+                  padding: '7px 9px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <Zap size={13} style={{ color: '#fef08a' }} />
+                  <span style={{ fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    Flash Sale
+                  </span>
+                </div>
+                <button
+                  onClick={() => setIsRightExpanded(false)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: '#ffffff',
+                    cursor: 'pointer',
+                    padding: '2px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    opacity: 0.85
+                  }}
+                  title="Thu gọn"
+                  aria-label="Thu gọn"
+                >
+                  <X size={13} />
+                </button>
+              </div>
+
+              {/* Sản phẩm 1: Serum La Roche-Posay B5 (-50%) */}
+              <div
+                onClick={() => {
+                  const p = findProduct('Roche');
+                  if (onSelectProduct) onSelectProduct(p);
+                }}
+                style={{
+                  padding: '9px 8px',
+                  borderBottom: '1px solid #fff7ed',
+                  cursor: 'pointer',
+                  textAlign: 'center',
+                  background: 'linear-gradient(180deg, #fff7ed 0%, #ffffff 100%)',
+                  transition: 'background 0.2s ease'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#ffedd5')}
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background = 'linear-gradient(180deg, #fff7ed 0%, #ffffff 100%)')
+                }
+              >
+                <div
+                  style={{
+                    position: 'relative',
+                    width: '52px',
+                    height: '52px',
+                    margin: '0 auto 5px',
+                    borderRadius: '10px',
+                    overflow: 'hidden',
+                    boxShadow: '0 3px 8px rgba(234,88,12,0.2)'
+                  }}
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=160&auto=format&fit=crop&q=80"
+                    alt="Serum B5"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                  <span
+                    style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      background: 'rgba(234,88,12,0.92)',
+                      color: '#ffffff',
+                      fontSize: '7.5px',
+                      fontWeight: 800,
+                      padding: '1px 0'
+                    }}
+                  >
+                    GIẢM 50%
+                  </span>
+                </div>
+                <div style={{ fontSize: '10.5px', fontWeight: 750, color: '#0f172a', lineHeight: 1.25 }}>
+                  Serum Hyalu B5
+                </div>
+                <div style={{ fontSize: '9px', color: '#ea580c', fontWeight: 800, margin: '2px 0 3px' }}>
+                  490.000₫ <span style={{ fontSize: '8px', color: '#94a3b8', textDecoration: 'line-through' }}>980k</span>
+                </div>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '2px',
+                    fontSize: '8.5px',
+                    fontWeight: 750,
+                    color: '#ffffff',
+                    background: '#f97316',
+                    padding: '3px 8px',
+                    borderRadius: '9999px',
+                    boxShadow: '0 2px 4px rgba(249,115,22,0.3)'
+                  }}
+                >
+                  Săn Deal <ArrowRight size={8} />
+                </span>
+              </div>
+
+              {/* Sản phẩm 2: Sữa Rửa Mặt CeraVe */}
+              <div
+                onClick={() => {
+                  const p = findProduct('CeraVe') || findProduct('Rửa Mặt');
+                  if (onSelectProduct) onSelectProduct(p);
+                }}
+                style={{
+                  padding: '9px 8px',
+                  borderBottom: '1px solid #fff7ed',
+                  cursor: 'pointer',
+                  textAlign: 'center',
+                  background: '#ffffff',
+                  transition: 'background 0.2s ease'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#f8fafc')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = '#ffffff')}
+              >
+                <div
+                  style={{
+                    width: '48px',
+                    height: '48px',
+                    margin: '0 auto 4px',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    background: '#f8fafc'
+                  }}
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=160&auto=format&fit=crop&q=80"
+                    alt="CeraVe Cleanser"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </div>
+                <div style={{ fontSize: '10.5px', fontWeight: 750, color: '#0f172a', lineHeight: 1.2 }}>
+                  Sữa Rửa Mặt CeraVe
+                </div>
+                <div style={{ fontSize: '8.5px', color: '#0284c7', fontWeight: 700, margin: '2px 0' }}>
+                  Freeship 0đ • 473ml
+                </div>
+                <div style={{ fontSize: '10px', color: '#0f172a', fontWeight: 800 }}>
+                  365.000₫
+                </div>
+              </div>
+
+              {/* Item 3: AI Skin Scanner */}
+              <div
+                onClick={() => onOpenSkinScanner && onOpenSkinScanner()}
+                style={{
+                  padding: '8px 8px',
+                  cursor: 'pointer',
+                  textAlign: 'center',
+                  background: 'linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%)',
+                  transition: 'background 0.2s ease'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#dcfce7')}
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background = 'linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%)')
+                }
+              >
+                <div
+                  style={{
+                    width: '26px',
+                    height: '26px',
+                    borderRadius: '50%',
+                    background: '#10b981',
+                    color: '#ffffff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 3px'
+                  }}
+                >
+                  <Camera size={13} />
+                </div>
+                <div style={{ fontSize: '10px', fontWeight: 750, color: '#0f172a', lineHeight: 1.2 }}>
+                  AI Soi Da 5 Chỉ Số
+                </div>
+                <div style={{ fontSize: '8.5px', color: '#059669', fontWeight: 700, marginTop: '2px' }}>
+                  Miễn phí 100% →
+                </div>
+              </div>
+            </motion.div>
+          ) : (
+            /* Minimized Right Badge */
+            <motion.button
+              key="right-tab"
+              initial={{ opacity: 0, x: 15 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 15 }}
+              onClick={() => setIsRightExpanded(true)}
+              style={{
+                background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: '8px 0 0 8px',
+                padding: '10px 7px',
+                cursor: 'pointer',
+                boxShadow: '0 4px 14px rgba(249,115,22,0.35)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '5px'
+              }}
+              title="Mở quảng cáo Flash Sale"
+            >
+              <Zap size={15} style={{ color: '#fef08a' }} />
+              <span
+                style={{
+                  writingMode: 'vertical-rl',
+                  textOrientation: 'mixed',
+                  fontSize: '9.5px',
+                  fontWeight: 800,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase'
+                }}
+              >
+                Flash Sale
               </span>
             </motion.button>
           )}

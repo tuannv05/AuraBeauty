@@ -9,7 +9,6 @@ import { MOCK_PRODUCTS } from '../api';
 import { searchCatalogProducts } from '../lib/searchEngine';
 import { getEnrichedCatalog } from '../lib/submenuCatalogMapper';
 import { AuraBrandLogo } from './ui';
-import SellerPromotionalAdsRibbon from './SellerPromotionalAdsRibbon';
 
 const TOP_BAR_ANNOUNCEMENTS = [
   '🚚 FREESHIP TOÀN QUỐC CHO ĐƠN TỪ 199K',
@@ -1721,13 +1720,7 @@ export default function Navbar({
         )}
       </nav>
 
-      {/* =========================================================================
-          TẦNG 4: SELLER PROMOTIONAL ADS RIBBON (Quảng cáo nhà bán hàng & Flash Deal)
-         ========================================================================= */}
-      <SellerPromotionalAdsRibbon
-        onSelectProduct={onSelectProduct}
-        onOpenTryOn={onOpenTryOn}
-      />
+      
 
       {/* =========================================================================
           MOBILE DRAWER (Ngăn kéo trượt khi bấm Hamburger trên điện thoại)
