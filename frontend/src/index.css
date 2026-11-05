@@ -161,6 +161,31 @@ input[type="number"] {
   }
 }
 
+/* Hero Section with Shopee-Style Right Promo Sidebar */
+.hero-section-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.88fr) 350px;
+  gap: 16px;
+  margin-bottom: 32px;
+  align-items: stretch;
+}
+
+@media (max-width: 1080px) {
+  .hero-section-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-promo-sidebar {
+    grid-template-columns: 1fr 1fr;
+    display: grid !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-promo-sidebar {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* Stadium Pill Buttons */
 .btn-pill-primary {
   background-color: var(--ink);

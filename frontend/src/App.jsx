@@ -14,6 +14,7 @@ import { TopBarModals } from './components/TopBarModals';
 import { USER_ROLES, MOCK_PRODUCTS } from './api';
 import { useBrowserHistorySync } from './hooks/useBrowserHistorySync';
 import { AuraIntroOverlay } from './components/ui';
+import FloatingSideBanners from './components/FloatingSideBanners';
 
 export default function App() {
   // Luxury Editorial Intro state: kích hoạt khi mới vào web hoặc khi quay lại trang chủ
@@ -206,6 +207,17 @@ export default function App() {
           onNavigateSeller={() => navigateTo({ view: 'seller', sellerTab: 'overview' })}
           onReplayIntro={() => setShowIntro(true)}
           user={currentUser}
+        />
+      )}
+
+      {/* 2.5 Floating Skyscraper Side Banners (Quảng cáo 2 bên sườn bám mép màn hình rộng >= 1380px) */}
+      {activeView === 'home' && (
+        <FloatingSideBanners
+          onOpenTryOn={() => openModal('try-on')}
+          onOpenSkinScanner={() => openModal('skin-scanner')}
+          onNavigateCatalog={() => navigateTo({ view: 'catalog' })}
+          onSelectProduct={(p) => navigateTo({ view: 'product-detail', productId: p.id, product: p })}
+          onAddToast={addToast}
         />
       )}
 

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles, Clock, ArrowRight, ShieldCheck, Truck, RefreshCw, Headphones,
   Star, Heart, ShoppingBag, Eye, ChevronLeft, ChevronRight, Check,
-  Camera, Calendar, Crown
+  Camera, Calendar, Crown, Flame, Tag, Zap
 } from 'lucide-react';
 import {
   MOCK_PRODUCTS, MOCK_COMBOS, MOCK_BLOG_POSTS, MOCK_CUSTOMER_FEED
@@ -126,218 +126,469 @@ export default function HomeView({
 
   return (
     <div style={{ marginTop: '16px' }}>
-      {/* VÙNG A: HERO SLIDER (Staggered Reveal & Ken Burns Scale) */}
-      <motion.section
-        initial={{ opacity: 0, scale: 1.02 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        onMouseEnter={() => setIsSlidePaused(true)}
-        onMouseLeave={() => setIsSlidePaused(false)}
-        style={{
-          position: 'relative',
-          borderRadius: 'var(--radius-lg)',
-          overflow: 'hidden',
-          marginBottom: '32px',
-          boxShadow: 'var(--shadow-md)'
-        }}
-      >
-        <div style={{ position: 'relative', minHeight: '460px', display: 'flex', alignItems: 'center' }}>
-          {HERO_SLIDES.map((slide, idx) => {
-            const isActive = currentSlide === idx;
-            return (
-              <div
-                key={slide.id}
-                style={{
-                  position: isActive ? 'relative' : 'absolute',
-                  inset: 0,
-                  opacity: isActive ? 1 : 0,
-                  pointerEvents: isActive ? 'auto' : 'none',
-                  transition: 'opacity 500ms ease',
-                  background: slide.bgGradient,
-                  color: '#ffffff',
-                  display: 'flex',
-                  alignItems: 'center',
-                  padding: '44px 56px',
-                  width: '100%'
-                }}
-              >
-                <div style={{ flex: 1, zIndex: 2, maxWidth: '580px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
-                    <span
-                      className="badge-pill badge-neutral"
-                      style={{
-                        background: 'rgba(255,255,255,0.15)',
-                        color: '#ffffff',
-                        border: 'none'
-                      }}
-                    >
-                      ✨ {slide.badge}
-                    </span>
-                  </div>
-
-                  <h2
-                    style={{
-                      fontSize: '42px',
-                      fontWeight: 750,
-                      lineHeight: 1.15,
-                      letterSpacing: '-0.02em',
-                      marginBottom: '14px'
-                    }}
-                  >
-                    {slide.title}
-                  </h2>
-                  <p
-                    style={{
-                      fontSize: '15px',
-                      color: 'rgba(255,255,255,0.85)',
-                      lineHeight: 1.5,
-                      marginBottom: '22px',
-                      fontWeight: 300
-                    }}
-                  >
-                    {slide.subtitle}
-                  </p>
-
-                  {/* CTA */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '22px' }}>
-                    <SpringButton
-                      variant="rose"
-                      size="md"
-                      onClick={() => {
-                        if (slide.ctaText === 'Thử màu son' && onOpenTryOn) {
-                          onOpenTryOn();
-                        } else {
-                          onNavigateCatalog();
-                        }
-                      }}
-                      className="shadow-md font-bold"
-                    >
-                      <span>{slide.ctaText}</span>
-                      <ArrowRight size={15} />
-                    </SpringButton>
-                  </div>
-
-                  {/* Trust Metrics Counter */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.15)', flexWrap: 'wrap' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span style={{ fontSize: '18px', fontWeight: 800, color: '#FFABB9' }}>
-                        <NumberTicker value={154} suffix="+" />
-                      </span>
-                      <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>Sản phẩm chính hãng</span>
-                    </div>
-                    <div style={{ width: '1px', height: '24px', background: 'rgba(255,255,255,0.15)' }} />
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span style={{ fontSize: '18px', fontWeight: 800, color: '#38bdf8' }}>
-                        <NumberTicker value={100} suffix="%" />
-                      </span>
-                      <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>Kiểm định CBMP Bộ Y Tế</span>
-                    </div>
-                    <div style={{ width: '1px', height: '24px', background: 'rgba(255,255,255,0.15)' }} />
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span style={{ fontSize: '18px', fontWeight: 800, color: '#34d399' }}>
-                        <NumberTicker value={200} suffix="%" />
-                      </span>
-                      <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>Cam kết hoàn tiền</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Hero Product Image */}
+      {/* VÙNG A: HERO SECTION VỚI SIDEBAR QUẢNG CÁO BÊN DƯỚI MENU (CHUẨN SHOPEE MALL / HASAKI) */}
+      <section className="hero-section-grid">
+        {/* CỘT TRÁI: HERO SLIDER CHÍNH */}
+        <motion.div
+          initial={{ opacity: 0, scale: 1.01 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          onMouseEnter={() => setIsSlidePaused(true)}
+          onMouseLeave={() => setIsSlidePaused(false)}
+          style={{
+            position: 'relative',
+            borderRadius: 'var(--radius-lg)',
+            overflow: 'hidden',
+            boxShadow: 'var(--shadow-md)',
+            background: '#0f172a',
+            minHeight: '460px',
+            display: 'flex',
+            alignItems: 'stretch'
+          }}
+        >
+          <div style={{ position: 'relative', width: '100%', minHeight: '460px', display: 'flex', alignItems: 'center' }}>
+            {HERO_SLIDES.map((slide, idx) => {
+              const isActive = currentSlide === idx;
+              return (
                 <div
+                  key={slide.id}
                   style={{
-                    flex: 1,
+                    position: isActive ? 'relative' : 'absolute',
+                    inset: 0,
+                    opacity: isActive ? 1 : 0,
+                    pointerEvents: isActive ? 'auto' : 'none',
+                    transition: 'opacity 500ms ease',
+                    background: slide.bgGradient,
+                    color: '#ffffff',
                     display: 'flex',
-                    justifyContent: 'center',
                     alignItems: 'center',
-                    position: 'relative'
+                    padding: '36px 40px',
+                    width: '100%'
                   }}
-                  className="hero-image-wrap"
                 >
-                  <motion.img
-                    src={slide.image}
-                    alt={slide.title}
-                    key={slide.id}
-                    initial={{ scale: 1.05, opacity: 0.8 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                  <div style={{ flex: 1.2, zIndex: 2, maxWidth: '440px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', flexWrap: 'wrap' }}>
+                      <span
+                        className="badge-pill badge-neutral"
+                        style={{
+                          background: 'rgba(255,255,255,0.15)',
+                          color: '#ffffff',
+                          border: 'none',
+                          fontSize: '11px'
+                        }}
+                      >
+                        ✨ {slide.badge}
+                      </span>
+                    </div>
+
+                    <h2
+                      style={{
+                        fontSize: '32px',
+                        fontWeight: 750,
+                        lineHeight: 1.2,
+                        letterSpacing: '-0.02em',
+                        marginBottom: '12px'
+                      }}
+                    >
+                      {slide.title}
+                    </h2>
+                    <p
+                      style={{
+                        fontSize: '13.5px',
+                        color: 'rgba(255,255,255,0.85)',
+                        lineHeight: 1.5,
+                        marginBottom: '18px',
+                        fontWeight: 300
+                      }}
+                    >
+                      {slide.subtitle}
+                    </p>
+
+                    {/* CTA */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '18px' }}>
+                      <SpringButton
+                        variant="rose"
+                        size="md"
+                        onClick={() => {
+                          if (slide.ctaText === 'Thử màu son' && onOpenTryOn) {
+                            onOpenTryOn();
+                          } else {
+                            onNavigateCatalog();
+                          }
+                        }}
+                        className="shadow-md font-bold"
+                      >
+                        <span>{slide.ctaText}</span>
+                        <ArrowRight size={15} />
+                      </SpringButton>
+                    </div>
+
+                    {/* Trust Metrics Counter */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px', paddingTop: '14px', borderTop: '1px solid rgba(255,255,255,0.15)', flexWrap: 'wrap' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <span style={{ fontSize: '16px', fontWeight: 800, color: '#FFABB9' }}>
+                          <NumberTicker value={154} suffix="+" />
+                        </span>
+                        <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.7)' }}>Sản phẩm chính hãng</span>
+                      </div>
+                      <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.15)' }} />
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <span style={{ fontSize: '16px', fontWeight: 800, color: '#38bdf8' }}>
+                          <NumberTicker value={100} suffix="%" />
+                        </span>
+                        <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.7)' }}>Chuẩn CBMP</span>
+                      </div>
+                      <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.15)' }} />
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <span style={{ fontSize: '16px', fontWeight: 800, color: '#34d399' }}>
+                          <NumberTicker value={200} suffix="%" />
+                        </span>
+                        <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.7)' }}>Cam kết hoàn tiền</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Hero Product Image */}
+                  <div
                     style={{
-                      width: '360px',
-                      height: '360px',
-                      objectFit: 'cover',
-                      borderRadius: 'var(--radius-lg)',
-                      boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
-                      border: '4px solid rgba(255,255,255,0.1)'
+                      flex: 0.9,
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      position: 'relative'
                     }}
-                  />
+                    className="hero-image-wrap"
+                  >
+                    <motion.img
+                      src={slide.image}
+                      alt={slide.title}
+                      key={slide.id}
+                      initial={{ scale: 1.05, opacity: 0.8 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.8, ease: 'easeOut' }}
+                      style={{
+                        width: '260px',
+                        height: '260px',
+                        objectFit: 'cover',
+                        borderRadius: 'var(--radius-lg)',
+                        boxShadow: '0 16px 36px rgba(0,0,0,0.4)',
+                        border: '3px solid rgba(255,255,255,0.12)'
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
-        {/* Controls */}
-        <button
-          onClick={() => setCurrentSlide((prev) => (prev === 0 ? HERO_SLIDES.length - 1 : prev - 1))}
+          {/* Controls */}
+          <button
+            onClick={() => setCurrentSlide((prev) => (prev === 0 ? HERO_SLIDES.length - 1 : prev - 1))}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '16px',
+              transform: 'translateY(-50%)',
+              background: 'rgba(255, 255, 255, 0.25)',
+              backdropFilter: 'blur(4px)',
+              color: '#ffffff',
+              width: '36px',
+              height: '36px',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 10,
+              border: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            <ChevronLeft size={20} />
+          </button>
+
+          <button
+            onClick={() => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              right: '16px',
+              transform: 'translateY(-50%)',
+              background: 'rgba(255, 255, 255, 0.25)',
+              backdropFilter: 'blur(4px)',
+              color: '#ffffff',
+              width: '36px',
+              height: '36px',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 10,
+              border: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            <ChevronRight size={20} />
+          </button>
+
+          {/* Dots */}
+          <div style={{ position: 'absolute', bottom: '16px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '8px', zIndex: 10 }}>
+            {HERO_SLIDES.map((_, i) => (
+              <div
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                style={{
+                  width: currentSlide === i ? '22px' : '7px',
+                  height: '7px',
+                  borderRadius: '9999px',
+                  background: currentSlide === i ? '#ffffff' : 'rgba(255,255,255,0.4)',
+                  cursor: 'pointer',
+                  transition: 'all 200ms ease'
+                }}
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CỘT PHẢI: SIDEBAR QUẢNG CÁO BÊN DƯỚI MENU (2 BANNER ĐỘC QUYỀN CHUẨN SHOPEE MALL / HASAKI) */}
+        <div
+          className="hero-promo-sidebar"
           style={{
-            position: 'absolute',
-            top: '50%',
-            left: '20px',
-            transform: 'translateY(-50%)',
-            background: 'rgba(255, 255, 255, 0.25)',
-            backdropFilter: 'blur(4px)',
-            color: '#ffffff',
-            width: '40px',
-            height: '40px',
-            borderRadius: '50%',
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 10
+            flexDirection: 'column',
+            gap: '16px',
+            height: '100%'
           }}
         >
-          <ChevronLeft size={22} />
-        </button>
-
-        <button
-          onClick={() => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
-          style={{
-            position: 'absolute',
-            top: '50%',
-            right: '20px',
-            transform: 'translateY(-50%)',
-            background: 'rgba(255, 255, 255, 0.25)',
-            backdropFilter: 'blur(4px)',
-            color: '#ffffff',
-            width: '40px',
-            height: '40px',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 10
-          }}
-        >
-          <ChevronRight size={22} />
-        </button>
-
-        {/* Dots */}
-        <div style={{ position: 'absolute', bottom: '18px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '8px', zIndex: 10 }}>
-          {HERO_SLIDES.map((_, i) => (
+          {/* Banner 1: Thử màu son Romand AR Try-On (Luxury Rose Theme) */}
+          <motion.div
+            whileHover={{ y: -3, scale: 1.015 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            onClick={() => onOpenTryOn && onOpenTryOn()}
+            style={{
+              flex: 1,
+              borderRadius: 'var(--radius-lg)',
+              background: 'linear-gradient(135deg, #fff0f5 0%, #ffe4e6 50%, #fecdd3 100%)',
+              border: '1.5px solid #fbcfe8',
+              padding: '20px 20px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              cursor: 'pointer',
+              position: 'relative',
+              overflow: 'hidden',
+              boxShadow: '0 8px 24px -6px rgba(244,63,94,0.18)'
+            }}
+          >
+            {/* Ambient Background Decorative Circle */}
             <div
-              key={i}
-              onClick={() => setCurrentSlide(i)}
               style={{
-                width: currentSlide === i ? '24px' : '8px',
-                height: '8px',
-                borderRadius: '9999px',
-                background: currentSlide === i ? '#ffffff' : 'rgba(255,255,255,0.4)',
-                cursor: 'pointer',
-                transition: 'all 200ms ease'
+                position: 'absolute',
+                top: '-25px',
+                right: '-25px',
+                width: '120px',
+                height: '120px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(244,63,94,0.25) 0%, transparent 70%)',
+                pointerEvents: 'none'
               }}
             />
-          ))}
+
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    fontSize: '10.5px',
+                    fontWeight: 800,
+                    textTransform: 'uppercase',
+                    color: '#be185d',
+                    background: 'rgba(255,255,255,0.75)',
+                    padding: '3px 9px',
+                    borderRadius: '9999px',
+                    backdropFilter: 'blur(4px)',
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
+                  }}
+                >
+                  <Sparkles size={11} /> AR Try-On 60 FPS
+                </span>
+                <span style={{ fontSize: '11px', fontWeight: 800, color: '#e11d48', background: '#ffe4e6', padding: '2px 7px', borderRadius: '6px' }}>
+                  -35%
+                </span>
+              </div>
+
+              <h3 style={{ fontSize: '16.5px', fontWeight: 800, color: '#0f172a', margin: '0 0 4px', lineHeight: 1.25 }}>
+                Son Romand Velvet Tint
+              </h3>
+              <p style={{ fontSize: '12px', color: '#64748b', margin: 0, lineHeight: 1.4, maxWidth: '190px' }}>
+                Thử màu son trực tiếp qua Webcam AI. Mua 1 tặng cọ tán môi.
+              </p>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginTop: '14px' }}>
+              <div>
+                <div style={{ fontSize: '11px', color: '#94a3b8', textDecoration: 'line-through' }}>
+                  275.000₫
+                </div>
+                <div style={{ fontSize: '18px', fontWeight: 850, color: '#be185d', lineHeight: 1 }}>
+                  179.000₫
+                </div>
+              </div>
+
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  background: 'linear-gradient(135deg, #ec4899 0%, #db2777 100%)',
+                  color: '#ffffff',
+                  fontSize: '11px',
+                  fontWeight: 750,
+                  padding: '6px 12px',
+                  borderRadius: '9999px',
+                  boxShadow: '0 4px 12px rgba(236,72,153,0.35)'
+                }}
+              >
+                <span>Thử ngay</span>
+                <ArrowRight size={13} />
+              </div>
+            </div>
+
+            {/* Float Thumbnail */}
+            <img
+              src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=240&auto=format&fit=crop&q=80"
+              alt="Son Romand"
+              style={{
+                position: 'absolute',
+                right: '12px',
+                top: '36px',
+                width: '72px',
+                height: '72px',
+                objectFit: 'cover',
+                borderRadius: '12px',
+                boxShadow: '0 6px 16px rgba(0,0,0,0.12)',
+                border: '2px solid #ffffff',
+                pointerEvents: 'none'
+              }}
+            />
+          </motion.div>
+
+          {/* Banner 2: Flash Sale La Roche-Posay (Luxury Dark Ink Theme) */}
+          <motion.div
+            whileHover={{ y: -3, scale: 1.015 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            onClick={() => onNavigateCatalog && onNavigateCatalog()}
+            style={{
+              flex: 1,
+              borderRadius: 'var(--radius-lg)',
+              background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+              border: '1.5px solid #334155',
+              padding: '20px 20px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              cursor: 'pointer',
+              position: 'relative',
+              overflow: 'hidden',
+              boxShadow: '0 8px 24px -6px rgba(15,23,42,0.3)'
+            }}
+          >
+            {/* Ambient Background Glow */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '-25px',
+                right: '-25px',
+                width: '120px',
+                height: '120px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(56,189,248,0.2) 0%, transparent 70%)',
+                pointerEvents: 'none'
+              }}
+            />
+
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    fontSize: '10.5px',
+                    fontWeight: 800,
+                    textTransform: 'uppercase',
+                    color: '#fef08a',
+                    background: 'rgba(255,255,255,0.12)',
+                    padding: '3px 9px',
+                    borderRadius: '9999px',
+                    border: '1px solid rgba(254,240,138,0.3)'
+                  }}
+                >
+                  <Flame size={11} style={{ color: '#f59e0b' }} /> Deal Giờ Vàng
+                </span>
+                <span style={{ fontSize: '11px', fontWeight: 800, color: '#38bdf8', background: 'rgba(56,189,248,0.15)', padding: '2px 7px', borderRadius: '6px' }}>
+                  -50%
+                </span>
+              </div>
+
+              <h3 style={{ fontSize: '16.5px', fontWeight: 800, color: '#ffffff', margin: '0 0 4px', lineHeight: 1.25 }}>
+                Serum La Roche-Posay B5
+              </h3>
+              <p style={{ fontSize: '12px', color: '#94a3b8', margin: 0, lineHeight: 1.4, maxWidth: '190px' }}>
+                Phục hồi màng ẩm 24H. Tặng kèm kem chống nắng 15ml.
+              </p>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginTop: '14px' }}>
+              <div>
+                <div style={{ fontSize: '11px', color: '#64748b', textDecoration: 'line-through' }}>
+                  980.000₫
+                </div>
+                <div style={{ fontSize: '18px', fontWeight: 850, color: '#38bdf8', lineHeight: 1 }}>
+                  490.000₫
+                </div>
+              </div>
+
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  background: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
+                  color: '#ffffff',
+                  fontSize: '11px',
+                  fontWeight: 750,
+                  padding: '6px 12px',
+                  borderRadius: '9999px',
+                  boxShadow: '0 4px 12px rgba(2,132,199,0.35)'
+                }}
+              >
+                <span>Săn Deal</span>
+                <ArrowRight size={13} />
+              </div>
+            </div>
+
+            {/* Float Thumbnail */}
+            <img
+              src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=240&auto=format&fit=crop&q=80"
+              alt="Serum B5"
+              style={{
+                position: 'absolute',
+                right: '12px',
+                top: '36px',
+                width: '72px',
+                height: '72px',
+                objectFit: 'cover',
+                borderRadius: '12px',
+                boxShadow: '0 6px 16px rgba(0,0,0,0.35)',
+                border: '2px solid rgba(255,255,255,0.2)',
+                pointerEvents: 'none'
+              }}
+            />
+          </motion.div>
         </div>
-      </motion.section>
+      </section>
 
       {/* VÙNG B: DẢI CAM KẾT (USP BAR) */}
       <section style={{ marginBottom: '40px' }}>
