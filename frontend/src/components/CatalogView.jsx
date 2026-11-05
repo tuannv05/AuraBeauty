@@ -837,8 +837,8 @@ export default function CatalogView({
                   <motion.div
                     key={prod.id}
                     className="squircle-card"
-                    whileHover={{ y: -4 }}
-                    transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                    whileHover={{ y: -5, scale: 1.01 }}
+                    transition={{ type: 'spring', stiffness: 380, damping: 25 }}
                   >
                     <div className="product-card-img-wrap" onClick={() => onSelectProduct(prod)} style={{ cursor: 'pointer' }}>
                       <img

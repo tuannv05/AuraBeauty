@@ -12,10 +12,10 @@ import { cn } from '@/lib/utils';
 export function MotionCard({
   children,
   className,
-  hoverScale = 1.015,
+  hoverScale = 1.01,
   tapScale = 0.985,
   glow = true,
-  glowColor = 'rgba(255, 171, 185, 0.16)',
+  glowColor = 'rgba(255, 171, 185, 0.22)',
   style,
   ...props
 }) {
@@ -37,8 +37,8 @@ export function MotionCard({
       onMouseMove={handleMouseMove}
       whileHover={{
         scale: hoverScale,
-        y: -4,
-        boxShadow: '0 16px 36px -12px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03)',
+        y: -5,
+        boxShadow: '0 20px 40px -15px rgba(244, 63, 94, 0.12), 0 8px 16px -4px rgba(0, 0, 0, 0.04)',
       }}
       whileTap={{ scale: tapScale }}
       transition={{
@@ -47,7 +47,7 @@ export function MotionCard({
         damping: 24,
       }}
       className={cn(
-        'group relative bg-white rounded-2xl border border-neutral-200/80 p-5 transition-colors overflow-hidden',
+        'group relative bg-white rounded-2xl border border-neutral-200/80 transition-all duration-200 hover:border-rose-300 overflow-hidden',
         className
       )}
       style={style}

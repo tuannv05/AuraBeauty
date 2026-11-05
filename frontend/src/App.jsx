@@ -198,6 +198,7 @@ export default function App() {
           onNavigateCombos={() => navigateTo({ view: 'combos' })}
           onNavigateProfile={() => navigateTo({ view: 'profile' })}
           onSelectProduct={(p) => navigateTo({ view: 'product-detail', productId: p.id, product: p })}
+          onOpenTryOn={(p) => openModal('try-on', { product: p })}
           onSearchSubmit={(query) => navigateTo({ view: 'catalog', search: query, category: '' })}
           onOpenTopBarModal={(k) => setActiveTopBarModal(k)}
           onNavigateFlashSale={() => navigateTo({ view: 'flash-sale' })}

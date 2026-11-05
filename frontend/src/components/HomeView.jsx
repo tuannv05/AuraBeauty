@@ -806,45 +806,98 @@ export default function HomeView({
             <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Cập nhật các sản phẩm hot nhất theo xu hướng làm đẹp</p>
           </div>
 
-          {/* Segmented Tab Control */}
-          <div style={{ display: 'flex', background: 'var(--canvas-soft)', padding: '4px', borderRadius: 'var(--radius-full)', border: '1px solid var(--hairline)' }}>
-            <button
-              onClick={() => setActiveTab('bestseller')}
-              className={activeTab === 'bestseller' ? 'btn-pill-primary' : 'btn-pill-soft'}
-              style={{ fontSize: '13px', padding: '6px 18px' }}
-            >
-              Bán Chạy Nhất
-            </button>
-            <button
-              onClick={() => setActiveTab('new')}
-              className={activeTab === 'new' ? 'btn-pill-primary' : 'btn-pill-soft'}
-              style={{ fontSize: '13px', padding: '6px 18px' }}
-            >
-              Mới Về
-            </button>
-            <button
-              onClick={() => setActiveTab('foryou')}
-              className={activeTab === 'foryou' ? 'btn-pill-primary' : 'btn-pill-soft'}
-              style={{ fontSize: '13px', padding: '6px 18px' }}
-            >
-              ✨ Dành Cho Da Bạn
-            </button>
+          {/* Spring Segmented Tab Control */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              position: 'relative',
+              background: '#f1f5f9',
+              padding: '4px',
+              borderRadius: '9999px',
+              border: '1px solid #e2e8f0'
+            }}
+          >
+            {[
+              { id: 'bestseller', label: 'Bán Chạy Nhất' },
+              { id: 'new', label: 'Mới Về' },
+              { id: 'foryou', label: '✨ Dành Cho Da Bạn' }
+            ].map((t) => {
+              const isActive = activeTab === t.id;
+              return (
+                <button
+                  key={t.id}
+                  onClick={() => setActiveTab(t.id)}
+                  style={{
+                    position: 'relative',
+                    padding: '8px 20px',
+                    fontSize: '13px',
+                    fontWeight: 700,
+                    borderRadius: '9999px',
+                    border: 'none',
+                    background: 'transparent',
+                    cursor: 'pointer',
+                    userSelect: 'none',
+                    outline: 'none',
+                    color: isActive ? '#ffffff' : '#475569',
+                    zIndex: 2,
+                    transition: 'color 150ms ease'
+                  }}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="home-curated-tab-indicator"
+                      transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        backgroundColor: '#0f172a',
+                        borderRadius: '9999px',
+                        boxShadow: '0 2px 8px rgba(15, 23, 42, 0.25)',
+                        zIndex: -1
+                      }}
+                    />
+                  )}
+                  <span>{t.label}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* 4x2 Product Cards Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-            gap: '20px',
-            marginBottom: '24px'
-          }}
-        >
-          {tabbedProducts.slice(0, 16).map((prod) => {
-            const isWish = wishlistIds.includes(prod.id);
-            return (
-              <div key={prod.id} className="squircle-card">
+        {/* 4x2 Product Cards Grid with Spring AnimatePresence & 3D Lift */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+              gap: '20px',
+              marginBottom: '24px'
+            }}
+          >
+            {tabbedProducts.slice(0, 16).map((prod) => {
+              const isWish = wishlistIds.includes(prod.id);
+              return (
+                <motion.div
+                  key={prod.id}
+                  className="squircle-card"
+                  whileHover={{ y: -5, scale: 1.01 }}
+                  transition={{ type: 'spring', stiffness: 380, damping: 25 }}
+                  style={{
+                    position: 'relative',
+                    background: '#ffffff',
+                    borderRadius: '16px',
+                    border: '1px solid #e2e8f0',
+                    overflow: 'hidden',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
                 <div className="product-card-img-wrap" onClick={() => onSelectProduct(prod)} style={{ cursor: 'pointer' }}>
                   <img
                     src={prod.images[0]}
@@ -976,10 +1029,11 @@ export default function HomeView({
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+          </motion.div>
+        </AnimatePresence>
 
         <div style={{ textAlign: 'center' }}>
           <button

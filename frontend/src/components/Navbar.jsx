@@ -9,6 +9,7 @@ import { MOCK_PRODUCTS } from '../api';
 import { searchCatalogProducts } from '../lib/searchEngine';
 import { getEnrichedCatalog } from '../lib/submenuCatalogMapper';
 import { AuraBrandLogo } from './ui';
+import SellerPromotionalAdsRibbon from './SellerPromotionalAdsRibbon';
 
 const TOP_BAR_ANNOUNCEMENTS = [
   '🚚 FREESHIP TOÀN QUỐC CHO ĐƠN TỪ 199K',
@@ -256,6 +257,7 @@ export default function Navbar({
   onNavigateFlashSale,
   onCurrencyChange,
   onReplayIntro,
+  onOpenTryOn,
   wishlistCount = 0,
   user
 }) {
@@ -401,13 +403,21 @@ export default function Navbar({
           color: '#e2e8f0',
           height: '34px',
           fontSize: '12px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0 24px',
           borderBottom: '1px solid #1e293b'
         }}
       >
+        <div
+          style={{
+            maxWidth: '1720px',
+            width: '100%',
+            margin: '0 auto',
+            padding: '0 clamp(16px, 3.5vw, 48px)',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}
+        >
         {/* Left: Hotline & Stores */}
         <div className="top-bar-left" style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
           <div
@@ -538,6 +548,7 @@ export default function Navbar({
             </select>
           </div>
         </div>
+        </div>
       </div>
 
       {/* =========================================================================
@@ -550,17 +561,21 @@ export default function Navbar({
         className="main-header-wrapper"
         style={{
           borderBottom: '1px solid #f1f5f9',
-          padding: '12px 24px',
+          padding: '12px 0',
           background: '#ffffff'
         }}
       >
         <div
-          className="container"
+          className="header-fluid-container"
           style={{
+            maxWidth: '1720px',
+            width: '100%',
+            margin: '0 auto',
+            padding: '0 clamp(16px, 3.5vw, 48px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '24px'
+            gap: 'clamp(20px, 3vw, 48px)'
           }}
         >
           {/* Logo & Mobile Menu Toggle */}
@@ -588,13 +603,13 @@ export default function Navbar({
             />
           </div>
 
-          {/* Search Bar (Chiếm 45-50% chiều ngang kèm Auto-Suggest & Trending) */}
+          {/* Search Bar (Rộng rãi, thoáng đãng ở giữa kèm Auto-Suggest & Trending) */}
           <div
             ref={searchContainerRef}
             className="search-bar-center"
             style={{
               flex: 1,
-              maxWidth: '580px',
+              maxWidth: '740px',
               position: 'relative'
             }}
           >
@@ -1144,8 +1159,12 @@ export default function Navbar({
         }}
       >
         <div
-          className="container"
+          className="nav-fluid-container"
           style={{
+            maxWidth: '1720px',
+            width: '100%',
+            margin: '0 auto',
+            padding: '0 clamp(16px, 3.5vw, 48px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -1363,7 +1382,7 @@ export default function Navbar({
               zIndex: 890
             }}
           >
-            <div className="container" style={{ display: 'flex', minHeight: '360px', padding: 0 }}>
+            <div style={{ maxWidth: '1720px', width: '100%', margin: '0 auto', padding: '0 clamp(16px, 3.5vw, 48px)', display: 'flex', minHeight: '390px' }}>
               {/* Cột trái: Danh sách 7-8 danh mục chính */}
               <div
                 style={{
@@ -1528,7 +1547,7 @@ export default function Navbar({
               zIndex: 890
             }}
           >
-            <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1.2fr', gap: '32px' }}>
+            <div style={{ maxWidth: '1720px', width: '100%', margin: '0 auto', padding: '0 clamp(16px, 3.5vw, 48px)', display: 'grid', gridTemplateColumns: '1fr 1fr 1.2fr', gap: '36px' }}>
               {/* Cột 1: Phân loại theo loại da */}
               <div>
                 <h4 style={{ fontSize: '14px', fontWeight: 800, color: '#0f172a', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -1622,7 +1641,7 @@ export default function Navbar({
               zIndex: 890
             }}
           >
-            <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div style={{ maxWidth: '1720px', width: '100%', margin: '0 auto', padding: '0 clamp(16px, 3.5vw, 48px)', display: 'flex', flexDirection: 'column', gap: '20px' }}>
               {/* Lọc A-Z nhanh */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', borderBottom: '1px solid #f1f5f9', paddingBottom: '12px', overflowX: 'auto' }}>
                 <span style={{ fontSize: '12px', fontWeight: 700, color: '#94a3b8', marginRight: '6px' }}>LỌC A-Z:</span>
@@ -1701,6 +1720,14 @@ export default function Navbar({
           </div>
         )}
       </nav>
+
+      {/* =========================================================================
+          TẦNG 4: SELLER PROMOTIONAL ADS RIBBON (Quảng cáo nhà bán hàng & Flash Deal)
+         ========================================================================= */}
+      <SellerPromotionalAdsRibbon
+        onSelectProduct={onSelectProduct}
+        onOpenTryOn={onOpenTryOn}
+      />
 
       {/* =========================================================================
           MOBILE DRAWER (Ngăn kéo trượt khi bấm Hamburger trên điện thoại)
