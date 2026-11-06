@@ -436,22 +436,26 @@ export default function Navbar({
             <PackageCheck size={13} />
             <span>Tra cứu đơn hàng</span>
           </div>
-          <div
-            onClick={onNavigateSeller}
-            style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#60a5fa', fontWeight: 700, background: 'rgba(96, 165, 250, 0.15)', padding: '2px 8px', borderRadius: '4px' }}
-            title="Chuyển đến Kênh Người Bán"
-          >
-            <Store size={12} />
-            <span>Kênh Người Bán</span>
-          </div>
-          <div
-            onClick={onNavigateAdmin}
-            style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#f59e0b', fontWeight: 700, background: 'rgba(245, 158, 11, 0.15)', padding: '2px 8px', borderRadius: '4px' }}
-            title="Chuyển đến Kênh Quản Trị Hệ Thống"
-          >
-            <ShieldCheck size={12} />
-            <span>Kênh Quản Trị</span>
-          </div>
+          {user?.role === 'SELLER' && (
+            <div
+              onClick={onNavigateSeller}
+              style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#60a5fa', fontWeight: 700, background: 'rgba(96, 165, 250, 0.15)', padding: '2px 8px', borderRadius: '4px' }}
+              title="Chuyển đến Kênh Người Bán"
+            >
+              <Store size={12} />
+              <span>Kênh Người Bán</span>
+            </div>
+          )}
+          {user?.role === 'ADMIN' && (
+            <div
+              onClick={onNavigateAdmin}
+              style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#f59e0b', fontWeight: 700, background: 'rgba(245, 158, 11, 0.15)', padding: '2px 8px', borderRadius: '4px' }}
+              title="Chuyển đến Kênh Quản Trị Hệ Thống"
+            >
+              <ShieldCheck size={12} />
+              <span>Kênh Quản Trị</span>
+            </div>
+          )}
         </div>
 
         {/* Center: Rotating Promotion Banner */}
@@ -481,18 +485,7 @@ export default function Navbar({
 
         {/* Right: Hệ thống cửa hàng & Đa tiền tệ / Đa ngôn ngữ Quốc tế */}
         <div className="top-bar-right" style={{ display: 'flex', alignItems: 'center', gap: '14px', color: '#cbd5e1' }}>
-          {onReplayIntro && (
-            <div
-              onClick={onReplayIntro}
-              style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#ffabb9' }}
-              title="Phát lại màn hình vén rèm thương hiệu 5 cảnh"
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#ffabb9')}
-            >
-              <Sparkles size={12} style={{ color: '#f59e0b' }} />
-              <span style={{ fontSize: '11px', fontWeight: 700 }}>Phát lại Intro</span>
-            </div>
-          )}
+          
 
           <div
             onClick={() => onOpenTopBarModal && onOpenTopBarModal('showrooms')}

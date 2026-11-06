@@ -14,7 +14,7 @@ import { ArrowRight, ShieldCheck, Sparkles, Dna } from 'lucide-react';
  * - Caches in sessionStorage('aura_intro_seen_v3')
  */
 
-const INTRO_DURATION_MS = 3600; // Kéo dài thêm 1.5s (từ 2.1s -> 3.6s) để người xem ngắm trọn vẹn 5 cảnh và đọc rõ thương hiệu
+const INTRO_DURATION_MS = 3100; // Nhanh hơn 0.5s (từ 3.6s -> 3.1s) theo yêu cầu người dùng
 
 export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
   const [isVisible, setIsVisible] = useState(isOpen);
@@ -232,7 +232,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
                   <motion.ellipse
                     initial={{ cx: 80, cy: 90, rx: 90, ry: 90, strokeWidth: 40, opacity: 0 }}
                     animate={{ cx: 0, cy: -38, rx: 58, ry: 58, strokeWidth: 2.4, opacity: 1 }}
-                    transition={{ duration: 0.85, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
                     fill="none"
                     stroke="#000000"
                   />
@@ -241,7 +241,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
                   <motion.ellipse
                     initial={{ cx: 80, cy: 90, rx: 90, ry: 90, strokeWidth: 40, opacity: 0 }}
                     animate={{ cx: 36, cy: -18, rx: 58, ry: 58, strokeWidth: 2.4, opacity: 1 }}
-                    transition={{ duration: 0.85, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.7, delay: 0.60, ease: [0.16, 1, 0.3, 1] }}
                     fill="none"
                     stroke="#000000"
                   />
@@ -250,7 +250,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
                   <motion.ellipse
                     initial={{ cx: 80, cy: 90, rx: 90, ry: 90, strokeWidth: 40, opacity: 0 }}
                     animate={{ cx: 22, cy: 30, rx: 58, ry: 58, strokeWidth: 2.4, opacity: 1 }}
-                    transition={{ duration: 0.85, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.7, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
                     fill="none"
                     stroke="#000000"
                   />
@@ -262,7 +262,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
                     r={5}
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.45, delay: 1.2, ease: [0.65, 0, 0.35, 1] }}
+                    transition={{ duration: 0.4, delay: 0.95, ease: [0.65, 0, 0.35, 1] }}
                     fill="#000000"
                   />
                   <motion.circle
@@ -271,7 +271,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
                     r={4.2}
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.45, delay: 1.35, ease: [0.65, 0, 0.35, 1] }}
+                    transition={{ duration: 0.4, delay: 1.05, ease: [0.65, 0, 0.35, 1] }}
                     fill="#000000"
                   />
                   <motion.circle
@@ -280,7 +280,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
                     r={4.5}
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.45, delay: 1.5, ease: [0.65, 0, 0.35, 1] }}
+                    transition={{ duration: 0.4, delay: 1.15, ease: [0.65, 0, 0.35, 1] }}
                     fill="#000000"
                   />
                 </mask>
@@ -311,7 +311,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
                     opacity: [0, 1, 1, 1]
                   }}
                   transition={{
-                    duration: 1.4,
+                    duration: 1.15,
                     times: [0, 0.45, 0.85, 1],
                     ease: 'easeInOut'
                   }}
@@ -341,7 +341,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
                       type: 'spring',
                       stiffness: 240,
                       damping: 15,
-                      delay: 1.4 + index * 0.08
+                      delay: 1.15 + index * 0.06
                     }}
                     style={{
                       fontFamily: "'Inter', -apple-system, sans-serif",
@@ -369,7 +369,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
                       type: 'spring',
                       stiffness: 240,
                       damping: 15,
-                      delay: 1.75 + index * 0.08
+                      delay: 1.40 + index * 0.05
                     }}
                     style={{
                       fontFamily: "'Inter', -apple-system, sans-serif",
@@ -398,7 +398,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
                       type: 'spring',
                       stiffness: 240,
                       damping: 15,
-                      delay: 2.25 + index * 0.08
+                      delay: 1.70 + index * 0.05
                     }}
                     style={{
                       fontFamily: "'Inter', -apple-system, sans-serif",
@@ -424,7 +424,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
                     type: 'spring',
                     stiffness: 280,
                     damping: 15,
-                    delay: 2.55
+                    delay: 1.95
                   }}
                   style={{
                     fontFamily: "'Inter', -apple-system, sans-serif",
@@ -442,7 +442,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
                   y="28"
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 0.95, y: 0 }}
-                  transition={{ duration: 0.5, delay: 2.65 }}
+                  transition={{ duration: 0.5, delay: 2.05 }}
                   style={{
                     fontFamily: "'Inter', -apple-system, sans-serif",
                     fontSize: '11.5px',
@@ -461,7 +461,7 @@ export default function AuraIntroOverlay({ isOpen = true, onComplete }) {
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 2.5 }}
+              transition={{ duration: 0.5, delay: 1.95 }}
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',

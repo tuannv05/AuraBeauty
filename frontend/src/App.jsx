@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { ShieldAlert, Store, ArrowLeft } from 'lucide-react';
 import Navbar from './components/Navbar';
 import BuyerZone from './components/BuyerZone';
 import SellerZone from './components/SellerZone';
@@ -205,7 +206,6 @@ export default function App() {
           onNavigateFlashSale={() => navigateTo({ view: 'flash-sale' })}
           onNavigateAdmin={() => navigateTo({ view: 'admin', adminTab: 'merchants' })}
           onNavigateSeller={() => navigateTo({ view: 'seller', sellerTab: 'overview' })}
-          onReplayIntro={() => setShowIntro(true)}
           user={currentUser}
         />
       )}
@@ -251,23 +251,71 @@ export default function App() {
               onLogout={handleLogout}
             />
           </div>
-        ) : activeView === 'admin' ? (
-          <div style={{ marginTop: '24px' }}>
-            <AdminZone
-              activeTab={adminTab}
-              onTabChange={(tab) => navigateTo({ view: 'admin', adminTab: tab })}
-              onNavigateHome={() => navigateTo({ view: 'home' })}
-            />
-          </div>
+                ) : activeView === 'admin' ? (
+          currentUser?.role === 'ADMIN' ? (
+            <div style={{ marginTop: '24px' }}>
+              <AdminZone
+                activeTab={adminTab}
+                onTabChange={(tab) => navigateTo({ view: 'admin', adminTab: tab })}
+                onNavigateHome={() => navigateTo({ view: 'home' })}
+              />
+            </div>
+          ) : (
+            <div style={{ padding: '60px 16px', maxWidth: '580px', margin: '40px auto', textAlign: 'center' }}>
+              <div className="squircle-card" style={{ padding: '40px 32px' }}>
+                <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#fee2e2', color: '#dc2626', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                  <ShieldAlert size={34} />
+                </div>
+                <h2 style={{ fontSize: '20px', fontWeight: 800, color: '#0f172a', marginBottom: '8px' }}>
+                  Khu Vực Quản Trị Hệ Thống (Admin Only)
+                </h2>
+                <p style={{ fontSize: '13.5px', color: 'var(--text-muted)', marginBottom: '24px', lineHeight: 1.6 }}>
+                  Bạn đang truy cập với vai trò {currentUser ? `Khách Mua Hàng (${currentUser.name})` : 'Khách vãng lai'}. Theo quy chuẩn an toàn bảo mật thương mại, Kênh Quản Trị chỉ dành riêng cho Quản trị viên sàn (ROLE_ADMIN).
+                </p>
+                <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <button onClick={() => navigateTo({ view: 'home' })} className="btn-pill-soft" style={{ fontSize: '13px', padding: '10px 22px' }}>
+                    Về Trang Chủ Mua Sắm
+                  </button>
+                  <button onClick={() => openModal('auth')} className="btn-pill-primary" style={{ fontSize: '13px', padding: '10px 22px', background: '#0f172a' }}>
+                    Đăng Nhập Tài Khoản Admin
+                  </button>
+                </div>
+              </div>
+            </div>
+          )
         ) : activeView === 'seller' ? (
-          <div style={{ marginTop: '24px' }}>
-            <SellerZone
-              user={currentUser}
-              activeTab={sellerTab}
-              onTabChange={(tab) => navigateTo({ view: 'seller', sellerTab: tab })}
-              onNavigateHome={() => navigateTo({ view: 'home' })}
-            />
-          </div>
+          currentUser?.role === 'SELLER' ? (
+            <div style={{ marginTop: '24px' }}>
+              <SellerZone
+                user={currentUser}
+                activeTab={sellerTab}
+                onTabChange={(tab) => navigateTo({ view: 'seller', sellerTab: tab })}
+                onNavigateHome={() => navigateTo({ view: 'home' })}
+              />
+            </div>
+          ) : (
+            <div style={{ padding: '60px 16px', maxWidth: '580px', margin: '40px auto', textAlign: 'center' }}>
+              <div className="squircle-card" style={{ padding: '40px 32px' }}>
+                <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#eff6ff', color: '#2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                  <Store size={34} />
+                </div>
+                <h2 style={{ fontSize: '20px', fontWeight: 800, color: '#0f172a', marginBottom: '8px' }}>
+                  Kênh Dành Riêng Cho Người Bán (Shop Partner)
+                </h2>
+                <p style={{ fontSize: '13.5px', color: 'var(--text-muted)', marginBottom: '24px', lineHeight: 1.6 }}>
+                  Bạn đang truy cập với vai trò {currentUser ? `Khách Mua Hàng (${currentUser.name})` : 'Khách vãng lai'}. Khu vực này chỉ dành riêng cho Chủ gian hàng (ROLE_SELLER) để quản lý tồn kho, phân bổ đơn con và doanh thu Shop.
+                </p>
+                <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <button onClick={() => navigateTo({ view: 'home' })} className="btn-pill-soft" style={{ fontSize: '13px', padding: '10px 22px' }}>
+                    Về Trang Chủ Mua Sắm
+                  </button>
+                  <button onClick={() => openModal('auth')} className="btn-pill-primary" style={{ fontSize: '13px', padding: '10px 22px' }}>
+                    Đăng Nhập Kênh Người Bán
+                  </button>
+                </div>
+              </div>
+            </div>
+          )
         ) : (
           <BuyerZone
             user={currentUser}
