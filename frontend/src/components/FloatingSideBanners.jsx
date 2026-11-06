@@ -8,17 +8,16 @@ import {
   Flame,
   Tag,
   X,
-  ArrowRight,
-  ChevronRight,
-  ChevronLeft
+  ArrowRight
 } from 'lucide-react';
 import { MOCK_PRODUCTS } from '../api';
 
 /**
  * FloatingSideBanners — Quảng Cáo Sản Phẩm 2 Bên Sườn (Floating Skyscraper Product Ads)
  * - Tự động trượt theo trang khi người dùng cuộn (smooth floating sticky)
+ * - Thiết kế rộng rãi, hình ảnh to rõ, thông tin giá & ưu đãi nổi bật
  * - Chống che khuất tuyệt đối: luôn nằm ngoài biên của container (max-w 1200px)
- * - Tự động thu gọn thành Tab nam châm siêu mỏng khi màn hình không đủ khoảng đệm
+ * - Tự động thu gọn thành Tab nam châm siêu mỏng khi màn hình không đủ khoảng đệm (< 1480px)
  * - Quảng cáo sản phẩm chính hãng cả 2 bên (Trái: Romand, Innisfree, Voucher | Phải: La Roche-Posay, CeraVe, AI Scan)
  */
 export default function FloatingSideBanners({
@@ -79,6 +78,8 @@ export default function FloatingSideBanners({
   };
 
   const isWideScreen = windowWidth >= 1480;
+  // Chiều rộng banner mở rộng: 185px trên màn hình lớn, 172px trên màn hình trung bình
+  const bannerWidth = windowWidth >= 1640 ? 188 : 174;
 
   return (
     <>
@@ -105,11 +106,11 @@ export default function FloatingSideBanners({
               exit={{ opacity: 0, x: -20, scale: 0.96 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
               style={{
-                width: '136px',
+                width: `${bannerWidth}px`,
                 background: '#ffffff',
                 borderRadius: '16px',
                 border: '1.5px solid #fbcfe8',
-                boxShadow: '0 12px 30px -4px rgba(244,63,94,0.18), 0 4px 12px rgba(0,0,0,0.06)',
+                boxShadow: '0 12px 32px -4px rgba(244,63,94,0.18), 0 4px 12px rgba(0,0,0,0.06)',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column'
@@ -120,16 +121,16 @@ export default function FloatingSideBanners({
                 style={{
                   background: 'linear-gradient(135deg, #ec4899 0%, #db2777 100%)',
                   color: '#ffffff',
-                  padding: '7px 9px',
+                  padding: '9px 12px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <Flame size={13} style={{ color: '#fef08a' }} />
-                  <span style={{ fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                    Hot Deals
+                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  <Flame size={14} style={{ color: '#fef08a' }} />
+                  <span style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    Hot Deals Mall
                   </span>
                 </div>
                 <button
@@ -147,7 +148,7 @@ export default function FloatingSideBanners({
                   title="Thu gọn"
                   aria-label="Thu gọn"
                 >
-                  <X size={13} />
+                  <X size={14} />
                 </button>
               </div>
 
@@ -155,7 +156,7 @@ export default function FloatingSideBanners({
               <div
                 onClick={() => onOpenTryOn && onOpenTryOn()}
                 style={{
-                  padding: '9px 8px',
+                  padding: '12px 10px',
                   borderBottom: '1px solid #fdf2f8',
                   cursor: 'pointer',
                   textAlign: 'center',
@@ -170,16 +171,16 @@ export default function FloatingSideBanners({
                 <div
                   style={{
                     position: 'relative',
-                    width: '52px',
-                    height: '52px',
-                    margin: '0 auto 5px',
-                    borderRadius: '10px',
+                    width: '68px',
+                    height: '68px',
+                    margin: '0 auto 6px',
+                    borderRadius: '12px',
                     overflow: 'hidden',
-                    boxShadow: '0 3px 8px rgba(244,63,94,0.2)'
+                    boxShadow: '0 4px 10px rgba(244,63,94,0.22)'
                   }}
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=160&auto=format&fit=crop&q=80"
+                    src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=200&auto=format&fit=crop&q=80"
                     alt="Son Romand"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
@@ -191,35 +192,38 @@ export default function FloatingSideBanners({
                       right: 0,
                       background: 'rgba(236,72,153,0.92)',
                       color: '#ffffff',
-                      fontSize: '7.5px',
+                      fontSize: '8px',
                       fontWeight: 800,
-                      padding: '1px 0'
+                      padding: '2px 0'
                     }}
                   >
                     AR 60 FPS
                   </span>
                 </div>
-                <div style={{ fontSize: '10.5px', fontWeight: 750, color: '#0f172a', lineHeight: 1.25 }}>
+                <div style={{ fontSize: '12px', fontWeight: 750, color: '#0f172a', lineHeight: 1.25 }}>
                   Son Romand Tint
                 </div>
-                <div style={{ fontSize: '9px', color: '#db2777', fontWeight: 800, margin: '2px 0 3px' }}>
-                  179.000₫ <span style={{ fontSize: '8px', color: '#94a3b8', textDecoration: 'line-through' }}>275k</span>
+                <div style={{ fontSize: '9.5px', color: '#64748b', marginTop: '1px' }}>
+                  Mua 1 Tặng 1 Cọ Môi
+                </div>
+                <div style={{ fontSize: '11px', color: '#db2777', fontWeight: 850, margin: '3px 0 5px' }}>
+                  179.000₫ <span style={{ fontSize: '9px', color: '#94a3b8', textDecoration: 'line-through' }}>275k</span>
                 </div>
                 <span
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '2px',
-                    fontSize: '8.5px',
+                    gap: '4px',
+                    fontSize: '9.5px',
                     fontWeight: 750,
                     color: '#ffffff',
                     background: '#ec4899',
-                    padding: '3px 8px',
+                    padding: '4px 10px',
                     borderRadius: '9999px',
-                    boxShadow: '0 2px 4px rgba(236,72,153,0.3)'
+                    boxShadow: '0 2px 5px rgba(236,72,153,0.35)'
                   }}
                 >
-                  <Sparkles size={8} /> Thử Son
+                  <Sparkles size={9} /> Thử Son AR
                 </span>
               </div>
 
@@ -230,7 +234,7 @@ export default function FloatingSideBanners({
                   if (onSelectProduct) onSelectProduct(p);
                 }}
                 style={{
-                  padding: '9px 8px',
+                  padding: '12px 10px',
                   borderBottom: '1px solid #fdf2f8',
                   cursor: 'pointer',
                   textAlign: 'center',
@@ -242,36 +246,53 @@ export default function FloatingSideBanners({
               >
                 <div
                   style={{
-                    width: '48px',
-                    height: '48px',
-                    margin: '0 auto 4px',
-                    borderRadius: '8px',
+                    width: '64px',
+                    height: '64px',
+                    margin: '0 auto 6px',
+                    borderRadius: '10px',
                     overflow: 'hidden',
-                    background: '#f8fafc'
+                    background: '#f8fafc',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.06)'
                   }}
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=160&auto=format&fit=crop&q=80"
+                    src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&auto=format&fit=crop&q=80"
                     alt="Serum Innisfree"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </div>
-                <div style={{ fontSize: '10.5px', fontWeight: 750, color: '#0f172a', lineHeight: 1.2 }}>
+                <div style={{ fontSize: '12px', fontWeight: 750, color: '#0f172a', lineHeight: 1.25 }}>
                   Serum Trà Xanh
                 </div>
-                <div style={{ fontSize: '8.5px', color: '#059669', fontWeight: 700, margin: '2px 0' }}>
-                  Best Seller • Innisfree
+                <div style={{ fontSize: '9.5px', color: '#059669', fontWeight: 700, margin: '2px 0 3px' }}>
+                  Innisfree • 80ml
                 </div>
-                <div style={{ fontSize: '10px', color: '#0f172a', fontWeight: 800 }}>
+                <div style={{ fontSize: '11px', color: '#0f172a', fontWeight: 850, marginBottom: '5px' }}>
                   620.000₫
                 </div>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '3px',
+                    fontSize: '9.5px',
+                    fontWeight: 750,
+                    color: '#059669',
+                    background: '#ecfdf5',
+                    padding: '3px 9px',
+                    borderRadius: '9999px',
+                    border: '1px solid #a7f3d0'
+                  }}
+                >
+                  Xem chi tiết <ArrowRight size={9} />
+                </span>
               </div>
 
               {/* Item 3: Voucher 50K */}
               <div
                 onClick={() => handleCopyVoucher('AURA50K')}
                 style={{
-                  padding: '8px 8px',
+                  padding: '11px 10px',
                   cursor: 'pointer',
                   textAlign: 'center',
                   background: 'linear-gradient(180deg, #faf5ff 0%, #ffffff 100%)',
@@ -283,24 +304,26 @@ export default function FloatingSideBanners({
                 }
                 title="Bấm để sao chép mã"
               >
-                <div style={{ fontSize: '8.5px', fontWeight: 800, color: '#7c3aed', marginBottom: '2px' }}>
-                  <Tag size={9} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '2px' }} />
+                <div style={{ fontSize: '9.5px', fontWeight: 800, color: '#7c3aed', marginBottom: '2px' }}>
+                  <Tag size={10} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '3px' }} />
                   VOUCHER SÀN
                 </div>
-                <div style={{ fontSize: '11px', fontWeight: 850, color: '#9333ea' }}>
+                <div style={{ fontSize: '13px', fontWeight: 850, color: '#9333ea', letterSpacing: '0.01em' }}>
                   GIẢM 50.000₫
+                </div>
+                <div style={{ fontSize: '9px', color: '#64748b', margin: '1px 0 4px' }}>
+                  Đơn từ 299K
                 </div>
                 <div
                   style={{
-                    fontSize: '8px',
+                    fontSize: '9px',
                     fontWeight: 800,
                     background: '#ede9fe',
                     color: '#6d28d9',
-                    padding: '2px 5px',
-                    borderRadius: '4px',
+                    padding: '3px 8px',
+                    borderRadius: '6px',
                     border: '1px dashed #c4b5fd',
-                    display: 'inline-block',
-                    marginTop: '3px'
+                    display: 'inline-block'
                   }}
                 >
                   MÃ: AURA50K 📋
@@ -371,11 +394,11 @@ export default function FloatingSideBanners({
               exit={{ opacity: 0, x: 20, scale: 0.96 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
               style={{
-                width: '136px',
+                width: `${bannerWidth}px`,
                 background: '#ffffff',
                 borderRadius: '16px',
                 border: '1.5px solid #fed7aa',
-                boxShadow: '0 12px 30px -4px rgba(234,88,12,0.18), 0 4px 12px rgba(0,0,0,0.06)',
+                boxShadow: '0 12px 32px -4px rgba(234,88,12,0.18), 0 4px 12px rgba(0,0,0,0.06)',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column'
@@ -386,15 +409,15 @@ export default function FloatingSideBanners({
                 style={{
                   background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
                   color: '#ffffff',
-                  padding: '7px 9px',
+                  padding: '9px 12px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <Zap size={13} style={{ color: '#fef08a' }} />
-                  <span style={{ fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  <Zap size={14} style={{ color: '#fef08a' }} />
+                  <span style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     Flash Sale
                   </span>
                 </div>
@@ -413,7 +436,7 @@ export default function FloatingSideBanners({
                   title="Thu gọn"
                   aria-label="Thu gọn"
                 >
-                  <X size={13} />
+                  <X size={14} />
                 </button>
               </div>
 
@@ -424,7 +447,7 @@ export default function FloatingSideBanners({
                   if (onSelectProduct) onSelectProduct(p);
                 }}
                 style={{
-                  padding: '9px 8px',
+                  padding: '12px 10px',
                   borderBottom: '1px solid #fff7ed',
                   cursor: 'pointer',
                   textAlign: 'center',
@@ -439,16 +462,16 @@ export default function FloatingSideBanners({
                 <div
                   style={{
                     position: 'relative',
-                    width: '52px',
-                    height: '52px',
-                    margin: '0 auto 5px',
-                    borderRadius: '10px',
+                    width: '68px',
+                    height: '68px',
+                    margin: '0 auto 6px',
+                    borderRadius: '12px',
                     overflow: 'hidden',
-                    boxShadow: '0 3px 8px rgba(234,88,12,0.2)'
+                    boxShadow: '0 4px 10px rgba(234,88,12,0.22)'
                   }}
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=160&auto=format&fit=crop&q=80"
+                    src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&auto=format&fit=crop&q=80"
                     alt="Serum B5"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
@@ -460,35 +483,38 @@ export default function FloatingSideBanners({
                       right: 0,
                       background: 'rgba(234,88,12,0.92)',
                       color: '#ffffff',
-                      fontSize: '7.5px',
+                      fontSize: '8px',
                       fontWeight: 800,
-                      padding: '1px 0'
+                      padding: '2px 0'
                     }}
                   >
                     GIẢM 50%
                   </span>
                 </div>
-                <div style={{ fontSize: '10.5px', fontWeight: 750, color: '#0f172a', lineHeight: 1.25 }}>
+                <div style={{ fontSize: '12px', fontWeight: 750, color: '#0f172a', lineHeight: 1.25 }}>
                   Serum Hyalu B5
                 </div>
-                <div style={{ fontSize: '9px', color: '#ea580c', fontWeight: 800, margin: '2px 0 3px' }}>
-                  490.000₫ <span style={{ fontSize: '8px', color: '#94a3b8', textDecoration: 'line-through' }}>980k</span>
+                <div style={{ fontSize: '9.5px', color: '#64748b', marginTop: '1px' }}>
+                  Phục Hồi Biểu Bì 24H
+                </div>
+                <div style={{ fontSize: '11px', color: '#ea580c', fontWeight: 850, margin: '3px 0 5px' }}>
+                  490.000₫ <span style={{ fontSize: '9px', color: '#94a3b8', textDecoration: 'line-through' }}>980k</span>
                 </div>
                 <span
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '2px',
-                    fontSize: '8.5px',
+                    gap: '3px',
+                    fontSize: '9.5px',
                     fontWeight: 750,
                     color: '#ffffff',
                     background: '#f97316',
-                    padding: '3px 8px',
+                    padding: '4px 10px',
                     borderRadius: '9999px',
-                    boxShadow: '0 2px 4px rgba(249,115,22,0.3)'
+                    boxShadow: '0 2px 5px rgba(249,115,22,0.35)'
                   }}
                 >
-                  Săn Deal <ArrowRight size={8} />
+                  Săn Deal <ArrowRight size={9} />
                 </span>
               </div>
 
@@ -499,7 +525,7 @@ export default function FloatingSideBanners({
                   if (onSelectProduct) onSelectProduct(p);
                 }}
                 style={{
-                  padding: '9px 8px',
+                  padding: '12px 10px',
                   borderBottom: '1px solid #fff7ed',
                   cursor: 'pointer',
                   textAlign: 'center',
@@ -511,36 +537,53 @@ export default function FloatingSideBanners({
               >
                 <div
                   style={{
-                    width: '48px',
-                    height: '48px',
-                    margin: '0 auto 4px',
-                    borderRadius: '8px',
+                    width: '64px',
+                    height: '64px',
+                    margin: '0 auto 6px',
+                    borderRadius: '10px',
                     overflow: 'hidden',
-                    background: '#f8fafc'
+                    background: '#f8fafc',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.06)'
                   }}
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=160&auto=format&fit=crop&q=80"
+                    src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=200&auto=format&fit=crop&q=80"
                     alt="CeraVe Cleanser"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </div>
-                <div style={{ fontSize: '10.5px', fontWeight: 750, color: '#0f172a', lineHeight: 1.2 }}>
+                <div style={{ fontSize: '12px', fontWeight: 750, color: '#0f172a', lineHeight: 1.25 }}>
                   Sữa Rửa Mặt CeraVe
                 </div>
-                <div style={{ fontSize: '8.5px', color: '#0284c7', fontWeight: 700, margin: '2px 0' }}>
+                <div style={{ fontSize: '9.5px', color: '#0284c7', fontWeight: 700, margin: '2px 0 3px' }}>
                   Freeship 0đ • 473ml
                 </div>
-                <div style={{ fontSize: '10px', color: '#0f172a', fontWeight: 800 }}>
+                <div style={{ fontSize: '11px', color: '#0f172a', fontWeight: 850, marginBottom: '5px' }}>
                   365.000₫
                 </div>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '3px',
+                    fontSize: '9.5px',
+                    fontWeight: 750,
+                    color: '#0284c7',
+                    background: '#f0f9ff',
+                    padding: '3px 9px',
+                    borderRadius: '9999px',
+                    border: '1px solid #bae6fd'
+                  }}
+                >
+                  Xem chi tiết <ArrowRight size={9} />
+                </span>
               </div>
 
               {/* Item 3: AI Skin Scanner */}
               <div
                 onClick={() => onOpenSkinScanner && onOpenSkinScanner()}
                 style={{
-                  padding: '8px 8px',
+                  padding: '11px 10px',
                   cursor: 'pointer',
                   textAlign: 'center',
                   background: 'linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%)',
@@ -553,23 +596,24 @@ export default function FloatingSideBanners({
               >
                 <div
                   style={{
-                    width: '26px',
-                    height: '26px',
+                    width: '32px',
+                    height: '32px',
                     borderRadius: '50%',
                     background: '#10b981',
                     color: '#ffffff',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    margin: '0 auto 3px'
+                    margin: '0 auto 4px',
+                    boxShadow: '0 2px 6px rgba(16,185,129,0.3)'
                   }}
                 >
-                  <Camera size={13} />
+                  <Camera size={16} />
                 </div>
-                <div style={{ fontSize: '10px', fontWeight: 750, color: '#0f172a', lineHeight: 1.2 }}>
+                <div style={{ fontSize: '11.5px', fontWeight: 750, color: '#0f172a', lineHeight: 1.25 }}>
                   AI Soi Da 5 Chỉ Số
                 </div>
-                <div style={{ fontSize: '8.5px', color: '#059669', fontWeight: 700, marginTop: '2px' }}>
+                <div style={{ fontSize: '9.5px', color: '#059669', fontWeight: 700, marginTop: '2px' }}>
                   Miễn phí 100% →
                 </div>
               </div>
