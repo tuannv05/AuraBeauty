@@ -38,44 +38,55 @@ public class JwtAuthGatewayFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         String path = exchange.getRequest().getURI().getPath();
 
+        // Distributed Tracing: Ensure X-Correlation-Id is present across all Gateway routes
+        String correlationId = exchange.getRequest().getHeaders().getFirst("X-Correlation-Id");
+        if (correlationId == null || correlationId.isBlank()) {
+            correlationId = java.util.UUID.randomUUID().toString();
+        }
+        exchange.getResponse().getHeaders().set("X-Correlation-Id", correlationId);
+        ServerHttpRequest baseMutated = exchange.getRequest().mutate()
+                .header("X-Correlation-Id", correlationId)
+                .build();
+        ServerWebExchange mutatedExchange = exchange.mutate().request(baseMutated).build();
+
         // 1. Check if public path
         for (String prefix : PUBLIC_PREFIXES) {
             if (path.startsWith(prefix)) {
-                return chain.filter(exchange);
+                return chain.filter(mutatedExchange);
             }
         }
 
         // Public read-only paths for catalog, shop browsing, and SSE advisor
-        if (exchange.getRequest().getMethod().name().equals("GET")) {
+        if (mutatedExchange.getRequest().getMethod().name().equals("GET")) {
             if (path.startsWith("/api/products") || path.startsWith("/api/shops") || path.startsWith("/api/advisor")) {
                 // If token present, still parse and inject headers, but don't reject if missing
-                String authHeader = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
+                String authHeader = mutatedExchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
                 if (authHeader != null && authHeader.startsWith("Bearer ")) {
                     try {
                         Claims claims = parseClaims(authHeader.substring(7));
-                        ServerHttpRequest mutatedRequest = mutateRequestWithClaims(exchange.getRequest(), claims);
-                        return chain.filter(exchange.mutate().request(mutatedRequest).build());
+                        ServerHttpRequest mutatedRequest = mutateRequestWithClaims(mutatedExchange.getRequest(), claims);
+                        return chain.filter(mutatedExchange.mutate().request(mutatedRequest).build());
                     } catch (Exception ignored) {}
                 }
-                return chain.filter(exchange);
+                return chain.filter(mutatedExchange);
             }
         }
 
         // 2. Secured endpoints: Validate JWT
-        String authHeader = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
+        String authHeader = mutatedExchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-            return exchange.getResponse().setComplete();
+            mutatedExchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+            return mutatedExchange.getResponse().setComplete();
         }
 
         String token = authHeader.substring(7);
         try {
             Claims claims = parseClaims(token);
-            ServerHttpRequest mutatedRequest = mutateRequestWithClaims(exchange.getRequest(), claims);
-            return chain.filter(exchange.mutate().request(mutatedRequest).build());
+            ServerHttpRequest mutatedRequest = mutateRequestWithClaims(mutatedExchange.getRequest(), claims);
+            return chain.filter(mutatedExchange.mutate().request(mutatedRequest).build());
         } catch (JwtException | IllegalArgumentException e) {
-            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-            return exchange.getResponse().setComplete();
+            mutatedExchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+            return mutatedExchange.getResponse().setComplete();
         }
     }
 

@@ -20,18 +20,21 @@ public class GlobalExceptionHandler {
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(BusinessException.class)
-    public Mono<ResponseEntity<ProblemDetail>> handleBusinessException(BusinessException ex) {
-        log.warn("Business error [{}]: {}", ex.getErrorCode(), ex.getMessage());
+    public Mono<ResponseEntity<ProblemDetail>> handleBusinessException(BusinessException ex, org.springframework.web.server.ServerWebExchange exchange) {
+        String correlationId = SecurityHeaderUtils.getCorrelationId(exchange);
+        log.warn("Business error [{}]: {} (Correlation: {})", ex.getErrorCode(), ex.getMessage(), correlationId);
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(ex.getStatus(), ex.getMessage());
         problem.setTitle("Business Rule Violation");
         problem.setType(URI.create("urn:error:" + ex.getErrorCode().toLowerCase()));
         problem.setProperty("errorCode", ex.getErrorCode());
+        problem.setProperty("correlationId", correlationId != null ? correlationId : "N/A");
         problem.setProperty("timestamp", Instant.now());
         return Mono.just(ResponseEntity.status(ex.getStatus()).body(problem));
     }
 
     @ExceptionHandler(WebExchangeBindException.class)
-    public Mono<ResponseEntity<ProblemDetail>> handleValidationException(WebExchangeBindException ex) {
+    public Mono<ResponseEntity<ProblemDetail>> handleValidationException(WebExchangeBindException ex, org.springframework.web.server.ServerWebExchange exchange) {
+        String correlationId = SecurityHeaderUtils.getCorrelationId(exchange);
         Map<String, String> fieldErrors = new HashMap<>();
         ex.getFieldErrors().forEach(err -> fieldErrors.put(err.getField(), err.getDefaultMessage()));
 
@@ -39,18 +42,21 @@ public class GlobalExceptionHandler {
         problem.setTitle("Validation Error");
         problem.setType(URI.create("urn:error:validation"));
         problem.setProperty("errorCode", "VALIDATION_FAILED");
+        problem.setProperty("correlationId", correlationId != null ? correlationId : "N/A");
         problem.setProperty("invalidFields", fieldErrors);
         problem.setProperty("timestamp", Instant.now());
         return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problem));
     }
 
     @ExceptionHandler(Exception.class)
-    public Mono<ResponseEntity<ProblemDetail>> handleGenericException(Exception ex) {
-        log.error("Unhandled internal server error: ", ex);
+    public Mono<ResponseEntity<ProblemDetail>> handleGenericException(Exception ex, org.springframework.web.server.ServerWebExchange exchange) {
+        String correlationId = SecurityHeaderUtils.getCorrelationId(exchange);
+        log.error("Unhandled internal server error (Correlation: {}): ", correlationId, ex);
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred. Please contact system support.");
         problem.setTitle("Internal Server Error");
         problem.setType(URI.create("urn:error:internal"));
         problem.setProperty("errorCode", "INTERNAL_SERVER_ERROR");
+        problem.setProperty("correlationId", correlationId != null ? correlationId : "N/A");
         problem.setProperty("timestamp", Instant.now());
         return Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problem));
     }

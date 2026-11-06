@@ -11,6 +11,24 @@ public class SecurityHeaderUtils {
     public static final String HEADER_USER_ID = "X-User-Id";
     public static final String HEADER_USER_ROLES = "X-User-Roles";
     public static final String HEADER_USER_EMAIL = "X-User-Email";
+    public static final String HEADER_CORRELATION_ID = "X-Correlation-Id";
+    public static final String HEADER_SHOP_ID = "X-Shop-Id";
+
+    public static String getCorrelationId(ServerWebExchange exchange) {
+        return exchange.getRequest().getHeaders().getFirst(HEADER_CORRELATION_ID);
+    }
+
+    public static UUID getShopId(ServerWebExchange exchange) {
+        String idStr = exchange.getRequest().getHeaders().getFirst(HEADER_SHOP_ID);
+        if (idStr == null || idStr.isBlank()) {
+            return null;
+        }
+        try {
+            return UUID.fromString(idStr);
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
+    }
 
     public static UUID getUserId(ServerWebExchange exchange) {
         String idStr = exchange.getRequest().getHeaders().getFirst(HEADER_USER_ID);
