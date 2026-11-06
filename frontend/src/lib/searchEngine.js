@@ -105,7 +105,7 @@ export function getProductSearchHaystack(p) {
   return { raw, normalized, nameNorm, brandNorm };
 }
 
-// 6. Match Single Product Against Query (Exact + Token-Based)
+// 6. Match Single Product Against Query (Exact, Subphrase & Token-Based)
 export function matchProduct(product, rawQuery) {
   if (!rawQuery || !rawQuery.trim()) return { matched: true, score: 0 };
   const query = rawQuery.trim();
@@ -113,36 +113,53 @@ export function matchProduct(product, rawQuery) {
   if (!qNorm) return { matched: true, score: 0 };
 
   const { normalized, nameNorm, brandNorm } = getProductSearchHaystack(product);
+  const pSubCat = normalizeSearchText(product.subCategory || '');
+  const pCat = normalizeSearchText(product.category || '');
 
   // Priority 1: Exact or Substring match
   const isExactName = nameNorm === qNorm;
   const isSubstringName = nameNorm.includes(qNorm);
   const isBrandMatch = brandNorm.includes(qNorm);
+  const isSubCatMatch = pSubCat.includes(qNorm);
   const isSubstringHaystack = normalized.includes(qNorm);
 
-  // Priority 2: All-Tokens match
-  const tokens = qNorm.split(' ').filter(Boolean);
-  const allTokensInName = tokens.length > 0 && tokens.every((t) => nameNorm.includes(t));
-  const allTokensInHaystack = tokens.length > 0 && tokens.every((t) => normalized.includes(t));
+  if (isExactName) return { matched: true, score: 2000 };
+  if (isSubstringName) return { matched: true, score: 1000 };
+  if (isSubCatMatch) return { matched: true, score: 900 };
+  if (isBrandMatch) return { matched: true, score: 500 };
+  if (isSubstringHaystack) return { matched: true, score: 300 };
 
-  const matched = isExactName || isSubstringName || isBrandMatch || isSubstringHaystack || allTokensInName || allTokensInHaystack;
+  // Priority 2: Sub-phrases if query contains '/' or '(' or ')' or ';'
+  const subPhrases = query
+    .split(/[\/\(\)\[\],;+]/)
+    .map((s) => normalizeSearchText(s))
+    .filter((s) => s.length >= 2);
 
-  if (!matched) return { matched: false, score: 0 };
+  for (const phrase of subPhrases) {
+    if (nameNorm.includes(phrase)) return { matched: true, score: 850 };
+    if (pSubCat.includes(phrase)) return { matched: true, score: 800 };
+    if (pCat.includes(phrase)) return { matched: true, score: 400 };
+    if (normalized.includes(phrase)) return { matched: true, score: 350 };
+  }
 
-  // Calculate Ranking Score
-  let score = 0;
-  if (isExactName) score += 2000;
-  if (isSubstringName) score += 1000;
-  if (allTokensInName) score += 800;
-  if (isBrandMatch) score += 500;
-  if (isSubstringHaystack) score += 300;
-  if (allTokensInHaystack) score += 200;
+  // Priority 3: Clean alphanumeric word tokens (stripping all punctuation)
+  const tokens = qNorm.replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter((t) => t.length > 0);
+  if (tokens.length > 0) {
+    const allInName = tokens.every((t) => nameNorm.includes(t));
+    const allInHaystack = tokens.every((t) => normalized.includes(t));
+    if (allInName) return { matched: true, score: 800 };
+    if (allInHaystack) return { matched: true, score: 200 };
 
-  // Popularity & Rating bonus
-  score += Math.min(100, Math.round((product.soldCount || 0) / 100));
-  score += Math.round((product.rating || 0) * 10);
+    // Partial match for longer queries (e.g. 3+ words, match at least 65%)
+    if (tokens.length >= 3) {
+      const matchCount = tokens.filter((t) => normalized.includes(t)).length;
+      if (matchCount / tokens.length >= 0.65) {
+        return { matched: true, score: 150 };
+      }
+    }
+  }
 
-  return { matched: true, score };
+  return { matched: false, score: 0 };
 }
 
 // 7. Search & Rank Entire Catalog

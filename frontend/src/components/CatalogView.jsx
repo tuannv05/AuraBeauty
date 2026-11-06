@@ -227,6 +227,9 @@ export default function CatalogView({
 
     if (activeSubChip && activeSubChip !== 'Tất cả') {
       pool = searchAndFilterProducts(baseCatalog, activeSubChip, currentCategory);
+    } else if (currentSubmenuMeta && initialSearch) {
+      const subResults = searchAndFilterProducts(baseCatalog, initialSearch, currentCategory);
+      pool = subResults.length > 0 ? subResults : searchCatalogProducts(baseCatalog, initialSearch.trim());
     } else if (initialSearch && initialSearch.trim()) {
       pool = searchCatalogProducts(baseCatalog, initialSearch.trim());
     } else if (initialCategory) {

@@ -685,6 +685,2546 @@ export const SUBMENU_DEFINITIONS = [
 // Đảm bảo không có bất kỳ sub-menu nào bị kết quả rỗng []
 // =========================================================================
 export const CURATED_NICHE_PRODUCTS = [
+  {
+  "id": "PROD-CRW-KGN-01",
+  "name": "Viên Uống Kẽm Giảm Nhờn Kiềm Dầu & Ngừa Mụn DHC Zinc Gluconate 60 Ngày 60 Viên",
+  "brand": "DHC",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống kẽm giảm nhờn",
+  "rating": 4.9,
+  "soldCount": 88400,
+  "reviewCount": 20100,
+  "price": 110000,
+  "originalPrice": 145000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Kẽm Men Tự Nhiên",
+    "Kiềm Dầu Hiệu Quả"
+  ],
+  "images": [
+    "/products/PROD-CRW-KGN-01.jpg"
+  ],
+  "targetSkinTypes": [
+    "OILY",
+    "ACNE_PRONE"
+  ],
+  "skinConcerns": [
+    "SEBUM",
+    "ACNE"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "DHC-ZINC-KGN-60D",
+      "title": "Gói 60 viên uống 60 ngày",
+      "price": 110000,
+      "onHand": 1500
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Kẽm 15mg, Crom 60mcg, Selen 50mcg",
+      "function": "Giảm bài tiết bã nhờn, kháng viêm mụn cám mụn đầu đen"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-KGN-02",
+  "name": "Viên Uống Kẽm Tự Nhiên Hỗ Trợ Giảm Tiết Bã Nhờn Swisse Ultiboost Zinc+ 60 Viên Úc",
+  "brand": "Swisse",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống kẽm giảm nhờn",
+  "rating": 4.8,
+  "soldCount": 23400,
+  "reviewCount": 5100,
+  "price": 240000,
+  "originalPrice": 310000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Kẽm Kèm Vitamin B6",
+    "Da Sạch Nhờn"
+  ],
+  "images": [
+    "/products/PROD-CRW-KGN-02.jpg"
+  ],
+  "targetSkinTypes": [
+    "OILY",
+    "COMBINATION"
+  ],
+  "skinConcerns": [
+    "SEBUM"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "AUSTRALIA",
+  "variants": [
+    {
+      "sku": "SWISSE-ZINC-60V",
+      "title": "Lọ 60 viên nén Swisse Úc",
+      "price": 240000,
+      "onHand": 430
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Zinc Amino Acid Chelate 25mg, Vitamin A & Vitamin B6",
+      "function": "Kiểm soát dầu nhờn vùng chữ T"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-KGN-03",
+  "name": "Viên Uống Kẽm Sinh Học Kháng Viêm Blackmores Bio Zinc 84 Viên Úc",
+  "brand": "Blackmores",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống kẽm giảm nhờn",
+  "rating": 4.9,
+  "soldCount": 31500,
+  "reviewCount": 6800,
+  "price": 290000,
+  "originalPrice": 360000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Kẽm Sinh Học Hấp Thu Cao",
+    "Ngừa Thâm Sau Mụn"
+  ],
+  "images": [
+    "/products/PROD-CRW-KGN-03.jpg"
+  ],
+  "targetSkinTypes": [
+    "OILY",
+    "ACNE_PRONE"
+  ],
+  "skinConcerns": [
+    "SEBUM",
+    "ACNE"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "AUSTRALIA",
+  "variants": [
+    {
+      "sku": "BLACKMORES-BIOZINC-84V",
+      "title": "Lọ thủy tinh 84 viên",
+      "price": 290000,
+      "onHand": 510
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Kẽm sinh học & Magie, Mangan",
+      "function": "Lành vết thương do mụn, điều hòa tuyến bã nhờn"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-KGN-04",
+  "name": "Viên Uống Bổ Sung Kẽm Giảm Dầu Mụn Puritan's Pride Zinc 50mg 100 Viên Mỹ",
+  "brand": "Puritan's Pride",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống kẽm giảm nhờn",
+  "rating": 4.8,
+  "soldCount": 26800,
+  "reviewCount": 5600,
+  "price": 195000,
+  "originalPrice": 260000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Hàm Lượng Cao 50mg",
+    "Tiêu Chuẩn FDA Mỹ"
+  ],
+  "images": [
+    "/products/PROD-CRW-KGN-04.jpg"
+  ],
+  "targetSkinTypes": [
+    "OILY",
+    "ACNE_PRONE"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "USA",
+  "variants": [
+    {
+      "sku": "PURITAN-ZINC-100V",
+      "title": "Lọ 100 viên nén",
+      "price": 195000,
+      "onHand": 620
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Zinc Gluconate 50mg",
+      "function": "Giảm bóng nhờn và se nhỏ lỗ chân lông"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-KGN-05",
+  "name": "Viên Uống Hỗ Trợ Ngừa Mụn Giảm Nhờn Acnes Clear Skin Zinc 30 Viên",
+  "brand": "Acnes",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống kẽm giảm nhờn",
+  "rating": 4.8,
+  "soldCount": 35200,
+  "reviewCount": 7900,
+  "price": 85000,
+  "originalPrice": 110000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Chuyên Biệt Da Mụn Nhờn",
+    "Giá Học Sinh Sinh Viên"
+  ],
+  "images": [
+    "/products/PROD-CRW-KGN-05.jpg"
+  ],
+  "targetSkinTypes": [
+    "OILY",
+    "ACNE_PRONE"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "VIETNAM",
+  "variants": [
+    {
+      "sku": "ACNES-ZINC-30V",
+      "title": "Hộp 3 vỉ x 10 viên",
+      "price": 85000,
+      "onHand": 950
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Kẽm sinh học & Chiết xuất nghệ Curcumin",
+      "function": "Kháng viêm kiềm nhờn mờ thâm mụn"
+    }
+  ]
+},
+
+  {
+  "id": "PROD-CRW-KPM-01",
+  "name": "Kẹp Bấm Mi Shiseido Eyelash Curler 213 Nhật Bản Chuẩn Cong Tự Nhiên",
+  "brand": "Shiseido",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Kẹp bấm mi",
+  "rating": 4.9,
+  "soldCount": 42100,
+  "reviewCount": 8900,
+  "price": 165000,
+  "originalPrice": 220000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Bán Chạy Nhất",
+    "Chính Hãng Nhật"
+  ],
+  "images": [
+    "/products/PROD-CRW-KPM-01.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "skinConcerns": [],
+  "keyActiveGroups": [],
+  "safetyEthicsBadges": [
+    "HYPOALLERGENIC"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "SHISEIDO-213-MAIN",
+      "title": "Kẹp mi + 1 Đệm silicone thay thế",
+      "price": 165000,
+      "onHand": 450
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Thép carbon không gỉ & Đệm cao su silicon y tế",
+      "function": "Bấm mi cong vút không gãy rụng"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-KPM-02",
+  "name": "Kẹp Bấm Mi Shu Uemura Eyelash Curler Đệm Silicone Cong Vút 24H",
+  "brand": "Shu Uemura",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Kẹp bấm mi",
+  "rating": 4.9,
+  "soldCount": 18500,
+  "reviewCount": 4200,
+  "price": 395000,
+  "originalPrice": 480000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Cao Cấp",
+    "Top 1 Nhật Bản"
+  ],
+  "images": [
+    "/products/PROD-CRW-KPM-02.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "skinConcerns": [],
+  "keyActiveGroups": [],
+  "safetyEthicsBadges": [
+    "HYPOALLERGENIC"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "SHU-CURLER-CLASSIC",
+      "title": "Bản Cổ Điển Mạ Bạc Kèm Đệm",
+      "price": 395000,
+      "onHand": 280
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Thép không gỉ cao cấp mạ chrome",
+      "function": "Vòm cong chuẩn mắt châu Á"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-KPM-03",
+  "name": "Kẹp Bấm Mi Cán Đen Chuyên Nghiệp Vacosi Classic Curler Pro BM01",
+  "brand": "Vacosi",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Kẹp bấm mi",
+  "rating": 4.8,
+  "soldCount": 36200,
+  "reviewCount": 7100,
+  "price": 65000,
+  "originalPrice": 85000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Giá Tốt",
+    "Êm Mi Tuyệt Đối"
+  ],
+  "images": [
+    "/products/PROD-CRW-KPM-03.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "skinConcerns": [],
+  "keyActiveGroups": [],
+  "safetyEthicsBadges": [
+    "HYPOALLERGENIC"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "KOREA",
+  "variants": [
+    {
+      "sku": "VACOSI-BM01",
+      "title": "Cán Đen Chuẩn Salon Hàn Quốc",
+      "price": 65000,
+      "onHand": 800
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Thép hợp kim phủ sơn tĩnh điện",
+      "function": "Khung bấm chắc chắn nhẹ tay"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-KPM-04",
+  "name": "Kẹp Bấm Mi Góc Rộng Ôm Trọn Mắt DHC Eyelash Curler Nhật Bản",
+  "brand": "DHC",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Kẹp bấm mi",
+  "rating": 4.8,
+  "soldCount": 12400,
+  "reviewCount": 2300,
+  "price": 175000,
+  "originalPrice": 210000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Góc Siêu Rộng",
+    "Không Kẹp Mí"
+  ],
+  "images": [
+    "/products/PROD-CRW-KPM-04.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "skinConcerns": [],
+  "keyActiveGroups": [],
+  "safetyEthicsBadges": [
+    "HYPOALLERGENIC"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "DHC-CURLER-WIDE",
+      "title": "Bản Vòm Mắt Châu Á Tiêu Chuẩn",
+      "price": 175000,
+      "onHand": 350
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Thép mạ niken & Đệm cao su mềm",
+      "function": "Ôm trọn sợi mi từ gốc đến ngọn"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-KPM-05",
+  "name": "Kẹp Bấm Mi Mini Gập Gọn Du Lịch Kai Compact Curler Japan",
+  "brand": "Kai",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Kẹp bấm mi",
+  "rating": 4.9,
+  "soldCount": 28900,
+  "reviewCount": 5600,
+  "price": 79000,
+  "originalPrice": 105000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Nhỏ Gọn Bỏ Túi",
+    "Chính Hãng Kai"
+  ],
+  "images": [
+    "/products/PROD-CRW-KPM-05.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "skinConcerns": [],
+  "keyActiveGroups": [],
+  "safetyEthicsBadges": [
+    "HYPOALLERGENIC"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "KAI-COMPACT-PINK",
+      "title": "Màu Hồng Pastel Kèm Đệm Sơ Cua",
+      "price": 79000,
+      "onHand": 620
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Nhựa Polycarbonate & Kháng khuẩn",
+      "function": "Gập phẳng tiện lợi du lịch"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-MTN-01",
+  "name": "Bông Mút Tán Nền Hồ Lô Real Techniques Miracle Complexion Sponge Cam Đào",
+  "brand": "Real Techniques",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Mút tán nền",
+  "rating": 4.9,
+  "soldCount": 58200,
+  "reviewCount": 12400,
+  "price": 145000,
+  "originalPrice": 185000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Top 1 Bán Chạy",
+    "Nền Căng Bóng"
+  ],
+  "images": [
+    "/products/PROD-CRW-MTN-01.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "skinConcerns": [],
+  "keyActiveGroups": [
+    "HYDRATION"
+  ],
+  "safetyEthicsBadges": [
+    "LATEX_FREE",
+    "VEGAN"
+  ],
+  "formulationTexture": "POWDER",
+  "originCountry": "USA",
+  "variants": [
+    {
+      "sku": "RT-SPONGE-ORANGE",
+      "title": "Mút Đơn Cam Classic Vát Phẳng",
+      "price": 145000,
+      "onHand": 950
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "100% Polyurethane Foam không mủ cao su",
+      "function": "Kháng khuẩn, tán kem nền mỏng mịn không vệt"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-MTN-02",
+  "name": "Mút Trang Điểm Giọt Nước Không Mủ Cao Su Beautyblender The Original Pink",
+  "brand": "Beautyblender",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Mút tán nền",
+  "rating": 4.9,
+  "soldCount": 16700,
+  "reviewCount": 3800,
+  "price": 420000,
+  "originalPrice": 490000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Huyền Thoại Nền Lì",
+    "Không Hút Kem"
+  ],
+  "images": [
+    "/products/PROD-CRW-MTN-02.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "skinConcerns": [],
+  "keyActiveGroups": [],
+  "safetyEthicsBadges": [
+    "LATEX_FREE",
+    "CRUELTY_FREE"
+  ],
+  "formulationTexture": "POWDER",
+  "originCountry": "USA",
+  "variants": [
+    {
+      "sku": "BB-ORIGINAL-PINK",
+      "title": "Màu Hồng Nguyên Bản Quả Trứng",
+      "price": 420000,
+      "onHand": 210
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Hydrophilic Polyurethane Foam",
+      "function": "Nở gấp đôi khi ngậm nước tạo hiệu ứng filter"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-MTN-03",
+  "name": "Bông Mút Nở Tán Nền Vát Xéo Kháng Khuẩn Focallure Hydrophilic Beauty Egg",
+  "brand": "Focallure",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Mút tán nền",
+  "rating": 4.8,
+  "soldCount": 45600,
+  "reviewCount": 9200,
+  "price": 42000,
+  "originalPrice": 65000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Siêu Mềm Mịn",
+    "Giá Siêu Tốt"
+  ],
+  "images": [
+    "/products/PROD-CRW-MTN-03.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "skinConcerns": [],
+  "keyActiveGroups": [],
+  "safetyEthicsBadges": [
+    "LATEX_FREE"
+  ],
+  "formulationTexture": "POWDER",
+  "originCountry": "CHINA",
+  "variants": [
+    {
+      "sku": "FOCALLURE-EGG-MATCHA",
+      "title": "Màu Xanh Matcha Mềm Mịn",
+      "price": 42000,
+      "onHand": 1200
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Bọt xốp vi mô không mùi",
+      "function": "Tán phấn nước và kem nền kiềm dầu"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-MTN-04",
+  "name": "Bông Mút Giọt Nước Vát Xéo Đa Năng Vacosi Pro Blender Pear Shape BP21",
+  "brand": "Vacosi",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Mút tán nền",
+  "rating": 4.8,
+  "soldCount": 31400,
+  "reviewCount": 6100,
+  "price": 68000,
+  "originalPrice": 89000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Vát Phẳng 2 Đầu",
+    "Độ Đàn Hồi Cao"
+  ],
+  "images": [
+    "/products/PROD-CRW-MTN-04.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "skinConcerns": [],
+  "keyActiveGroups": [],
+  "safetyEthicsBadges": [
+    "LATEX_FREE"
+  ],
+  "formulationTexture": "POWDER",
+  "originCountry": "KOREA",
+  "variants": [
+    {
+      "sku": "VACOSI-BP21-PURPLE",
+      "title": "Tím Lavender Hồ Lô Vát",
+      "price": 68000,
+      "onHand": 740
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Polymer xốp cấu trúc hạt siêu mịn",
+      "function": "Che phủ khuyết điểm và rãnh cười"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-MTN-05",
+  "name": "Set 3 Bông Mút Tán Nền Vát Xéo Bealy Teardrop Makeup Sponge Box",
+  "brand": "Bealy",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Mút tán nền",
+  "rating": 4.9,
+  "soldCount": 22800,
+  "reviewCount": 4600,
+  "price": 95000,
+  "originalPrice": 130000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Hộp 3 Mút Tiện Lợi",
+    "Mềm Như Mây"
+  ],
+  "images": [
+    "/products/PROD-CRW-MTN-05.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "skinConcerns": [],
+  "keyActiveGroups": [],
+  "safetyEthicsBadges": [
+    "LATEX_FREE"
+  ],
+  "formulationTexture": "POWDER",
+  "originCountry": "VIETNAM",
+  "variants": [
+    {
+      "sku": "BEALY-SET3-BOX",
+      "title": "Set 3 Quả Kèm Hộp Nhựa Bảo Quản",
+      "price": 95000,
+      "onHand": 510
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Bọt biển thế hệ mới siêu ngậm nước",
+      "function": "Tán nền mướt mịn không mốc cakey"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-DCM-01",
+  "name": "Set 3 Dao Cạo Lông Mày Lưỡi Thép Thụy Điển Chống Trầy Kai Beauty Care Japan",
+  "brand": "Kai",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Nhíp / Dao cạo mày",
+  "rating": 4.9,
+  "soldCount": 65400,
+  "reviewCount": 14100,
+  "price": 52000,
+  "originalPrice": 70000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Lưỡi Thép Siêu Bén",
+    "An Toàn Chống Xước"
+  ],
+  "images": [
+    "/products/PROD-CRW-DCM-01.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "KAI-SET3-RAZOR",
+      "title": "Vỉ 3 cây màu pastel kèm nắp đậy",
+      "price": 52000,
+      "onHand": 1400
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Thép không gỉ Thụy Điển & Nhựa ABS",
+      "function": "Cạo sạch lông mày êm dịu không xước da"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-DCM-02",
+  "name": "Nhíp Bấm Lông Mày Thép Không Gỉ Kềm Nghĩa N-402 Đầu Xéo Chuẩn Salon",
+  "brand": "Kềm Nghĩa",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Nhíp / Dao cạo mày",
+  "rating": 4.9,
+  "soldCount": 48900,
+  "reviewCount": 9800,
+  "price": 48000,
+  "originalPrice": 60000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Thương Hiệu Quốc Dân",
+    "Khít Chặt Tận Gốc"
+  ],
+  "images": [
+    "/products/PROD-CRW-DCM-02.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "VIETNAM",
+  "variants": [
+    {
+      "sku": "KEMNGHIA-N402",
+      "title": "Thép không gỉ mạ niken đầu xéo",
+      "price": 48000,
+      "onHand": 950
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Thép không gỉ Inox cao cấp",
+      "function": "Gắp chuẩn xác từng sợi lông mày nhỏ nhất"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-DCM-03",
+  "name": "Dao Cạo Chân Mày Gấp Gọn Tiện Lợi Innisfree Eyebrow Razor Hàn Quốc",
+  "brand": "Innisfree",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Nhíp / Dao cạo mày",
+  "rating": 4.8,
+  "soldCount": 26300,
+  "reviewCount": 5200,
+  "price": 45000,
+  "originalPrice": 60000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Gập Gọn Vệ Sinh",
+    "Chính Hãng Hàn"
+  ],
+  "images": [
+    "/products/PROD-CRW-DCM-03.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "KOREA",
+  "variants": [
+    {
+      "sku": "INNI-RAZOR-FOLD",
+      "title": "Cây gấp gọn màu trắng an toàn",
+      "price": 45000,
+      "onHand": 620
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Lưỡi dao thép vi lưới an toàn",
+      "function": "Tạo dáng chân mày sắc nét"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-DCM-04",
+  "name": "Hộp 3 Dao Cạo Lông Mặt & Chân Mày Feather Piany Japan Lưỡi Bọc Bạch Kim",
+  "brand": "Feather",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Nhíp / Dao cạo mày",
+  "rating": 4.9,
+  "soldCount": 39100,
+  "reviewCount": 7800,
+  "price": 68000,
+  "originalPrice": 85000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Lưỡi Bạch Kim",
+    "Êm Ái Dịu Nhẹ"
+  ],
+  "images": [
+    "/products/PROD-CRW-DCM-04.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "FEATHER-PIANY-3P",
+      "title": "Hộp 3 cây 3 màu lưỡi mạ platinum",
+      "price": 68000,
+      "onHand": 780
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Platinum Coated Stainless Steel",
+      "function": "Lướt êm trên bề mặt da mặt và chân mày"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-DCM-05",
+  "name": "Nhíp Gắp Lông Mày Đầu Nhọn Thẳng Cao Cấp Vacosi Point Tweezer T01",
+  "brand": "Vacosi",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Nhíp / Dao cạo mày",
+  "rating": 4.8,
+  "soldCount": 19400,
+  "reviewCount": 3600,
+  "price": 40000,
+  "originalPrice": 55000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Đầu Nhọn Chuẩn Xác",
+    "Thép Không Gỉ"
+  ],
+  "images": [
+    "/products/PROD-CRW-DCM-05.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "KOREA",
+  "variants": [
+    {
+      "sku": "VACOSI-T01-SILVER",
+      "title": "Bản Bạc Trơn Đầu Nhọn T01",
+      "price": 40000,
+      "onHand": 550
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Thép phẫu thuật không rỉ",
+      "function": "Bấm sát chân lông mày chống đứt gãy"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-BCT-01",
+  "name": "Bộ Cọ Trang Điểm Cá Nhân 14 Cây Lông Mềm Kèm Bao Da Vacosi Essential Brush Set",
+  "brand": "Vacosi",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Bộ cọ trang điểm",
+  "rating": 4.9,
+  "soldCount": 29500,
+  "reviewCount": 6800,
+  "price": 345000,
+  "originalPrice": 450000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Đầy Đủ 14 Cây",
+    "Bao Da Cao Cấp"
+  ],
+  "images": [
+    "/products/PROD-CRW-BCT-01.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "KOREA",
+  "variants": [
+    {
+      "sku": "VACOSI-SET14-LEATHER",
+      "title": "Bộ 14 cây + Bao Da Đen Đựng Cọ",
+      "price": 345000,
+      "onHand": 380
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Sợi tổng hợp bionic mềm mượt",
+      "function": "Bám phấn đều, tán má hồng, phấn phủ, phấn mắt"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-BCT-02",
+  "name": "Bộ Cọ Trang Điểm Mặt & Mắt 5 Cây Real Techniques Everyday Essentials Kèm Mút",
+  "brand": "Real Techniques",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Bộ cọ trang điểm",
+  "rating": 4.9,
+  "soldCount": 34200,
+  "reviewCount": 7900,
+  "price": 389000,
+  "originalPrice": 480000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Top Bán Chạy Toàn Cầu",
+    "Lông Cọ Kháng Khuẩn"
+  ],
+  "images": [
+    "/products/PROD-CRW-BCT-02.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "USA",
+  "variants": [
+    {
+      "sku": "RT-EVERYDAY-5P",
+      "title": "Bộ 4 Cọ Chuyên Nghiệp + 1 Mút RT",
+      "price": 389000,
+      "onHand": 410
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "UltraPlush Synthetic Bristles",
+      "function": "Lông cọ thiết kế công thái học dễ vệ sinh"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-BCT-03",
+  "name": "Set Cọ Trang Điểm 10 Cây Lông Nhung Siêu Mịn Focallure Multifunction Brush Set",
+  "brand": "Focallure",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Bộ cọ trang điểm",
+  "rating": 4.8,
+  "soldCount": 52100,
+  "reviewCount": 11200,
+  "price": 165000,
+  "originalPrice": 230000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Ngon Bổ Rẻ",
+    "Lông Nhân Tạo Thân Thiện"
+  ],
+  "images": [
+    "/products/PROD-CRW-BCT-03.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "CHINA",
+  "variants": [
+    {
+      "sku": "FOCALLURE-SET10-PINK",
+      "title": "Bộ 10 Cây Hồng Gold Sang Trọng",
+      "price": 165000,
+      "onHand": 830
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Lông sợi nhung kháng khuẩn",
+      "function": "Tán phấn mắt, highlight, tạo khối tự nhiên"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-BCT-04",
+  "name": "Bộ Cọ Trang Điểm Cao Cấp 18 Cây Maange Professional kèm Túi Da Đựng",
+  "brand": "Maange",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Bộ cọ trang điểm",
+  "rating": 4.8,
+  "soldCount": 41300,
+  "reviewCount": 8400,
+  "price": 195000,
+  "originalPrice": 280000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Đầy Đủ Chi Tiết",
+    "Không Rụng Lông"
+  ],
+  "images": [
+    "/products/PROD-CRW-BCT-04.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "CHINA",
+  "variants": [
+    {
+      "sku": "MAANGE-SET18-BAG",
+      "title": "Bộ 18 Cây Đen Khung Bạc + Túi Da",
+      "price": 195000,
+      "onHand": 650
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Sợi fiber tổng hợp mật độ cao",
+      "function": "Không hút sản phẩm, giữ độ mịn của nền"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-BCT-05",
+  "name": "Bộ Cọ Trang Điểm Chuyên Nghiệp 12 Cây Lông Dê Tự Nhiên Bealy Studio Pro",
+  "brand": "Bealy",
+  "category": "Phụ kiện làm đẹp",
+  "subCategory": "Bộ cọ trang điểm",
+  "rating": 4.9,
+  "soldCount": 16800,
+  "reviewCount": 3400,
+  "price": 450000,
+  "originalPrice": 580000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Lông Dê Thật",
+    "Bám Phấn Cực Tốt"
+  ],
+  "images": [
+    "/products/PROD-CRW-BCT-05.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "VIETNAM",
+  "variants": [
+    {
+      "sku": "BEALY-SET12-GOAT",
+      "title": "Hộp 12 Cây Thân Gỗ Cổ Điển",
+      "price": 450000,
+      "onHand": 240
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Lông dê tự nhiên tiệt trùng 100%",
+      "function": "Ăn phấn đều màu cho makeup artist"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-XMT-01",
+  "name": "Nước Dưỡng Tóc Tinh Dầu Bưởi Cocoon Pomelo Hair Tonic 140ml Giảm Gãy Rụng & Kích Mọc Tóc",
+  "brand": "Cocoon",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Xịt mọc tóc",
+  "rating": 4.9,
+  "soldCount": 92400,
+  "reviewCount": 24500,
+  "price": 145000,
+  "originalPrice": 165000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Thuần Chay 100%",
+    "Kích Mọc Tóc Con"
+  ],
+  "images": [
+    "/products/PROD-CRW-XMT-01.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "skinConcerns": [
+    "HAIR_LOSS"
+  ],
+  "keyActiveGroups": [
+    "SOOTHING_BOTANICAL"
+  ],
+  "safetyEthicsBadges": [
+    "VEGAN",
+    "CRUELTY_FREE",
+    "ALCOHOL_FREE"
+  ],
+  "formulationTexture": "WATER_LIQUID",
+  "originCountry": "VIETNAM",
+  "variants": [
+    {
+      "sku": "COCOON-POMELO-140ML",
+      "title": "Chai xịt 140ml phiên bản nâng cấp",
+      "price": 145000,
+      "onHand": 1500
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Tinh dầu vỏ bưởi nguyên chất & Vitamin B5 (Panthenol)",
+      "function": "Kích thích nang tóc phát triển dày mượt"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-XMT-02",
+  "name": "Tinh Dầu Bưởi Dưỡng Mọc Tóc Milaganics Grapefruit Hair Mist 100ml",
+  "brand": "Milaganics",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Xịt mọc tóc",
+  "rating": 4.8,
+  "soldCount": 34100,
+  "reviewCount": 6800,
+  "price": 85000,
+  "originalPrice": 110000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Thảo Mộc Tự Nhiên",
+    "Không Bết Dính"
+  ],
+  "images": [
+    "/products/PROD-CRW-XMT-02.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "WATER_LIQUID",
+  "originCountry": "VIETNAM",
+  "variants": [
+    {
+      "sku": "MILAGANICS-HAIR-100ML",
+      "title": "Chai xịt 100ml hương bưởi ngọt",
+      "price": 85000,
+      "onHand": 850
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Grapefruit Essential Oil & D-Panthenol",
+      "function": "Phục hồi chân tóc suy yếu"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-XMT-03",
+  "name": "Xịt Dưỡng Tóc Hương Bưởi Cổ Điển Thorakao Grapefruit Hair Lotion 150ml",
+  "brand": "Thorakao",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Xịt mọc tóc",
+  "rating": 4.8,
+  "soldCount": 48200,
+  "reviewCount": 9200,
+  "price": 55000,
+  "originalPrice": 70000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Thương Hiệu Lâu Đời",
+    "Ngừa Rụng Tóc"
+  ],
+  "images": [
+    "/products/PROD-CRW-XMT-03.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "WATER_LIQUID",
+  "originCountry": "VIETNAM",
+  "variants": [
+    {
+      "sku": "THORAKAO-BUOI-150ML",
+      "title": "Chai 150ml vòi xịt phun sương",
+      "price": 55000,
+      "onHand": 1100
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Citrus Grandis Peel Oil",
+      "function": "Nuôi dưỡng da đầu thoáng sạch khỏe khoắn"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-XMT-04",
+  "name": "Serum Dưỡng Tóc Dày & Ngăn Rụng The Ordinary Multi-Peptide Serum for Hair Density 60ml",
+  "brand": "The Ordinary",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Xịt mọc tóc",
+  "rating": 4.9,
+  "soldCount": 21500,
+  "reviewCount": 4800,
+  "price": 420000,
+  "originalPrice": 520000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Phức Hợp Peptides",
+    "Khoa Học Dày Tóc"
+  ],
+  "images": [
+    "/products/PROD-CRW-XMT-04.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "keyActiveGroups": [
+    "ANTI_AGING"
+  ],
+  "safetyEthicsBadges": [
+    "VEGAN",
+    "ALCOHOL_FREE"
+  ],
+  "formulationTexture": "WATER_LIQUID",
+  "originCountry": "CANADA",
+  "variants": [
+    {
+      "sku": "TO-HAIR-DENSITY-60ML",
+      "title": "Chai thủy tinh nhỏ giọt 60ml",
+      "price": 420000,
+      "onHand": 420
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "REDENSYL™, Procapil™, CAPIXYL™ Peptide Complex",
+      "function": "Tăng mật độ nang tóc gấp 3 lần"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-XMT-05",
+  "name": "Tinh Chất Xịt Mọc Tóc Gừng Tươi Weilaiya Ginger Hair Root Nourishing Tonic 100ml",
+  "brand": "Weilaiya",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Xịt mọc tóc",
+  "rating": 4.9,
+  "soldCount": 18900,
+  "reviewCount": 3900,
+  "price": 450000,
+  "originalPrice": 550000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Gừng Vân Nam",
+    "Ấm Da Đầu"
+  ],
+  "images": [
+    "/products/PROD-CRW-XMT-05.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "WATER_LIQUID",
+  "originCountry": "CHINA",
+  "variants": [
+    {
+      "sku": "WEILAIYA-TONIC-100ML",
+      "title": "Chai xịt 100ml tinh chất gừng",
+      "price": 450000,
+      "onHand": 350
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Chiết xuất gừng tươi & Hà thủ ô đỏ",
+      "function": "Lưu thông máu da đầu kích thích mọc tóc"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-TNT-01",
+  "name": "Bọt Nhuộm Tóc Tự Làm Tại Nhà Mise En Scene Hello Bubble Foam Color Hàn Quốc",
+  "brand": "Mise En Scene",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Thuốc nhuộm tóc",
+  "rating": 4.9,
+  "soldCount": 65200,
+  "reviewCount": 14300,
+  "price": 175000,
+  "originalPrice": 240000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Màu Hot Trend",
+    "Tự Nhuộm Dễ Dàng"
+  ],
+  "images": [
+    "/products/PROD-CRW-TNT-01.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "GEL",
+  "originCountry": "KOREA",
+  "variants": [
+    {
+      "sku": "MISE-BUBBLE-7K",
+      "title": "Màu 7K Ash Khaki Brown Nâu Rêu Khói",
+      "price": 175000,
+      "onHand": 820
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Tinh chất hạt trà xanh & Dầu hạt camellia",
+      "function": "Lên màu chuẩn mà không làm khô xơ tóc"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-TNT-02",
+  "name": "Thuốc Nhuộm Tóc Phủ Bạc Thảo Dược Bigen Silk Touch Nhật Bản Không Mùi Amoniac",
+  "brand": "Bigen",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Thuốc nhuộm tóc",
+  "rating": 4.9,
+  "soldCount": 42800,
+  "reviewCount": 8900,
+  "price": 185000,
+  "originalPrice": 220000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Phủ Bạc 100%",
+    "Thảo Dược Nhật Bản"
+  ],
+  "images": [
+    "/products/PROD-CRW-TNT-02.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "CREAM_BALM",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "BIGEN-SILK-3N",
+      "title": "Màu 3N Nâu Đen Tự Nhiên",
+      "price": 185000,
+      "onHand": 680
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Dầu ô liu, nhân sâm & Bạc hà",
+      "function": "Bảo vệ da đầu không xót"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-TNT-03",
+  "name": "Kem Nhuộm Tóc Dưỡng Màu Thời Trang L'Oreal Paris Excellence Creme Pháp",
+  "brand": "L'Oreal Paris",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Thuốc nhuộm tóc",
+  "rating": 4.9,
+  "soldCount": 58400,
+  "reviewCount": 11800,
+  "price": 195000,
+  "originalPrice": 250000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Bảo Vệ 3 Tác Động",
+    "Bền Màu 8 Tuần"
+  ],
+  "images": [
+    "/products/PROD-CRW-TNT-03.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "CREAM_BALM",
+  "originCountry": "FRANCE",
+  "variants": [
+    {
+      "sku": "LOREAL-EXCELLENCE-4",
+      "title": "Màu 4 Nâu Tự Nhiên Quý Phái",
+      "price": 195000,
+      "onHand": 720
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Pro-Keratin, Ceramide & Collagen",
+      "function": "Phục hồi sợi tóc trước và sau khi nhuộm"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-TNT-04",
+  "name": "Thuốc Nhuộm Tóc Dược Liệu Thái Dương Nhuộm Đen Tự Nhiên Hộp 5 Gói",
+  "brand": "Thái Dương",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Thuốc nhuộm tóc",
+  "rating": 4.8,
+  "soldCount": 31200,
+  "reviewCount": 5900,
+  "price": 95000,
+  "originalPrice": 120000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Dược Liệu Lá Móng",
+    "An Toàn Cho Tóc"
+  ],
+  "images": [
+    "/products/PROD-CRW-TNT-04.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "POWDER",
+  "originCountry": "VIETNAM",
+  "variants": [
+    {
+      "sku": "THAIDUONG-NHUOM-5G",
+      "title": "Hộp 5 gói x 10g bột thảo mộc",
+      "price": 95000,
+      "onHand": 940
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Bột lá móng Lawsonia Inermis tự nhiên",
+      "function": "Phủ đen tóc bạc an toàn không kích ứng"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-TNT-05",
+  "name": "Bọt Nhuộm Tóc Tạo Bọt Dưỡng Tóc Beautylabo Whip Hair Color Nhật Bản",
+  "brand": "Beautylabo",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Thuốc nhuộm tóc",
+  "rating": 4.8,
+  "soldCount": 27500,
+  "reviewCount": 5200,
+  "price": 160000,
+  "originalPrice": 210000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Bọt Kem Xốp Mịn",
+    "Dưỡng Ẩm Trái Cây"
+  ],
+  "images": [
+    "/products/PROD-CRW-TNT-05.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "GEL",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "BEAUTYLABO-HONEY",
+      "title": "Màu Honey Chiffon Vàng Mật Ong",
+      "price": 160000,
+      "onHand": 510
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Mật ong & Tinh dầu hoa cúc dại",
+      "function": "Giữ sợi tóc bóng mượt bồng bềnh"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-DXA-01",
+  "name": "Dầu Xả Phục Hồi Tóc Hư Tổn Cao Cấp Tsubaki Premium Moist & Repair Conditioner 490ml",
+  "brand": "Tsubaki",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Dầu xả",
+  "rating": 4.9,
+  "soldCount": 51200,
+  "reviewCount": 11400,
+  "price": 189000,
+  "originalPrice": 235000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Công Nghệ Thẩm Thấu Nhanh",
+    "Bóng Mượt Như Salon"
+  ],
+  "images": [
+    "/products/PROD-CRW-DXA-01.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "CREAM_BALM",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "TSUBAKI-COND-RED-490",
+      "title": "Chai vòi bơm 490ml Đỏ Dưỡng Ẩm",
+      "price": 189000,
+      "onHand": 890
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Dầu hoa trà Nhật Bản & Protein đậu nành",
+      "function": "Phục hồi lõi tóc hư tổn do uốn nhuộm"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-DXA-02",
+  "name": "Dầu Xả Bưởi Phục Hồi & Giảm Rụng Tóc Cocoon Pomelo Hair Conditioner 310ml",
+  "brand": "Cocoon",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Dầu xả",
+  "rating": 4.9,
+  "soldCount": 38700,
+  "reviewCount": 8200,
+  "price": 165000,
+  "originalPrice": 195000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Thuần Chay Không Silicon",
+    "Mượt Tóc Nhẹ Tênh"
+  ],
+  "images": [
+    "/products/PROD-CRW-DXA-02.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "CREAM_BALM",
+  "originCountry": "VIETNAM",
+  "variants": [
+    {
+      "sku": "COCOON-COND-310ML",
+      "title": "Chai 310ml nắp bật tiện lợi",
+      "price": 165000,
+      "onHand": 740
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Tinh dầu bưởi & Xylishine™ từ tảo nâu",
+      "function": "Cung cấp dưỡng chất bóng mượt không gây bẹp tóc"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-DXA-03",
+  "name": "Dầu Xả 3 Phút Diệu Kỳ Cho Tóc Hư Tổn Nặng Pantene 3 Minute Miracle 180ml",
+  "brand": "Pantene",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Dầu xả",
+  "rating": 4.8,
+  "soldCount": 64100,
+  "reviewCount": 13900,
+  "price": 85000,
+  "originalPrice": 110000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Phục Hồi 3 Phút",
+    "Pro-V Độc Quyền"
+  ],
+  "images": [
+    "/products/PROD-CRW-DXA-03.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "CREAM_BALM",
+  "originCountry": "THAILAND",
+  "variants": [
+    {
+      "sku": "PANTENE-3MM-180ML",
+      "title": "Tuýp 180ml Total Damage Care",
+      "price": 85000,
+      "onHand": 1200
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Pro-Vitamin B5 công thức đậm đặc",
+      "function": "Xử lý tóc chẻ ngọn và khô xơ trong 3 phút"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-DXA-04",
+  "name": "Dầu Xả Keratin Cho Tóc Vào Nếp Suôn Mượt Tresemme Keratin Smooth Conditioner 640g",
+  "brand": "Tresemme",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Dầu xả",
+  "rating": 4.9,
+  "soldCount": 49500,
+  "reviewCount": 10800,
+  "price": 195000,
+  "originalPrice": 245000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Vào Nếp 72H",
+    "Chuẩn Salon Tresemme"
+  ],
+  "images": [
+    "/products/PROD-CRW-DXA-04.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "CREAM_BALM",
+  "originCountry": "VIETNAM",
+  "variants": [
+    {
+      "sku": "TRESEMME-KERATIN-640",
+      "title": "Chai lớn 640g vòi nhấn",
+      "price": 195000,
+      "onHand": 830
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Hydrolyzed Keratin & Dầu Marula",
+      "function": "Chống xù rối và giữ nếp tóc bồng bềnh"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-DXA-05",
+  "name": "Dầu Xả Phục Hồi Toàn Diện 5 Tác Động L'Oreal Paris Elseve Total Repair 5 Conditioner 280ml",
+  "brand": "L'Oreal Paris",
+  "category": "Chăm sóc tóc & Da đầu",
+  "subCategory": "Dầu xả",
+  "rating": 4.8,
+  "soldCount": 42300,
+  "reviewCount": 9100,
+  "price": 125000,
+  "originalPrice": 155000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Ceramide Phục Hồi",
+    "Giảm Chẻ Ngọn"
+  ],
+  "images": [
+    "/products/PROD-CRW-DXA-05.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "CREAM_BALM",
+  "originCountry": "FRANCE",
+  "variants": [
+    {
+      "sku": "LOREAL-ELSEVE-280ML",
+      "title": "Chai nắp bật 280ml",
+      "price": 125000,
+      "onHand": 650
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Micro-Ceramide lấp đầy kẽ nứt tóc",
+      "function": "Chống đứt gãy, thô ráp và xỉn màu"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-NHT-01",
+  "name": "Nước Hoa Chiết Le Labo Santal 33 EDP 10ml Chuẩn Chính Hãng Mùi Gỗ Đẳng Cấp",
+  "brand": "Le Labo",
+  "category": "Nước hoa",
+  "subCategory": "Nước hoa chiết mini 10ml",
+  "rating": 4.9,
+  "soldCount": 15400,
+  "reviewCount": 3800,
+  "price": 580000,
+  "originalPrice": 690000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Gỗ Đàn Hương Sang Trọng",
+    "Lưu Hương 12H+"
+  ],
+  "images": [
+    "/products/PROD-CRW-NHT-01.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "WATER_LIQUID",
+  "originCountry": "USA",
+  "variants": [
+    {
+      "sku": "LELABO-33-10ML",
+      "title": "Ống chiết thủy tinh 10ml vòi phun sương",
+      "price": 580000,
+      "onHand": 240
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Cardamom, Iris, Violet, Sandalwood, Cedarwood",
+      "function": "Hương thơm cá tính nịnh mũi"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-NHT-02",
+  "name": "Nước Hoa Chiết Maison Margiela Replica Jazz Club EDT 10ml Hương Rượu Trầm Ấm",
+  "brand": "Maison Margiela",
+  "category": "Nước hoa",
+  "subCategory": "Nước hoa chiết mini 10ml",
+  "rating": 4.9,
+  "soldCount": 12800,
+  "reviewCount": 2900,
+  "price": 490000,
+  "originalPrice": 580000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Hương Rượu Rum & Thuốc Lá",
+    "Ấm Áp Quyến Rũ"
+  ],
+  "images": [
+    "/products/PROD-CRW-NHT-02.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "WATER_LIQUID",
+  "originCountry": "FRANCE",
+  "variants": [
+    {
+      "sku": "REPLICA-JAZZ-10ML",
+      "title": "Ống 10ml nắp bạc chống rò rỉ",
+      "price": 490000,
+      "onHand": 190
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Pink Pepper, Neroli, Rum, Tobacco Leaf, Vanilla",
+      "function": "Phong cách quý ông lãng tử"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-NHT-03",
+  "name": "Nước Hoa Chiết Nam Chanel Bleu de Chanel Eau de Parfum 10ml Nam Tính Cuốn Hút",
+  "brand": "Chanel",
+  "category": "Nước hoa",
+  "subCategory": "Nước hoa chiết mini 10ml",
+  "rating": 4.9,
+  "soldCount": 28900,
+  "reviewCount": 6500,
+  "price": 450000,
+  "originalPrice": 550000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Vua Nước Hoa Nam",
+    "Lưu Hương Vượt Trội"
+  ],
+  "images": [
+    "/products/PROD-CRW-NHT-03.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "WATER_LIQUID",
+  "originCountry": "FRANCE",
+  "variants": [
+    {
+      "sku": "BLEU-CHANEL-10ML",
+      "title": "Chai chiết vỏ kim loại xoay 10ml",
+      "price": 450000,
+      "onHand": 380
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Bưởi chùm, Hương trầm, Tuyết tùng & Hổ phách",
+      "function": "Lôi cuốn phái nữ mọi ánh nhìn"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-NHT-04",
+  "name": "Nước Hoa Chiết Nam Dior Sauvage Eau de Parfum 10ml Tươi Mát Hoang Dã",
+  "brand": "Dior",
+  "category": "Nước hoa",
+  "subCategory": "Nước hoa chiết mini 10ml",
+  "rating": 4.9,
+  "soldCount": 32400,
+  "reviewCount": 7400,
+  "price": 420000,
+  "originalPrice": 510000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Top 1 Nước Hoa Thế Giới",
+    "Tỏa Hương Xa"
+  ],
+  "images": [
+    "/products/PROD-CRW-NHT-04.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "WATER_LIQUID",
+  "originCountry": "FRANCE",
+  "variants": [
+    {
+      "sku": "DIOR-SAUVAGE-10ML",
+      "title": "Ống chiết tiện lợi 10ml",
+      "price": 420000,
+      "onHand": 420
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Cam Bergamot Calabria, Tiêu Tứ Xuyên & Ambroxan",
+      "function": "Phóng khoáng mạnh mẽ"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-NHT-05",
+  "name": "Nước Hoa Chiết Nữ YSL Libre Eau de Parfum 10ml Hương Hoa Lavender Sang Trọng",
+  "brand": "YSL",
+  "category": "Nước hoa",
+  "subCategory": "Nước hoa chiết mini 10ml",
+  "rating": 4.9,
+  "soldCount": 25100,
+  "reviewCount": 5800,
+  "price": 430000,
+  "originalPrice": 520000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Nữ Quyền Độc Lập",
+    "Lưu Hương Cả Ngày"
+  ],
+  "images": [
+    "/products/PROD-CRW-NHT-05.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "WATER_LIQUID",
+  "originCountry": "FRANCE",
+  "variants": [
+    {
+      "sku": "YSL-LIBRE-10ML",
+      "title": "Chai chiết vòi phun nano 10ml",
+      "price": 430000,
+      "onHand": 310
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Hoa oải hương Pháp, Hoa cam Morocco & Vani Madagascar",
+      "function": "Tự do kiêu kỳ"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VKN-01",
+  "name": "Nước Hoa Vùng Kín Foellie Eau de Bijou 5ml Đen Quyến Rũ Sang Trọng",
+  "brand": "Foellie",
+  "category": "Nước hoa",
+  "subCategory": "Nước hoa vùng kín",
+  "rating": 4.9,
+  "soldCount": 85200,
+  "reviewCount": 19800,
+  "price": 185000,
+  "originalPrice": 250000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Khử Mùi 99.9%",
+    "Hương Thơm Nồng Nàn"
+  ],
+  "images": [
+    "/products/PROD-CRW-VKN-01.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES",
+    "SENSITIVE"
+  ],
+  "formulationTexture": "FACIAL_OIL",
+  "originCountry": "KOREA",
+  "variants": [
+    {
+      "sku": "FOELLIE-BIJOU-5ML",
+      "title": "Chai 5ml vỏ đen huyền bí",
+      "price": 185000,
+      "onHand": 1100
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Dầu hoa anh thảo, Dầu argan, Dầu jojoba & Tinh dầu hạt hướng dương",
+      "function": "Cân bằng pH và khử mùi vùng nhạy cảm 48h"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VKN-02",
+  "name": "Nước Hoa Vùng Kín Foellie Eau de Bonbon 5ml Trắng Ngọt Ngào Thanh Khiết",
+  "brand": "Foellie",
+  "category": "Nước hoa",
+  "subCategory": "Nước hoa vùng kín",
+  "rating": 4.9,
+  "soldCount": 62400,
+  "reviewCount": 13500,
+  "price": 185000,
+  "originalPrice": 250000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Hương Đào & Kẹo Ngọt",
+    "Dịu Nhẹ An Toàn"
+  ],
+  "images": [
+    "/products/PROD-CRW-VKN-02.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES",
+    "SENSITIVE"
+  ],
+  "formulationTexture": "FACIAL_OIL",
+  "originCountry": "KOREA",
+  "variants": [
+    {
+      "sku": "FOELLIE-BONBON-5ML",
+      "title": "Chai 5ml vỏ trắng tinh khôi",
+      "price": 185000,
+      "onHand": 840
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "6 loại tinh dầu thiên nhiên cao cấp",
+      "function": "Mang lại cảm giác thơm mát sạch sẽ suốt chu kỳ"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VKN-03",
+  "name": "Nước Hoa Vùng Kín Dionel Secret Love Black Edition 5ml Hàn Quốc Lưu Hương 24H",
+  "brand": "Dionel",
+  "category": "Nước hoa",
+  "subCategory": "Nước hoa vùng kín",
+  "rating": 4.8,
+  "soldCount": 45800,
+  "reviewCount": 9700,
+  "price": 195000,
+  "originalPrice": 260000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Huyền Thoại Dionel",
+    "Kháng Viêm Tự Nhiên"
+  ],
+  "images": [
+    "/products/PROD-CRW-VKN-03.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES",
+    "SENSITIVE"
+  ],
+  "formulationTexture": "FACIAL_OIL",
+  "originCountry": "KOREA",
+  "variants": [
+    {
+      "sku": "DIONEL-BLACK-5ML",
+      "title": "Chai thủy tinh 5ml giọt nén",
+      "price": 195000,
+      "onHand": 620
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Dầu hạt macadamia, Oenothera Biennis Oil",
+      "function": "Diệt khuẩn Candida và tạo hương say đắm"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VKN-04",
+  "name": "Tinh Dầu Nước Hoa Vùng Kín Cenota Secret Sexy 10ml Khử Mùi Kháng Khuẩn",
+  "brand": "Cenota",
+  "category": "Nước hoa",
+  "subCategory": "Nước hoa vùng kín",
+  "rating": 4.8,
+  "soldCount": 28900,
+  "reviewCount": 5400,
+  "price": 160000,
+  "originalPrice": 220000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Dung Tích Lớn 10ml",
+    "Công Nghệ Pháp"
+  ],
+  "images": [
+    "/products/PROD-CRW-VKN-04.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES",
+    "SENSITIVE"
+  ],
+  "formulationTexture": "FACIAL_OIL",
+  "originCountry": "VIETNAM",
+  "variants": [
+    {
+      "sku": "CENOTA-SEXY-10ML",
+      "title": "Chai 10ml tiết kiệm gấp đôi",
+      "price": 160000,
+      "onHand": 510
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Hương hoa linh lan & Tinh dầu hạnh nhân",
+      "function": "Kháng khuẩn và khử mùi hôi"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VKN-05",
+  "name": "Nước Hoa Vùng Kín Tinh Tế De Memoria Floral Pocket Perfume 5ml",
+  "brand": "De Memoria",
+  "category": "Nước hoa",
+  "subCategory": "Nước hoa vùng kín",
+  "rating": 4.9,
+  "soldCount": 21300,
+  "reviewCount": 4600,
+  "price": 175000,
+  "originalPrice": 230000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Hương Hoa Xứ Grasse",
+    "Không Chứa Cồn"
+  ],
+  "images": [
+    "/products/PROD-CRW-VKN-05.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES",
+    "SENSITIVE"
+  ],
+  "formulationTexture": "FACIAL_OIL",
+  "originCountry": "KOREA",
+  "variants": [
+    {
+      "sku": "DEMEMORIA-FLORAL-5ML",
+      "title": "Chai 5ml hương hoa hồng Montmartre",
+      "price": 175000,
+      "onHand": 430
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Rose Damascena Flower Oil & Chamomilla Recutita",
+      "function": "Làm dịu và ngăn mùi bí bách"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VMN-01",
+  "name": "Tinh Dầu Hoa Anh Thảo Cân Bằng Nội Tiết & Giảm Mụn Blackmores Evening Primrose Oil 190 Viên",
+  "brand": "Blackmores",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống trị mụn / nội tiết",
+  "rating": 4.9,
+  "soldCount": 38900,
+  "reviewCount": 8900,
+  "price": 520000,
+  "originalPrice": 650000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Chuẩn Úc 1000mg",
+    "Cân Bằng Nội Tiết Tố"
+  ],
+  "images": [
+    "/products/PROD-CRW-VMN-01.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES",
+    "ACNE_PRONE"
+  ],
+  "skinConcerns": [
+    "ACNE",
+    "HORMONAL_ACNE"
+  ],
+  "safetyEthicsBadges": [
+    "NON_GMO",
+    "GLUTEN_FREE"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "AUSTRALIA",
+  "variants": [
+    {
+      "sku": "BLACKMORES-EPO-190V",
+      "title": "Hộp 190 viên nang mềm",
+      "price": 520000,
+      "onHand": 550
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Evening Primrose Oil 1000mg (chứa Gamma-Linolenic Acid GLA 100mg)",
+      "function": "Điều hòa kinh nguyệt, giảm mụn nội tiết cằm và lưng"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VMN-02",
+  "name": "Viên Uống Bổ Sung Kẽm Kiểm Soát Bã Nhờn Ngừa Mụn DHC Zinc 60 Ngày 60 Viên",
+  "brand": "DHC",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống trị mụn / nội tiết",
+  "rating": 4.9,
+  "soldCount": 95400,
+  "reviewCount": 22100,
+  "price": 110000,
+  "originalPrice": 145000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Kẽm Men Tự Nhiên",
+    "Kiểm Soát Nhờn Vượt Trội"
+  ],
+  "images": [
+    "/products/PROD-CRW-VMN-02.jpg"
+  ],
+  "targetSkinTypes": [
+    "OILY",
+    "ACNE_PRONE"
+  ],
+  "skinConcerns": [
+    "ACNE",
+    "SEBUM"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "DHC-ZINC-60D",
+      "title": "Gói 60 viên uống trong 60 ngày",
+      "price": 110000,
+      "onHand": 1800
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Kẽm Gluconate 15mg, Crom 60mcg, Selen 50mcg",
+      "function": "Kháng viêm gom cồi mụn, ức chế tuyến dầu"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VMN-03",
+  "name": "Viên Uống Trị Mụn Trứng Cá & Mụn Viêm Pair A Lion 120 Viên Nhật Bản",
+  "brand": "Lion",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống trị mụn / nội tiết",
+  "rating": 4.8,
+  "soldCount": 29800,
+  "reviewCount": 6400,
+  "price": 280000,
+  "originalPrice": 350000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Đặc Trị Mụn Bọc",
+    "Thải Độc Gan Da Liễu"
+  ],
+  "images": [
+    "/products/PROD-CRW-VMN-03.jpg"
+  ],
+  "targetSkinTypes": [
+    "ACNE_PRONE"
+  ],
+  "skinConcerns": [
+    "ACNE"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "PAIR-A-120V",
+      "title": "Hộp thủy tinh 120 viên nén",
+      "price": 280000,
+      "onHand": 620
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Glucuronolactone, L-Cysteine, Vitamin B2 & Vitamin B6",
+      "function": "Đào thải độc tố gan, ngăn chặn mụn tái phát"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VMN-04",
+  "name": "Viên Uống 32 Loại Rau Củ Thanh Nhiệt Thải Độc DHC Perfect Vegetable 60 Ngày 240 Viên",
+  "brand": "DHC",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống trị mụn / nội tiết",
+  "rating": 4.9,
+  "soldCount": 74200,
+  "reviewCount": 16800,
+  "price": 260000,
+  "originalPrice": 320000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "32 Loại Rau Xanh",
+    "Giảm Nóng Trong Mụn Nhọt"
+  ],
+  "images": [
+    "/products/PROD-CRW-VMN-04.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "skinConcerns": [
+    "INTERNAL_HEAT"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "DHC-VEGE-60D",
+      "title": "Gói 240 viên uống 60 ngày",
+      "price": 260000,
+      "onHand": 1300
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "100% rau củ quốc sản Nhật Bản & 1000 tỷ lợi khuẩn Lactic Acid",
+      "function": "Mát gan tiêu độc, hỗ trợ tiêu hóa không táo bón"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VMN-05",
+  "name": "Tinh Dầu Hoa Anh Thảo Hữu Cơ Pháp Nat&Form Huile d'Onagre Bio 200 Viên",
+  "brand": "Nat&Form",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống trị mụn / nội tiết",
+  "rating": 4.8,
+  "soldCount": 21400,
+  "reviewCount": 4700,
+  "price": 320000,
+  "originalPrice": 390000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Chuẩn Hữu Cơ Bio EcoCert",
+    "Chống Lão Hóa Nội Sinh"
+  ],
+  "images": [
+    "/products/PROD-CRW-VMN-05.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "FRANCE",
+  "variants": [
+    {
+      "sku": "NATFORM-BIO-200V",
+      "title": "Hộp phân hủy sinh học 200 viên",
+      "price": 320000,
+      "onHand": 480
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Organic Evening Primrose Oil 500mg ép lạnh nguyên chất",
+      "function": "Cải thiện làn da khô ráp sần sùi mụn do rối loạn nội tiết"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VCN-01",
+  "name": "Viên Uống Cấp Nước & Căng Bóng Da CJ Innerb Aqua Rich Double Up 70 Viên Hàn Quốc",
+  "brand": "CJ Innerb",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống cấp nước Hyaluronic",
+  "rating": 4.9,
+  "soldCount": 42300,
+  "reviewCount": 9600,
+  "price": 450000,
+  "originalPrice": 590000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Gấp Đôi HA 240mg",
+    "Căng Mọng Da Sứ"
+  ],
+  "images": [
+    "/products/PROD-CRW-VCN-01.jpg"
+  ],
+  "targetSkinTypes": [
+    "DRY",
+    "DEHYDRATED",
+    "COMBINATION"
+  ],
+  "skinConcerns": [
+    "DEHYDRATION"
+  ],
+  "keyActiveGroups": [
+    "HYDRATION"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "KOREA",
+  "variants": [
+    {
+      "sku": "INNERB-DOUBLEUP-70V",
+      "title": "Lọ 70 viên nang mềm vàng gold",
+      "price": 450000,
+      "onHand": 780
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Hyaluronic Acid 240mg, Collagen thủy phân & Ceramide cá",
+      "function": "Ngậm nước tầng sâu giúp da ẩm mượt căng bóng suốt ngày dài"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VCN-02",
+  "name": "Viên Uống Bổ Sung Hyaluronic Acid Giữ Ẩm Da DHC Hyaluronic Acid 60 Ngày 120 Viên",
+  "brand": "DHC",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống cấp nước Hyaluronic",
+  "rating": 4.9,
+  "soldCount": 36800,
+  "reviewCount": 8100,
+  "price": 295000,
+  "originalPrice": 380000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "HA 150mg Nhật Bản",
+    "Chống Khô Ráp Bong Tróc"
+  ],
+  "images": [
+    "/products/PROD-CRW-VCN-02.jpg"
+  ],
+  "targetSkinTypes": [
+    "DRY",
+    "SENSITIVE"
+  ],
+  "keyActiveGroups": [
+    "HYDRATION"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "DHC-HA-60D",
+      "title": "Gói 120 viên uống 60 ngày",
+      "price": 295000,
+      "onHand": 690
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Hyaluronic Acid 150mg, Squalane & Chiết xuất hạt vải thiều",
+      "function": "Tạo màng ẩm tự nhiên bảo vệ da mặt và cơ thể"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VCN-03",
+  "name": "Viên Uống Trắng Da Cấp Nước Huons White Glutathione Inner Aqua 60 Viên",
+  "brand": "Huons",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống cấp nước Hyaluronic",
+  "rating": 4.8,
+  "soldCount": 19400,
+  "reviewCount": 4200,
+  "price": 380000,
+  "originalPrice": 480000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Cấp Nước Sáng Mịn",
+    "Glutathione Chuẩn Hàn"
+  ],
+  "images": [
+    "/products/PROD-CRW-VCN-03.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "keyActiveGroups": [
+    "HYDRATION",
+    "BRIGHTENING"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "KOREA",
+  "variants": [
+    {
+      "sku": "HUONS-AQUA-60V",
+      "title": "Lọ 60 viên màu xanh ngọc bích",
+      "price": 380000,
+      "onHand": 430
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Hyaluronic Acid, L-Glutathione & Vitamin C",
+      "function": "Vừa cấp nước khóa ẩm vừa làm mờ sạm nám"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VCN-04",
+  "name": "Tinh Chất Uống Giữ Ẩm & Chống Khô Da Astalift Moist Essence F Dạng Viên 60 Viên",
+  "brand": "Astalift",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống cấp nước Hyaluronic",
+  "rating": 4.9,
+  "soldCount": 11200,
+  "reviewCount": 2600,
+  "price": 680000,
+  "originalPrice": 850000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Astaxanthin Đỏ Cao Cấp",
+    "Chống Lão Hóa Cấp Nước"
+  ],
+  "images": [
+    "/products/PROD-CRW-VCN-04.jpg"
+  ],
+  "targetSkinTypes": [
+    "DRY",
+    "AGING"
+  ],
+  "keyActiveGroups": [
+    "HYDRATION",
+    "ANTI_AGING"
+  ],
+  "formulationTexture": "STICK",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "ASTALIFT-MOIST-60V",
+      "title": "Lọ 60 viên công nghệ Fujifilm",
+      "price": 680000,
+      "onHand": 220
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Nano Astaxanthin, Ceramide & Hyaluronic Acid vi mô",
+      "function": "Phục hồi hàng rào giữ nước đa tầng"
+    }
+  ]
+},
+  {
+  "id": "PROD-CRW-VCN-05",
+  "name": "Nước Uống Collagen & Cấp Nước Chống Lão Hóa The Collagen Shiseido 10 Lọ x 50ml",
+  "brand": "Shiseido",
+  "category": "Thực phẩm chức năng",
+  "subCategory": "Viên uống cấp nước Hyaluronic",
+  "rating": 4.9,
+  "soldCount": 48900,
+  "reviewCount": 11200,
+  "price": 580000,
+  "originalPrice": 720000,
+  "inStock": true,
+  "badges": [
+    "Shopee Mall",
+    "Collagen Nước Thẩm Thấu Nhanh",
+    "Bán Chạy Nhất Nhật Bản"
+  ],
+  "images": [
+    "/products/PROD-CRW-VCN-05.jpg"
+  ],
+  "targetSkinTypes": [
+    "ALL_SKIN_TYPES"
+  ],
+  "keyActiveGroups": [
+    "HYDRATION",
+    "ANTI_AGING"
+  ],
+  "formulationTexture": "WATER_LIQUID",
+  "originCountry": "JAPAN",
+  "variants": [
+    {
+      "sku": "SHISEIDO-COLLAGEN-BOX",
+      "title": "Hộp 10 chai x 50ml vị trái cây",
+      "price": 580000,
+      "onHand": 920
+    }
+  ],
+  "inciIngredients": [
+    {
+      "name": "Collagen Peptide 1000mg, Hyaluronic Acid 5mg, Ceramide 600mcg & Trái Amla",
+      "function": "Tăng độ đàn hồi căng mọng mịn màng cho da"
+    }
+  ]
+},
+
   // 0. Showcase Lip On Lip Glowy Satin (Chuẩn Shopee Mall từ hình ảnh thực tế)
   {
     id: 'PROD-LIP-ON-LIP',
