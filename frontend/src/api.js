@@ -19723,7 +19723,9 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-085.jpg"
+      "/products/PROD-CRW-085.webp",
+      "/products/PROD-CRW-085.jpg",
+      "/products/packshot-default.webp"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -29181,7 +29183,9 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-150.webp"
+      "/products/PROD-CRW-150.webp",
+      "/products/PROD-CRW-150.jpg",
+      "/products/packshot-default.webp"
     ],
     "shopId": "00000000-0000-0000-0000-000000000060",
     "image": "/products/PROD-CRW-150.webp",

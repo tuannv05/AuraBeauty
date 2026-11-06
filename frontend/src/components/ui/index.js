@@ -7,3 +7,5 @@ export { StaggerContainer, StaggerItem } from './stagger-container';
 export { default as VariantColorPicker } from '../VariantColorPicker';
 export { default as AuraIntroOverlay } from './AuraIntroOverlay';
 export { default as AuraBrandLogo } from './AuraBrandLogo';
+export { ProductImage } from './ProductImage';
+

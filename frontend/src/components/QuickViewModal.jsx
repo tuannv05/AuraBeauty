@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, ChevronLeft, ChevronRight, Star, ShoppingBag, ShieldCheck, Check, Bell } from 'lucide-react';
 import VariantColorPicker from './VariantColorPicker';
+import { ProductImage } from './ui';
 
 export default function QuickViewModal({
   product,
@@ -162,9 +163,12 @@ export default function QuickViewModal({
           {/* Left: Gallery */}
           <div style={{ padding: '24px', background: 'var(--canvas-soft)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             <div style={{ width: '100%', maxWidth: '340px', aspectRatio: '1 / 1', overflow: 'hidden', borderRadius: 'var(--radius-md)', background: '#ffffff', marginBottom: '14px' }}>
-              <img
+              <ProductImage
                 src={images[activeImgIdx]}
+                images={images}
                 alt={product.name}
+                brand={product.brand}
+                productName={product.name}
                 style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '10px' }}
               />
             </div>
@@ -184,7 +188,7 @@ export default function QuickViewModal({
                       opacity: activeImgIdx === idx ? 1 : 0.6
                     }}
                   >
-                    <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '2px' }} />
+                    <ProductImage src={img} images={[img]} alt="" brand={product.brand} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '2px' }} />
                   </button>
                 ))}
               </div>

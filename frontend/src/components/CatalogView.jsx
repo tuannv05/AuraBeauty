@@ -7,7 +7,7 @@ import {
 import { MOCK_PRODUCTS } from '../api';
 import { getEnrichedCatalog, getSubmenuMetadata, searchAndFilterProducts } from '../lib/submenuCatalogMapper';
 import { searchCatalogProducts } from '../lib/searchEngine';
-import { AnimatedBadge } from './ui';
+import { AnimatedBadge, ProductImage } from './ui';
 
 const QUICK_PRICES = [
   { label: 'Tất cả', min: 0, max: 99999999 },
@@ -841,12 +841,15 @@ export default function CatalogView({
                     transition={{ type: 'spring', stiffness: 380, damping: 25 }}
                   >
                     <div className="product-card-img-wrap" onClick={() => onSelectProduct(prod)} style={{ cursor: 'pointer' }}>
-                      <img
-                        src={prod.images[0]}
+                      <ProductImage
+                        src={prod.images?.[0] || prod.image || prod.imageUrl}
+                        images={prod.images}
                         alt={prod.name}
+                        brand={prod.brand}
+                        productName={prod.name}
                         onClick={() => onSelectProduct(prod)}
-                        style={{ cursor: 'pointer' }}
                       />
+
 
                       {/* Badges */}
                       <div style={{ position: 'absolute', top: '10px', left: '10px', display: 'flex', flexDirection: 'column', gap: '4px', zIndex: 2 }}>

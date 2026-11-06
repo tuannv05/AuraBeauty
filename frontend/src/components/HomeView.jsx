@@ -13,7 +13,8 @@ import {
   AnimatedBadge,
   SpringButton,
   StaggerContainer,
-  StaggerItem
+  StaggerItem,
+  ProductImage
 } from './ui';
 
 const HERO_SLIDES = [
@@ -734,7 +735,7 @@ export default function HomeView({
                   }}
                 >
                 <div className="product-card-img-wrap" onClick={() => onSelectProduct(prod)} style={{ cursor: 'pointer' }}>
-                  <img src={prod.images[0]} alt={prod.name} />
+                  <ProductImage src={prod.images?.[0] || prod.image || prod.imageUrl} images={prod.images} alt={prod.name} brand={prod.brand} productName={prod.name} onClick={() => onSelectProduct(prod)} />
                   <span className="badge-pill badge-sale" style={{ position: 'absolute', top: '10px', left: '10px' }}>
                     -{Math.round(((prod.flashSaleOriginal - prod.flashSalePrice) / prod.flashSaleOriginal) * 100)}%
                   </span>
@@ -903,11 +904,13 @@ export default function HomeView({
                   }}
                 >
                 <div className="product-card-img-wrap" onClick={() => onSelectProduct(prod)} style={{ cursor: 'pointer' }}>
-                  <img
-                    src={prod.images[0]}
+                  <ProductImage
+                    src={prod.images?.[0] || prod.image || prod.imageUrl}
+                    images={prod.images}
                     alt={prod.name}
+                    brand={prod.brand}
+                    productName={prod.name}
                     onClick={() => onSelectProduct(prod)}
-                    style={{ cursor: 'pointer' }}
                   />
 
                   {/* Badges */}

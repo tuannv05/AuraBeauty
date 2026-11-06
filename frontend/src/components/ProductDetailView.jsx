@@ -7,6 +7,7 @@ import {
 import { MOCK_PRODUCTS } from '../api';
 import VirtualTryOnModal from './VirtualTryOnModal';
 import VariantColorPicker from './VariantColorPicker';
+import { ProductImage } from './ui';
 
 export default function ProductDetailView({
   product,
@@ -203,9 +204,12 @@ export default function ProductDetailView({
               marginBottom: '16px'
             }}
           >
-            <img
+            <ProductImage
               src={images[activeImgIdx]}
+              images={images}
               alt={product.name}
+              brand={product.brand}
+              productName={product.name}
               style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '12px' }}
             />
 
@@ -247,7 +251,7 @@ export default function ProductDetailView({
                   transition: 'all 150ms'
                 }}
               >
-                <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '4px' }} />
+                <ProductImage src={img} images={[img]} alt="" brand={product.brand} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '4px' }} />
               </button>
             ))}
           </div>
@@ -942,7 +946,7 @@ export default function ProductDetailView({
           <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
             {/* Current Item */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#ffffff', padding: '10px 14px', borderRadius: 'var(--radius-md)' }}>
-              <img src={images[0]} alt="" style={{ width: '48px', height: '48px', borderRadius: '8px', objectFit: 'cover' }} />
+              <ProductImage src={images[0]} images={images} alt="" brand={product.brand} style={{ width: '48px', height: '48px', borderRadius: '8px', objectFit: 'cover' }} />
               <div>
                 <p style={{ fontSize: '12px', fontWeight: 650 }}>{product.name}</p>
                 <span style={{ fontSize: '13px', fontWeight: 750 }}>{selectedVariant.price.toLocaleString('vi-VN')} đ</span>
@@ -977,7 +981,7 @@ export default function ProductDetailView({
                     onChange={() => {}}
                     style={{ width: '16px', height: '16px' }}
                   />
-                  <img src={uItem.images[0]} alt="" style={{ width: '48px', height: '48px', borderRadius: '8px', objectFit: 'cover' }} />
+                  <ProductImage src={uItem.images?.[0] || uItem.image} images={uItem.images} alt="" brand={uItem.brand} style={{ width: '48px', height: '48px', borderRadius: '8px', objectFit: 'cover' }} />
                   <div>
                     <p style={{ fontSize: '12px', fontWeight: 650 }}>{uItem.name}</p>
                     <span style={{ fontSize: '13px', fontWeight: 750 }}>{uItem.variants[0].price.toLocaleString('vi-VN')} đ</span>
