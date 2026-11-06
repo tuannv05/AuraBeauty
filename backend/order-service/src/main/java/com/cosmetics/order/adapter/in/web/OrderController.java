@@ -96,4 +96,17 @@ public class OrderController {
         UUID userId = resolveUserId(exchange);
         return orderService.rejectSubOrder(subOrderId, userId, reason).map(ApiResponse::ok);
     }
+
+    @PutMapping("/{id}/expire")
+    public Mono<ApiResponse<OrderEntity>> expireOrder(@PathVariable UUID id) {
+        return orderService.expireOrder(id).map(ApiResponse::ok);
+    }
+
+    @PutMapping("/{id}/cancel")
+    public Mono<ApiResponse<OrderEntity>> cancelOrder(
+            @PathVariable UUID id,
+            @RequestParam(defaultValue = "Cancelled by user") String reason
+    ) {
+        return orderService.cancelOrder(id, reason).map(ApiResponse::ok);
+    }
 }

@@ -29998,10 +29998,13 @@ export async function placeOrder(user, items, address, paymentMethod = 'COD', no
 
   const total = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
   const newOrderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
+  const isOnline = ['MOMO', 'QR', 'VIETQR', 'WALLET', 'CARD'].includes(paymentMethod);
+  const initialStatus = isOnline ? 'PENDING_PAYMENT' : 'CONFIRMED';
+  const expiresAt = isOnline ? Date.now() + 15 * 60 * 1000 : null; // 15 phút đếm ngược
   
   const createdOrder = {
     orderId: newOrderId,
-    status: paymentMethod === 'QR' ? 'AWAITING_PAYMENT' : 'CONFIRMED',
+    status: initialStatus,
     totalAmount: total,
     recipientName: user?.name || 'Khách Hàng',
     phone: user?.phone || '0901234567',
@@ -30010,21 +30013,34 @@ export async function placeOrder(user, items, address, paymentMethod = 'COD', no
     trackingNumber: 'GHTK-' + Math.floor(10000000 + Math.random() * 90000000),
     carrierName: 'Giao Hàng Tiết Kiệm (GHTK)',
     orderDate: new Date().toLocaleString('vi-VN'),
-    timeline: [
-      { step: 'Đặt hàng thành công', time: 'Vừa xong', done: true, active: true },
+    expiresAt: expiresAt,
+    timeline: isOnline ? [
+      { step: 'Khởi tạo đơn hàng (Chờ thanh toán)', time: 'Vừa xong', done: true, active: false },
+      { step: 'Ký quỹ MoMo / VietQR (Đang giữ đơn 15 phút)', time: 'Đang chờ', done: false, active: true },
+      { step: 'Gian hàng xác nhận & đóng gói', time: 'Sau khi nhận tiền ký quỹ', done: false },
+      { step: 'Đã bàn giao vận chuyển', time: 'Dự kiến hôm nay', done: false },
+      { step: 'Đang giao hàng', time: 'Dự kiến 1-2 ngày tới', done: false },
+      { step: 'Giao hàng thành công', time: 'Dự kiến 2-3 ngày tới', done: false }
+    ] : [
+      { step: 'Đặt hàng thành công (COD)', time: 'Vừa xong', done: true, active: true },
       { step: 'Gian hàng xác nhận', time: 'Dự kiến trong 30 phút', done: false },
       { step: 'Đang đóng gói hàng', time: 'Dự kiến hôm nay', done: false },
       { step: 'Đã bàn giao vận chuyển', time: 'Dự kiến hôm nay', done: false },
       { step: 'Đang giao hàng', time: 'Dự kiến 1-2 ngày tới', done: false },
-      { step: 'Giao hàng thành công', time: 'Dự kiến 2-3 ngày tới', done: false }
+      { step: 'Thanh toán tiền mặt khi nhận hàng', time: 'Dự kiến 2-3 ngày tới', done: false }
     ],
     items: items,
     bankInfo: {
-      bankName: 'Ngân hàng TMCP Quân Đội (MB Bank)',
-      accountNumber: '999988886666',
-      accountHolder: 'CONG TY CP THUONG MAI AURA BEAUTY MALL',
+      gateway: paymentMethod === 'MOMO' ? 'MOMO' : 'VIETQR',
+      bankName: paymentMethod === 'MOMO' ? 'Ví Điện Tử MoMo (Ký Quỹ Shop)' : 'Ngân hàng TMCP Quân Đội (MB Bank)',
+      accountNumber: paymentMethod === 'MOMO' ? '0901234567' : '999988886666',
+      accountHolder: 'CONG TY CP THUONG MAI AURA BEAUTY MALL - TAI KHOAN KY QUY SHOP',
       transferContent: 'AURA ' + newOrderId,
-      qrUrl: `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=2|99|0901234567|MBBANK|999988886666|${total}|${newOrderId}`
+      timeoutSeconds: 900,
+      expiresAt: expiresAt,
+      qrUrl: paymentMethod === 'MOMO'
+        ? `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=2|99|0901234567|MOMO|0901234567|${total}|${newOrderId}`
+        : `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=2|99|0901234567|MBBANK|999988886666|${total}|${newOrderId}`
     }
   };
 
@@ -30035,6 +30051,44 @@ export async function placeOrder(user, items, address, paymentMethod = 'COD', no
     success: true,
     data: createdOrder
   };
+}
+
+
+// 2.1 Simulators for Webhook and Expiration
+export async function confirmPaymentSimulation(orderId) {
+  const ord = MOCK_ORDERS.find(o => o.orderId === orderId);
+  if (ord) {
+    ord.status = 'CONFIRMED';
+    ord.paidAt = new Date().toLocaleString('vi-VN');
+    if (ord.timeline && ord.timeline.length > 1) {
+      ord.timeline[0].done = true;
+      ord.timeline[0].active = false;
+      ord.timeline[1].step = 'Ký quỹ MoMo / VietQR thành công (Sàn giữ tiền)';
+      ord.timeline[1].time = 'Vừa xác nhận';
+      ord.timeline[1].done = true;
+      ord.timeline[1].active = false;
+      if (ord.timeline[2]) {
+        ord.timeline[2].active = true;
+      }
+    }
+  }
+  return { success: true, order: ord };
+}
+
+export async function expireOrderSimulation(orderId) {
+  const ord = MOCK_ORDERS.find(o => o.orderId === orderId);
+  if (ord) {
+    ord.status = 'EXPIRED';
+    if (ord.timeline) {
+      ord.timeline.push({
+        step: 'Đơn hàng hết hạn thanh toán (Tự động hủy và hoàn kho)',
+        time: new Date().toLocaleTimeString('vi-VN'),
+        done: true,
+        active: false
+      });
+    }
+  }
+  return { success: true, order: ord };
 }
 
 // 3. Order Lookup

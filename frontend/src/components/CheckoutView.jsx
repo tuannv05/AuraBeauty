@@ -4,6 +4,7 @@ import {
   QrCode, Wallet, CheckCircle2, AlertCircle, Phone, Lock, Building
 } from 'lucide-react';
 import { placeOrder } from '../api';
+import AddressSelector from './AddressSelector';
 
 export default function CheckoutView({
   checkoutData,
@@ -33,7 +34,7 @@ export default function CheckoutView({
 
   // Step 2 Shipping & Payment States
   const [shippingMethod, setShippingMethod] = useState('STANDARD'); // 'STANDARD' | 'EXPRESS' | 'NOW2H'
-  const [paymentMethod, setPaymentMethod] = useState('QR'); // 'COD' | 'QR' | 'WALLET' | 'CARD'
+  const [paymentMethod, setPaymentMethod] = useState('MOMO'); // 'COD' | 'QR' | 'WALLET' | 'CARD'
   const [useLoyaltyPoints, setUseLoyaltyPoints] = useState(false);
 
   // Step 3 Confirmation State
@@ -69,6 +70,16 @@ export default function CheckoutView({
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (email.trim() && !emailRegex.test(email.trim())) {
       errors.email = 'Định dạng email chưa chính xác.';
+    }
+
+    if (!province || !province.trim()) {
+      errors.province = 'Vui lòng chọn Tỉnh / Thành phố.';
+    }
+    if (!district || !district.trim()) {
+      errors.district = 'Vui lòng chọn Quận / Huyện.';
+    }
+    if (!ward || !ward.trim()) {
+      errors.ward = 'Vui lòng chọn Phường / Xã.';
     }
 
     if (!streetAddress.trim() || streetAddress.trim().length < 5) {
@@ -261,35 +272,16 @@ export default function CheckoutView({
                   {formErrors.email && <p style={{ fontSize: '11px', color: '#ef4444', marginTop: '3px' }}>{formErrors.email}</p>}
                 </div>
 
-                {/* Administrative selects 3-levels */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '12px', marginBottom: '16px' }}>
-                  <div>
-                    <label style={{ fontSize: '12px', fontWeight: 650, display: 'block', marginBottom: '4px' }}>Tỉnh / Thành phố *</label>
-                    <select value={province} onChange={(e) => setProvince(e.target.value)}>
-                      <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
-                      <option value="Hà Nội">Hà Nội</option>
-                      <option value="Đà Nẵng">Đà Nẵng</option>
-                      <option value="Cần Thơ">Cần Thơ</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label style={{ fontSize: '12px', fontWeight: 650, display: 'block', marginBottom: '4px' }}>Quận / Huyện *</label>
-                    <select value={district} onChange={(e) => setDistrict(e.target.value)}>
-                      <option value="Quận 1">Quận 1</option>
-                      <option value="Quận 3">Quận 3</option>
-                      <option value="Quận Bình Thạnh">Quận Bình Thạnh</option>
-                      <option value="TP. Thủ Đức">TP. Thủ Đức</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label style={{ fontSize: '12px', fontWeight: 650, display: 'block', marginBottom: '4px' }}>Phường / Xã *</label>
-                    <select value={ward} onChange={(e) => setWard(e.target.value)}>
-                      <option value="Phường Bến Nghé">Phường Bến Nghé</option>
-                      <option value="Phường Bến Thành">Phường Bến Thành</option>
-                      <option value="Phường Đa Kao">Phường Đa Kao</option>
-                    </select>
-                  </div>
-                </div>
+                {/* Administrative selects 3-levels (AddressSelector) */}
+                <AddressSelector
+                  province={province}
+                  district={district}
+                  ward={ward}
+                  onProvinceChange={setProvince}
+                  onDistrictChange={setDistrict}
+                  onWardChange={setWard}
+                  errors={formErrors}
+                />
 
                 <div style={{ marginBottom: '20px' }}>
                   <label style={{ fontSize: '12px', fontWeight: 650, display: 'block', marginBottom: '4px' }}>
@@ -412,7 +404,8 @@ export default function CheckoutView({
                 <h3 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '14px', letterSpacing: '-0.01em' }}>3. Phương Thức Thanh Toán</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
                   {[
-                    { id: 'QR', title: 'Chuyển Khoản Ngân Hàng Tự Động (VietQR 24/7)', desc: 'Tạo mã QR có sẵn số tiền & nội dung, hệ thống duyệt tự động sau 30 giây', icon: '📱', badge: 'Khuyên dùng' },
+                    { id: 'MOMO', title: 'Ví Điện Tử MoMo (Ký Quỹ Đơn Hàng Shop Escrow)', desc: 'Tạo mã QR MoMo chuyển tiền vào tài khoản ký quỹ sàn/shop, giữ đơn và giữ kho trong 15 phút', icon: '💖', badge: 'Phổ biến nhất' },
+                    { id: 'QR', title: 'Chuyển Khoản Ngân Hàng Tự Động (VietQR 24/7)', desc: 'Tạo mã VietQR có sẵn số tiền & nội dung ký quỹ, hệ thống duyệt tự động sau 30 giây', icon: '📱', badge: 'Khuyên dùng' },
                     { id: 'COD', title: 'Thanh toán khi nhận hàng (COD)', desc: 'Kiểm tra hàng trước khi thanh toán tiền mặt cho bưu tá', icon: '💵', badge: 'Tiện lợi' },
                     { id: 'WALLET', title: 'Ví điện tử MoMo / ZaloPay / VNPay', desc: 'Thanh toán tức thời qua ứng dụng ví điện tử liên kết', icon: '👛' },
                     { id: 'CARD', title: 'Thẻ quốc tế Visa / MasterCard / JCB', desc: 'Cổng thanh toán bảo mật chuẩn PCI-DSS quốc tế', icon: '💳' },
@@ -553,7 +546,7 @@ export default function CheckoutView({
                     Vận chuyển: <strong>{shippingMethod === 'NOW2H' ? 'Hỏa Tốc 2 Giờ' : shippingMethod === 'EXPRESS' ? 'Giao Nhanh 1-2 ngày' : 'Giao Tiêu Chuẩn'}</strong>
                   </p>
                   <p style={{ fontSize: '13px' }}>
-                    Thanh toán: <strong>{paymentMethod === 'QR' ? 'VietQR Tự Động' : paymentMethod === 'COD' ? 'Tiền mặt khi nhận hàng (COD)' : 'Ví điện tử / Thẻ'}</strong>
+                    Thanh toán: <strong>{paymentMethod === 'MOMO' ? 'Ví Điện Tử MoMo (Ký quỹ 15 phút)' : paymentMethod === 'QR' ? 'VietQR Tự Động (Ký quỹ 15 phút)' : paymentMethod === 'COD' ? 'Tiền mặt khi nhận hàng (COD)' : 'Ví điện tử / Thẻ quốc tế'}</strong>
                   </p>
                 </div>
 

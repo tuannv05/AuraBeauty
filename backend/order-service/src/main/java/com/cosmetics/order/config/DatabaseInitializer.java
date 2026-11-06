@@ -24,9 +24,12 @@ public class DatabaseInitializer {
                     recipient_name VARCHAR(255),
                     recipient_phone VARCHAR(50),
                     shipping_address TEXT,
+                    payment_method VARCHAR(50) DEFAULT 'COD',
                     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
                     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
                 );
+
+                ALTER TABLE orders ADD COLUMN IF NOT EXISTS payment_method VARCHAR(50) DEFAULT 'COD';
 
                 CREATE TABLE IF NOT EXISTS sub_orders (
                     id UUID PRIMARY KEY,

@@ -51,12 +51,17 @@ public class OrderService {
         private String recipientName;
         private String recipientPhone;
         private String shippingAddress;
+        private String paymentMethod; // COD, MOMO, VIETQR, VNPAY, WALLET, CARD
 
         public CheckoutRequest() {}
         public CheckoutRequest(String recipientName, String recipientPhone, String shippingAddress) {
+            this(recipientName, recipientPhone, shippingAddress, "COD");
+        }
+        public CheckoutRequest(String recipientName, String recipientPhone, String shippingAddress, String paymentMethod) {
             this.recipientName = recipientName;
             this.recipientPhone = recipientPhone;
             this.shippingAddress = shippingAddress;
+            this.paymentMethod = paymentMethod;
         }
 
         public String getRecipientName() { return recipientName; }
@@ -65,6 +70,8 @@ public class OrderService {
         public void setRecipientPhone(String recipientPhone) { this.recipientPhone = recipientPhone; }
         public String getShippingAddress() { return shippingAddress; }
         public void setShippingAddress(String shippingAddress) { this.shippingAddress = shippingAddress; }
+        public String getPaymentMethod() { return paymentMethod; }
+        public void setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; }
     }
 
     @Transactional
@@ -81,14 +88,20 @@ public class OrderService {
                             .reduce(BigDecimal.ZERO, BigDecimal::add);
 
                     UUID orderId = UUID.randomUUID();
+                    String paymentMethod = request.getPaymentMethod() != null ? request.getPaymentMethod().toUpperCase() : "COD";
+                    boolean isOnline = "MOMO".equals(paymentMethod) || "VIETQR".equals(paymentMethod) || "QR".equals(paymentMethod) || "VNPAY".equals(paymentMethod) || "WALLET".equals(paymentMethod) || "CARD".equals(paymentMethod);
+                    String initialStatus = isOnline ? "PENDING_PAYMENT" : "CREATED";
+                    String subInitialStatus = isOnline ? "PENDING_PAYMENT" : "PENDING";
+
                     OrderEntity order = new OrderEntity(
                             orderId,
                             buyerId,
-                            "CREATED",
+                            initialStatus,
                             totalAmount,
                             request.getRecipientName(),
                             request.getRecipientPhone(),
-                            request.getShippingAddress()
+                            request.getShippingAddress(),
+                            paymentMethod
                     );
 
                     // Group by ShopId to split into Sub-orders
@@ -111,7 +124,7 @@ public class OrderService {
                                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
                         UUID subOrderId = UUID.randomUUID();
-                        SubOrderEntity subOrder = new SubOrderEntity(subOrderId, orderId, shopId, "PENDING", subTotal);
+                        SubOrderEntity subOrder = new SubOrderEntity(subOrderId, orderId, shopId, subInitialStatus, subTotal);
                         subOrders.add(subOrder);
                         subOrderDtos.add(new OrderPlacedPayload.SubOrderDto(subOrderId, shopId, subTotal));
 
@@ -308,6 +321,62 @@ public class OrderService {
                             ))
                             .then(processedEventRepository.save(new ProcessedEvent(eventId, "PaymentFailed")))
                             .then();
+                });
+    }
+
+    @Transactional
+    public Mono<OrderEntity> expireOrder(UUID orderId) {
+        return orderRepository.findById(orderId)
+                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "ORDER_NOT_FOUND", "Order not found: " + orderId)))
+                .flatMap(order -> {
+                    if ("PAID".equals(order.getStatus()) || "COMPLETED".equals(order.getStatus())) {
+                        return Mono.error(new BusinessException(HttpStatus.BAD_REQUEST, "ORDER_ALREADY_PAID", "Order already paid"));
+                    }
+                    order.setStatus("EXPIRED");
+                    order.setUpdatedAt(Instant.now());
+                    return orderRepository.save(order)
+                            .then(subOrderRepository.findByOrderId(orderId)
+                                    .flatMap(sub -> {
+                                        sub.setStatus("CANCELLED");
+                                        sub.setUpdatedAt(Instant.now());
+                                        return subOrderRepository.save(sub);
+                                    }).then())
+                            .then(outboxHelper.recordEvent(
+                                    KafkaTopics.ORDER_EVENTS,
+                                    "Order",
+                                    orderId.toString(),
+                                    "ReleaseStock",
+                                    new ReleaseStockPayload(orderId, "Payment expired (15-minute timeout)")
+                            ))
+                            .thenReturn(order);
+                });
+    }
+
+    @Transactional
+    public Mono<OrderEntity> cancelOrder(UUID orderId, String reason) {
+        return orderRepository.findById(orderId)
+                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "ORDER_NOT_FOUND", "Order not found: " + orderId)))
+                .flatMap(order -> {
+                    if ("COMPLETED".equals(order.getStatus())) {
+                        return Mono.error(new BusinessException(HttpStatus.BAD_REQUEST, "ORDER_COMPLETED", "Cannot cancel completed order"));
+                    }
+                    order.setStatus("CANCELLED");
+                    order.setUpdatedAt(Instant.now());
+                    return orderRepository.save(order)
+                            .then(subOrderRepository.findByOrderId(orderId)
+                                    .flatMap(sub -> {
+                                        sub.setStatus("REJECTED");
+                                        sub.setUpdatedAt(Instant.now());
+                                        return subOrderRepository.save(sub);
+                                    }).then())
+                            .then(outboxHelper.recordEvent(
+                                    KafkaTopics.ORDER_EVENTS,
+                                    "Order",
+                                    orderId.toString(),
+                                    "ReleaseStock",
+                                    new ReleaseStockPayload(orderId, reason != null ? reason : "Order cancelled by buyer/system")
+                            ))
+                            .thenReturn(order);
                 });
     }
 }

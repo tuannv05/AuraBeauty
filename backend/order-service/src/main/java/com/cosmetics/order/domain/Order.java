@@ -9,11 +9,12 @@ import java.util.UUID;
 public class Order {
     private UUID id;
     private UUID buyerId;
-    private String status; // CREATED, PENDING_PAYMENT, PAID, CANCELLED, COMPLETED
+    private String status; // CREATED, PENDING_PAYMENT, PAID, CANCELLED, COMPLETED, EXPIRED
     private BigDecimal totalAmount;
     private String recipientName;
     private String recipientPhone;
     private String shippingAddress;
+    private String paymentMethod; // COD, MOMO, VIETQR, VNPAY, CARD
     private List<SubOrder> subOrders = new ArrayList<>();
     private Instant createdAt = Instant.now();
     private Instant updatedAt = Instant.now();
@@ -28,6 +29,7 @@ public class Order {
         this.recipientPhone = recipientPhone;
         this.shippingAddress = shippingAddress;
         this.status = "CREATED";
+        this.paymentMethod = "COD";
         this.createdAt = Instant.now();
         this.updatedAt = Instant.now();
     }
@@ -46,6 +48,8 @@ public class Order {
     public void setRecipientPhone(String recipientPhone) { this.recipientPhone = recipientPhone; }
     public String getShippingAddress() { return shippingAddress; }
     public void setShippingAddress(String shippingAddress) { this.shippingAddress = shippingAddress; }
+    public String getPaymentMethod() { return paymentMethod; }
+    public void setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; }
     public List<SubOrder> getSubOrders() { return subOrders; }
     public void setSubOrders(List<SubOrder> subOrders) { this.subOrders = subOrders; }
     public Instant getCreatedAt() { return createdAt; }

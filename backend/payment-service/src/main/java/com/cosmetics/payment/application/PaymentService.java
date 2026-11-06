@@ -184,4 +184,70 @@ public class PaymentService {
                 "totalLedgerEntries", tuple.getT3()
         ));
     }
+
+    @Transactional
+    public Mono<Map<String, Object>> processWebhook(String gateway, Map<String, Object> payload) {
+        if (payload == null) payload = Map.of();
+        String orderIdStr = payload.get("orderId") != null ? String.valueOf(payload.get("orderId")) : null;
+        if (orderIdStr == null && payload.get("extraData") != null) {
+            orderIdStr = String.valueOf(payload.get("extraData"));
+        }
+        if (orderIdStr == null) {
+            return Mono.error(new BusinessException(HttpStatus.BAD_REQUEST, "MISSING_ORDER_ID", "orderId is required in webhook payload"));
+        }
+
+        UUID orderId;
+        try {
+            orderId = UUID.fromString(orderIdStr.replace("AURA-", "").replace("AURA ", "").trim());
+        } catch (IllegalArgumentException e) {
+            orderId = UUID.nameUUIDFromBytes(orderIdStr.getBytes());
+        }
+
+        boolean isSuccess = true;
+        if (payload.get("resultCode") != null) {
+            isSuccess = "0".equals(String.valueOf(payload.get("resultCode")));
+        } else if (payload.get("status") != null) {
+            String status = String.valueOf(payload.get("status")).toUpperCase();
+            isSuccess = "SUCCESS".equals(status) || "PAID".equals(status) || "COMPLETED".equals(status);
+        }
+
+        final UUID targetOrderId = orderId;
+        final boolean finalSuccess = isSuccess;
+        return mockPay(targetOrderId, finalSuccess)
+                .map(payment -> Map.of(
+                        "gateway", gateway != null ? gateway.toUpperCase() : "MOMO",
+                        "orderId", targetOrderId.toString(),
+                        "paymentId", payment.getId().toString(),
+                        "status", finalSuccess ? "SUCCESS" : "FAILED",
+                        "amount", payment.getAmount(),
+                        "message", finalSuccess ? "Payment confirmed via webhook" : "Payment failed via webhook"
+                ));
+    }
+
+    public Mono<Map<String, Object>> generateEscrowQr(UUID orderId, String gateway, BigDecimal amount) {
+        String cleanGateway = gateway != null ? gateway.toUpperCase() : "MOMO";
+        BigDecimal cleanAmount = amount != null ? amount : BigDecimal.valueOf(500000);
+        String accountName = "AURA BEAUTY MALL - SHOP ESCROW";
+        String accountNumber = "0901234567";
+        String bankName = "MOMO".equals(cleanGateway) ? "Ví Điện Tử MoMo (Ký Quỹ Shop)" : "Ngân hàng TMCP Quân Đội (MB Bank)";
+        String transferContent = "AURA " + orderId.toString().substring(0, Math.min(8, orderId.toString().length())).toUpperCase();
+
+        String qrUrl = "MOMO".equals(cleanGateway)
+                ? "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=2|99|0901234567|MOMO|AURA_ESCROW|" + cleanAmount + "|" + transferContent
+                : "https://img.vietqr.io/image/MB-0901234567-compact2.png?amount=" + cleanAmount + "&addInfo=" + transferContent + "&accountName=" + accountName.replace(" ", "%20");
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("orderId", orderId);
+        result.put("gateway", cleanGateway);
+        result.put("amount", cleanAmount);
+        result.put("accountName", accountName);
+        result.put("accountNumber", accountNumber);
+        result.put("bankName", bankName);
+        result.put("transferContent", transferContent);
+        result.put("qrUrl", qrUrl);
+        result.put("timeoutSeconds", 900);
+        result.put("expiresAt", java.time.Instant.now().plusSeconds(900).toString());
+
+        return Mono.just(result);
+    }
 }

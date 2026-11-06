@@ -52,7 +52,7 @@ export default function FloatingSideBanners({
       setWindowWidth(w);
       const sideMargin = (w - 1200) / 2;
       // Nếu lề bên ngoài < 180px thì tự động thu gọn để bảo vệ 100% không che khuất sản phẩm
-      if (sideMargin < 180) {
+      if (sideMargin < 170) {
         setIsRightExpanded(false);
         setIsLeftExpanded(false);
       } else {
@@ -74,7 +74,8 @@ export default function FloatingSideBanners({
       // 1. Khoảng cách nhỏ với thanh menu (cách mép dưới Navbar 16px)
       const navEl = document.querySelector('.main-navigation-bar') || document.querySelector('nav');
       const navBottom = navEl ? navEl.getBoundingClientRect().bottom : 185;
-      const defaultTop = Math.max(198, Math.round(navBottom + 16));
+      // Giữ khoảng cách cách mép dưới Navbar tối thiểu 20px để không bị cắt xén header ribbon
+      const defaultTop = Math.max(208, Math.round(navBottom + 20));
 
       // 2. Chặn tại đỉnh Footer (chỉ chạm đến phần footer rồi dừng, không trôi vào trong)
       const footer = document.querySelector('footer');
@@ -137,9 +138,9 @@ export default function FloatingSideBanners({
 
   // Tính toán độ rộng mở rộng dựa theo không gian lề thực tế của màn hình
   const sideSpace = (windowWidth - 1200) / 2;
-  const isWideScreen = sideSpace >= 180;
-  // Mở rộng từ 220px đến 300px tùy kích cỡ màn hình người dùng
-  const bannerWidth = Math.min(300, Math.max(220, Math.floor(sideSpace - 20)));
+  const isWideScreen = sideSpace >= 170;
+  // Mở rộng banner chiếm trọn không gian 2 bên sườn (tối đa 336px)
+  const bannerWidth = Math.min(336, Math.max(220, Math.floor(sideSpace - 28)));
 
   return (
     <>
@@ -151,8 +152,8 @@ export default function FloatingSideBanners({
         style={{
           position: 'fixed',
           top: `${currentTop}px`,
-          right: isWideScreen ? 'calc(50% + 616px)' : 'auto',
-          left: !isWideScreen ? '0' : 'auto',
+          right: isWideScreen ? 'calc(50% + 614px)' : 'auto',
+          left: !isWideScreen ? '12px' : 'auto',
           zIndex: 85,
           pointerEvents: currentTop < -720 ? 'none' : 'auto',
           opacity: currentTop < -720 ? 0 : 1,
@@ -806,8 +807,8 @@ export default function FloatingSideBanners({
         style={{
           position: 'fixed',
           top: `${currentTop}px`,
-          left: isWideScreen ? 'calc(50% + 616px)' : 'auto',
-          right: !isWideScreen ? '0' : 'auto',
+          left: isWideScreen ? 'calc(50% + 614px)' : 'auto',
+          right: !isWideScreen ? '12px' : 'auto',
           zIndex: 85,
           pointerEvents: currentTop < -720 ? 'none' : 'auto',
           opacity: currentTop < -720 ? 0 : 1,

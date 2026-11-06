@@ -6,6 +6,8 @@ import com.cosmetics.payment.application.PaymentService;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import java.math.BigDecimal;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -28,5 +30,22 @@ public class PaymentController {
             @RequestParam(defaultValue = "true") boolean success
     ) {
         return paymentService.mockPay(orderId, success).map(ApiResponse::ok);
+    }
+
+    @PostMapping("/webhook/{gateway}")
+    public Mono<ApiResponse<Map<String, Object>>> handleWebhook(
+            @PathVariable String gateway,
+            @RequestBody(required = false) Map<String, Object> payload
+    ) {
+        return paymentService.processWebhook(gateway, payload).map(ApiResponse::ok);
+    }
+
+    @GetMapping("/{orderId}/escrow-qr")
+    public Mono<ApiResponse<Map<String, Object>>> getEscrowQr(
+            @PathVariable UUID orderId,
+            @RequestParam(defaultValue = "MOMO") String gateway,
+            @RequestParam(defaultValue = "500000") BigDecimal amount
+    ) {
+        return paymentService.generateEscrowQr(orderId, gateway, amount).map(ApiResponse::ok);
     }
 }
