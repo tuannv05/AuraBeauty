@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 
 /**
  * Enterprise Resilient Product Image Component for Aura Beauty Mall.
- * Guarantees ZERO Broken Image Icons and ZERO blank card displays:
- * 1. Skeleton shimmer while loading
- * 2. 3-Tier automatic fallback on error (images[0] -> images[1..N] -> studio packshot -> Luxury SVG)
- * 3. Sanitized leading slash resolution for local assets
+ * Guarantees ZERO Broken Image Icons, ZERO Alt text overflow, and ZERO Blank Screen:
+ * 1. Immediate visual rendering (No opacity:0 delay that causes blank boxes on cache/lazy)
+ * 2. Automatic multi-candidate fallback on error (images[0] -> images[1..N] -> Luxury SVG)
+ * 3. Preserves aspect-ratio and styling of .product-card-img-wrap
  */
 export function ProductImage({
   src,
@@ -13,14 +13,13 @@ export function ProductImage({
   alt = '',
   className = '',
   style = {},
-  aspectRatio = '1 / 1',
   onClick,
   brand = '',
   productName = '',
-  loading = 'lazy',
+  objectFit = 'contain',
   ...props
 }) {
-  // Normalize candidates list
+  // Normalize candidate image URLs
   const candidates = useMemo(() => {
     const list = [];
     if (src && typeof src === 'string' && src.trim()) {
@@ -33,7 +32,7 @@ export function ProductImage({
         }
       });
     }
-    // Clean each candidate path (ensure leading slash for /products/...)
+    // Clean and ensure leading slash for local assets
     return list.map((item) => {
       if (!item.startsWith('http') && !item.startsWith('data:') && !item.startsWith('/')) {
         return `/${item}`;
@@ -43,54 +42,43 @@ export function ProductImage({
   }, [src, images]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [status, setStatus] = useState('loading'); // 'loading' | 'loaded' | 'error'
-  const [useSvgFallback, setUseSvgFallback] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const imgRef = useRef(null);
 
-  // Reset state when candidates change
+  // Reset when candidates change
   useEffect(() => {
     setCurrentIndex(0);
-    setUseSvgFallback(candidates.length === 0);
-    setStatus(candidates.length === 0 ? 'error' : 'loading');
+    setHasError(candidates.length === 0);
   }, [candidates]);
 
   const currentUrl = candidates[currentIndex] || '';
 
-  const handleLoad = () => {
-    setStatus('loaded');
-  };
-
   const handleError = () => {
-    // Try next candidate image in gallery
+    // Try next candidate image if available
     if (currentIndex + 1 < candidates.length) {
       setCurrentIndex((prev) => prev + 1);
-      setStatus('loading');
     } else {
-      // All candidate images exhausted -> Fallback to Luxury SVG Placeholder
-      setUseSvgFallback(true);
-      setStatus('error');
+      // All candidate images exhausted -> Fallback to Luxury SVG
+      setHasError(true);
     }
   };
 
-  const containerStyle = {
-    position: 'relative',
-    width: '100%',
-    height: '100%',
-    aspectRatio: aspectRatio,
-    overflow: 'hidden',
-    backgroundColor: '#f8fafc',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    ...style
-  };
-
-  // Luxury SVG Placeholder Component
-  if (useSvgFallback || !currentUrl) {
+  // Luxury SVG Placeholder Component when image fails or is missing
+  if (hasError || !currentUrl) {
     const displayBrand = (brand || 'AURA BEAUTY').toUpperCase();
     return (
       <div
         className={`aura-product-image-fallback ${className}`}
-        style={containerStyle}
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#f8fafc',
+          cursor: onClick ? 'pointer' : 'default',
+          ...style
+        }}
         onClick={onClick}
         title={productName || alt}
         {...props}
@@ -103,14 +91,8 @@ export function ProductImage({
           <circle cx="100" cy="90" r="50" fill="#e2e8f0" opacity="0.4" />
           
           {/* Elegant Cosmetic Flask Icon */}
-          <path
-            d="M85 55 L115 55 L115 65 L85 65 Z"
-            fill="#94a3b8"
-          />
-          <path
-            d="M93 65 L107 65 L107 75 L93 75 Z"
-            fill="#cbd5e1"
-          />
+          <path d="M85 55 L115 55 L115 65 L85 65 Z" fill="#94a3b8" />
+          <path d="M93 65 L107 65 L107 75 L93 75 Z" fill="#cbd5e1" />
           <path
             d="M80 85 C80 78, 120 78, 120 85 L130 135 C130 145, 70 145, 70 135 Z"
             fill="#ffffff"
@@ -123,7 +105,7 @@ export function ProductImage({
             fill="#e2e8f0"
             opacity="0.6"
           />
-          {/* Aura Gold Star Accent */}
+          {/* Gold Star Accents */}
           <circle cx="120" cy="78" r="3" fill="#d97706" />
           <circle cx="125" cy="85" r="1.5" fill="#f59e0b" />
 
@@ -132,7 +114,7 @@ export function ProductImage({
             x="100"
             y="165"
             textAnchor="middle"
-            fill="#64748b"
+            fill="#475569"
             fontSize="10"
             fontWeight="700"
             letterSpacing="2"
@@ -158,51 +140,25 @@ export function ProductImage({
   }
 
   return (
-    <div
-      className={`aura-product-image-wrap ${className}`}
-      style={containerStyle}
+    <img
+      ref={imgRef}
+      src={currentUrl}
+      alt={alt || productName || 'Aura Beauty Product'}
+      onError={handleError}
+      className={`aura-product-image ${className}`}
+      style={{
+        width: '100%',
+        height: '100%',
+        objectFit: objectFit,
+        padding: '6px',
+        display: 'block',
+        cursor: onClick ? 'pointer' : 'default',
+        transition: 'transform 300ms ease',
+        ...style
+      }}
       onClick={onClick}
       {...props}
-    >
-      {/* Skeleton Shimmer while image is loading */}
-      {status === 'loading' && (
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%)',
-            backgroundSize: '200% 100%',
-            animation: 'auraShimmer 1.5s infinite',
-            zIndex: 1
-          }}
-        />
-      )}
-
-      {/* Actual Responsive Image */}
-      <img
-        src={currentUrl}
-        alt={alt || productName || 'Aura Beauty Product'}
-        loading={loading}
-        onLoad={handleLoad}
-        onError={handleError}
-        style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          objectPosition: 'center',
-          opacity: status === 'loaded' ? 1 : 0,
-          transition: 'opacity 0.35s ease-in-out',
-          cursor: onClick ? 'pointer' : 'default'
-        }}
-      />
-
-      <style>{`
-        @keyframes auraShimmer {
-          0% { background-position: -200% 0; }
-          100% { background-position: 200% 0; }
-        }
-      `}</style>
-    </div>
+    />
   );
 }
 
