@@ -25,17 +25,26 @@ import { MOCK_PRODUCTS } from '../api';
  * - Tự động thu gọn thành Tab nam châm siêu mỏng khi màn hình nhỏ (< 1480px)
  */
 export default function FloatingSideBanners({
+  activeView = 'home',
   onOpenTryOn,
   onOpenSkinScanner,
   onNavigateCatalog,
   onSelectProduct,
   onAddToast
 }) {
+  // Chỉ hiển thị quảng cáo tại Trang Chủ (HomeView). Sang giao diện khác tự động ẩn 100%
+  if (activeView !== 'home') {
+    return null;
+  }
+
   const [isLeftExpanded, setIsLeftExpanded] = useState(true);
   const [isRightExpanded, setIsRightExpanded] = useState(true);
+  const [currentTop, setCurrentTop] = useState(202);
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== 'undefined' ? window.innerWidth : 1440
   );
+  const leftBannerRef = React.useRef(null);
+  const rightBannerRef = React.useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -56,6 +65,50 @@ export default function FloatingSideBanners({
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Theo dõi cuộn trang: Giữ khoảng cách nhỏ với menu và chặn không đè lên Footer
+  useEffect(() => {
+    let rafId;
+
+    const updatePosition = () => {
+      // 1. Khoảng cách nhỏ với thanh menu (cách mép dưới Navbar 16px)
+      const navEl = document.querySelector('.main-navigation-bar') || document.querySelector('nav');
+      const navBottom = navEl ? navEl.getBoundingClientRect().bottom : 185;
+      const defaultTop = Math.max(198, Math.round(navBottom + 16));
+
+      // 2. Chặn tại đỉnh Footer (chỉ chạm đến phần footer rồi dừng, không trôi vào trong)
+      const footer = document.querySelector('footer');
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect();
+        const activeHeight = Math.max(
+          leftBannerRef.current?.offsetHeight || 0,
+          rightBannerRef.current?.offsetHeight || 0,
+          isLeftExpanded || isRightExpanded ? 720 : 90
+        );
+        // Khi cuộn tới gần footer, banner dừng lại cách đỉnh footer 16px
+        const maxAllowedTop = footerRect.top - activeHeight - 16;
+        const computedTop = Math.min(defaultTop, maxAllowedTop);
+        setCurrentTop(computedTop);
+      } else {
+        setCurrentTop(defaultTop);
+      }
+    };
+
+    const handleScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updatePosition);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+    updatePosition();
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [isLeftExpanded, isRightExpanded]);
 
   // Chỉ kích hoạt trên màn hình từ 1280px trở lên
   if (windowWidth < 1280) {
@@ -97,24 +150,27 @@ export default function FloatingSideBanners({
         className="floating-ad-left"
         style={{
           position: 'fixed',
-          top: '175px',
+          top: `${currentTop}px`,
           right: isWideScreen ? 'calc(50% + 616px)' : 'auto',
           left: !isWideScreen ? '0' : 'auto',
           zIndex: 85,
-          pointerEvents: 'auto'
+          pointerEvents: currentTop < -720 ? 'none' : 'auto',
+          opacity: currentTop < -720 ? 0 : 1,
+          transition: 'top 0.04s linear, opacity 0.2s ease'
         }}
       >
         <AnimatePresence mode="wait">
           {isLeftExpanded ? (
             <motion.div
               key="left-full"
+              ref={leftBannerRef}
               initial={{ opacity: 0, x: -24, scale: 0.96 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: -24, scale: 0.96 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
               style={{
                 width: `${bannerWidth}px`,
-                maxHeight: 'calc(100vh - 195px)',
+                maxHeight: 'calc(100vh - 225px)',
                 background: '#ffffff',
                 borderRadius: '18px',
                 border: '1.5px solid #fbcfe8',
@@ -749,24 +805,27 @@ export default function FloatingSideBanners({
         className="floating-ad-right"
         style={{
           position: 'fixed',
-          top: '175px',
+          top: `${currentTop}px`,
           left: isWideScreen ? 'calc(50% + 616px)' : 'auto',
           right: !isWideScreen ? '0' : 'auto',
           zIndex: 85,
-          pointerEvents: 'auto'
+          pointerEvents: currentTop < -720 ? 'none' : 'auto',
+          opacity: currentTop < -720 ? 0 : 1,
+          transition: 'top 0.04s linear, opacity 0.2s ease'
         }}
       >
         <AnimatePresence mode="wait">
           {isRightExpanded ? (
             <motion.div
               key="right-full"
+              ref={rightBannerRef}
               initial={{ opacity: 0, x: 24, scale: 0.96 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: 24, scale: 0.96 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
               style={{
                 width: `${bannerWidth}px`,
-                maxHeight: 'calc(100vh - 195px)',
+                maxHeight: 'calc(100vh - 225px)',
                 background: '#ffffff',
                 borderRadius: '18px',
                 border: '1.5px solid #fed7aa',

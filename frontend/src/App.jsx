@@ -210,15 +210,24 @@ export default function App() {
         />
       )}
 
-      {/* 2.5 Floating Skyscraper Side Banners (Quảng cáo 2 bên sườn bám mép màn hình rộng >= 1380px) */}
-      {activeView === 'home' && (
-        <FloatingSideBanners
-          onOpenTryOn={() => openModal('try-on')}
-          onOpenSkinScanner={() => openModal('skin-scanner')}
-          onNavigateCatalog={() => navigateTo({ view: 'catalog' })}
-          onSelectProduct={(p) => navigateTo({ view: 'product-detail', productId: p.id, product: p })}
-          onAddToast={addToast}
-        />
+      {/* 2.5 Floating Skyscraper Side Banners (Chỉ hiển thị tại trang chủ khi không mở modal/intro) */}
+      {activeView === 'home' &&
+        !showIntro &&
+        !isTryOnOpen &&
+        !isSkinScannerOpen &&
+        !isQuizOpen &&
+        !isBeautyPassOpen &&
+        !isCartOpen &&
+        !isAuthModalOpen &&
+        !quickViewProduct && (
+          <FloatingSideBanners
+            activeView={activeView}
+            onOpenTryOn={() => openModal('try-on')}
+            onOpenSkinScanner={() => openModal('skin-scanner')}
+            onNavigateCatalog={() => navigateTo({ view: 'catalog' })}
+            onSelectProduct={(p) => navigateTo({ view: 'product-detail', productId: p.id, product: p })}
+            onAddToast={addToast}
+          />
       )}
 
       {/* 3. Main Content Area */}
