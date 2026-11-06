@@ -55,6 +55,15 @@ public class Product {
         if (registrationNo == null || registrationNo.isBlank()) {
             throw new IllegalStateException("Product must have a cosmetic registration number (Registration No.)");
         }
+        if (!CosmeticSafetySpecification.isValidCbmp(registrationNo)) {
+            throw new IllegalStateException("Invalid CBMP cosmetic registration number format: " + registrationNo);
+        }
+        List<String> detectedBanned = CosmeticSafetySpecification.detectBannedSubstances(
+            ingredients.stream().map(Ingredient::getInciName).toList()
+        );
+        if (!detectedBanned.isEmpty()) {
+            throw new IllegalStateException("Product contains banned substances: " + detectedBanned);
+        }
         this.status = ProductStatus.SUBMITTED;
         this.updatedAt = Instant.now();
     }

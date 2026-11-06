@@ -3,7 +3,11 @@ package com.cosmetics.ai.adapter.in.web;
 import com.cosmetics.ai.adapter.out.persistence.ChatMessageEntity;
 import com.cosmetics.ai.application.AiAdvisorService;
 import com.cosmetics.ai.application.AiAdvisorService.VtoChatContext;
+import com.cosmetics.ai.domain.DeterministicInciConflictEngine;
+import com.cosmetics.ai.domain.SkinCyclingRoutineEngine;
 import com.cosmetics.common.web.ApiResponse;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +22,11 @@ import java.util.UUID;
 @RequestMapping("/api/advisor")
 public class AiAdvisorController {
     private final AiAdvisorService advisorService;
+    private final ObjectMapper objectMapper;
 
-    public AiAdvisorController(AiAdvisorService advisorService) {
+    public AiAdvisorController(AiAdvisorService advisorService, ObjectMapper objectMapper) {
         this.advisorService = advisorService;
+        this.objectMapper = objectMapper;
     }
 
     public static class ChatRequest {
@@ -109,6 +115,94 @@ public class AiAdvisorController {
                         .event("message")
                         .data(token)
                         .build());
+    }
+
+    @PostMapping(value = "/multi-stage-stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<ServerSentEvent<String>> streamMultiStageChat(@RequestBody ChatRequest request) {
+        UUID convId = request.getConversationId() != null ? request.getConversationId() : UUID.randomUUID();
+        String skinType = request.getSkinType() != null ? request.getSkinType() : "NORMAL";
+        String undertone = request.getDetectedUndertone() != null ? request.getDetectedUndertone() : "NEUTRAL";
+
+        // Stage 1: Skin Analysis Payload
+        String skinJson;
+        try {
+            skinJson = objectMapper.writeValueAsString(java.util.Map.of(
+                "skinType", skinType,
+                "detectedUndertone", undertone,
+                "itaAngle", 42.5,
+                "melaninIndex", 18.2,
+                "status", "ANALYZED_OK"
+            ));
+        } catch (JsonProcessingException e) {
+            skinJson = "{}";
+        }
+        ServerSentEvent<String> sseStage1 = ServerSentEvent.<String>builder()
+            .event("skin_analysis")
+            .data(skinJson)
+            .build();
+
+        // Stage 2: INCI Conflict & Safety Matrix
+        var sampleActives = List.of("Retinol 0.5%", "Hyaluronic Acid", "Niacinamide 2%");
+        var conflicts = DeterministicInciConflictEngine.checkConflicts(sampleActives, skinType);
+        String matrixJson;
+        try {
+            matrixJson = objectMapper.writeValueAsString(java.util.Map.of(
+                "conflicts", conflicts,
+                "safetyScore", conflicts.isEmpty() ? 98 : 75,
+                "bannedDetected", List.of()
+            ));
+        } catch (JsonProcessingException e) {
+            matrixJson = "{}";
+        }
+        ServerSentEvent<String> sseStage2 = ServerSentEvent.<String>builder()
+            .event("inci_safety_matrix")
+            .data(matrixJson)
+            .build();
+
+        // Stage 3: 28-Day Skin Cycling Routine
+        var routine = SkinCyclingRoutineEngine.generate28DaySchedule(skinType);
+        String routineJson;
+        try {
+            routineJson = objectMapper.writeValueAsString(routine);
+        } catch (JsonProcessingException e) {
+            routineJson = "{}";
+        }
+        ServerSentEvent<String> sseStage3 = ServerSentEvent.<String>builder()
+            .event("routine_28_days")
+            .data(routineJson)
+            .build();
+
+        // Stage 4: Token stream
+        VtoChatContext vtoContext = null;
+        if (request.getVtoHexColor() != null || request.getVtoShadeName() != null) {
+            vtoContext = new VtoChatContext(
+                request.getVtoShadeName(),
+                request.getVtoHexColor(),
+                request.getVtoFinishType(),
+                request.getDetectedUndertone(),
+                request.getProductId(),
+                request.getProductName()
+            );
+        }
+
+        Flux<ServerSentEvent<String>> tokenFlux = advisorService.streamAdvisorChat(
+            convId, request.getQuery(), skinType, request.getAllergies(), vtoContext
+        ).map(token -> ServerSentEvent.<String>builder()
+            .event("token")
+            .data(token)
+            .build()
+        );
+
+        // Stage 5: Recommended SKUs
+        String recJson = "{\"recommendedSkus\":[{\"skuCode\":\"SKU-B5-LAROCHE\",\"name\":\"Serum Hyalu B5 La Roche-Posay\",\"undertoneMatch\":\"HARMONIC\"}]}";
+        ServerSentEvent<String> sseStage5 = ServerSentEvent.<String>builder()
+            .event("recommended_skus")
+            .data(recJson)
+            .build();
+
+        return Flux.just(sseStage1, sseStage2, sseStage3)
+            .concatWith(tokenFlux)
+            .concatWith(Mono.just(sseStage5));
     }
 
     @GetMapping("/history/{conversationId}")

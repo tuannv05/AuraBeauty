@@ -1,0 +1,14 @@
+{
+  "name": "aura-beauty-mcp-server",
+  "version": "1.0.0",
+  "description": "Official Model Context Protocol (MCP) Server for Aura Beauty Mall",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test_tools.cjs"
+  },
+  "keywords": ["mcp", "model-context-protocol", "cosmetics", "ecommerce", "aura-beauty"],
+  "author": "Aura Beauty Mall Core Team",
+  "license": "ISC"
+}
