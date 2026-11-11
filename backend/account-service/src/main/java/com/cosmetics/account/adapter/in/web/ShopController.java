@@ -7,18 +7,20 @@ import com.cosmetics.account.application.dto.ShopResponseDto;
 import com.cosmetics.common.web.ApiResponse;
 import com.cosmetics.common.web.BusinessException;
 import com.cosmetics.common.web.SecurityHeaderUtils;
+import io.smallrye.mutiny.Uni;
+import io.smallrye.mutiny.converters.uni.UniReactorConverters;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ServerWebExchange;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-@RestController
-@RequestMapping("/api")
+@Path("/api")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class ShopController {
     private final ShopService shopService;
     private final JwtTokenProvider tokenProvider;
@@ -28,70 +30,94 @@ public class ShopController {
         this.tokenProvider = tokenProvider;
     }
 
-    private UUID resolveUserId(ServerWebExchange exchange) {
-        UUID userId = SecurityHeaderUtils.getUserId(exchange);
+    private UUID resolveUserId(String userIdHeader, String authHeader) {
+        UUID userId = SecurityHeaderUtils.parseUserId(userIdHeader);
         if (userId != null) return userId;
 
-        String authHeader = exchange.getRequest().getHeaders().getFirst("Authorization");
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);
             if (tokenProvider.validateToken(token)) {
                 return tokenProvider.getUserId(token);
             }
         }
-        throw new BusinessException(HttpStatus.UNAUTHORIZED, "AUTH_REQUIRED", "Authentication required");
+        throw new BusinessException(401, "AUTH_REQUIRED", "Authentication required");
     }
 
-    private void verifyAdminRole(ServerWebExchange exchange) {
-        List<String> roles = SecurityHeaderUtils.getUserRoles(exchange);
-        if (!roles.contains("ROLE_ADMIN")) {
-            String authHeader = exchange.getRequest().getHeaders().getFirst("Authorization");
-            if (authHeader != null && authHeader.startsWith("Bearer ")) {
-                String token = authHeader.substring(7);
-                if (tokenProvider.validateToken(token) && tokenProvider.getRoles(token).contains("ROLE_ADMIN")) {
-                    return;
-                }
-            }
-            throw new BusinessException(HttpStatus.FORBIDDEN, "FORBIDDEN", "Admin privileges required");
+    private void verifyAdminRole(String userRolesHeader, String authHeader) {
+        if (userRolesHeader != null && Arrays.asList(userRolesHeader.split(",")).contains("ROLE_ADMIN")) {
+            return;
         }
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String token = authHeader.substring(7);
+            if (tokenProvider.validateToken(token) && tokenProvider.getRoles(token).contains("ROLE_ADMIN")) {
+                return;
+            }
+        }
+        throw new BusinessException(403, "FORBIDDEN", "Admin privileges required");
     }
 
-    @PostMapping("/shops/register")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Mono<ApiResponse<ShopResponseDto>> registerShop(
-            @Valid @RequestBody ShopRegisterRequest request,
-            ServerWebExchange exchange
+    @POST
+    @Path("/shops/register")
+    public Uni<Response> registerShop(
+            @Valid ShopRegisterRequest request,
+            @HeaderParam("X-User-Id") String userIdHeader,
+            @HeaderParam("Authorization") String authHeader
     ) {
-        UUID userId = resolveUserId(exchange);
-        return shopService.registerShop(userId, request).map(ApiResponse::ok);
+        UUID userId = resolveUserId(userIdHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), shopService.registerShop(userId, request))
+                .map(shop -> Response.status(Response.Status.CREATED).entity(ApiResponse.ok(shop)).build());
     }
 
-    @GetMapping("/shops/my")
-    public Mono<ApiResponse<List<ShopResponseDto>>> getMyShops(ServerWebExchange exchange) {
-        UUID userId = resolveUserId(exchange);
-        return shopService.getMyShops(userId).collectList().map(ApiResponse::ok);
+    @GET
+    @Path("/shops/my")
+    public Uni<ApiResponse<List<ShopResponseDto>>> getMyShops(
+            @HeaderParam("X-User-Id") String userIdHeader,
+            @HeaderParam("Authorization") String authHeader
+    ) {
+        UUID userId = resolveUserId(userIdHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), shopService.getMyShops(userId).collectList())
+                .map(ApiResponse::ok);
     }
 
-    @GetMapping("/shops/{id}")
-    public Mono<ApiResponse<ShopResponseDto>> getShopById(@PathVariable UUID id) {
-        return shopService.getShopById(id).map(ApiResponse::ok);
+    @GET
+    @Path("/shops/{id}")
+    public Uni<ApiResponse<ShopResponseDto>> getShopById(@PathParam("id") UUID id) {
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), shopService.getShopById(id))
+                .map(ApiResponse::ok);
     }
 
-    @GetMapping("/admin/shops/pending")
-    public Mono<ApiResponse<List<ShopResponseDto>>> getPendingShops(ServerWebExchange exchange) {
-        verifyAdminRole(exchange);
-        return shopService.getPendingShops().collectList().map(ApiResponse::ok);
+    @GET
+    @Path("/admin/shops/pending")
+    public Uni<ApiResponse<List<ShopResponseDto>>> getPendingShops(
+            @HeaderParam("X-User-Roles") String userRolesHeader,
+            @HeaderParam("Authorization") String authHeader
+    ) {
+        verifyAdminRole(userRolesHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), shopService.getPendingShops().collectList())
+                .map(ApiResponse::ok);
     }
 
-    @PutMapping("/admin/shops/{id}/approve")
-    public Mono<ApiResponse<ShopResponseDto>> approveShop(@PathVariable UUID id, ServerWebExchange exchange) {
-        verifyAdminRole(exchange);
-        return shopService.approveShop(id).map(ApiResponse::ok);
+    @PUT
+    @Path("/admin/shops/{id}/approve")
+    public Uni<ApiResponse<ShopResponseDto>> approveShop(
+            @PathParam("id") UUID id,
+            @HeaderParam("X-User-Roles") String userRolesHeader,
+            @HeaderParam("Authorization") String authHeader
+    ) {
+        verifyAdminRole(userRolesHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), shopService.approveShop(id))
+                .map(ApiResponse::ok);
     }
 
-    @PutMapping("/admin/shops/{id}/reject")
-    public Mono<ApiResponse<ShopResponseDto>> rejectShop(@PathVariable UUID id, ServerWebExchange exchange) {
-        verifyAdminRole(exchange);
-        return shopService.rejectShop(id).map(ApiResponse::ok);
+    @PUT
+    @Path("/admin/shops/{id}/reject")
+    public Uni<ApiResponse<ShopResponseDto>> rejectShop(
+            @PathParam("id") UUID id,
+            @HeaderParam("X-User-Roles") String userRolesHeader,
+            @HeaderParam("Authorization") String authHeader
+    ) {
+        verifyAdminRole(userRolesHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), shopService.rejectShop(id))
+                .map(ApiResponse::ok);
     }
 }

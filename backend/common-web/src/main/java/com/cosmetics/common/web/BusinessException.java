@@ -12,6 +12,13 @@ public class BusinessException extends RuntimeException {
         this.errorCode = errorCode;
     }
 
+    public BusinessException(int statusCode, String errorCode, String message) {
+        super(message);
+        HttpStatus resolved = HttpStatus.resolve(statusCode);
+        this.status = resolved != null ? resolved : HttpStatus.BAD_REQUEST;
+        this.errorCode = errorCode;
+    }
+
     public BusinessException(String errorCode, String message) {
         super(message);
         this.status = HttpStatus.BAD_REQUEST;
@@ -19,5 +26,6 @@ public class BusinessException extends RuntimeException {
     }
 
     public HttpStatus getStatus() { return status; }
+    public int getStatusCode() { return status != null ? status.value() : 400; }
     public String getErrorCode() { return errorCode; }
 }

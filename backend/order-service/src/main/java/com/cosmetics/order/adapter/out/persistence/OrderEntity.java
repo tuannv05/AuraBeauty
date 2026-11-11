@@ -1,43 +1,19 @@
 package com.cosmetics.order.adapter.out.persistence;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
-@Table("orders")
 public class OrderEntity {
-    @Id
     private UUID id;
-
-    @Column("buyer_id")
     private UUID buyerId;
-
-    @Column("status")
     private String status;
-
-    @Column("total_amount")
     private BigDecimal totalAmount;
-
-    @Column("recipient_name")
     private String recipientName;
-
-    @Column("recipient_phone")
     private String recipientPhone;
-
-    @Column("shipping_address")
     private String shippingAddress;
-
-    @Column("payment_method")
     private String paymentMethod;
-
-    @Column("created_at")
     private Instant createdAt;
-
-    @Column("updated_at")
     private Instant updatedAt;
 
     public OrderEntity() {}

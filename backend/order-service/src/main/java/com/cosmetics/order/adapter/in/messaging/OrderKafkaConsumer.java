@@ -9,13 +9,14 @@ import com.cosmetics.common.events.payloads.PaymentSucceededPayload;
 import com.cosmetics.order.application.OrderService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.annotation.PostConstruct;
+import io.quarkus.runtime.StartupEvent;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import reactor.kafka.receiver.KafkaReceiver;
 import reactor.kafka.receiver.ReceiverOptions;
@@ -25,7 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
+@ApplicationScoped
 public class OrderKafkaConsumer {
     private static final Logger log = LoggerFactory.getLogger(OrderKafkaConsumer.class);
 
@@ -36,7 +37,7 @@ public class OrderKafkaConsumer {
     public OrderKafkaConsumer(
             OrderService orderService,
             ObjectMapper objectMapper,
-            @Value("${spring.kafka.bootstrap-servers:localhost:9092}") String bootstrapServers
+            @ConfigProperty(name = "kafka.bootstrap.servers", defaultValue = "localhost:9092") String bootstrapServers
     ) {
         this.orderService = orderService;
         this.objectMapper = objectMapper;
@@ -50,16 +51,19 @@ public class OrderKafkaConsumer {
         this.receiverOptions = ReceiverOptions.create(props);
     }
 
-    @PostConstruct
-    public void startListening() {
-        ReceiverOptions<String, String> options = receiverOptions.subscription(List.of(
-                KafkaTopics.INVENTORY_EVENTS,
-                KafkaTopics.PAYMENT_EVENTS
-        ));
+    void onStart(@Observes StartupEvent ev) {
+        try {
+            ReceiverOptions<String, String> options = receiverOptions.subscription(List.of(
+                    KafkaTopics.INVENTORY_EVENTS,
+                    KafkaTopics.PAYMENT_EVENTS
+            ));
 
-        KafkaReceiver.create(options).receive()
-                .concatMap(this::handleRecord)
-                .subscribe();
+            KafkaReceiver.create(options).receive()
+                    .concatMap(this::handleRecord)
+                    .subscribe();
+        } catch (Exception e) {
+            log.warn("Kafka subscription not started: {}", e.getMessage());
+        }
     }
 
     private Mono<Void> handleRecord(ReceiverRecord<String, String> record) {

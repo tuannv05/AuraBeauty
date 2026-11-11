@@ -2,10 +2,8 @@ package com.cosmetics.catalog.adapter.out.persistence;
 
 import com.cosmetics.catalog.domain.model.VtoConfig;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.index.TextIndexed;
-import org.springframework.data.mongodb.core.mapping.Document;
+import io.quarkus.mongodb.panache.common.MongoEntity;
+import org.bson.codecs.pojo.annotations.BsonId;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -14,65 +12,34 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-@Document(collection = "products")
+@MongoEntity(collection = "products")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductDocument {
-    @Id
+    @BsonId
     private String id;
 
-    @Indexed
     private UUID shopId;
-
-    @TextIndexed(weight = 3)
     private String name;
-
-    @TextIndexed(weight = 2)
     private String brand;
-
-    @TextIndexed(weight = 1)
     private String description;
-
-    @Indexed
     private String category;
-
-    @Indexed
     private List<String> categoryPath = new ArrayList<>();
-
-    @Indexed
     private String subCategory;
-
     private String registrationNo;
-
-    @Indexed
     private List<String> suitableSkinTypes = new ArrayList<>();
-
-    @Indexed
     private List<String> skinConcerns = new ArrayList<>();
-
-    @Indexed
     private List<String> keyActiveGroups = new ArrayList<>();
-
-    @Indexed
     private List<String> safetyEthicsBadges = new ArrayList<>();
-
-    @Indexed
     private String formulationTexture;
-
-    @Indexed
     private String originCountry;
-
     private String priceRangeBucket;
     private String volumeSpec;
 
     private List<IngredientSubDoc> ingredients = new ArrayList<>();
-
     private List<VariantSubDoc> variants = new ArrayList<>();
-
     private List<String> images = new ArrayList<>();
-
     private VtoConfig vtoConfig;
 
-    @Indexed
     private String status; // DRAFT, SUBMITTED, PUBLISHED, REJECTED, DEACTIVATED
 
     private Instant createdAt = Instant.now();
@@ -101,7 +68,6 @@ public class ProductDocument {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class VariantSubDoc {
-        @Indexed
         private String skuCode;
         private String name;
         private BigDecimal price;

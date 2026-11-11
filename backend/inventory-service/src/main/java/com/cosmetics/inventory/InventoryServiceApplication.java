@@ -1,18 +1,11 @@
 package com.cosmetics.inventory;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
+import io.quarkus.runtime.Quarkus;
+import io.quarkus.runtime.annotations.QuarkusMain;
 
-@SpringBootApplication
-@ComponentScan(basePackages = {"com.cosmetics.inventory", "com.cosmetics.common"})
-@EnableR2dbcRepositories(basePackages = {
-        "com.cosmetics.inventory.adapter.out.persistence",
-        "com.cosmetics.common.outbox"
-})
+@QuarkusMain
 public class InventoryServiceApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(InventoryServiceApplication.class, args);
+    public static void main(String... args) {
+        Quarkus.run(args);
     }
 }

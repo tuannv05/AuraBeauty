@@ -1,33 +1,15 @@
 package com.cosmetics.order.adapter.out.persistence;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@Table("order_lines")
 public class OrderLineEntity {
-    @Id
     private UUID id;
-
-    @Column("sub_order_id")
     private UUID subOrderId;
-
-    @Column("sku_code")
     private String skuCode;
-
-    @Column("product_name")
     private String productName;
-
-    @Column("quantity")
     private int quantity;
-
-    @Column("unit_price")
     private BigDecimal unitPrice;
-
-    @Column("line_total")
     private BigDecimal lineTotal;
 
     public OrderLineEntity() {}

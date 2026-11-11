@@ -12,7 +12,7 @@
 - **Phân hệ Catalog & INCI (`backend/catalog-service`)**:
   - `com.cosmetics.catalog.domain.model.Product`: Củng cố `CosmeticSafetySpecification`, số CBMP hợp lệ (`cbmpNumber`), kiểm tra danh mục chất cấm (Corticoid, Thủy ngân, Hydroquinone).
   - `com.cosmetics.catalog.domain.model.InciIngredient`: Điểm bít tắc lỗ chân lông (`comedogenicRating`), kích ứng (`irritationRating`), nhãn an toàn (`PREGNANCY_SAFE`, `ALCOHOL_FREE`).
-  - `com.cosmetics.catalog.HexagonalArchitectureTest`: Đảm bảo 100% domain độc lập với Spring framework/database.
+  - `com.cosmetics.catalog.HexagonalArchitectureTest`: Đảm bảo 100% domain độc lập với framework (Quarkus/Spring) và database.
 - **Phân hệ Inventory & Lô hàng FEFO (`backend/inventory-service`)**:
   - `com.cosmetics.inventory.domain.model.StockItem`: Giữ kho nguyên tử CAS (`version`, `(on_hand - reserved) >= quantity`).
   - `com.cosmetics.inventory.domain.model.InventoryLot`: Thuật toán FEFO (First-Expired, First-Out), cảnh báo và khóa xuất kho các lô có hạn dùng `< 180 ngày` (< 6 tháng).

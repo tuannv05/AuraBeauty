@@ -1,27 +1,12 @@
 package com.cosmetics.inventory.adapter.out.persistence;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
 import java.util.UUID;
 
-@Table("stock_items")
 public class StockItemEntity {
-    @Id
-    @Column("sku_code")
     private String skuCode;
-
-    @Column("product_id")
     private String productId;
-
-    @Column("shop_id")
     private UUID shopId;
-
-    @Column("on_hand")
     private int onHand;
-
-    @Column("reserved")
     private int reserved;
 
     public StockItemEntity() {}

@@ -1,21 +1,23 @@
 package com.cosmetics.order.adapter.in.web;
 
 import com.cosmetics.common.web.ApiResponse;
-import com.cosmetics.common.web.BusinessException;
 import com.cosmetics.common.web.SecurityHeaderUtils;
 import com.cosmetics.order.adapter.out.persistence.CartItemEntity;
 import com.cosmetics.order.application.CartService;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ServerWebExchange;
-import reactor.core.publisher.Mono;
+import io.smallrye.mutiny.Uni;
+import io.smallrye.mutiny.converters.uni.UniReactorConverters;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
-@RestController
-@RequestMapping("/api/cart")
+@Path("/api/cart")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+@ApplicationScoped
 public class CartController {
     private final CartService cartService;
 
@@ -23,15 +25,12 @@ public class CartController {
         this.cartService = cartService;
     }
 
-    private UUID resolveBuyerId(ServerWebExchange exchange) {
-        UUID userId = SecurityHeaderUtils.getUserId(exchange);
-        if (userId == null) {
-            // For testing/mocking if direct call without gateway
-            String fallback = exchange.getRequest().getHeaders().getFirst("X-Buyer-Id");
-            if (fallback != null) return UUID.fromString(fallback);
-            return UUID.fromString("00000000-0000-0000-0000-000000000003");
-        }
-        return userId;
+    private UUID resolveBuyerId(String headerUserId, String headerBuyerId) {
+        UUID userId = SecurityHeaderUtils.parseUserId(headerUserId);
+        if (userId != null) return userId;
+        UUID buyerId = SecurityHeaderUtils.parseUserId(headerBuyerId);
+        if (buyerId != null) return buyerId;
+        return UUID.fromString("00000000-0000-0000-0000-000000000003");
     }
 
     public static class AddToCartRequest {
@@ -58,37 +57,54 @@ public class CartController {
         public void setQuantity(int quantity) { this.quantity = quantity; }
     }
 
-    @GetMapping
-    public Mono<ApiResponse<List<CartItemEntity>>> getCart(ServerWebExchange exchange) {
-        UUID buyerId = resolveBuyerId(exchange);
-        return cartService.getCart(buyerId).collectList().map(ApiResponse::ok);
+    @GET
+    public Uni<ApiResponse<List<CartItemEntity>>> getCart(
+            @HeaderParam("X-User-Id") String headerUserId,
+            @HeaderParam("X-Buyer-Id") String headerBuyerId
+    ) {
+        UUID buyerId = resolveBuyerId(headerUserId, headerBuyerId);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), cartService.getCart(buyerId).collectList())
+                .map(ApiResponse::ok);
     }
 
-    @PostMapping("/items")
-    public Mono<ApiResponse<CartItemEntity>> addToCart(
-            @RequestBody AddToCartRequest req,
-            ServerWebExchange exchange
+    @POST
+    @Path("/items")
+    public Uni<ApiResponse<CartItemEntity>> addToCart(
+            AddToCartRequest req,
+            @HeaderParam("X-User-Id") String headerUserId,
+            @HeaderParam("X-Buyer-Id") String headerBuyerId
     ) {
-        UUID buyerId = resolveBuyerId(exchange);
-        return cartService.addToCart(
-                buyerId, req.getSkuCode(), req.getProductName(), req.getShopId(),
-                req.getShopName() != null ? req.getShopName() : "Official Store",
-                req.getUnitPrice(), req.getQuantity() > 0 ? req.getQuantity() : 1
+        UUID buyerId = resolveBuyerId(headerUserId, headerBuyerId);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(),
+                cartService.addToCart(
+                        buyerId, req.getSkuCode(), req.getProductName(), req.getShopId(),
+                        req.getShopName() != null ? req.getShopName() : "Official Store",
+                        req.getUnitPrice(), req.getQuantity() > 0 ? req.getQuantity() : 1
+                )
         ).map(ApiResponse::ok);
     }
 
-    @DeleteMapping("/items/{skuCode}")
-    public Mono<ApiResponse<Void>> removeItem(
-            @PathVariable String skuCode,
-            ServerWebExchange exchange
+    @DELETE
+    @Path("/items/{skuCode}")
+    public Uni<ApiResponse<Void>> removeItem(
+            @PathParam("skuCode") String skuCode,
+            @HeaderParam("X-User-Id") String headerUserId,
+            @HeaderParam("X-Buyer-Id") String headerBuyerId
     ) {
-        UUID buyerId = resolveBuyerId(exchange);
-        return cartService.removeItem(buyerId, skuCode).thenReturn(ApiResponse.ok(null));
+        UUID buyerId = resolveBuyerId(headerUserId, headerBuyerId);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(),
+                cartService.removeItem(buyerId, skuCode).thenReturn(ApiResponse.<Void>ok(null))
+        );
     }
 
-    @DeleteMapping
-    public Mono<ApiResponse<Void>> clearCart(ServerWebExchange exchange) {
-        UUID buyerId = resolveBuyerId(exchange);
-        return cartService.clearCart(buyerId).thenReturn(ApiResponse.ok(null));
+    @DELETE
+    public Uni<ApiResponse<Void>> clearCart(
+            @HeaderParam("X-User-Id") String headerUserId,
+            @HeaderParam("X-Buyer-Id") String headerBuyerId
+    ) {
+        UUID buyerId = resolveBuyerId(headerUserId, headerBuyerId);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(),
+                cartService.clearCart(buyerId).thenReturn(ApiResponse.<Void>ok(null))
+        );
     }
 }

@@ -14,9 +14,11 @@ import {
   Info,
   Droplets,
   Layers,
-  ShoppingBag
+  ShoppingBag,
+  Network
 } from 'lucide-react';
 import { MOCK_PRODUCTS } from '../api';
+import { CosmeticKnowledgeGraphModal } from '../features/graphify';
 
 const DEFAULT_MORNING_STEPS = [
   { id: 'm1', stepNum: 1, name: 'Sữa rửa mặt tạo bọt dịu nhẹ pH 5.5', product: MOCK_PRODUCTS[4], time: '07:00', duration: '1 phút' },
@@ -39,7 +41,7 @@ const INCI_CONFLICTS = [
     severity: 'high',
     title: 'Xung Đột Nồng Độ Axit & Bong Tróc',
     warning: 'Không nên thoa Retinol và BHA trong cùng một buổi tối. Cả 2 hoạt chất đều có tính bạt sừng mạnh, dễ gây rát đỏ và suy yếu hàng rào bảo vệ da.',
-    recommendation: 'Áp dụng phương pháp Skin Cycling: Đêm 1 dùng BHA tẩy tế bào chết $\\rightarrow$ Đêm 2 dùng Retinol $\\rightarrow$ Đêm 3 & 4 phục hồi với B5/Ceramide.'
+    recommendation: 'Áp dụng phương pháp Skin Cycling: Đêm 1 dùng BHA tẩy tế bào chết → Đêm 2 dùng Retinol → Đêm 3 & 4 phục hồi với B5/Ceramide.'
   },
   {
     actives: ['Vitamin C (L-AA)', 'Niacinamide'],
@@ -66,6 +68,7 @@ export default function RoutineSchedulerView({
   const [activeTab, setActiveTab] = useState('morning'); // 'morning', 'evening', 'conflicts', 'calendar'
   const [currentDay, setCurrentDay] = useState(14); // Day 14 of 28
   const [completedSteps, setCompletedSteps] = useState({ m1: true, m2: true, m3: true, m4: false });
+  const [isGraphModalOpen, setIsGraphModalOpen] = useState(false);
 
   const toggleStepDone = (id) => {
     setCompletedSteps((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -187,6 +190,28 @@ export default function RoutineSchedulerView({
         >
           <AlertTriangle size={17} style={{ color: '#e11d48' }} /> Cảnh Báo Xung Đột Hoạt Chất ({INCI_CONFLICTS.length})
         </button>
+
+        <button
+          type="button"
+          onClick={() => setIsGraphModalOpen(true)}
+          style={{
+            marginLeft: 'auto',
+            padding: '10px 18px',
+            borderRadius: '14px',
+            border: '1px solid #c7d2fe',
+            background: 'linear-gradient(135deg, #eef2ff 0%, #fdf2f8 100%)',
+            color: '#4338ca',
+            fontSize: '13px',
+            fontWeight: 750,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            boxShadow: '0 2px 6px rgba(99, 102, 241, 0.12)'
+          }}
+        >
+          <Network size={16} /> 🕸️ Bản Đồ Tri Thức Hoạt Chất (Graphify)
+        </button>
       </div>
 
       {/* Tab: MORNING ROUTINE */}
@@ -195,7 +220,7 @@ export default function RoutineSchedulerView({
           <div style={{ padding: '12px 18px', background: '#fefce8', border: '1px solid #fef08a', borderRadius: '14px', fontSize: '12.5px', color: '#854d0e', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Info size={16} style={{ flexShrink: 0 }} />
             <span>
-              <strong>Nguyên tắc buổi sáng:</strong> Tập trung vào Làm sạch nhẹ dịu $\rightarrow$ Cấp ẩm mỏng nhẹ $\rightarrow$ Chống nắng phổ rộng bảo vệ da trước tia UV và ánh sáng xanh màn hình.
+              <strong>Nguyên tắc buổi sáng:</strong> Tập trung vào Làm sạch nhẹ dịu → Cấp ẩm mỏng nhẹ → Chống nắng phổ rộng bảo vệ da trước tia UV và ánh sáng xanh màn hình.
             </span>
           </div>
 
@@ -314,7 +339,7 @@ export default function RoutineSchedulerView({
           <div style={{ padding: '12px 18px', background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '14px', fontSize: '12.5px', color: '#1e40af', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Info size={16} style={{ flexShrink: 0 }} />
             <span>
-              <strong>Nguyên tắc buổi tối:</strong> Làm sạch kép (Double Cleansing) $\rightarrow$ Cân bằng $\rightarrow$ Đặc trị hoạt chất bạt sừng/tái tạo (BHA/Retinol/Niacinamide) $\rightarrow$ Khóa ẩm nuôi dưỡng màng Ceramide qua đêm.
+              <strong>Nguyên tắc buổi tối:</strong> Làm sạch kép (Double Cleansing) → Cân bằng → Đặc trị hoạt chất bạt sừng/tái tạo (BHA/Retinol/Niacinamide) → Khóa ẩm nuôi dưỡng màng Ceramide qua đêm.
             </span>
           </div>
 
@@ -477,6 +502,13 @@ export default function RoutineSchedulerView({
           </div>
         </div>
       )}
+
+      {/* Cosmetic Knowledge Graph Modal (Graphify Integration) */}
+      <CosmeticKnowledgeGraphModal
+        isOpen={isGraphModalOpen}
+        onClose={() => setIsGraphModalOpen(false)}
+        onAddToCart={onAddToCart}
+      />
     </div>
   );
 }

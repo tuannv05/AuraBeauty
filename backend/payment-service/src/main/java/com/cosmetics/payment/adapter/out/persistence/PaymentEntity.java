@@ -1,34 +1,16 @@
 package com.cosmetics.payment.adapter.out.persistence;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
-@Table("payments")
 public class PaymentEntity {
-    @Id
     private UUID id;
-
-    @Column("order_id")
     private UUID orderId;
-
-    @Column("buyer_id")
     private UUID buyerId;
-
-    @Column("amount")
     private BigDecimal amount;
-
-    @Column("payment_method")
     private String paymentMethod; // MOCK_GATEWAY, COD
-
-    @Column("status")
     private String status; // PENDING, SUCCESS, FAILED, REFUNDED
-
-    @Column("created_at")
     private Instant createdAt;
 
     public PaymentEntity() {}

@@ -10,7 +10,7 @@
   - Đăng ký / đăng nhập với JWT (Access Token 15m, Refresh Token 7d, BCrypt băm mật khẩu).
   - Phân quyền theo 3 vai trò: BUYER, SELLER, ADMIN.
   - Quản lý hồ sơ da (Skin Profile: Skin Type, Concerns, Allergies).
-  - Kiểm thử kiến trúc ArchUnit: đảm bảo Domain Model không phụ thuộc vào Spring/R2DBC bên ngoài.
+  - Kiểm thử kiến trúc ArchUnit: đảm bảo Domain Model không phụ thuộc vào framework (Quarkus/Spring) hay cơ sở dữ liệu bên ngoài.
 
 ## 2. Kết quả thực hiện
 - Thư viện `libs/common-web`, `libs/common-events`, `libs/common-outbox` đã hoàn thành và compile thành công.
@@ -22,6 +22,6 @@
 
 ## 3. Lệnh kiểm chứng
 ```bash
-mvn test -pl services/account-service -Dtest=HexagonalArchitectureTest
+mvn test -pl backend/account-service -Dtest=HexagonalArchitectureTest
 ```
 Kết quả: `Tests run: 1, Failures: 0, Errors: 0, Skipped: 0` (SUCCESS).

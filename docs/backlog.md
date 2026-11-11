@@ -85,9 +85,9 @@ Bảng phân chia công việc theo chuẩn Kanban / User Stories cho các giai 
     - Khởi tạo tự động 5 database trong PostgreSQL.
     - Extension `vector` kích hoạt sẵn sàng trên `ai_db`.
 - **US-402: Service Template chuẩn Hexagonal Architecture**
-  - **Mô tả:** Khung mẫu dự án Spring Boot 3 WebFlux với các tầng `domain`, `application`, `adapter`, `config`.
+  - **Mô tả:** Khung mẫu dự án Quarkus 3.15 Mutiny Reactive với các tầng `domain`, `application`, `adapter`, `config`.
   - **Acceptance Criteria (AC):**
-    - Tích hợp kiểm thử kiến trúc bằng ArchUnit (tầng `domain` tuyệt đối không phụ thuộc vào framework Spring, R2DBC, MongoDB).
+    - Tích hợp kiểm thử kiến trúc bằng ArchUnit (tầng `domain` tuyệt đối không phụ thuộc vào framework Quarkus, Spring, PgPool, MongoDB).
     - Tích hợp BlockHound để phát hiện lập tức bất kỳ lời gọi blocking nào trên luồng EventLoop.
 - **US-403: CI Pipeline**
   - **Mô tả:** Tự động hóa build, lint và test mỗi khi commit/push mã nguồn.

@@ -20,11 +20,15 @@ public class SecurityHeaderUtils {
 
     public static UUID getShopId(ServerWebExchange exchange) {
         String idStr = exchange.getRequest().getHeaders().getFirst(HEADER_SHOP_ID);
+        return parseShopId(idStr);
+    }
+
+    public static UUID parseShopId(String idStr) {
         if (idStr == null || idStr.isBlank()) {
             return null;
         }
         try {
-            return UUID.fromString(idStr);
+            return UUID.fromString(idStr.trim());
         } catch (IllegalArgumentException e) {
             return null;
         }
@@ -32,11 +36,15 @@ public class SecurityHeaderUtils {
 
     public static UUID getUserId(ServerWebExchange exchange) {
         String idStr = exchange.getRequest().getHeaders().getFirst(HEADER_USER_ID);
+        return parseUserId(idStr);
+    }
+
+    public static UUID parseUserId(String idStr) {
         if (idStr == null || idStr.isBlank()) {
             return null;
         }
         try {
-            return UUID.fromString(idStr);
+            return UUID.fromString(idStr.trim());
         } catch (IllegalArgumentException e) {
             return null;
         }

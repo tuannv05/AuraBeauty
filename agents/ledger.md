@@ -1,5 +1,5 @@
 # MINI-RULE: DOUBLE-ENTRY LEDGER & COMMISSION
-> **Phạm vi:** `services/payment-service` (Port 8085) | R2DBC PostgreSQL
+> **Phạm vi:** `backend/payment-service` (Port 8085) | Quarkus Reactive PgPool PostgreSQL
 
 ## 1. NGUYÊN TẮC CỐT LÕI
 - **Quy tắc kế toán bất biến:** $\sum \text{Debit (Nợ)} = \sum \text{Credit (Có)}$. Bút toán không cân bằng phải bị từ chối tuyệt đối.
@@ -15,5 +15,5 @@
 
 ## 3. LỆNH KIỂM CHỨNG
 ```bash
-mvn test -pl services/payment-service
+mvn test -pl backend/payment-service
 ```

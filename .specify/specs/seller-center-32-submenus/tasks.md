@@ -1,0 +1,30 @@
+# TASKS: SHOPEE SELLER CENTER 32 SUB-MENUS & CROSS-ZONE SYNC
+
+- [x] **Task 1: Spec & Plan Formulation**
+  - Verify: Check `docs/flows/QT-11-shopee-seller-center-32-submenus-sync.md` and `.specify/specs/seller-center-32-submenus/spec.md`.
+- [ ] **Task 2: Implement Cross-Zone Synchronization Engine (`crossZoneSync.js`)**
+  - Tạo `frontend/src/lib/crossZoneSync.js` quản lý đồng bộ liên thông Seller ↔ Buyer ↔ Admin.
+  - Verify: Test import and export functions.
+- [ ] **Task 3: Build 7 Specialized Sub-menu Modules in `frontend/src/features/seller/`**
+  - `OrderManagementViews.jsx` (5 sub-menus)
+  - `ProductManagementViews.jsx` (4 sub-menus, tích hợp `SellerProductSynergyGraph`)
+  - `MarketingViews.jsx` (10 sub-menus)
+  - `CustomerServiceViews.jsx` (4 sub-menus)
+  - `FinanceViews.jsx` (3 sub-menus)
+  - `DataAnalyticsViews.jsx` (2 sub-menus)
+  - `ShopManagementViews.jsx` (5 sub-menus)
+  - Verify: 4 UI states on each sub-menu, 0 syntax errors.
+- [ ] **Task 4: Upgrade SellerZone Core Shell & Routing**
+  - Tích hợp Top Navigation Bar (Breadcrumb, Export Drawer, Quick App 9-dots, Seller Academy, Shop profile + Switcher).
+  - Tích hợp Left Sidebar Accordion (7 phân hệ, 32 sub-menus, Framer Motion, Counter Badges).
+  - Tích hợp Right Floating Dock (AI Assistant, Notification Bell, Shopee Chat toggle).
+  - Cấu hình Backward-compatible Alias resolver cho 9 keys cũ.
+  - Verify: Check 32 sub-menus rendering, zero blank screen.
+- [ ] **Task 5: Synchronize Cross-Zone Integration with BuyerZone and AdminZone**
+  - Tích hợp `crossZoneSync.js` vào `App.jsx`, `AdminZone.jsx`, `BuyerZone.jsx` để cập nhật phản xạ ngay lập tức.
+  - Verify: Thêm sản phẩm -> Admin duyệt -> Buyer thấy; Đặt hàng -> Seller thấy; Hoàn tất -> Escrow 10%/90% hạch toán.
+- [ ] **Task 6: Convergence & Quality Audit (`/speckit-converge`)**
+  - Clean Root check.
+  - Backend compile & Hexagonal ArchUnit / CAS tests check.
+  - Frontend production build (`npm run build`).
+  - Verify: 100% build pass.

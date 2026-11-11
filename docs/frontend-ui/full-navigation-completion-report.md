@@ -154,9 +154,9 @@ dist/assets/index-ChB200Z1.js   563.15 kB │ gzip: 161.45 kB
 Exit Code: 0
 ```
 
-### 3.2. Spring Boot Reactive Architecture Test (Hexagonal Guard)
+### 3.2. Quarkus Mutiny Reactive Architecture Test (Hexagonal Guard)
 ```bash
-$ mvn test -pl services/account-service,services/catalog-service -Dtest=HexagonalArchitectureTest
+$ mvn test -pl backend/account-service,backend/catalog-service -Dtest=HexagonalArchitectureTest
 [INFO] Running com.cosmetics.account.HexagonalArchitectureTest
 [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
 [INFO] Running com.cosmetics.catalog.HexagonalArchitectureTest
@@ -167,7 +167,7 @@ Exit Code: 0
 
 ### 3.3. CAS Atomic Stock Concurrency Test
 ```bash
-$ mvn test -pl services/inventory-service -Dtest=AtomicStockConcurrencyTest
+$ mvn test -pl backend/inventory-service -Dtest=AtomicStockConcurrencyTest
 [INFO] Running com.cosmetics.inventory.AtomicStockConcurrencyTest
 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.149 s
 [INFO] BUILD SUCCESS

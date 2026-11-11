@@ -1,0 +1,35 @@
+# TECHNICAL PLAN: SHOPEE SELLER CENTER 32 SUB-MENUS & CROSS-ZONE SYNC
+
+## 1. Kiến trúc phân rã kỹ thuật
+- **Shell & Navigation (`SellerZone.jsx`)**:
+  - Top Navigation Bar (Logo, Dynamic Breadcrumb, Export Drawer, Quick App 9-dots menu, Seller Academy, Shop profile + Switcher).
+  - Left Sidebar Accordion (7 Phân hệ, 32 Sub-menus, Framer Motion, Counter Badges).
+  - Right Floating Dock (Seller AI Assistant, Notification Bell, Shopee Chat toggle).
+  - Backward-compatible Alias resolver:
+    - `overview` -> `data/sales-analytics`
+    - `products` -> `products/all`
+    - `inventory` -> `products/all`
+    - `orders` -> `orders/all`
+    - `warehouses` -> `orders/shipping-settings`
+    - `ads` -> `marketing/display-ads`
+    - `marketing` -> `marketing/center`
+    - `cs` -> `cs/chat`
+    - `finance` -> `finance/revenue`
+    - `wholesale` -> render Lumelle Wholesale Dashboard.
+- **Cross-Zone Synchronizer (`frontend/src/lib/crossZoneSync.js`)**:
+  - Unified reactive event bus + localStorage persistence for:
+    - Products & CBMP Approval (Seller -> Admin -> Buyer)
+    - Sub-orders, CAS reserve & FEFO shipment (Buyer -> Seller -> Buyer)
+    - Return/Refund & Disputes (Buyer -> Seller -> Admin)
+    - Financial Escrow & Double-Entry Ledger (10% Commission / 90% Seller Payable)
+    - Vouchers, Flash Sale, Vacation Mode (Seller -> Buyer)
+- **32 Sub-menu Modules (`frontend/src/features/seller/`)**:
+  - Modularity: Tạo các components chuyên trách theo phân hệ để code sạch, dễ bảo trì, clean diff:
+    - `OrderManagementViews.jsx` (orders/all, mass-ship, handover, return-refund, shipping-settings)
+    - `ProductManagementViews.jsx` (products/all, add, standard, ai-optimizer)
+    - `MarketingViews.jsx` (marketing/center, bidding, display-ads, off-platform-ads, kol-affiliate, live-video, discounts, flash-sale, vouchers, shopee-campaigns)
+    - `CustomerServiceViews.jsx` (cs/chat, ai-assistant, broadcast, reviews)
+    - `FinanceViews.jsx` (finance/revenue, balance, bank-accounts)
+    - `DataAnalyticsViews.jsx` (data/sales-analytics, operation-performance)
+    - `ShopManagementViews.jsx` (shop/profile, decoration, settings, appeals, missions)
+  - All views implement 4 mandatory UI states: Loading Skeleton, Empty State + CTA, Error State + Retry, Data State with buttons protected by disabled + spinner.

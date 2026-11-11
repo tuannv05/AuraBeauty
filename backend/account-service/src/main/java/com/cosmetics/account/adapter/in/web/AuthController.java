@@ -6,13 +6,16 @@ import com.cosmetics.account.application.dto.LoginRequest;
 import com.cosmetics.account.application.dto.RefreshTokenRequest;
 import com.cosmetics.account.application.dto.RegisterRequest;
 import com.cosmetics.common.web.ApiResponse;
+import io.smallrye.mutiny.Uni;
+import io.smallrye.mutiny.converters.uni.UniReactorConverters;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Mono;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
-@RestController
-@RequestMapping("/api/auth")
+@Path("/api/auth")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class AuthController {
     private final AuthService authService;
 
@@ -20,19 +23,24 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @PostMapping("/register")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Mono<ApiResponse<AuthResponse>> register(@Valid @RequestBody RegisterRequest request) {
-        return authService.register(request).map(ApiResponse::ok);
+    @POST
+    @Path("/register")
+    public Uni<Response> register(@Valid RegisterRequest request) {
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), authService.register(request))
+                .map(res -> Response.status(Response.Status.CREATED).entity(ApiResponse.ok(res)).build());
     }
 
-    @PostMapping("/login")
-    public Mono<ApiResponse<AuthResponse>> login(@Valid @RequestBody LoginRequest request) {
-        return authService.login(request).map(ApiResponse::ok);
+    @POST
+    @Path("/login")
+    public Uni<ApiResponse<AuthResponse>> login(@Valid LoginRequest request) {
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), authService.login(request))
+                .map(ApiResponse::ok);
     }
 
-    @PostMapping("/refresh")
-    public Mono<ApiResponse<AuthResponse>> refresh(@Valid @RequestBody RefreshTokenRequest request) {
-        return authService.refreshToken(request.getRefreshToken()).map(ApiResponse::ok);
+    @POST
+    @Path("/refresh")
+    public Uni<ApiResponse<AuthResponse>> refresh(@Valid RefreshTokenRequest request) {
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), authService.refreshToken(request.getRefreshToken()))
+                .map(ApiResponse::ok);
     }
 }

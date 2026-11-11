@@ -3,7 +3,7 @@
 **Hội đồng Chuyên gia Cấp cao (3-in-1 Elite Engineering Council):**
 1. *Principal Data Engineering & Anti-Bot Architect*
 2. *Cosmetic Formulation & Dermocosmetics Specialist*
-3. *Spring Boot 3 Reactive & Hexagonal Architecture Guardian*
+3. *Quarkus 3.15 Mutiny Reactive & Hexagonal Architecture Guardian*
 
 **Ngày hoàn thành:** 01/11/2026  
 **Trạng thái hệ thống:** **PRODUCTION-READY & VERIFIED (BUILD SUCCESS)**
@@ -44,7 +44,7 @@ Toàn bộ mã nguồn crawler được cô lập nghiêm ngặt tại `/ai/cosm
     ├── inciAndSafetyAnalyzer.js      # Bóc tách 45+ INCI & suy luận 8 safety badges
     ├── facetNormalizer.js            # Chuẩn hóa 8 phân hệ lọc & AR VTO
     ├── scraper.js                    # Động cơ cào 4 lớp chống WAF/Cloudflare
-    └── dbSynchronizer.js             # Đồng bộ MongoDB, PostgreSQL, Spring, Frontend
+    └── dbSynchronizer.js             # Đồng bộ MongoDB, PostgreSQL, Backend, Frontend
 ```
 
 ### Cơ chế 4 lớp vượt tường lửa (Stealth Resilience):
@@ -117,7 +117,7 @@ Tích hợp 45 hoạt chất quốc tế với điểm bít tắc `comedogenicRa
 ### 4.1. Domain Layer Pure Java 21 (`HexagonalArchitectureTest` Compliance)
 Trong `services/catalog-service/src/main/java/com/cosmetics/catalog/domain/Product.java`:
 - Thêm 7 trường Facet kiểu `java.util.List<String>` và `String` thuần túy.
-- **TUYỆT ĐỐI KHÔNG** import bất kỳ thư viện framework nào (`org.springframework..`, `org.springframework.data.mongodb..`).
+- **TUYỆT ĐỐI KHÔNG** import bất kỳ thư viện framework nào (`org.springframework..`, `io.quarkus..`, `com.mongodb..`).
 - Tầng Adapter `ProductDocument` và Mapper `ProductPersistenceMapper` nhận nhiệm vụ chuyển đổi sang MongoDB representation.
 
 ### 4.2. Khả năng tìm kiếm Đa tầng (Multi-Facet Query Extension)
@@ -153,7 +153,7 @@ Details:
   - Account and Identity Service: Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
   - Catalog and INCI Service:     Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 Verifies:
-  - Domain layer strictly independent of Spring Framework & Adapters.
+  - Domain layer strictly independent of Frameworks (Quarkus/Spring) & Adapters.
   - Inbound and Outbound port contracts preserved.
 ```
 

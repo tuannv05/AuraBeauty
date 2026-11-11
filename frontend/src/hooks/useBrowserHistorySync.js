@@ -35,13 +35,23 @@ export function buildNavUrl(snapshot) {
 }
 
 export function parseNavUrl(search = window.location.search) {
+  const hash = typeof window !== 'undefined' ? window.location.hash : '';
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
+  const isWholesaleChannel = hash.includes('channels/wholesale') || hash.includes('wholesale') || pathname.includes('channels/wholesale');
+
   const params = new URLSearchParams(search);
-  const view = params.get('view') || 'home';
+  let view = params.get('view') || 'home';
+  if (isWholesaleChannel) {
+    view = 'seller';
+  }
   const productId = params.get('id') || null;
   const category = params.get('category') || '';
   const searchStr = params.get('q') || '';
   const brand = params.get('brand') || 'Innisfree';
-  const tab = params.get('tab') || null;
+  let tab = params.get('tab') || null;
+  if (isWholesaleChannel) {
+    tab = 'wholesale';
+  }
   const modal = params.get('modal') || null;
 
   return {
@@ -182,7 +192,19 @@ export function useBrowserHistorySync() {
     };
 
     window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+
+    const handleHashChange = () => {
+      const parsed = parseNavUrl();
+      if (parsed.sellerTab === 'wholesale') {
+        applySnapshot(parsed);
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, [applySnapshot]);
 
   // Navigate function: updates state and pushes/replaces HTML5 history

@@ -12,9 +12,8 @@ import com.cosmetics.account.application.dto.SkinProfileDto;
 import com.cosmetics.account.application.dto.UpdateProfileRequest;
 import com.cosmetics.account.application.dto.UserProfileDto;
 import com.cosmetics.common.web.BusinessException;
-import org.springframework.http.HttpStatus;
+import jakarta.enterprise.context.ApplicationScoped;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -24,7 +23,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-@Service
+@ApplicationScoped
 public class UserService {
     private final UserRepository userRepository;
     private final SkinProfileRepository skinProfileRepository;
@@ -43,13 +42,13 @@ public class UserService {
 
     public Mono<UserProfileDto> getProfile(UUID userId) {
         return userRepository.findById(userId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "USER_001", "Hồ sơ người dùng không tồn tại")))
+                .switchIfEmpty(Mono.error(new BusinessException(404, "USER_001", "Hồ sơ người dùng không tồn tại")))
                 .map(this::toDto);
     }
 
     public Mono<UserProfileDto> updateProfile(UUID userId, UpdateProfileRequest request) {
         return userRepository.findById(userId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "USER_001", "Hồ sơ người dùng không tồn tại")))
+                .switchIfEmpty(Mono.error(new BusinessException(404, "USER_001", "Hồ sơ người dùng không tồn tại")))
                 .flatMap(user -> {
                     user.setFullName(request.getFullName().trim());
                     if (request.getPhone() != null) {
@@ -63,13 +62,13 @@ public class UserService {
 
     public Mono<Void> changePassword(UUID userId, ChangePasswordRequest request) {
         return userRepository.findById(userId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "USER_001", "Hồ sơ người dùng không tồn tại")))
+                .switchIfEmpty(Mono.error(new BusinessException(404, "USER_001", "Hồ sơ người dùng không tồn tại")))
                 .flatMap(user -> {
                     if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPasswordHash())) {
-                        return Mono.error(new BusinessException(HttpStatus.BAD_REQUEST, "AUTH_PWD_MISMATCH", "Mật khẩu hiện tại không chính xác"));
+                        return Mono.error(new BusinessException(400, "AUTH_PWD_MISMATCH", "Mật khẩu hiện tại không chính xác"));
                     }
                     if (request.getNewPassword().length() < 8) {
-                        return Mono.error(new BusinessException(HttpStatus.BAD_REQUEST, "AUTH_PWD_WEAK", "Mật khẩu mới phải có tối thiểu 8 ký tự"));
+                        return Mono.error(new BusinessException(400, "AUTH_PWD_WEAK", "Mật khẩu mới phải có tối thiểu 8 ký tự"));
                     }
                     user.setPasswordHash(passwordEncoder.encode(request.getNewPassword()));
                     user.setUpdatedAt(Instant.now());
@@ -112,7 +111,6 @@ public class UserService {
                     if (dto.getItaAngle() != null) {
                         existing.setItaAngle(dto.getItaAngle());
                     }
-                    existing.setNewEntry(false);
                     return skinProfileRepository.save(existing);
                 })
                 .switchIfEmpty(Mono.defer(() -> {
@@ -127,7 +125,6 @@ public class UserService {
                             dto.getSkinUndertone() != null ? dto.getSkinUndertone() : "NEUTRAL",
                             dto.getItaAngle() != null ? dto.getItaAngle() : 32.0
                     );
-                    entity.setNewEntry(true);
                     return skinProfileRepository.save(entity);
                 }))
                 .map(saved -> new SkinProfileDto(

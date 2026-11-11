@@ -100,7 +100,7 @@ stateDiagram-v2
 ---
 
 ## 7. CÁC QUY TẮC NGHIỆP VỤ CỐT LÕI (BUSINESS RULES)
-- **BR-01 (Clean Architecture & Rich DDD):** Package `domain` thuần Java 21 100%, không chứa import của Spring Framework, R2DBC, MongoDB, Kafka, đảm bảo pass `HexagonalArchitectureTest`.
+- **BR-01 (Clean Architecture & Rich DDD):** Package `domain` thuần Java 21 100%, không chứa import của Quarkus, Spring Framework, PgPool, MongoDB, Kafka, đảm bảo pass `HexagonalArchitectureTest`.
 - **BR-02 (Atomic Stock CAS):** Mọi thao tác trừ kho đều dùng câu lệnh nguyên tử `UPDATE stock SET reserved = reserved + :qty, version = version + 1 WHERE sku = :sku AND (on_hand - reserved) >= :qty AND version = :version`.
 - **BR-03 (FEFO Expiry Guard):** Phân bổ lô hàng có ngày hết hạn gần nhất trước (`ORDER BY expiry_date ASC`); cấm xuất kho các lô có hạn dùng dưới 180 ngày (< 6 tháng) tính từ thời điểm đặt hàng.
 - **BR-04 (Double-Entry Ledger Invariant):** Mọi giao dịch tài chính phải tuân thủ nghiêm ngặt phương trình cân bằng: $\sum \text{Debit} = \sum \text{Credit}$. Số tiền lưu kiểu `NUMERIC(19,4)` và tính toán bằng `BigDecimal` (`RoundingMode.HALF_UP`).

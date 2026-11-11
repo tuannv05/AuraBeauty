@@ -20,7 +20,7 @@ flowchart LR
 ### BƯỚC 1: KIẾN TRÚC MICROSERVICES REACTIVE & KIỂM THỬ TỰ ĐỘNG (3 PHÚT)
 - **Người trình bày:** **Nguyễn Văn Tuấn (MSV: 2023603018)**
 - **Thao tác trên màn hình:**
-  1. Trình chiếu sơ đồ kiến trúc 7 Microservices Reactive (Spring Boot 3 WebFlux, cổng 8080 - 8086).
+  1. Trình chiếu sơ đồ kiến trúc 7 Microservices Reactive (Quarkus 3.15 LTS Mutiny Reactive, cổng 8080 - 8086).
   2. Mở Terminal chạy kiểm thử kiến trúc tự động:
      ```bash
      mvn test -pl backend/account-service -Dtest=HexagonalArchitectureTest

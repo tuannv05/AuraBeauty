@@ -5,8 +5,7 @@ import com.cosmetics.catalog.adapter.out.persistence.ProductDocument;
 import com.cosmetics.catalog.adapter.out.persistence.ProductRepository;
 import com.cosmetics.common.events.payloads.ProductPublishedPayload;
 import com.cosmetics.common.web.BusinessException;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
+import jakarta.enterprise.context.ApplicationScoped;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -14,7 +13,7 @@ import java.time.Instant;
 import java.util.*;
 import java.util.regex.Pattern;
 
-@Service
+@ApplicationScoped
 public class ProductService {
     private final ProductRepository productRepository;
     private final CatalogEventPublisher eventPublisher;
@@ -33,16 +32,16 @@ public class ProductService {
 
     public Mono<ProductDocument> submitForReview(String productId, UUID shopId) {
         return productRepository.findById(productId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "PRODUCT_001", "Product not found")))
+                .switchIfEmpty(Mono.error(new BusinessException(404, "PRODUCT_001", "Product not found")))
                 .flatMap(product -> {
                     if (shopId != null && !shopId.equals(product.getShopId())) {
-                        return Mono.error(new BusinessException(HttpStatus.FORBIDDEN, "FORBIDDEN", "You do not own this product"));
+                        return Mono.error(new BusinessException(403, "FORBIDDEN", "You do not own this product"));
                     }
                     if (product.getVariants() == null || product.getVariants().isEmpty()) {
-                        return Mono.error(new BusinessException(HttpStatus.BAD_REQUEST, "PRODUCT_002", "Product must have at least one variant"));
+                        return Mono.error(new BusinessException(400, "PRODUCT_002", "Product must have at least one variant"));
                     }
                     if (product.getRegistrationNo() == null || product.getRegistrationNo().isBlank()) {
-                        return Mono.error(new BusinessException(HttpStatus.BAD_REQUEST, "PRODUCT_003", "Registration No. is required"));
+                        return Mono.error(new BusinessException(400, "PRODUCT_003", "Registration No. is required"));
                     }
                     product.setStatus("SUBMITTED");
                     product.setUpdatedAt(Instant.now());
@@ -52,10 +51,10 @@ public class ProductService {
 
     public Mono<ProductDocument> approveProduct(String productId) {
         return productRepository.findById(productId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "PRODUCT_001", "Product not found")))
+                .switchIfEmpty(Mono.error(new BusinessException(404, "PRODUCT_001", "Product not found")))
                 .flatMap(product -> {
                     if (!"SUBMITTED".equals(product.getStatus()) && !"DRAFT".equals(product.getStatus())) {
-                        return Mono.error(new BusinessException(HttpStatus.BAD_REQUEST, "PRODUCT_004", "Product is not ready for approval"));
+                        return Mono.error(new BusinessException(400, "PRODUCT_004", "Product is not ready for approval"));
                     }
                     product.setStatus("PUBLISHED");
                     product.setUpdatedAt(Instant.now());
@@ -85,7 +84,7 @@ public class ProductService {
 
     public Mono<ProductDocument> rejectProduct(String productId, String reason) {
         return productRepository.findById(productId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "PRODUCT_001", "Product not found")))
+                .switchIfEmpty(Mono.error(new BusinessException(404, "PRODUCT_001", "Product not found")))
                 .flatMap(product -> {
                     product.setStatus("REJECTED");
                     product.setUpdatedAt(Instant.now());
@@ -124,7 +123,7 @@ public class ProductService {
 
     public Mono<ProductDocument> getById(String id) {
         return productRepository.findById(id)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "PRODUCT_001", "Product not found")));
+                .switchIfEmpty(Mono.error(new BusinessException(404, "PRODUCT_001", "Product not found")));
     }
 
     public Flux<ProductDocument> getByShopId(UUID shopId) {
@@ -143,22 +142,28 @@ public class ProductService {
                     }
                     return Mono.empty();
                 })
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "SKU_NOT_FOUND", "SKU variant not found: " + skuCode)));
+                .switchIfEmpty(Mono.error(new BusinessException(404, "SKU_NOT_FOUND", "SKU variant not found: " + skuCode)));
     }
 
     private boolean matchesCategory(ProductDocument p, String category) {
         if (category == null || category.isBlank()) return true;
-        String clean = category.trim();
-        if (p.getCategory() != null && p.getCategory().equalsIgnoreCase(clean)) {
-            return true;
+        String clean = category.trim().toLowerCase();
+        if (p.getCategory() != null) {
+            String cat = p.getCategory().toLowerCase();
+            if (cat.equals(clean) || cat.contains(clean) || clean.contains(cat)) return true;
         }
-        if (p.getSubCategory() != null && p.getSubCategory().equalsIgnoreCase(clean)) {
-            return true;
+        if (p.getSubCategory() != null) {
+            String sub = p.getSubCategory().toLowerCase();
+            if (sub.equals(clean) || sub.contains(clean) || clean.contains(sub)) return true;
         }
         if (p.getCategoryPath() != null) {
             for (String path : p.getCategoryPath()) {
-                if (path.equalsIgnoreCase(clean)) {
-                    return true;
+                if (path != null) {
+                    String normPath = path.toLowerCase().replace('_', '-');
+                    String cleanNorm = clean.replace('_', '-');
+                    if (normPath.equals(cleanNorm) || normPath.contains(cleanNorm) || cleanNorm.contains(normPath)) {
+                        return true;
+                    }
                 }
             }
         }

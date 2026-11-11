@@ -3,19 +3,29 @@ package com.cosmetics.ai.application;
 import com.cosmetics.ai.adapter.out.persistence.ChatMessageEntity;
 import com.cosmetics.ai.adapter.out.persistence.ChatMessageRepository;
 import com.cosmetics.ai.adapter.out.persistence.VectorStoreRepository;
+import com.cosmetics.ai.domain.DeterministicInciConflictEngine;
 import com.cosmetics.ai.domain.KnowledgeChunk;
+import com.cosmetics.ai.domain.model.graph.KnowledgeGraphDto;
+import com.cosmetics.ai.domain.model.graph.KnowledgeGraphEdge;
+import com.cosmetics.ai.domain.model.graph.KnowledgeGraphNode;
+import com.cosmetics.ai.domain.model.graph.SkinRoutineGraphAnalysis;
 import com.cosmetics.common.events.payloads.ProductPublishedPayload;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.quarkus.runtime.StartupEvent;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.io.InputStream;
 import java.time.Duration;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-@Service
+@ApplicationScoped
 public class AiAdvisorService {
     private static final Logger log = LoggerFactory.getLogger(AiAdvisorService.class);
 
@@ -24,14 +34,9 @@ public class AiAdvisorService {
     private final EmbeddingModelService embeddingModelService;
     private final ObjectMapper objectMapper;
 
-    public record VtoChatContext(
-            String shadeName,
-            String hexColor,
-            String finishType,
-            String detectedUndertone,
-            String productId,
-            String productName
-    ) {}
+    private final Map<String, KnowledgeGraphNode> graphNodes = new ConcurrentHashMap<>();
+    private final List<KnowledgeGraphEdge> graphEdges = new CopyOnWriteArrayList<>();
+    private Map<String, Object> graphMetadata = Map.of();
 
     public AiAdvisorService(
             VectorStoreRepository vectorStoreRepository,
@@ -44,6 +49,167 @@ public class AiAdvisorService {
         this.embeddingModelService = embeddingModelService;
         this.objectMapper = objectMapper;
     }
+
+    void onStart(@Observes StartupEvent ev) {
+        initKnowledgeGraph();
+    }
+
+    public void initKnowledgeGraph() {
+        try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("cosmetics_knowledge_graph.json")) {
+            if (is != null) {
+                var tree = objectMapper.readTree(is);
+                if (tree.has("metadata")) {
+                    this.graphMetadata = objectMapper.convertValue(tree.get("metadata"), Map.class);
+                }
+                if (tree.has("nodes")) {
+                    for (var nNode : tree.get("nodes")) {
+                        KnowledgeGraphNode node = objectMapper.treeToValue(nNode, KnowledgeGraphNode.class);
+                        graphNodes.put(node.id(), node);
+                    }
+                }
+                if (tree.has("edges")) {
+                    for (var eNode : tree.get("edges")) {
+                        KnowledgeGraphEdge edge = objectMapper.treeToValue(eNode, KnowledgeGraphEdge.class);
+                        graphEdges.add(edge);
+                    }
+                }
+                log.info("Graphify Engine: Loaded {} nodes, {} edges into reactive memory", graphNodes.size(), graphEdges.size());
+            } else {
+                log.warn("cosmetics_knowledge_graph.json not found in classpath");
+            }
+        } catch (Exception e) {
+            log.warn("Failed to load cosmetics_knowledge_graph.json: {}", e.getMessage());
+        }
+    }
+
+    public Mono<KnowledgeGraphDto> getFullCosmeticsGraph() {
+        return Mono.just(new KnowledgeGraphDto(
+            graphMetadata,
+            List.copyOf(graphNodes.values()),
+            List.copyOf(graphEdges)
+        ));
+    }
+
+    public Mono<KnowledgeGraphDto> getProductEgoGraph(String productId) {
+        String pNodeId = productId.startsWith("PRODUCT:") ? productId : "PRODUCT:" + productId;
+        KnowledgeGraphNode centerNode = graphNodes.get(pNodeId);
+        if (centerNode == null) {
+            for (KnowledgeGraphNode n : graphNodes.values()) {
+                if (productId.equalsIgnoreCase(n.id())) {
+                    centerNode = n;
+                    pNodeId = n.id();
+                    break;
+                }
+            }
+        }
+
+        if (centerNode == null) {
+            return Mono.just(new KnowledgeGraphDto(Map.of("status", "NOT_FOUND"), List.of(), List.of()));
+        }
+
+        Set<String> hop1NodeIds = new HashSet<>();
+        hop1NodeIds.add(pNodeId);
+        List<KnowledgeGraphEdge> relevantEdges = new ArrayList<>();
+
+        for (KnowledgeGraphEdge edge : graphEdges) {
+            if (edge.source().equals(pNodeId)) {
+                hop1NodeIds.add(edge.target());
+                relevantEdges.add(edge);
+            } else if (edge.target().equals(pNodeId)) {
+                hop1NodeIds.add(edge.source());
+                relevantEdges.add(edge);
+            }
+        }
+
+        // 2-hop edges for active ingredients (synergies and conflicts)
+        Set<String> allNodeIds = new HashSet<>(hop1NodeIds);
+        for (KnowledgeGraphEdge edge : graphEdges) {
+            if ("SYNERGY_WITH".equals(edge.relationship()) || "CONFLICTS_WITH".equals(edge.relationship())) {
+                if (hop1NodeIds.contains(edge.source()) || hop1NodeIds.contains(edge.target())) {
+                    allNodeIds.add(edge.source());
+                    allNodeIds.add(edge.target());
+                    if (!relevantEdges.contains(edge)) {
+                        relevantEdges.add(edge);
+                    }
+                }
+            }
+        }
+
+        List<KnowledgeGraphNode> subNodes = allNodeIds.stream()
+            .map(graphNodes::get)
+            .filter(Objects::nonNull)
+            .toList();
+
+        return Mono.just(new KnowledgeGraphDto(
+            Map.of("centerProductId", productId, "nodeCount", subNodes.size(), "edgeCount", relevantEdges.size()),
+            subNodes,
+            relevantEdges
+        ));
+    }
+
+    public Mono<SkinRoutineGraphAnalysis> checkRoutineCompatibility(List<String> productIds, String skinType) {
+        List<String> allIngredients = new ArrayList<>();
+        Set<String> relevantNodeIds = new HashSet<>();
+        List<KnowledgeGraphEdge> routineEdges = new ArrayList<>();
+
+        if (productIds != null) {
+            for (String pid : productIds) {
+                String pNodeId = pid.startsWith("PRODUCT:") ? pid : "PRODUCT:" + pid;
+                if (graphNodes.containsKey(pNodeId)) {
+                    relevantNodeIds.add(pNodeId);
+                    for (KnowledgeGraphEdge e : graphEdges) {
+                        if (e.source().equals(pNodeId) && "CONTAINS_ACTIVE".equals(e.relationship())) {
+                            relevantNodeIds.add(e.target());
+                            routineEdges.add(e);
+                            KnowledgeGraphNode ingNode = graphNodes.get(e.target());
+                            if (ingNode != null) {
+                                allIngredients.add(ingNode.label());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        List<String> synergyMessages = new ArrayList<>();
+        for (KnowledgeGraphEdge e : graphEdges) {
+            if ("SYNERGY_WITH".equals(e.relationship()) && relevantNodeIds.contains(e.source()) && relevantNodeIds.contains(e.target())) {
+                routineEdges.add(e);
+                synergyMessages.add(e.description());
+            } else if ("CONFLICTS_WITH".equals(e.relationship()) && relevantNodeIds.contains(e.source()) && relevantNodeIds.contains(e.target())) {
+                routineEdges.add(e);
+            }
+        }
+
+        var conflicts = DeterministicInciConflictEngine.checkConflicts(allIngredients, skinType);
+        boolean isSafe = conflicts.isEmpty();
+        String summary = isSafe
+            ? "Chu trình dưỡng da an toàn 100%, các hoạt chất kết hợp hài hòa hỗ trợ phục hồi và phát huy tối đa công năng."
+            : "CẢNH BÁO: Phát hiện " + conflicts.size() + " cặp hoạt chất xung đột. Khuyến nghị tách cữ sáng/tối hoặc áp dụng Skin Cycling.";
+
+        List<KnowledgeGraphNode> activeNodes = relevantNodeIds.stream()
+            .map(graphNodes::get)
+            .filter(Objects::nonNull)
+            .toList();
+
+        return Mono.just(new SkinRoutineGraphAnalysis(
+            activeNodes,
+            routineEdges,
+            conflicts,
+            synergyMessages,
+            isSafe,
+            summary
+        ));
+    }
+
+    public record VtoChatContext(
+            String shadeName,
+            String hexColor,
+            String finishType,
+            String detectedUndertone,
+            String productId,
+            String productName
+    ) {}
 
     public Mono<Void> indexProduct(ProductPublishedPayload payload) {
         UUID chunkId = UUID.nameUUIDFromBytes(payload.getProductId().getBytes());
@@ -94,7 +260,7 @@ public class AiAdvisorService {
         UUID userMsgId = UUID.randomUUID();
         Mono<ChatMessageEntity> saveUserMsg = chatMessageRepository.save(new ChatMessageEntity(userMsgId, conversationId, "USER", effectiveQuery, ""));
 
-        // 2. Retrieve Top-K chunks via pgvector R2DBC
+        // 2. Retrieve Top-K chunks via pgvector
         return saveUserMsg.thenMany(
                 vectorStoreRepository.findTopKSimilar(queryEmbedding, 4).collectList()
                         .flatMapMany(chunks -> generateStreamResponse(conversationId, effectiveQuery, skinType, allergies, chunks, vtoContext))

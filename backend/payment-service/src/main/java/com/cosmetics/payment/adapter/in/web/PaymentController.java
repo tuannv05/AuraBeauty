@@ -3,15 +3,18 @@ package com.cosmetics.payment.adapter.in.web;
 import com.cosmetics.common.web.ApiResponse;
 import com.cosmetics.payment.adapter.out.persistence.PaymentEntity;
 import com.cosmetics.payment.application.PaymentService;
-import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Mono;
+import io.smallrye.mutiny.Uni;
+import io.smallrye.mutiny.converters.uni.UniReactorConverters;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.UUID;
 
-@RestController
-@RequestMapping("/api/payments")
+@Path("/api/payments")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class PaymentController {
     private final PaymentService paymentService;
 
@@ -19,33 +22,41 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
 
-    @GetMapping("/{orderId}")
-    public Mono<ApiResponse<PaymentEntity>> getPayment(@PathVariable UUID orderId) {
-        return paymentService.getPaymentByOrderId(orderId).map(ApiResponse::ok);
+    @GET
+    @Path("/{orderId}")
+    public Uni<ApiResponse<PaymentEntity>> getPayment(@PathParam("orderId") UUID orderId) {
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), paymentService.getPaymentByOrderId(orderId))
+                .map(ApiResponse::ok);
     }
 
-    @PostMapping("/{orderId}/mock-pay")
-    public Mono<ApiResponse<PaymentEntity>> mockPay(
-            @PathVariable UUID orderId,
-            @RequestParam(defaultValue = "true") boolean success
+    @POST
+    @Path("/{orderId}/mock-pay")
+    public Uni<ApiResponse<PaymentEntity>> mockPay(
+            @PathParam("orderId") UUID orderId,
+            @QueryParam("success") @DefaultValue("true") boolean success
     ) {
-        return paymentService.mockPay(orderId, success).map(ApiResponse::ok);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), paymentService.mockPay(orderId, success))
+                .map(ApiResponse::ok);
     }
 
-    @PostMapping("/webhook/{gateway}")
-    public Mono<ApiResponse<Map<String, Object>>> handleWebhook(
-            @PathVariable String gateway,
-            @RequestBody(required = false) Map<String, Object> payload
+    @POST
+    @Path("/webhook/{gateway}")
+    public Uni<ApiResponse<Map<String, Object>>> handleWebhook(
+            @PathParam("gateway") String gateway,
+            Map<String, Object> payload
     ) {
-        return paymentService.processWebhook(gateway, payload).map(ApiResponse::ok);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), paymentService.processWebhook(gateway, payload))
+                .map(ApiResponse::ok);
     }
 
-    @GetMapping("/{orderId}/escrow-qr")
-    public Mono<ApiResponse<Map<String, Object>>> getEscrowQr(
-            @PathVariable UUID orderId,
-            @RequestParam(defaultValue = "MOMO") String gateway,
-            @RequestParam(defaultValue = "500000") BigDecimal amount
+    @GET
+    @Path("/{orderId}/escrow-qr")
+    public Uni<ApiResponse<Map<String, Object>>> getEscrowQr(
+            @PathParam("orderId") UUID orderId,
+            @QueryParam("gateway") @DefaultValue("MOMO") String gateway,
+            @QueryParam("amount") @DefaultValue("500000") BigDecimal amount
     ) {
-        return paymentService.generateEscrowQr(orderId, gateway, amount).map(ApiResponse::ok);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), paymentService.generateEscrowQr(orderId, gateway, amount))
+                .map(ApiResponse::ok);
     }
 }

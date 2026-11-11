@@ -2,7 +2,7 @@
 
 ## 1. Mục tiêu tuần 13
 - Giám sát và Observability:
-  - Spring Boot Actuator: Kích hoạt `/actuator/health`, `/actuator/info`, `/actuator/prometheus` trên tất cả 6 services và API Gateway.
+  - SmallRye Health: Kích hoạt `/q/health`, `/q/health/live`, `/q/health/ready` trên tất cả 6 services và API Gateway.
   - Giao diện trực quan hóa Kafka qua `Kafka-UI` trên cổng `8090`: theo dõi danh sách topic, số lượng partition, offset và thông điệp sự kiện thời gian thực.
 - Kiểm thử dựng hệ thống từ máy sạch (Clean-Slate Deployment):
   - Kịch bản: Máy tính mới chỉ cài Docker Desktop, JDK 21+ và Git.

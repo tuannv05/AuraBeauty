@@ -3,7 +3,7 @@
 > **Mã quy trình:** `QT-07-modern-enterprise-backend-architecture`  
 > **Phân hệ:** Toàn bộ khối Backend (`backend/`, `libs/`)  
 > **Trạng thái:** Chuẩn hóa Spec-Kit (SDD)  
-> **Kiến trúc:** Hexagonal Architecture (Ports & Adapters) + Reactive Spring WebFlux (100% Non-Blocking) + RFC 9457 ProblemDetail + Saga Choreography + Double-Entry Ledger
+> **Kiến trúc:** Hexagonal Architecture (Ports & Adapters) + Quarkus 3.15 Mutiny Reactive (100% Non-Blocking) + RFC 9457 ProblemDetail + Saga Choreography + Double-Entry Ledger
 
 ---
 
@@ -11,7 +11,7 @@
 - **Hệ thống:** Sàn Thương Mại Điện Tử Mỹ Phẩm Đa Người Bán Aura Beauty Mall (WebBanMP).
 - **Cụm 7 Microservices (Port 8080-8086):** `api-gateway` (8080), `account-service` (8081), `catalog-service` (8082), `inventory-service` (8083), `order-service` (8084), `payment-service` (8085), `ai-advisor-service` (8086).
 - **Thư viện dùng chung:** `common-web`, `common-events`, `common-outbox`.
-- **Tuân thủ chuẩn mực:** RFC 9457 (HTTP Problem Details), Java 21 LTS (Sealed Types, Records, Pattern Matching), ArchUnit 1.3.0, Reactor Netty 100% Non-Blocking (BlockHound).
+- **Tuân thủ chuẩn mực:** RFC 9457 (HTTP Problem Details), Java 21 LTS (Sealed Types, Records, Pattern Matching), ArchUnit 1.3.0, Vert.x EventLoop 100% Non-Blocking.
 
 ---
 
@@ -119,8 +119,8 @@ stateDiagram-v2
 ---
 
 ## 8. QUY TẮC NGHIỆP VỤ CỐT LÕI (BUSINESS RULES)
-- **`BR-01` (Clean Architecture & Rich DDD):** Toàn bộ package `domain` của 7 microservices thuần Java 21 100%, không chứa annotation hay class phụ thuộc của Spring Framework, R2DBC, MongoDB, Kafka; bảo đảm vượt qua bài test ArchUnit `HexagonalArchitectureTest`.
-- **`BR-02` (100% Non-Blocking Reactive):** Mọi pipeline xử lý trong WebFlux, R2DBC, MongoDB Reactive Streams và Kafka Consumer tuyệt đối không sử dụng lệnh đồng bộ/blocking (`.block()`, `Thread.sleep()`), bảo đảm vượt qua kiểm chứng BlockHound.
+- **`BR-01` (Clean Architecture & Rich DDD):** Toàn bộ package `domain` của 7 microservices thuần Java 21 100%, không chứa annotation hay class phụ thuộc của Quarkus, Spring Framework, PgPool, MongoDB, Kafka; bảo đảm vượt qua bài test ArchUnit `HexagonalArchitectureTest`.
+- **`BR-02` (100% Non-Blocking Reactive):** Mọi pipeline xử lý trong Mutiny (`Uni`/`Multi`), Quarkus Reactive PgPool, MongoDB Reactive Panache Streams và Kafka Consumer tuyệt đối không sử dụng lệnh đồng bộ/blocking (`Thread.sleep()`), bảo đảm an toàn trên luồng Vert.x EventLoop.
 - **`BR-03` (CAS Concurrency Stock):** Trừ kho khả dụng theo công thức nguyên tử: `UPDATE stock SET reserved = reserved + :qty, version = version + 1 WHERE sku = :sku AND (on_hand - reserved) >= :qty AND version = :version`.
 - **`BR-04` (FEFO Safety Expiry Guard):** Phân bổ lô hàng xuất kho theo thứ tự ngày hết hạn tăng dần; cấm tuyệt đối xuất kho các lô hàng có hạn dùng dưới 180 ngày (< 6 tháng) tính từ ngày đặt hàng.
 - **`BR-05` (Double-Entry Ledger Invariant):** Mọi giao dịch tài chính phải bảo toàn phương trình cân bằng: $\sum \text{Debit} = \sum \text{Credit}$. Số tiền lưu dạng `NUMERIC(19,4)` và tính toán bằng `BigDecimal` (`HALF_UP`).
@@ -157,7 +157,7 @@ stateDiagram-v2
 - `AC-02`: Cho thanh toán đơn hàng trực tuyến. Khi nhận tiền vào ví Escrow, hệ thống ghi Nợ `BUYER_ACCOUNT` và Có `ESCROW_HOLDING` với tổng Nợ = tổng Có.
 - `AC-03`: Cho đơn hàng hoàn tất giao hàng. Khi giải ngân, hệ thống hạch toán Nợ `ESCROW_HOLDING`, Có 10% `PLATFORM_REVENUE` và Có 90% `SELLER_PAYABLE` với sai số bằng 0.
 - `AC-04`: Cho thao tác duyệt Shop hoặc thay đổi quyền hạn. Khi Admin thực hiện, một bản ghi `AuditLogRecord` bất biến được lưu vết thành công.
-- `AC-05`: Cho bài test kiến trúc `HexagonalArchitectureTest`. Khi chạy ArchUnit trên cả 4 microservices, 100% class trong tầng `domain` không phụ thuộc Spring/R2DBC/MongoDB.
+- `AC-05`: Cho bài test kiến trúc `HexagonalArchitectureTest`. Khi chạy ArchUnit trên cả 4 microservices, 100% class trong tầng `domain` không phụ thuộc Quarkus/Spring/PgPool/MongoDB.
 - `AC-06`: Cho 100 request đồng thời trừ kho SKU chỉ còn 10 chiếc. Khi chạy `AtomicStockConcurrencyTest`, đúng 10 request thành công và 90 request bị từ chối an toàn, tồn kho không bao giờ âm.
 
 ---

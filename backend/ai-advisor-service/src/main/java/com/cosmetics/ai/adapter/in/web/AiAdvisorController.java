@@ -5,24 +5,34 @@ import com.cosmetics.ai.application.AiAdvisorService;
 import com.cosmetics.ai.application.AiAdvisorService.VtoChatContext;
 import com.cosmetics.ai.domain.DeterministicInciConflictEngine;
 import com.cosmetics.ai.domain.SkinCyclingRoutineEngine;
+import com.cosmetics.ai.domain.model.graph.KnowledgeGraphDto;
+import com.cosmetics.ai.domain.model.graph.SkinRoutineGraphAnalysis;
 import com.cosmetics.common.web.ApiResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.http.MediaType;
-import org.springframework.http.codec.ServerSentEvent;
-import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+import io.smallrye.mutiny.Multi;
+import io.smallrye.mutiny.Uni;
+import io.smallrye.mutiny.converters.multi.MultiReactorConverters;
+import io.smallrye.mutiny.converters.uni.UniReactorConverters;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.sse.OutboundSseEvent;
+import jakarta.ws.rs.sse.Sse;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-@RestController
-@RequestMapping("/api/advisor")
+@Path("/api/advisor")
+@ApplicationScoped
 public class AiAdvisorController {
     private final AiAdvisorService advisorService;
     private final ObjectMapper objectMapper;
+
+    @Context
+    Sse sse;
 
     public AiAdvisorController(AiAdvisorService advisorService, ObjectMapper objectMapper) {
         this.advisorService = advisorService;
@@ -65,18 +75,20 @@ public class AiAdvisorController {
         public void setProductName(String productName) { this.productName = productName; }
     }
 
-    @GetMapping(value = "/chat", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<ServerSentEvent<String>> streamChatGet(
-            @RequestParam(required = false) UUID conversationId,
-            @RequestParam String q,
-            @RequestParam(required = false) String skinType,
-            @RequestParam(required = false) String allergies,
-            @RequestParam(required = false) String vtoShadeName,
-            @RequestParam(required = false) String vtoHexColor,
-            @RequestParam(required = false) String vtoFinishType,
-            @RequestParam(required = false) String detectedUndertone,
-            @RequestParam(required = false) String productId,
-            @RequestParam(required = false) String productName
+    @GET
+    @Path("/chat")
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    public Multi<OutboundSseEvent> streamChatGet(
+            @QueryParam("conversationId") UUID conversationId,
+            @QueryParam("q") String q,
+            @QueryParam("skinType") String skinType,
+            @QueryParam("allergies") String allergies,
+            @QueryParam("vtoShadeName") String vtoShadeName,
+            @QueryParam("vtoHexColor") String vtoHexColor,
+            @QueryParam("vtoFinishType") String vtoFinishType,
+            @QueryParam("detectedUndertone") String detectedUndertone,
+            @QueryParam("productId") String productId,
+            @QueryParam("productName") String productName
     ) {
         UUID convId = conversationId != null ? conversationId : UUID.randomUUID();
         List<String> allergyList = (allergies != null && !allergies.isBlank())
@@ -88,15 +100,17 @@ public class AiAdvisorController {
             vtoContext = new VtoChatContext(vtoShadeName, vtoHexColor, vtoFinishType, detectedUndertone, productId, productName);
         }
 
-        return advisorService.streamAdvisorChat(convId, q, skinType, allergyList, vtoContext)
-                .map(token -> ServerSentEvent.<String>builder()
-                        .event("message")
-                        .data(token)
-                        .build());
+        return Multi.createFrom().converter(
+                MultiReactorConverters.fromFlux(),
+                advisorService.streamAdvisorChat(convId, q, skinType, allergyList, vtoContext)
+        ).map(token -> sse.newEventBuilder().name("message").data(token).build());
     }
 
-    @PostMapping(value = "/chat", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<ServerSentEvent<String>> streamChatPost(@RequestBody ChatRequest request) {
+    @POST
+    @Path("/chat")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    public Multi<OutboundSseEvent> streamChatPost(ChatRequest request) {
         UUID convId = request.getConversationId() != null ? request.getConversationId() : UUID.randomUUID();
         VtoChatContext vtoContext = null;
         if (request.getVtoHexColor() != null || request.getVtoShadeName() != null) {
@@ -110,15 +124,17 @@ public class AiAdvisorController {
             );
         }
 
-        return advisorService.streamAdvisorChat(convId, request.getQuery(), request.getSkinType(), request.getAllergies(), vtoContext)
-                .map(token -> ServerSentEvent.<String>builder()
-                        .event("message")
-                        .data(token)
-                        .build());
+        return Multi.createFrom().converter(
+                MultiReactorConverters.fromFlux(),
+                advisorService.streamAdvisorChat(convId, request.getQuery(), request.getSkinType(), request.getAllergies(), vtoContext)
+        ).map(token -> sse.newEventBuilder().name("message").data(token).build());
     }
 
-    @PostMapping(value = "/multi-stage-stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<ServerSentEvent<String>> streamMultiStageChat(@RequestBody ChatRequest request) {
+    @POST
+    @Path("/multi-stage-stream")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    public Multi<OutboundSseEvent> streamMultiStageChat(ChatRequest request) {
         UUID convId = request.getConversationId() != null ? request.getConversationId() : UUID.randomUUID();
         String skinType = request.getSkinType() != null ? request.getSkinType() : "NORMAL";
         String undertone = request.getDetectedUndertone() != null ? request.getDetectedUndertone() : "NEUTRAL";
@@ -136,10 +152,7 @@ public class AiAdvisorController {
         } catch (JsonProcessingException e) {
             skinJson = "{}";
         }
-        ServerSentEvent<String> sseStage1 = ServerSentEvent.<String>builder()
-            .event("skin_analysis")
-            .data(skinJson)
-            .build();
+        OutboundSseEvent sseStage1 = sse.newEventBuilder().name("skin_analysis").data(skinJson).build();
 
         // Stage 2: INCI Conflict & Safety Matrix
         var sampleActives = List.of("Retinol 0.5%", "Hyaluronic Acid", "Niacinamide 2%");
@@ -154,10 +167,7 @@ public class AiAdvisorController {
         } catch (JsonProcessingException e) {
             matrixJson = "{}";
         }
-        ServerSentEvent<String> sseStage2 = ServerSentEvent.<String>builder()
-            .event("inci_safety_matrix")
-            .data(matrixJson)
-            .build();
+        OutboundSseEvent sseStage2 = sse.newEventBuilder().name("inci_safety_matrix").data(matrixJson).build();
 
         // Stage 3: 28-Day Skin Cycling Routine
         var routine = SkinCyclingRoutineEngine.generate28DaySchedule(skinType);
@@ -167,10 +177,7 @@ public class AiAdvisorController {
         } catch (JsonProcessingException e) {
             routineJson = "{}";
         }
-        ServerSentEvent<String> sseStage3 = ServerSentEvent.<String>builder()
-            .event("routine_28_days")
-            .data(routineJson)
-            .build();
+        OutboundSseEvent sseStage3 = sse.newEventBuilder().name("routine_28_days").data(routineJson).build();
 
         // Stage 4: Token stream
         VtoChatContext vtoContext = null;
@@ -185,28 +192,84 @@ public class AiAdvisorController {
             );
         }
 
-        Flux<ServerSentEvent<String>> tokenFlux = advisorService.streamAdvisorChat(
-            convId, request.getQuery(), skinType, request.getAllergies(), vtoContext
-        ).map(token -> ServerSentEvent.<String>builder()
-            .event("token")
-            .data(token)
-            .build()
-        );
+        // Graphify Knowledge Graph Insights Event
+        String targetProdId = request.getProductId() != null ? request.getProductId() : "PROD-CRW-001";
+        Uni<OutboundSseEvent> sseGraphInsight = Uni.createFrom().converter(
+                UniReactorConverters.fromMono(),
+                advisorService.getProductEgoGraph(targetProdId)
+        ).map(graph -> {
+            try {
+                return sse.newEventBuilder().name("graph_insight").data(objectMapper.writeValueAsString(graph)).build();
+            } catch (JsonProcessingException e) {
+                return sse.newEventBuilder().name("graph_insight").data("{}").build();
+            }
+        });
+
+        Multi<OutboundSseEvent> tokenMulti = Multi.createFrom().converter(
+                MultiReactorConverters.fromFlux(),
+                advisorService.streamAdvisorChat(convId, request.getQuery(), skinType, request.getAllergies(), vtoContext)
+        ).map(token -> sse.newEventBuilder().name("token").data(token).build());
 
         // Stage 5: Recommended SKUs
         String recJson = "{\"recommendedSkus\":[{\"skuCode\":\"SKU-B5-LAROCHE\",\"name\":\"Serum Hyalu B5 La Roche-Posay\",\"undertoneMatch\":\"HARMONIC\"}]}";
-        ServerSentEvent<String> sseStage5 = ServerSentEvent.<String>builder()
-            .event("recommended_skus")
-            .data(recJson)
-            .build();
+        OutboundSseEvent sseStage5 = sse.newEventBuilder().name("recommended_skus").data(recJson).build();
 
-        return Flux.just(sseStage1, sseStage2, sseStage3)
-            .concatWith(tokenFlux)
-            .concatWith(Mono.just(sseStage5));
+        return Multi.createBy().concatenating().streams(
+                Multi.createFrom().items(sseStage1, sseStage2, sseStage3),
+                sseGraphInsight.toMulti(),
+                tokenMulti,
+                Multi.createFrom().item(sseStage5)
+        );
     }
 
-    @GetMapping("/history/{conversationId}")
-    public Mono<ApiResponse<List<ChatMessageEntity>>> getHistory(@PathVariable UUID conversationId) {
-        return advisorService.getConversationHistory(conversationId).collectList().map(ApiResponse::ok);
+    public static class RoutineCheckRequest {
+        private List<String> productIds;
+        private String skinType;
+
+        public RoutineCheckRequest() {}
+        public RoutineCheckRequest(List<String> productIds, String skinType) {
+            this.productIds = productIds;
+            this.skinType = skinType;
+        }
+
+        public List<String> getProductIds() { return productIds; }
+        public void setProductIds(List<String> productIds) { this.productIds = productIds; }
+        public String getSkinType() { return skinType; }
+        public void setSkinType(String skinType) { this.skinType = skinType; }
+    }
+
+    @GET
+    @Path("/graph/product/{productId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Uni<ApiResponse<KnowledgeGraphDto>> getProductEgoGraph(@PathParam("productId") String productId) {
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), advisorService.getProductEgoGraph(productId))
+                .map(ApiResponse::ok);
+    }
+
+    @POST
+    @Path("/graph/routine-check")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Uni<ApiResponse<SkinRoutineGraphAnalysis>> checkRoutineCompatibility(RoutineCheckRequest request) {
+        List<String> pids = request.getProductIds() != null ? request.getProductIds() : List.of();
+        String st = request.getSkinType() != null ? request.getSkinType() : "NORMAL";
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), advisorService.checkRoutineCompatibility(pids, st))
+                .map(ApiResponse::ok);
+    }
+
+    @GET
+    @Path("/graph/full-cosmetics")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Uni<ApiResponse<KnowledgeGraphDto>> getFullCosmeticsGraph() {
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), advisorService.getFullCosmeticsGraph())
+                .map(ApiResponse::ok);
+    }
+
+    @GET
+    @Path("/history/{conversationId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Uni<ApiResponse<List<ChatMessageEntity>>> getHistory(@PathParam("conversationId") UUID conversationId) {
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), advisorService.getConversationHistory(conversationId).collectList())
+                .map(ApiResponse::ok);
     }
 }

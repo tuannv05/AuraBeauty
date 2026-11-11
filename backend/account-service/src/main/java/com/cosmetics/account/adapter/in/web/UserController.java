@@ -10,17 +10,19 @@ import com.cosmetics.account.application.dto.UserProfileDto;
 import com.cosmetics.common.web.ApiResponse;
 import com.cosmetics.common.web.BusinessException;
 import com.cosmetics.common.web.SecurityHeaderUtils;
+import io.smallrye.mutiny.Uni;
+import io.smallrye.mutiny.converters.uni.UniReactorConverters;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ServerWebExchange;
-import reactor.core.publisher.Mono;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import java.util.List;
 import java.util.UUID;
 
-@RestController
-@RequestMapping({"/api/users", "/api/v1/accounts"})
+@Path("/api/users")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class UserController {
     private final UserService userService;
     private final JwtTokenProvider tokenProvider;
@@ -30,93 +32,122 @@ public class UserController {
         this.tokenProvider = tokenProvider;
     }
 
-    private UUID resolveUserId(ServerWebExchange exchange) {
-        UUID userId = SecurityHeaderUtils.getUserId(exchange);
+    private UUID resolveUserId(String userIdHeader, String authHeader) {
+        UUID userId = SecurityHeaderUtils.parseUserId(userIdHeader);
         if (userId != null) return userId;
 
-        String authHeader = exchange.getRequest().getHeaders().getFirst("Authorization");
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);
             if (tokenProvider.validateToken(token)) {
                 return tokenProvider.getUserId(token);
             }
         }
-        throw new BusinessException(HttpStatus.UNAUTHORIZED, "AUTH_REQUIRED", "Yêu cầu đăng nhập tài khoản");
+        throw new BusinessException(401, "AUTH_REQUIRED", "Yêu cầu đăng nhập tài khoản");
     }
 
-    @GetMapping("/me")
-    public Mono<ApiResponse<UserProfileDto>> getMyProfile(ServerWebExchange exchange) {
-        UUID userId = resolveUserId(exchange);
-        return userService.getProfile(userId).map(ApiResponse::ok);
-    }
-
-    @PutMapping("/profile")
-    public Mono<ApiResponse<UserProfileDto>> updateProfile(
-            @Valid @RequestBody UpdateProfileRequest request,
-            ServerWebExchange exchange
+    @GET
+    @Path("/me")
+    public Uni<ApiResponse<UserProfileDto>> getMyProfile(
+            @HeaderParam("X-User-Id") String userIdHeader,
+            @HeaderParam("Authorization") String authHeader
     ) {
-        UUID userId = resolveUserId(exchange);
-        return userService.updateProfile(userId, request).map(ApiResponse::ok);
+        UUID userId = resolveUserId(userIdHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), userService.getProfile(userId))
+                .map(ApiResponse::ok);
     }
 
-    @PutMapping("/change-password")
-    public Mono<ApiResponse<String>> changePassword(
-            @Valid @RequestBody ChangePasswordRequest request,
-            ServerWebExchange exchange
+    @PUT
+    @Path("/profile")
+    public Uni<ApiResponse<UserProfileDto>> updateProfile(
+            @Valid UpdateProfileRequest request,
+            @HeaderParam("X-User-Id") String userIdHeader,
+            @HeaderParam("Authorization") String authHeader
     ) {
-        UUID userId = resolveUserId(exchange);
-        return userService.changePassword(userId, request)
-                .thenReturn(ApiResponse.ok("Đổi mật khẩu thành công"));
+        UUID userId = resolveUserId(userIdHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), userService.updateProfile(userId, request))
+                .map(ApiResponse::ok);
     }
 
-    @GetMapping("/skin-profile")
-    public Mono<ApiResponse<SkinProfileDto>> getSkinProfile(ServerWebExchange exchange) {
-        UUID userId = resolveUserId(exchange);
-        return userService.getSkinProfile(userId).map(ApiResponse::ok);
-    }
-
-    @PutMapping("/skin-profile")
-    public Mono<ApiResponse<SkinProfileDto>> updateSkinProfile(
-            @RequestBody SkinProfileDto dto,
-            ServerWebExchange exchange
+    @PUT
+    @Path("/change-password")
+    public Uni<ApiResponse<String>> changePassword(
+            @Valid ChangePasswordRequest request,
+            @HeaderParam("X-User-Id") String userIdHeader,
+            @HeaderParam("Authorization") String authHeader
     ) {
-        UUID userId = resolveUserId(exchange);
-        return userService.updateSkinProfile(userId, dto).map(ApiResponse::ok);
+        UUID userId = resolveUserId(userIdHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), userService.changePassword(userId, request))
+                .map(v -> ApiResponse.ok("Đổi mật khẩu thành công"));
+    }
+
+    @GET
+    @Path("/skin-profile")
+    public Uni<ApiResponse<SkinProfileDto>> getSkinProfile(
+            @HeaderParam("X-User-Id") String userIdHeader,
+            @HeaderParam("Authorization") String authHeader
+    ) {
+        UUID userId = resolveUserId(userIdHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), userService.getSkinProfile(userId))
+                .map(ApiResponse::ok);
+    }
+
+    @PUT
+    @Path("/skin-profile")
+    public Uni<ApiResponse<SkinProfileDto>> updateSkinProfile(
+            SkinProfileDto dto,
+            @HeaderParam("X-User-Id") String userIdHeader,
+            @HeaderParam("Authorization") String authHeader
+    ) {
+        UUID userId = resolveUserId(userIdHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), userService.updateSkinProfile(userId, dto))
+                .map(ApiResponse::ok);
     }
 
     // Address Book Endpoints
-    @GetMapping("/addresses")
-    public Mono<ApiResponse<List<AddressDto>>> getAddresses(ServerWebExchange exchange) {
-        UUID userId = resolveUserId(exchange);
-        return userService.getAddresses(userId).collectList().map(ApiResponse::ok);
+    @GET
+    @Path("/addresses")
+    public Uni<ApiResponse<List<AddressDto>>> getAddresses(
+            @HeaderParam("X-User-Id") String userIdHeader,
+            @HeaderParam("Authorization") String authHeader
+    ) {
+        UUID userId = resolveUserId(userIdHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), userService.getAddresses(userId).collectList())
+                .map(ApiResponse::ok);
     }
 
-    @PostMapping("/addresses")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Mono<ApiResponse<AddressDto>> addAddress(
-            @RequestBody AddressDto dto,
-            ServerWebExchange exchange
+    @POST
+    @Path("/addresses")
+    public Uni<Response> addAddress(
+            AddressDto dto,
+            @HeaderParam("X-User-Id") String userIdHeader,
+            @HeaderParam("Authorization") String authHeader
     ) {
-        UUID userId = resolveUserId(exchange);
-        return userService.addAddress(userId, dto).map(ApiResponse::ok);
+        UUID userId = resolveUserId(userIdHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), userService.addAddress(userId, dto))
+                .map(addr -> Response.status(Response.Status.CREATED).entity(ApiResponse.ok(addr)).build());
     }
 
-    @DeleteMapping("/addresses/{id}")
-    public Mono<ApiResponse<String>> deleteAddress(
-            @PathVariable UUID id,
-            ServerWebExchange exchange
+    @DELETE
+    @Path("/addresses/{id}")
+    public Uni<ApiResponse<String>> deleteAddress(
+            @PathParam("id") UUID id,
+            @HeaderParam("X-User-Id") String userIdHeader,
+            @HeaderParam("Authorization") String authHeader
     ) {
-        UUID userId = resolveUserId(exchange);
-        return userService.deleteAddress(userId, id)
-                .thenReturn(ApiResponse.ok("Đã xóa địa chỉ thành công"));
+        UUID userId = resolveUserId(userIdHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), userService.deleteAddress(userId, id))
+                .map(v -> ApiResponse.ok("Đã xóa địa chỉ thành công"));
     }
 
-    @PutMapping("/addresses/{id}/default")
-    public Mono<ApiResponse<AddressDto>> setDefaultAddress(
-            @PathVariable UUID id,
-            ServerWebExchange exchange
+    @PUT
+    @Path("/addresses/{id}/default")
+    public Uni<ApiResponse<AddressDto>> setDefaultAddress(
+            @PathParam("id") UUID id,
+            @HeaderParam("X-User-Id") String userIdHeader,
+            @HeaderParam("Authorization") String authHeader
     ) {
-        UUID userId = resolveUserId(exchange);
-        return userService.setDefaultAddress(userId, id).map(ApiResponse::ok);
+        UUID userId = resolveUserId(userIdHeader, authHeader);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), userService.setDefaultAddress(userId, id))
+                .map(ApiResponse::ok);
     }
 }

@@ -1,13 +1,13 @@
 package com.cosmetics.ai.application;
 
-import org.springframework.stereotype.Service;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
-@Service
+@ApplicationScoped
 public class EmbeddingModelService {
     public static final int VECTOR_DIM = 384;
 

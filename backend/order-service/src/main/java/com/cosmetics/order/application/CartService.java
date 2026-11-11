@@ -2,14 +2,14 @@ package com.cosmetics.order.application;
 
 import com.cosmetics.order.adapter.out.persistence.CartItemEntity;
 import com.cosmetics.order.adapter.out.persistence.CartItemRepository;
-import org.springframework.stereotype.Service;
+import jakarta.enterprise.context.ApplicationScoped;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@Service
+@ApplicationScoped
 public class CartService {
     private final CartItemRepository cartItemRepository;
 

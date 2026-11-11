@@ -4,40 +4,40 @@ import com.cosmetics.common.events.KafkaTopics;
 import com.cosmetics.common.events.payloads.InventoryRejectedPayload;
 import com.cosmetics.common.events.payloads.InventoryReservedPayload;
 import com.cosmetics.common.events.payloads.OrderPlacedPayload;
-import com.cosmetics.common.outbox.OutboxHelper;
-import com.cosmetics.common.outbox.ProcessedEvent;
-import com.cosmetics.common.outbox.ProcessedEventRepository;
 import com.cosmetics.common.web.BusinessException;
+import com.cosmetics.inventory.adapter.out.persistence.QuarkusOutboxHelper;
+import com.cosmetics.inventory.adapter.out.persistence.QuarkusProcessedEventRepository;
 import com.cosmetics.inventory.adapter.out.persistence.ReservationEntity;
 import com.cosmetics.inventory.adapter.out.persistence.ReservationRepository;
 import com.cosmetics.inventory.adapter.out.persistence.StockItemEntity;
 import com.cosmetics.inventory.adapter.out.persistence.StockItemRepository;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-@Service
+@ApplicationScoped
 public class InventoryService {
     private static final Logger log = LoggerFactory.getLogger(InventoryService.class);
 
     private final StockItemRepository stockItemRepository;
     private final ReservationRepository reservationRepository;
-    private final ProcessedEventRepository processedEventRepository;
-    private final OutboxHelper outboxHelper;
+    private final QuarkusProcessedEventRepository processedEventRepository;
+    private final QuarkusOutboxHelper outboxHelper;
 
     public InventoryService(
             StockItemRepository stockItemRepository,
             ReservationRepository reservationRepository,
-            ProcessedEventRepository processedEventRepository,
-            OutboxHelper outboxHelper
+            QuarkusProcessedEventRepository processedEventRepository,
+            QuarkusOutboxHelper outboxHelper
     ) {
         this.stockItemRepository = stockItemRepository;
         this.reservationRepository = reservationRepository;
@@ -47,12 +47,12 @@ public class InventoryService {
 
     public Mono<StockItemEntity> getStock(String skuCode) {
         return stockItemRepository.findById(skuCode)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "STOCK_NOT_FOUND", "SKU not found: " + skuCode)));
+                .switchIfEmpty(Mono.error(new BusinessException("STOCK_NOT_FOUND", "SKU not found: " + skuCode)));
     }
 
     public Mono<StockItemEntity> updateOnHand(String skuCode, int onHand) {
         return stockItemRepository.findById(skuCode)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "STOCK_NOT_FOUND", "SKU not found: " + skuCode)))
+                .switchIfEmpty(Mono.error(new BusinessException("STOCK_NOT_FOUND", "SKU not found: " + skuCode)))
                 .flatMap(item -> {
                     item.setOnHand(onHand);
                     return stockItemRepository.save(item);
@@ -68,7 +68,7 @@ public class InventoryService {
                         return Mono.empty();
                     }
                     return executeReservation(payload)
-                            .then(processedEventRepository.save(new ProcessedEvent(eventId, "OrderPlaced")))
+                            .then(processedEventRepository.save(eventId, "OrderPlaced"))
                             .then();
                 });
     }

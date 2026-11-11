@@ -4,20 +4,20 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import jakarta.enterprise.context.ApplicationScoped;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-@Component
+@ApplicationScoped
 public class JwtTokenProvider {
     private final SecretKey key;
     private final long accessTokenValidityMs = 15 * 60 * 1000L; // 15 mins
     private final long refreshTokenValidityMs = 7 * 24 * 60 * 60 * 1000L; // 7 days
 
-    public JwtTokenProvider(@Value("${jwt.secret:defaultSecretKeyForCosmeticsPlatformProjectMustBeLongEnough123456789}") String secret) {
+    public JwtTokenProvider(@ConfigProperty(name = "jwt.secret", defaultValue = "defaultSecretKeyForCosmeticsPlatformProjectMustBeLongEnough123456789") String secret) {
         this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 

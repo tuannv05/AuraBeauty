@@ -3,21 +3,20 @@ package com.cosmetics.payment.application;
 import com.cosmetics.common.events.KafkaTopics;
 import com.cosmetics.common.events.payloads.PaymentFailedPayload;
 import com.cosmetics.common.events.payloads.PaymentSucceededPayload;
-import com.cosmetics.common.outbox.OutboxHelper;
 import com.cosmetics.common.outbox.ProcessedEvent;
-import com.cosmetics.common.outbox.ProcessedEventRepository;
 import com.cosmetics.common.web.BusinessException;
 import com.cosmetics.payment.adapter.out.persistence.LedgerEntryEntity;
 import com.cosmetics.payment.adapter.out.persistence.LedgerEntryRepository;
 import com.cosmetics.payment.adapter.out.persistence.PaymentEntity;
 import com.cosmetics.payment.adapter.out.persistence.PaymentRepository;
+import com.cosmetics.payment.adapter.out.persistence.QuarkusOutboxHelper;
+import com.cosmetics.payment.adapter.out.persistence.QuarkusProcessedEventRepository;
 import com.cosmetics.payment.domain.AccountType;
 import com.cosmetics.payment.domain.EntryType;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -25,20 +24,20 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
 
-@Service
+@ApplicationScoped
 public class PaymentService {
     private static final Logger log = LoggerFactory.getLogger(PaymentService.class);
 
     private final PaymentRepository paymentRepository;
     private final LedgerEntryRepository ledgerEntryRepository;
-    private final ProcessedEventRepository processedEventRepository;
-    private final OutboxHelper outboxHelper;
+    private final QuarkusProcessedEventRepository processedEventRepository;
+    private final QuarkusOutboxHelper outboxHelper;
 
     public PaymentService(
             PaymentRepository paymentRepository,
             LedgerEntryRepository ledgerEntryRepository,
-            ProcessedEventRepository processedEventRepository,
-            OutboxHelper outboxHelper
+            QuarkusProcessedEventRepository processedEventRepository,
+            QuarkusOutboxHelper outboxHelper
     ) {
         this.paymentRepository = paymentRepository;
         this.ledgerEntryRepository = ledgerEntryRepository;
@@ -48,7 +47,7 @@ public class PaymentService {
 
     public Mono<PaymentEntity> getPaymentByOrderId(UUID orderId) {
         return paymentRepository.findByOrderId(orderId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "PAYMENT_NOT_FOUND", "Payment not found for order: " + orderId)));
+                .switchIfEmpty(Mono.error(new BusinessException(404, "PAYMENT_NOT_FOUND", "Payment not found for order: " + orderId)));
     }
 
     @Transactional
@@ -193,7 +192,7 @@ public class PaymentService {
             orderIdStr = String.valueOf(payload.get("extraData"));
         }
         if (orderIdStr == null) {
-            return Mono.error(new BusinessException(HttpStatus.BAD_REQUEST, "MISSING_ORDER_ID", "orderId is required in webhook payload"));
+            return Mono.error(new BusinessException(400, "MISSING_ORDER_ID", "orderId is required in webhook payload"));
         }
 
         UUID orderId;

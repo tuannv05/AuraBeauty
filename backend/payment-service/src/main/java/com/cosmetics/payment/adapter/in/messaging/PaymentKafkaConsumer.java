@@ -6,13 +6,14 @@ import com.cosmetics.common.events.payloads.InventoryReservedPayload;
 import com.cosmetics.payment.application.PaymentService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.annotation.PostConstruct;
+import io.quarkus.runtime.StartupEvent;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import reactor.kafka.receiver.KafkaReceiver;
 import reactor.kafka.receiver.ReceiverOptions;
@@ -24,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-@Component
+@ApplicationScoped
 public class PaymentKafkaConsumer {
     private static final Logger log = LoggerFactory.getLogger(PaymentKafkaConsumer.class);
 
@@ -35,7 +36,7 @@ public class PaymentKafkaConsumer {
     public PaymentKafkaConsumer(
             PaymentService paymentService,
             ObjectMapper objectMapper,
-            @Value("${spring.kafka.bootstrap-servers:localhost:9092}") String bootstrapServers
+            @ConfigProperty(name = "kafka.bootstrap.servers", defaultValue = "localhost:9092") String bootstrapServers
     ) {
         this.paymentService = paymentService;
         this.objectMapper = objectMapper;
@@ -49,8 +50,7 @@ public class PaymentKafkaConsumer {
         this.receiverOptions = ReceiverOptions.create(props);
     }
 
-    @PostConstruct
-    public void startListening() {
+    void onStart(@Observes StartupEvent ev) {
         ReceiverOptions<String, String> options = receiverOptions.subscription(List.of(
                 KafkaTopics.INVENTORY_EVENTS,
                 KafkaTopics.ORDER_EVENTS
@@ -101,10 +101,12 @@ public class PaymentKafkaConsumer {
                             .doOnSuccess(v -> record.receiverOffset().acknowledge());
                 }
             }
+            record.receiverOffset().acknowledge();
+            return Mono.empty();
         } catch (Exception e) {
-            log.error("Error processing record in PaymentKafkaConsumer: ", e);
+            log.error("Failed to process payment kafka event: ", e);
+            record.receiverOffset().acknowledge();
+            return Mono.empty();
         }
-        record.receiverOffset().acknowledge();
-        return Mono.empty();
     }
 }

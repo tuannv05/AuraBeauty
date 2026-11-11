@@ -3,7 +3,7 @@
 
 > **Cương vị:** Principal Enterprise Software Architect & Agile Project Manager  
 > **Phiên bản tài liệu:** v1.0.0 — Production-Ready Agile Blueprint  
-> **Quy mô dự án:** Hệ thống phân tán Reactive Microservices (7 Services Spring Boot 3 WebFlux, AI RAG pgvector, 154+ Sản phẩm thực tế & Frontend React 18 + Vite)  
+> **Quy mô dự án:** Hệ thống phân tán Reactive Microservices (7 Services Quarkus 3.15 Mutiny Reactive, AI RAG pgvector, 154+ Sản phẩm thực tế & Frontend React 18 + Vite)  
 > **Thời gian triển khai:** 4 Tuần (28 Ngày làm việc liên tục)  
 > **Đội ngũ nòng cốt (Core Engineering Team):** 03 Kỹ sư phần mềm  
 
@@ -44,7 +44,7 @@ Nhằm bảo đảm không xảy ra xung đột mã nguồn (merge conflict) và
 | Thành viên & Mã SV | Vị trí chủ nhiệm | Phạm vi dịch vụ & Hạ tầng | Công nghệ & Tiêu chuẩn phụ trách |
 | :--- | :--- | :--- | :--- |
 | **Nguyễn Văn Tuấn**<br>*(MSV: 2023603018)* | **Team Lead, Core Backend, Infra & Quality Architect** | - `infra/docker/` (PostgreSQL 16, MongoDB 7, Kafka 3.8, Kafka UI)<br>- Thư viện dùng chung `libs/`<br>- `services/api-gateway` (Port 8080)<br>- `services/account-service` (Port 8081)<br>- `services/inventory-service` (Port 8084) | - Kiến trúc Hexagonal Architecture & ArchUnit<br>- R2DBC Reactive PostgreSQL<br>- Kiểm thử BlockHound chống blocking call<br>- Cơ chế khóa lạc quan / CAS Atomic Reservation<br>- Quản lý lô hạn sử dụng FEFO<br>- k6 Load Testing & Chaos Saga Testing |
-| **Nguyễn Viết Khánh**<br>*(MSV: 2023601808)* | **Catalog, Distributed Saga Order/Payment & AI Data Engineer** | - `ai/cosmetics-crawler/`<br>- `services/catalog-service` (Port 8082)<br>- `services/order-service` (Port 8083)<br>- `services/payment-service` (Port 8085)<br>- `services/ai-advisor-service` (Port 8086) | - Spring Data MongoDB Reactive<br>- 8 Phân hệ lọc Facet Search & Quản lý Biến thể<br>- Bóc tách 45+ hoạt chất INCI & 8 Safety Badges<br>- Thuật toán Split Order tách đơn đa shop<br>- Transactional Outbox Pattern & Kafka Eventing<br>- Saga Choreography & Bù trừ giao dịch<br>- Sổ cái kép Double-Entry Ledger (10%/90%)<br>- RAG với pgvector (384-d Cosine HNSW) & SSE Stream |
+| **Nguyễn Viết Khánh**<br>*(MSV: 2023601808)* | **Catalog, Distributed Saga Order/Payment & AI Data Engineer** | - `ai/cosmetics-crawler/`<br>- `backend/catalog-service` (Port 8082)<br>- `backend/order-service` (Port 8084)<br>- `backend/payment-service` (Port 8085)<br>- `backend/ai-advisor-service` (Port 8086) | - Quarkus Panache MongoDB Reactive<br>- 8 Phân hệ lọc Facet Search & Quản lý Biến thể<br>- Bóc tách 45+ hoạt chất INCI & 8 Safety Badges<br>- Thuật toán Split Order tách đơn đa shop<br>- Transactional Outbox Pattern & Kafka Eventing<br>- Saga Choreography & Bù trừ giao dịch<br>- Sổ cái kép Double-Entry Ledger (10%/90%)<br>- RAG với pgvector (384-d Cosine HNSW) & SSE Stream |
 | **Nguyễn Văn Tuấn Anh**<br>*(MSV: 2023601651)* | **Frontend UI/UX Architect, 3D AR Virtual Try-On & Multi-Zone Lead** | - Toàn bộ mã nguồn `frontend/` (Port 3000)<br>- **Buyer Zone:** Mega Menu 51 sub-menus, PDP, Bộ chọn biến thể chuẩn Shopee Mall, Giỏ hàng, Checkout<br>- **5 Công cụ Beauty-Tech:** AR 3D, Skin Scanner, Quiz, Routine 28 ngày, Beauty Pass<br>- **Seller Zone:** 9 phân hệ điều hành gian hàng<br>- **Admin Zone:** 9 phân hệ quản trị sàn<br>- **Footer:** 4 cột 15 liên kết điều hướng | - React 18, Vite 5, Tailwind CSS, Lucide Icons<br>- Bộ component hiệu ứng Animate UI<br>- `@mediapipe/tasks-vision` nhận diện 478 mốc 3D<br>- Canvas PBR Realistic Shading (Son môi & Phấn má 60 FPS)<br>- `submenuCatalogMapper` chống 100% màn hình trắng<br>- Client Error Boundary & Graceful Degradation |
 
 ### 2. Ma trận phối hợp RACI (Responsible - Accountable - Consulted - Informed)
@@ -82,7 +82,7 @@ Nhằm bảo đảm không xảy ra xung đột mã nguồn (merge conflict) và
 #### Ngày 1: Thiết lập hạ tầng Docker, Clean Root & Multi-module Maven
 - **Nguyễn Văn Tuấn:**
   - Khởi tạo Git repository, cấu hình `.gitignore` và thiết lập kỷ luật Clean Root (không sinh file rác ở root).
-  - Soạn thảo `pom.xml` cha quản lý phiên bản tập trung (Java 21, Spring Boot 3.3.4, Spring Cloud 2023.0.3, R2DBC, Project Reactor).
+  - Soạn thảo `pom.xml` cha quản lý phiên bản tập trung (Java 21/22, Quarkus 3.15.1 LTS, Mutiny Reactive, Quarkus Reactive PgPool & Panache MongoDB).
   - Khởi tạo `infra/docker/docker-compose.yml` định nghĩa 4 dịch vụ cốt lõi: PostgreSQL 16 (pgvector), MongoDB 7, Kafka 3.8 (KRaft mode) và Kafka UI (Port 8090).
   - *Verify:* `docker compose -f infra/docker/docker-compose.yml up -d` khởi chạy thành công; truy cập Kafka UI tại `http://localhost:8090`.
 - **Nguyễn Viết Khánh:**
@@ -117,10 +117,10 @@ Nhằm bảo đảm không xảy ra xung đột mã nguồn (merge conflict) và
 
 #### Ngày 3: Triển khai API Gateway & Account Service (Hexagonal + ArchUnit)
 - **Nguyễn Văn Tuấn:**
-  - Xây dựng `services/api-gateway` (Port 8080) bằng Spring Cloud Gateway WebFlux: định tuyến động đến các microservices, cấu hình CORS tập trung, lọc xác thực JWT Header.
-  - Xây dựng `services/account-service` (Port 8081) tuân thủ nghiêm ngặt **Hexagonal Architecture** (phân tách rõ 3 tầng: `domain`, `application/port`, `adapter/in/web`, `adapter/out/r2dbc`).
+  - Xây dựng `backend/api-gateway` (Port 8080) bằng Quarkus Vert.x Reverse Proxy: định tuyến động đến các microservices, cấu hình CORS tập trung, lọc xác thực JWT Header.
+  - Xây dựng `backend/account-service` (Port 8081) tuân thủ nghiêm ngặt **Hexagonal Architecture** (phân tách rõ 3 tầng: `domain`, `application/port`, `adapter/in/web`, `adapter/out/persistence` với Quarkus Reactive PgPool).
   - Thiết lập kiểm thử kiến trúc tự động bằng **ArchUnit** (`HexagonalArchitectureTest`) để ngăn chặn việc rò rỉ phụ thuộc tầng hạ tầng vào tầng nghiệp vụ cốt lõi.
-  - *Verify:* `mvn test -pl services/account-service -Dtest=HexagonalArchitectureTest` PASS; không có vi phạm ranh giới kiến trúc.
+  - *Verify:* `mvn test -pl backend/account-service -Dtest=HexagonalArchitectureTest` PASS; không có vi phạm ranh giới kiến trúc.
 - **Nguyễn Viết Khánh:**
   - Hỗ trợ xây dựng các bảng cơ sở dữ liệu `users`, `roles`, `shops`, `skin_profiles` trong `account_db` qua tệp `schema.sql`.
   - Định nghĩa thực thể `SkinProfile` (phân loại da: Dầu, Khô, Hỗn hợp, Nhạy cảm; mức độ mụn; độ nhạy cảm thành phần).
@@ -132,7 +132,7 @@ Nhằm bảo đảm không xảy ra xung đột mã nguồn (merge conflict) và
 
 #### Ngày 4: Xây dựng Catalog Service (Reactive MongoDB & Domain 100% Pure Java)
 - **Nguyễn Viết Khánh:**
-  - Xây dựng `services/catalog-service` (Port 8082) với kiến trúc Hexagonal: sử dụng Spring Data MongoDB Reactive.
+  - Xây dựng `backend/catalog-service` (Port 8082) với kiến trúc Hexagonal: sử dụng Quarkus Panache MongoDB Reactive.
   - Lập trình mô hình Domain thuần Java 21: `Product`, `Category`, `Brand`, `InciIngredient`, `ProductVariant`.
   - Xây dựng công cụ phân tích an toàn thành phần (INCI Engine): tính toán chỉ số bít tắc lỗ chân lông (`comedogenicRating`), mức độ kích ứng da liễu (`irritationLevel`) và tự động gán 8 loại nhãn an toàn (`safetyBadges`: Thuần chay, Không cồn, Không paraben, An toàn bà bầu...).
   - *Verify:* Viết unit test cho thuật toán phân loại thành phần INCI, đảm bảo tính toán chính xác 100%.
@@ -324,7 +324,7 @@ Nhằm bảo đảm không xảy ra xung đột mã nguồn (merge conflict) và
 
 #### Ngày 15: Xây dựng AI Advisor Service với Cơ Sở Dữ Liệu Vector (pgvector)
 - **Nguyễn Viết Khánh:**
-  - Xây dựng `services/ai-advisor-service` (Port 8086) với Spring Boot 3 WebFlux và R2DBC kết nối PostgreSQL mở rộng `pgvector`.
+  - Xây dựng `backend/ai-advisor-service` (Port 8086) với Quarkus Mutiny Reactive và Reactive PgPool kết nối PostgreSQL mở rộng `pgvector`.
   - Thiết lập bảng `inci_embeddings` và `product_embeddings` lưu trữ vector đặc trưng 384 chiều của các thành phần mỹ phẩm và tài liệu hướng dẫn chăm sóc da.
   - Cấu hình chỉ mục vector **HNSW (Hierarchical Navigable Small World)** với khoảng cách Cosine Similarity để tối ưu hóa tốc độ truy vấn tương đồng ngữ nghĩa.
   - *Verify:* Thực thi truy vấn thử nghiệm vector lân cận `ORDER BY embedding <=> query_vector LIMIT 5`, thời gian tìm kiếm $< 15\text{ms}$.
@@ -483,7 +483,7 @@ Nhằm bảo đảm không xảy ra xung đột mã nguồn (merge conflict) và
   - *Verify:* Kiểm tra báo cáo Chaos Test: Tính nhất quán cuối cùng (Eventual Consistency) đạt 100%.
 - **Nguyễn Văn Tuấn:**
   - Cấu hình hệ thống giám sát thời gian thực **Observability**:
-    - Kích hoạt Spring Boot Actuator (`/actuator/health`, `/actuator/metrics`, `/actuator/prometheus`) trên tất cả 7 dịch vụ.
+    - Kích hoạt SmallRye Health (`/q/health`, `/q/health/live`, `/q/health/ready`) trên tất cả 7 dịch vụ Quarkus.
     - Cấu hình Kafka UI giám sát Consumer Group Lag và phân bổ phân vùng (Partition Distribution).
   - *Verify:* Truy cập endpoint sức khỏe của cả 7 services đều trả về trạng thái `{"status": "UP"}`.
 
@@ -565,7 +565,7 @@ Hệ thống tài liệu minh chứng được thiết lập làm bằng chứng
 | :---: | :--- | :--- | :--- |
 | **W1** | Khởi tạo DDD, Hạ tầng & Backlog | Docker Compose, 4 ADR, Domain Model, Git repo | Nguyễn Văn Tuấn |
 | **W2** | Hexagonal Architecture & Account | 3 Thư viện libs, JWT Auth, RBAC, ArchUnit Test | Nguyễn Văn Tuấn |
-| **W3** | Catalog Service, INCI & MongoDB | Spring Data MongoDB Reactive, 45 INCI, 8 Facets | Nguyễn Viết Khánh |
+| **W3** | Catalog Service, INCI & MongoDB | Quarkus Panache MongoDB Reactive, 45 INCI, 8 Facets | Nguyễn Viết Khánh |
 | **W4** | Quy trình Shop Mall & Duyệt CBMP | Đăng ký gian hàng, kiểm định Số công bố CBMP | Nguyễn Văn Tuấn |
 | **W5** | Inventory CAS & Lô Hạn Dùng FEFO | Giữ kho CAS, AtomicStockConcurrencyTest | Nguyễn Văn Tuấn |
 | **W6** | Multi-Vendor Cart & Price Snapshot | Giỏ hàng gom nhóm Shop, chốt giá catalog | Nguyễn Viết Khánh |

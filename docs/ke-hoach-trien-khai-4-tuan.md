@@ -19,13 +19,13 @@
 
 | Thành phần | Cổng | Cơ sở dữ liệu | Công nghệ và vai trò | Phụ trách |
 | :--- | :---: | :--- | :--- | :--- |
-| **api-gateway** | `8080` | Không dùng DB | Spring Cloud Gateway Reactive: định tuyến, CORS, bộ lọc JWT, SSE | Nguyễn Văn Tuấn |
-| **account-service** | `8081` | PostgreSQL (`account_db`) | WebFlux, Spring Security, R2DBC: JWT, RBAC, SkinProfile, duyệt Shop | Nguyễn Văn Tuấn |
-| **catalog-service** | `8082` | MongoDB (`catalog_db`) | MongoDB Reactive: sản phẩm, INCI, CBMP, 8 nhóm Facet Search | Nguyễn Viết Khánh |
-| **order-service** | `8084` | PostgreSQL (`order_db`) | R2DBC, Reactor Kafka: giỏ hàng đa Shop, Split Order, Outbox Relay | Nguyễn Viết Khánh |
-| **inventory-service** | `8083` | PostgreSQL (`inventory_db`) | Giữ kho nguyên tử CAS, quản lý lô và hạn dùng FEFO | Nguyễn Văn Tuấn |
-| **payment-service** | `8085` | PostgreSQL (`payment_db`) | Saga Choreography, Escrow, Sổ cái kép 10%/90% | Nguyễn Viết Khánh |
-| **ai-advisor-service**| `8086` | PostgreSQL + pgvector (`ai_db`) | RAG tư vấn INCI và màu son qua Server-Sent Events (SSE) | Nguyễn Viết Khánh |
+| **api-gateway** | `8080` | Không dùng DB | Quarkus Vert.x Reverse Proxy: định tuyến, CORS, bộ lọc JWT, SSE | Nguyễn Văn Tuấn |
+| **account-service** | `8081` | PostgreSQL (`account_db`) | Quarkus Reactive PgPool, Mutiny: JWT, RBAC, SkinProfile, duyệt Shop | Nguyễn Văn Tuấn |
+| **catalog-service** | `8082` | MongoDB (`catalog_db`) | Quarkus Panache MongoDB: sản phẩm, INCI, CBMP, 8 nhóm Facet Search | Nguyễn Viết Khánh |
+| **inventory-service** | `8083` | PostgreSQL (`inventory_db`) | Quarkus Reactive PgPool: Giữ kho nguyên tử CAS, quản lý lô và hạn dùng FEFO | Nguyễn Văn Tuấn |
+| **order-service** | `8084` | PostgreSQL (`order_db`) | Quarkus Reactive PgPool, Kafka: giỏ hàng đa Shop, Split Order, Outbox Relay | Nguyễn Viết Khánh |
+| **payment-service** | `8085` | PostgreSQL (`payment_db`) | Quarkus Reactive PgPool, Kafka: Saga Choreography, Escrow, Sổ cái kép 10%/90% | Nguyễn Viết Khánh |
+| **ai-advisor-service**| `8086` | PostgreSQL + pgvector (`ai_db`) | Quarkus Reactive PgPool: RAG tư vấn INCI và màu son qua Server-Sent Events (SSE) | Nguyễn Viết Khánh |
 | **frontend** | `3000` | Không dùng DB | React 18, Vite 5, Tailwind CSS, Framer Motion: Buyer, Seller, Admin Zone | Nguyễn Văn Tuấn Anh |
 
 ---
@@ -84,7 +84,7 @@ Sàn thương mại điện tử mỹ phẩm đa người bán cho phép nhiều
 | **UC08** | Quản lý kho và lô hàng; xử lý Sub-order | Seller | `inventory-service`, `order-service` |
 | **UC09** | Duyệt Shop và sản phẩm | Admin | `account-service`, `catalog-service` |
 | **UC10** | Kiểm toán Sổ cái, xử lý tranh chấp | Admin | `payment-service` |
-| **UC11** | Giám sát cụm microservices | Admin, Staff | `api-gateway`, Spring Actuator |
+| **UC11** | Giám sát cụm microservices | Admin, Staff | `api-gateway`, SmallRye Health |
 
 ### 6. Đặc tả Use Case tiêu biểu (UC04 – Đặt hàng Split Order)
 | Thuộc tính | Nội dung chi tiết |
@@ -96,7 +96,7 @@ Sàn thương mại điện tử mỹ phẩm đa người bán cho phép nhiều
 | **Hậu điều kiện** | Tồn kho không âm; Tổng Nợ bằng Tổng Có; mỗi Sub-order thuộc đúng một Shop |
 
 ### 7. Thiết kế kiến trúc
-Luồng tổng thể: React SPA (cổng 3000) gọi REST và nhận SSE qua `api-gateway` (8080); gateway xác thực JWT rồi chuyển tới 6 service (Spring Boot 3 WebFlux), mỗi service một CSDL riêng; các service giao tiếp bất đồng bộ qua Apache Kafka 3.8.
+Luồng tổng thể: React SPA (cổng 3000) gọi REST và nhận SSE qua `api-gateway` (8080); gateway xác thực JWT rồi chuyển tới 6 service (Quarkus 3.15 Mutiny Reactive), mỗi service một CSDL riêng; các service giao tiếp bất đồng bộ qua Apache Kafka 3.8.
 - **Hexagonal Architecture:** Phân tách rõ `Domain` (Java 21 thuần) $\leftarrow$ `Application/Port` $\leftarrow$ `Adapter` (In/Out).
 - **Saga Choreography:** Điều phối phân tán sự kiện qua Kafka Broker với cơ chế bù trừ tự động.
 - **Transactional Outbox:** Đảm bảo tính nhất quán tuyệt đối giữa ghi cơ sở dữ liệu và phát sự kiện Kafka.

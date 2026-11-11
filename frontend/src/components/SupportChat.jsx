@@ -25,9 +25,42 @@ function formatPrice(number) {
   return number.toLocaleString('vi-VN') + ' ₫';
 }
 
+export function cleanChatText(text) {
+  if (!text) return '';
+  return text
+    // 1. Common LaTeX arrow symbols with or without $ and backslashes
+    .replace(/\\?\$?\\rightarrow\$?/g, ' → ')
+    .replace(/\\?\$?\\Rightarrow\$?/g, ' ⇒ ')
+    .replace(/\\?\$?\\to\$?/g, ' → ')
+    .replace(/\\?\$?\\leftarrow\$?/g, ' ← ')
+    .replace(/\\?\$?\\leftrightarrow\$?/g, ' ↔ ')
+    // 2. Math comparison and operator symbols
+    .replace(/\\?\$?\\approx\$?/g, ' ≈ ')
+    .replace(/\\?\$?\\le\$?/g, ' ≤ ')
+    .replace(/\\?\$?\\ge\$?/g, ' ≥ ')
+    .replace(/\\?\$?\\pm\$?/g, ' ± ')
+    .replace(/\\?\$?\\times\$?/g, ' × ')
+    .replace(/\\?\$?\\cdot\$?/g, ' · ')
+    // 3. Remove inline LaTeX math markers $...$ around words or expressions
+    .replace(/\$([^\$]+)\$/g, (_, inner) => {
+      return inner
+        .replace(/\\circ/g, '°')
+        .replace(/\\degree/g, '°')
+        .replace(/\^\{?\\circ\}?/g, '°')
+        .replace(/\\rightarrow/g, ' → ')
+        .replace(/\\/g, '');
+    })
+    // 4. Strip stray dollar signs
+    .replace(/\$/g, '')
+    // 5. Clean up multiple spaces around arrows
+    .replace(/\s{2,}→/g, ' →')
+    .replace(/→\s{2,}/g, '→ ');
+}
+
 function formatMessageContent(rawText, isAi) {
   if (!rawText) return null;
-  const lines = rawText.split('\n');
+  const cleanedText = cleanChatText(rawText);
+  const lines = cleanedText.split('\n');
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', wordBreak: 'break-word' }}>

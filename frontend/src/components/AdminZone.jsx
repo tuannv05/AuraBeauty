@@ -8,6 +8,8 @@ import {
   RefreshCw, BarChart2, ShieldAlert, Sparkles, Sliders,
   Activity, Server, Home
 } from 'lucide-react';
+import { AdminGraphifyExplorer } from '../features/graphify';
+import { crossZoneSync } from '../lib/crossZoneSync';
 
 export default function AdminZone({ onNavigateHome, activeTab: propTab, onTabChange }) {
   const [internalTab, setInternalTab] = useState('merchants'); 
@@ -118,41 +120,34 @@ export default function AdminZone({ onNavigateHome, activeTab: propTab, onTabCha
   // =========================================================================
   // 5. TRỌNG TÀI PHÂN XỬ TRANH CHẤP / ĐỔI TRẢ (Dispute Resolution Center)
   // =========================================================================
-  const [disputes, setDisputes] = useState([
-    {
-      disputeId: 'DISP-9901',
-      orderId: 'ORD-882109',
-      buyerEmail: 'lan.anh@gmail.com',
-      shopName: 'Innisfree Official Store',
-      reason: 'Hàng bị vỡ hộp serum khi giao tới, khách chụp ảnh dung dịch chảy ra hộp carton',
-      evidenceMedia: 'Ảnh chụp kiện hàng móp méo + Lọ vỡ nắp',
-      amount: 480000,
-      status: 'UNDER_REVIEW' // 'UNDER_REVIEW' | 'REFUNDED_TO_BUYER' | 'SETTLED_TO_SELLER'
-    },
-    {
-      disputeId: 'DISP-9902',
-      orderId: 'ORD-881234',
-      buyerEmail: 'ngoc.mai@yahoo.com',
-      shopName: 'Cosrx Vietnam',
-      reason: 'Khách khiếu nại dùng bị đỏ rát da sau 1 lần thoa',
-      evidenceMedia: 'Ảnh dị ứng mẩn đỏ vùng má',
-      amount: 320000,
-      status: 'UNDER_REVIEW'
-    }
-  ]);
+  const [disputes, setDisputes] = useState(() => crossZoneSync.getDisputes());
 
   // =========================================================================
   // 6. QUẢN LÝ TÀI CHÍNH, SỔ CÁI & ĐỐI SOÁT (Double-Entry Ledger & Escrow)
   // =========================================================================
-  const [platformFinance, setPlatformFinance] = useState({
-    commissionRate: 10, // 10%
-    escrowHolding: 245800000, // 245.8 triệu tiền khách thanh toán đang giữ trong Escrow
-    totalRevenueAccumulated: 89400000, // Doanh thu phí hoa hồng sàn
-    pendingWithdrawRequests: [
-      { id: 'WDR-1', shopName: 'Innisfree Official Store', amount: 40000000, bank: 'Techcombank - 1903456789001', status: 'PENDING' },
-      { id: 'WDR-2', shopName: 'Anua Official Heartleaf Store', amount: 25000000, bank: 'Vietcombank - 0071001234567', status: 'PENDING' }
-    ]
+  const [platformFinance, setPlatformFinance] = useState(() => {
+    const fin = crossZoneSync.getFinance();
+    return {
+      commissionRate: 10,
+      escrowHolding: fin.escrowHolding || 245800000,
+      totalRevenueAccumulated: fin.totalRevenueAccumulated || 89400000,
+      pendingWithdrawRequests: fin.pendingWithdrawRequests || []
+    };
   });
+
+  // Cross-zone reactive synchronization
+  React.useEffect(() => {
+    return crossZoneSync.subscribe(() => {
+      setDisputes(crossZoneSync.getDisputes());
+      const fin = crossZoneSync.getFinance();
+      setPlatformFinance(prev => ({
+        ...prev,
+        escrowHolding: fin.escrowHolding,
+        totalRevenueAccumulated: fin.totalRevenueAccumulated,
+        pendingWithdrawRequests: fin.pendingWithdrawRequests || []
+      }));
+    });
+  }, []);
 
   const ledgerRecords = [
     { id: 'L-101', type: 'ESCROW_COLLECTION', debit: 620000, credit: 0, account: 'CASH_CLEARING', note: 'Thu tiền khách hàng qua cổng VNPAY đơn ORD-882341' },
@@ -228,6 +223,7 @@ export default function AdminZone({ onNavigateHome, activeTab: propTab, onTabCha
   };
 
   const handleResolveDispute = (disputeId, decision) => {
+    crossZoneSync.resolveDispute(disputeId, decision);
     setDisputes(disputes.map(d => d.disputeId === disputeId ? { ...d, status: decision } : d));
     if (decision === 'REFUNDED_TO_BUYER') {
       alert(`Phán quyết trọng tài: ĐỒNG Ý HOÀN TIỀN cho người mua từ tài khoản ký quỹ Escrow.`);
@@ -237,6 +233,7 @@ export default function AdminZone({ onNavigateHome, activeTab: propTab, onTabCha
   };
 
   const handleApproveWithdrawal = (wdrId) => {
+    crossZoneSync.approveWithdrawal(wdrId);
     setPlatformFinance({
       ...platformFinance,
       pendingWithdrawRequests: platformFinance.pendingWithdrawRequests.filter(w => w.id !== wdrId)
@@ -873,6 +870,9 @@ export default function AdminZone({ onNavigateHome, activeTab: propTab, onTabCha
             ========================================================================= */}
         {activeTab === 'antifraud' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {/* Graphify Anti-Fraud Ring Graph */}
+            <AdminGraphifyExplorer initialTab="antifraud" />
+
             <div style={{ background: '#ffffff', borderRadius: '16px', border: '1px solid #e2e8f0', padding: '24px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                 <div>
@@ -930,6 +930,9 @@ export default function AdminZone({ onNavigateHome, activeTab: propTab, onTabCha
             ========================================================================= */}
         {activeTab === 'system' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {/* Graphify Microservices Topology Graph */}
+            <AdminGraphifyExplorer initialTab="topology" />
+
             <div style={{ background: '#ffffff', borderRadius: '16px', border: '1px solid #e2e8f0', padding: '24px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                 <div>

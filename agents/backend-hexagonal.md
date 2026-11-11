@@ -1,9 +1,9 @@
 # MINI-RULE: BACKEND HEXAGONAL ARCHITECTURE
-> **Phạm vi:** `/backend/` | Java 21 | Spring Boot 3 WebFlux Reactive
+> **Phạm vi:** `/backend/` | Java 21/22 | Quarkus 3.15 Mutiny Reactive
 
 ## 1. NGUYÊN TẮC CỐT LÕI
-- Tách biệt 3 tầng: `domain` (thuần Java, không phụ thuộc framework), `application/port` (Input/Output ports), `adapter` (Web in, R2DBC/MongoDB out).
-- 100% Non-Blocking Reactive: Không dùng JDBC blocking call làm nghẽn Netty EventLoop.
+- Tách biệt 3 tầng: `domain` (thuần Java, không phụ thuộc framework), `application/port` (Input/Output ports), `adapter` (REST in, Quarkus Reactive PgPool / Panache MongoDB out).
+- 100% Non-Blocking Reactive: Không dùng blocking call làm nghẽn Vert.x EventLoop.
 - Giữ kho nguyên tử CAS: Kiểm soát tồn kho không âm `(on_hand - reserved) >= quantity`.
 - Quản lý lô hạn dùng: Ưu tiên xuất kho theo FEFO (First-Expired, First-Out).
 

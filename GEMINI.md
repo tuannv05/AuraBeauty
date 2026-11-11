@@ -16,7 +16,7 @@
      - `docs/modules/`: Tài liệu theo tính năng, hồ sơ sửa lỗi (`docs/modules/bugs/<slug>/`) và đánh giá ý tưởng (`docs/modules/assessments/<slug>/`).
      - `docs/evidence/`: Toàn bộ minh chứng 14 tuần (`week-1` -> `week-14`).
    - `frontend/`: Giao diện React 18 + Vite 5 (Port 3000), Tailwind CSS, Animate UI, AR Virtual Try-On (@mediapipe 478 điểm 3D + Canvas/WebGL 60 FPS), Variant Selector chuẩn Shopee Mall, Browser History Sync.
-   - `backend/` (hoặc `services/`): 7 Microservices Spring Boot 3 WebFlux Reactive (Port 8080-8086) và các thư viện dùng chung (common-web, common-events, common-outbox).
+   - `backend/` (hoặc `services/`): 7 Microservices Quarkus 3.15 Mutiny Reactive (Port 8080-8086) và các thư viện dùng chung (common-web, common-events, common-outbox).
    - `infra/`: Hạ tầng Docker Compose (`infra/docker/docker-compose.yml`), DB init, script vận hành, k6 test.
    - `ai/`: Cosmetics Crawler, INCI dataset, Prompts, RAG embeddings.
    - `agents/`: Các mini-rules chuyên sâu cho từng phân hệ (`backend-hexagonal.md`, `frontend.md`, `ledger.md`, `saga-outbox.md`, `ai-rag.md`, `windows-safety.md`).
@@ -41,7 +41,7 @@
 
 ## 4. QUY TRÌNH 5 BƯỚC CHỐNG BỊA ĐẶT & 4 NGUYÊN TẮC KỸ THUẬT CỐT LÕI
 1. **Bước 1 - Học dự án âm thầm (Silent Project Learning) & Think Before Coding:**
-   - Quét từ nhẹ đến nặng: `AGENTS.md`, `GEMINI.md`, `docs/README.md`, `agents/` $\rightarrow$ Data Models (R2DBC, MongoDB Document `ProductDocument`, `VtoConfig`) $\rightarrow$ RBAC (`ROLE_ADMIN`, `STAFF_AUDITOR`, `STAFF_ACCOUNTANT`, Buyer/Seller) $\rightarrow$ API & cơ chế nền (SSE, Kafka Outbox, Saga).
+   - Quét từ nhẹ đến nặng: `AGENTS.md`, `GEMINI.md`, `docs/README.md`, `agents/` $\rightarrow$ Data Models (Quarkus Reactive PgPool / Panache MongoDB, MongoDB Document `ProductDocument`, `VtoConfig`) $\rightarrow$ RBAC (`ROLE_ADMIN`, `STAFF_AUDITOR`, `STAFF_ACCOUNTANT`, Buyer/Seller) $\rightarrow$ API & cơ chế nền (SSE, Kafka Outbox, Saga).
    - Nắm vững: Glossary (Từ điển thuật ngữ), Roles (Bảng vai trò), và Danh sách tính năng Đã có vs Mới.
 2. **Bước 2 - Gap Check (Kiểm tra lỗ hổng & Hỏi lại):**
    - Yêu cầu chỉ đủ điều kiện thực thi khi rõ: (1) Actor (Ai làm), (2) Trigger (Khi nào bắt đầu), (3) Outcome (Kết quả là gì), Quyền hạn và Luồng lỗi.
@@ -50,7 +50,7 @@
    - Không viết code khi đang phân tích. Tối giản mã nguồn, giải quyết đúng phạm vi, triệt tiêu over-engineering.
 4. **Bước 4 - Thực thi phẫu thuật sạch sẽ (Surgical Changes & Clean Execution):**
    - **Clean diff tuyệt đối:** Chỉ chỉnh sửa đúng vị trí cần can thiệp, không reformat toàn file, không đổi naming/style, không xóa code không liên quan.
-   - **Bảo vệ chốt chặn Backend:** Package `domain` thuần Java 21 100% (pass `HexagonalArchitectureTest` qua ArchUnit), 100% Non-blocking (pass `BlockHound`), giữ kho nguyên tử **CAS (`AtomicStockConcurrencyTest`)**, **Split Order**, và **Sổ cái kép (Double-Entry Ledger: Debit = Credit, 10% hoa hồng sàn / 90% Seller)**.
+   - **Bảo vệ chốt chặn Backend:** Package `domain` thuần Java 21/22 100% (pass `HexagonalArchitectureTest` qua ArchUnit), 100% Non-blocking (Mutiny Reactive), giữ kho nguyên tử **CAS (`AtomicStockConcurrencyTest`)**, **Split Order**, và **Sổ cái kép (Double-Entry Ledger: Debit = Credit, 10% hoa hồng sàn / 90% Seller)**.
    - **Bảo vệ chốt chặn Frontend:** Cam kết **0% màn hình trắng (Zero Blank-Screen)** trên toàn bộ 51 Sub-menu, 9 phân hệ Seller, 9 phân hệ Admin, 15 liên kết Footer. Đủ **4 trạng thái (Loading, Empty, Error, Data)**, nút API chống double-submit (`disabled` + spinner), xóa/hủy bắt buộc có Confirm Modal.
 5. **Bước 5 - Kiểm chứng & Báo cáo ngắn gọn (Goal-Driven Execution & Concise Reply):**
    - Chu trình: `[Bước thực hiện] -> Verify: [Tiêu chí kiểm chứng]`.
@@ -65,11 +65,11 @@
 - **`/speckit-specify [mô tả tính năng]`** (kết hợp `/business-flow`):
   - Chạy *Silent Project Learning* & *Gap Check* (hỏi $\le 5$ câu nếu chưa rõ Actor/Trigger/Outcome).
   - Xuất đặc tả `docs/flows/QT-<nn>-<slug>.md` (và `.specify/specs/<slug>/spec.md`) đủ 12 luật `/business-flow`: Bảng luồng chính, tối thiểu 3 luồng lỗi (E1-Không quyền, E2-Không tìm thấy, E3-Không hợp lệ), sơ đồ Mermaid (`flowchart TD`, `stateDiagram-v2` ID ASCII), tiêu chí nghiệm thu Cho/Khi/Thì, đối chiếu tính năng cũ, trích dẫn `path:line` thực tế.
-- **`/speckit-plan [ràng buộc công nghệ]`**: Lập thiết kế kỹ thuật `docs/flows/<slug>-plan.md` (hoặc `.specify/specs/<slug>/plan.md`), xác định danh sách file can thiệp phẫu thuật, API, Schema R2DBC/MongoDB, sự kiện Kafka/SSE và trade-offs.
+- **`/speckit-plan [ràng buộc công nghệ]`**: Lập thiết kế kỹ thuật `docs/flows/<slug>-plan.md` (hoặc `.specify/specs/<slug>/plan.md`), xác định danh sách file can thiệp phẫu thuật, API, Schema PostgreSQL/MongoDB, sự kiện Kafka/SSE và trade-offs.
 - **`/speckit-tasks`**: Chia nhỏ `plan.md` thành danh sách công việc tuần tự trong `tasks.md`, mỗi task kèm lệnh `Verify: [Lệnh cụ thể]`.
 - **`/speckit-implement`**: Viết code tuần tự theo `tasks.md` theo nguyên tắc *Simplicity First* & *Surgical Changes*, đủ 4 trạng thái UI, giữ Clean Root.
 - **`/speckit-converge`**: Chạy bộ kiểm thử tự động toàn diện đối chiếu code thực tế với `spec.md`:
-  - Backend: `mvn clean test-compile`, `mvn test -pl services/account-service,services/catalog-service -Dtest=HexagonalArchitectureTest`, `mvn test -pl services/inventory-service -Dtest=AtomicStockConcurrencyTest`.
+  - Backend: `mvn clean test-compile`, `mvn test -pl backend/account-service,backend/catalog-service -Dtest=HexagonalArchitectureTest`, `mvn test -pl backend/inventory-service -Dtest=AtomicStockConcurrencyTest`.
   - Frontend: `npm --prefix frontend run build`.
   - Clean Root: Kiểm tra root chỉ có file trong whitelist.
   - Xuất báo cáo hội tụ: **`Converged`** (đạt 100%) hoặc chỉ rõ điểm lệch cần chạy lại `/speckit-implement`.
@@ -105,6 +105,6 @@
    - Tiền: `DECIMAL`/`NUMERIC` hoặc số nguyên đơn vị nhỏ nhất, CẤM `FLOAT`.
    - Thời gian: UTC kèm múi giờ (`TIMESTAMPTZ`).
    - Idempotency cho Kafka Consumer, Outbox Relay, Webhook.
-   - 100% Non-blocking: R2DBC & MongoDB Reactive Streams, chặn blocking call bằng BlockHound.
+   - 100% Non-blocking: Quarkus Reactive PgPool & MongoDB Reactive Panache Streams, chặn blocking call trên Vert.x EventLoop.
    - Sổ cái kép Double-Entry Ledger: Invariant `Tổng Nợ (Debit) = Tổng Có (Credit)`, trích 10% hoa hồng sàn, 90% công nợ Seller.
    - Inventory: Giữ kho nguyên tử CAS (`(on_hand - reserved) >= N`), quản lý lô hạn dùng FEFO.

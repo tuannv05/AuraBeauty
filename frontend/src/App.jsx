@@ -205,7 +205,7 @@ export default function App() {
           onOpenTopBarModal={(k) => setActiveTopBarModal(k)}
           onNavigateFlashSale={() => navigateTo({ view: 'flash-sale' })}
           onNavigateAdmin={() => navigateTo({ view: 'admin', adminTab: 'merchants' })}
-          onNavigateSeller={() => navigateTo({ view: 'seller', sellerTab: 'overview' })}
+          onNavigateSeller={(tab) => navigateTo({ view: 'seller', sellerTab: typeof tab === 'string' ? tab : 'overview' })}
           user={currentUser}
         />
       )}
@@ -291,6 +291,7 @@ export default function App() {
                 activeTab={sellerTab}
                 onTabChange={(tab) => navigateTo({ view: 'seller', sellerTab: tab })}
                 onNavigateHome={() => navigateTo({ view: 'home' })}
+                onAddToast={addToast}
               />
             </div>
           ) : (
@@ -309,8 +310,15 @@ export default function App() {
                   <button onClick={() => navigateTo({ view: 'home' })} className="btn-pill-soft" style={{ fontSize: '13px', padding: '10px 22px' }}>
                     Về Trang Chủ Mua Sắm
                   </button>
-                  <button onClick={() => openModal('auth')} className="btn-pill-primary" style={{ fontSize: '13px', padding: '10px 22px' }}>
+                  <button onClick={() => openModal('auth')} className="btn-pill-soft" style={{ fontSize: '13px', padding: '10px 22px' }}>
                     Đăng Nhập Kênh Người Bán
+                  </button>
+                  <button
+                    onClick={() => handleLoginSuccess(USER_ROLES.SELLER)}
+                    className="btn-pill-primary"
+                    style={{ fontSize: '13px', padding: '10px 22px', background: 'linear-gradient(135deg, #ec4899, #f43f5e)', color: '#fff', border: 'none' }}
+                  >
+                    🚀 Xem Kênh Bán Sỉ & Pipeline Lumelle (Demo 1-Click)
                   </button>
                 </div>
               </div>

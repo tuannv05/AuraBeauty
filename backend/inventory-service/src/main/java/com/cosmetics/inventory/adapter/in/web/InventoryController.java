@@ -3,11 +3,14 @@ package com.cosmetics.inventory.adapter.in.web;
 import com.cosmetics.common.web.ApiResponse;
 import com.cosmetics.inventory.adapter.out.persistence.StockItemEntity;
 import com.cosmetics.inventory.application.InventoryService;
-import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Mono;
+import io.smallrye.mutiny.Uni;
+import io.smallrye.mutiny.converters.uni.UniReactorConverters;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 
-@RestController
-@RequestMapping("/api/inventory")
+@Path("/api/inventory")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class InventoryController {
     private final InventoryService inventoryService;
 
@@ -15,16 +18,20 @@ public class InventoryController {
         this.inventoryService = inventoryService;
     }
 
-    @GetMapping("/{skuCode}")
-    public Mono<ApiResponse<StockItemEntity>> getStock(@PathVariable String skuCode) {
-        return inventoryService.getStock(skuCode).map(ApiResponse::ok);
+    @GET
+    @Path("/{skuCode}")
+    public Uni<ApiResponse<StockItemEntity>> getStock(@PathParam("skuCode") String skuCode) {
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), inventoryService.getStock(skuCode))
+                .map(ApiResponse::ok);
     }
 
-    @PutMapping("/{skuCode}/stock")
-    public Mono<ApiResponse<StockItemEntity>> updateOnHand(
-            @PathVariable String skuCode,
-            @RequestParam int onHand
+    @PUT
+    @Path("/{skuCode}/stock")
+    public Uni<ApiResponse<StockItemEntity>> updateOnHand(
+            @PathParam("skuCode") String skuCode,
+            @QueryParam("onHand") int onHand
     ) {
-        return inventoryService.updateOnHand(skuCode, onHand).map(ApiResponse::ok);
+        return Uni.createFrom().converter(UniReactorConverters.fromMono(), inventoryService.updateOnHand(skuCode, onHand))
+                .map(ApiResponse::ok);
     }
 }

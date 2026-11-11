@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import {
   Search, Heart, ShoppingBag, User, Menu, X, ChevronRight, ChevronDown, ArrowLeft,
   Sparkles, Camera, Mic, Trash2, ArrowUpRight, Flame, ShieldCheck, Grid, Zap,
-  PhoneCall, MapPin, PackageCheck, Globe, BookOpen, Gift, Award, Home, Store
+  PhoneCall, MapPin, PackageCheck, Globe, BookOpen, Gift, Award, Home, Store, Building2
 } from 'lucide-react';
 import { MOCK_PRODUCTS } from '../api';
 import { searchCatalogProducts } from '../lib/searchEngine';
@@ -437,14 +437,24 @@ export default function Navbar({
             <span>Tra cứu đơn hàng</span>
           </div>
           {user?.role === 'SELLER' && (
-            <div
-              onClick={onNavigateSeller}
-              style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#60a5fa', fontWeight: 700, background: 'rgba(96, 165, 250, 0.15)', padding: '2px 8px', borderRadius: '4px' }}
-              title="Chuyển đến Kênh Người Bán"
-            >
-              <Store size={12} />
-              <span>Kênh Người Bán</span>
-            </div>
+            <>
+              <div
+                onClick={() => onNavigateSeller && onNavigateSeller('overview')}
+                style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#60a5fa', fontWeight: 700, background: 'rgba(96, 165, 250, 0.15)', padding: '2px 8px', borderRadius: '4px' }}
+                title="Chuyển đến Kênh Người Bán"
+              >
+                <Store size={12} />
+                <span>Kênh Người Bán</span>
+              </div>
+              <div
+                onClick={() => onNavigateSeller && onNavigateSeller('wholesale')}
+                style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', color: '#f43f5e', fontWeight: 700, background: 'rgba(244, 63, 94, 0.15)', padding: '2px 8px', borderRadius: '4px' }}
+                title="Chuyển đến Kênh Bán Sỉ & Pipeline Lumelle"
+              >
+                <Building2 size={12} />
+                <span>Bán Sỉ Lumelle</span>
+              </div>
+            </>
           )}
           {user?.role === 'ADMIN' && (
             <div
@@ -1022,6 +1032,7 @@ export default function Navbar({
                       </button>
                     )}
                     {user?.role === 'SELLER' && (
+                      <>
                       <button
                         onClick={() => { setIsAccountMenuOpen(false); if (onNavigateSeller) onNavigateSeller(); }}
                         style={{ padding: '8px 10px', fontSize: '13px', textAlign: 'left', border: 'none', background: '#eff6ff', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', color: '#1d4ed8', fontWeight: 700 }}
@@ -1030,6 +1041,15 @@ export default function Navbar({
                       >
                         <Store size={16} style={{ color: '#2563eb' }} /> Kênh Người Bán (Shop)
                       </button>
+                      <button
+                        onClick={() => { setIsAccountMenuOpen(false); if (onNavigateSeller) onNavigateSeller('wholesale'); }}
+                        style={{ padding: '8px 10px', fontSize: '13px', textAlign: 'left', border: 'none', background: '#fff1f2', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', color: '#e11d48', fontWeight: 700 }}
+                        onMouseEnter={(e) => (e.currentTarget.style.background = '#ffe4e6')}
+                        onMouseLeave={(e) => (e.currentTarget.style.background = '#fff1f2')}
+                      >
+                        <Building2 size={16} style={{ color: '#f43f5e' }} /> Kênh Bán Sỉ Lumelle (B2B)
+                      </button>
+                    </>
                     )}
                     <button
                       onClick={() => { setIsAccountMenuOpen(false); if (onNavigateHome) onNavigateHome(); }}

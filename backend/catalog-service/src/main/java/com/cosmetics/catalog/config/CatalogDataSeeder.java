@@ -7,12 +7,11 @@ import com.cosmetics.catalog.domain.model.VtoConfig;
 import com.cosmetics.common.events.payloads.ProductPublishedPayload;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.quarkus.runtime.StartupEvent;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -21,51 +20,47 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.*;
 
-@Configuration
+@ApplicationScoped
 public class CatalogDataSeeder {
     private static final Logger log = LoggerFactory.getLogger(CatalogDataSeeder.class);
 
-    @Bean
-    public ApplicationRunner seedCatalog(ProductRepository productRepository, CatalogEventPublisher publisher, ObjectMapper objectMapper) {
-        return args -> {
-            productRepository.count()
-                    .flatMap(count -> {
-                        if (count > 0) {
-                            log.info("Catalog already contains {} products, checking VTO update...", count);
-                            // Make sure existing products have VTO updated if missing
-                            return updateExistingProductsWithVto(productRepository);
-                        }
-                        log.info("Seeding 130+ realistic cosmetics products with INCI ingredients and VTO...");
-                        List<ProductDocument> list = loadSeedProducts(objectMapper);
-                        return productRepository.saveAll(list)
-                                .flatMap(p -> {
-                                    ProductPublishedPayload payload = new ProductPublishedPayload();
-                                    payload.setProductId(p.getId());
-                                    payload.setShopId(p.getShopId());
-                                    payload.setName(p.getName());
-                                    payload.setBrand(p.getBrand());
-                                    payload.setDescription(p.getDescription());
-                                    payload.setCategory(p.getCategory());
-                                    payload.setRegistrationNo(p.getRegistrationNo());
-                                    payload.setSuitableSkinTypes(p.getSuitableSkinTypes());
-                                    payload.setIngredientInciNames(p.getIngredients().stream().map(ProductDocument.IngredientSubDoc::getInciName).toList());
-                                    payload.setVariants(p.getVariants().stream()
-                                            .map(v -> new ProductPublishedPayload.VariantDto(v.getSkuCode(), v.getName(), v.getPrice()))
-                                            .toList());
-                                    return publisher.publishProductPublished(payload).thenReturn(p);
-                                })
-                                .then();
-                    })
-                    .doOnSuccess(v -> log.info("Catalog seeding finished successfully."))
-                    .subscribe();
-        };
+    void onStart(@Observes StartupEvent ev, ProductRepository productRepository, CatalogEventPublisher publisher, ObjectMapper objectMapper) {
+        productRepository.count()
+                .flatMap(count -> {
+                    if (count > 0) {
+                        log.info("Catalog already contains {} products, checking VTO update...", count);
+                        return updateExistingProductsWithVto(productRepository);
+                    }
+                    log.info("Seeding 130+ realistic cosmetics products with INCI ingredients and VTO...");
+                    List<ProductDocument> list = loadSeedProducts(objectMapper);
+                    return productRepository.saveAll(list)
+                            .flatMap(p -> {
+                                ProductPublishedPayload payload = new ProductPublishedPayload();
+                                payload.setProductId(p.getId());
+                                payload.setShopId(p.getShopId());
+                                payload.setName(p.getName());
+                                payload.setBrand(p.getBrand());
+                                payload.setDescription(p.getDescription());
+                                payload.setCategory(p.getCategory());
+                                payload.setRegistrationNo(p.getRegistrationNo());
+                                payload.setSuitableSkinTypes(p.getSuitableSkinTypes());
+                                payload.setIngredientInciNames(p.getIngredients().stream().map(ProductDocument.IngredientSubDoc::getInciName).toList());
+                                payload.setVariants(p.getVariants().stream()
+                                        .map(v -> new ProductPublishedPayload.VariantDto(v.getSkuCode(), v.getName(), v.getPrice()))
+                                        .toList());
+                                return publisher.publishProductPublished(payload).thenReturn(p);
+                            })
+                            .then();
+                })
+                .doOnSuccess(v -> log.info("Catalog seeding finished successfully."))
+                .subscribe();
     }
 
     private List<ProductDocument> loadSeedProducts(ObjectMapper objectMapper) {
         try {
-            ClassPathResource resource = new ClassPathResource("products_seed.json");
-            if (resource.exists()) {
-                try (InputStream is = resource.getInputStream()) {
+            InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("products_seed.json");
+            if (is != null) {
+                try (is) {
                     List<ProductDocument> docs = objectMapper.readValue(is, new TypeReference<List<ProductDocument>>() {});
                     log.info("Loaded {} products from products_seed.json", docs.size());
                     return docs;
@@ -118,6 +113,7 @@ public class CatalogDataSeeder {
             lip.setCreatedAt(Instant.now());
             lip.setUpdatedAt(Instant.now());
             lip.setVtoConfig(buildLipstickVto());
+            lip.setCategoryPath(List.of("MAKEUP", "LIP", "LIPSTICK"));
             lip.setSuitableSkinTypes(List.of("ALL", "OILY", "DRY", "COMBINATION", "SENSITIVE"));
             lip.setImages(List.of("https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500"));
             lip.setVariants(List.of(
@@ -141,6 +137,7 @@ public class CatalogDataSeeder {
             blush.setCreatedAt(Instant.now());
             blush.setUpdatedAt(Instant.now());
             blush.setVtoConfig(buildBlushVto());
+            blush.setCategoryPath(List.of("MAKEUP", "FACE", "POWDER_BLUSH"));
             blush.setSuitableSkinTypes(List.of("ALL"));
             blush.setImages(List.of("https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500"));
             blush.setVariants(List.of(
@@ -162,6 +159,7 @@ public class CatalogDataSeeder {
             fnd.setCreatedAt(Instant.now());
             fnd.setUpdatedAt(Instant.now());
             fnd.setVtoConfig(buildFoundationVto());
+            fnd.setCategoryPath(List.of("MAKEUP", "FACE", "FOUNDATION"));
             fnd.setSuitableSkinTypes(List.of("OILY", "COMBINATION", "DRY"));
             fnd.setImages(List.of("https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500"));
             fnd.setVariants(List.of(
@@ -183,6 +181,7 @@ public class CatalogDataSeeder {
             eye.setCreatedAt(Instant.now());
             eye.setUpdatedAt(Instant.now());
             eye.setVtoConfig(buildEyeshadowVto());
+            eye.setCategoryPath(List.of("MAKEUP", "EYE", "EYESHADOW_PALETTE"));
             eye.setSuitableSkinTypes(List.of("ALL"));
             eye.setImages(List.of("https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500"));
             eye.setVariants(List.of(
@@ -288,6 +287,16 @@ public class CatalogDataSeeder {
                     p.setUpdatedAt(Instant.now());
 
                     assignVtoConfigIfApplicable(p);
+
+                    if ("Toner".equals(category)) p.setCategoryPath(List.of("SKINCARE", "TONER", "HYDRATING_TONER"));
+                    else if ("Serum".equals(category)) p.setCategoryPath(List.of("SKINCARE", "SERUM", "REPAIR_SERUM"));
+                    else if ("Cream".equals(category)) p.setCategoryPath(List.of("SKINCARE", "MOISTURIZER", "REPAIR_CREAM"));
+                    else if ("Sunscreen".equals(category)) p.setCategoryPath(List.of("SKINCARE", "SUNSCREEN", "FACIAL_SUNSCREEN"));
+                    else if ("Cleanser".equals(category)) p.setCategoryPath(List.of("SKINCARE", "CLEANSER", "GEL_CLEANSER"));
+                    else if ("Lipstick".equals(category)) p.setCategoryPath(List.of("MAKEUP", "LIP", "LIPSTICK"));
+                    else if ("Blush".equals(category)) p.setCategoryPath(List.of("MAKEUP", "FACE", "POWDER_BLUSH"));
+                    else if ("Foundation".equals(category)) p.setCategoryPath(List.of("MAKEUP", "FACE", "FOUNDATION"));
+                    else if ("Eyeshadow".equals(category)) p.setCategoryPath(List.of("MAKEUP", "EYE", "EYESHADOW_PALETTE"));
 
                     List<String> suitableSkins = new ArrayList<>();
                     suitableSkins.add(skinTypes[(index) % skinTypes.length]);

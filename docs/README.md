@@ -3,9 +3,9 @@
 # ✨ AURA BEAUTY MALL — MULTI-VENDOR DERMA-TECH PLATFORM
 ### Nền Tảng Thương Mại Điện Tử Mỹ Phẩm Đa Người Bán & Công Nghệ Thực Tế Ảo AR Virtual Try-On 3D
 
-[![Spring Boot 3](https://img.shields.io/badge/Spring_Boot-3.3.4-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
-[![Spring WebFlux](https://img.shields.io/badge/Spring_WebFlux-100%25_Non--blocking-brightgreen?style=for-the-badge&logo=spring&logoColor=white)](https://docs.spring.io/spring-framework/reference/web/webflux.html)
-[![Java 21](https://img.shields.io/badge/Java-21_LTS-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/projects/jdk/21/)
+[![Quarkus 3.15](https://img.shields.io/badge/Quarkus-3.15.1_LTS-4695EB?style=for-the-badge&logo=quarkus&logoColor=white)](https://quarkus.io/)
+[![Mutiny Reactive](https://img.shields.io/badge/Mutiny_Reactive-100%25_Non--blocking-red?style=for-the-badge&logo=quarkus&logoColor=white)](https://smallrye.io/smallrye-mutiny/)
+[![Java 21/22](https://img.shields.io/badge/Java-21%2F22_Modern_JDK-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/)
 [![Apache Kafka](https://img.shields.io/badge/Apache_Kafka-Saga_Choreography-231F20?style=for-the-badge&logo=apachekafka&logoColor=white)](https://kafka.apache.org/)
 [![React 18](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![MediaPipe 3D](https://img.shields.io/badge/MediaPipe-478_3D_FaceMesh-007ACC?style=for-the-badge&logo=google&logoColor=white)](https://developers.google.com/mediapipe)
@@ -36,13 +36,13 @@
 * **AI Skincare Advisor:** Phân tích tông da (Warm / Cool / Neutral) bằng mô hình `MediaPipe FaceMesh 478 3D landmarks`, đề xuất màu sắc hài hòa nhất với làn da người dùng.
 * **Chế độ so sánh Trước/Sau:** Split Slider hoặc giữ chuột để đối chiếu ảnh gốc và ảnh sau trang điểm.
 
-### 2. ⚡ 100% Non-blocking Reactive Microservices
-* **Reactive Streams toàn diện:** 7 Microservices viết bằng **Spring Boot 3 + Java 21 LTS + Spring WebFlux**, sử dụng trình điều khiển phản ứng **R2DBC** (PostgreSQL) và **Spring Data MongoDB Reactive**, triệt tiêu nguy cơ nghẽn thread pool.
-* **Chốt chặn an toàn luồng:** Tích hợp **BlockHound** để phát hiện và ngăn chặn mọi tác vụ blocking trên Netty EventLoop threads; kiểm chứng kiến trúc Hexagonal (Ports & Adapters) bằng **ArchUnit**.
+### 2. ⚡ 100% Non-blocking Reactive Microservices (Quarkus 3.15 LTS)
+* **Reactive Streams toàn diện:** 7 Microservices viết bằng **Quarkus 3.15 LTS + Java 21/22 + Mutiny Reactive (Uni/Multi)**, sử dụng trình điều khiển phản ứng không chặn hiệu năng cao **Quarkus Reactive PgPool** (PostgreSQL) và **MongoDB Reactive Panache**, chạy trên Vert.x EventLoop, khởi động siêu tốc trong < 2.5s và tiêu hao bộ nhớ RAM cực thấp (< 100MB mỗi service).
+* **Chốt chặn an toàn luồng:** Kiểm soát nghiêm ngặt không chặn luồng Vert.x EventLoop; kiểm chứng cấu trúc kiến trúc Hexagonal (Ports & Adapters) bằng **ArchUnit**.
 
 ### 3. 🔄 Phân Tách Đơn Hàng (Split Order) & Saga Choreography
 * **Giỏ hàng đa Shop:** Đặt chung sản phẩm từ nhiều Shop khác nhau trong một lần thanh toán. Hệ thống tự động phân tách thành các Sub-order độc lập cho từng người bán.
-* **Đảm bảo tính nhất quán cuối cùng (Eventual Consistency):** Điều phối giao dịch phân tán qua **Reactor Kafka**, quản lý trạng thái đơn hàng bằng **Transactional Outbox Pattern** và cơ chế **Idempotent Consumer** chống xử lý trùng lặp sự kiện.
+* **Đảm bảo tính nhất quán cuối cùng (Eventual Consistency):** Điều phối giao dịch phân tán qua **Apache Kafka**, quản lý trạng thái đơn hàng bằng **Transactional Outbox Pattern** và cơ chế **Idempotent Consumer** chống xử lý trùng lặp sự kiện.
 
 ### 4. ⚖️ Sổ Cái Kép Kế Toán (Double-Entry Ledger) & Giữ Kho CAS
 * **Luật bất biến kế toán:** Cơ chế ghi sổ kép tự động đảm bảo `Tổng Nợ (Debit) = Tổng Có (Credit)`. Tự động khấu trừ 10% hoa hồng sàn và phân bổ 90% doanh thu vào công nợ phải trả cho từng Seller.
@@ -70,15 +70,15 @@
                                                             ▼ (Reverse Proxy / Routing)
                                           ┌────────────────────────────────────┐
                                           │     API Gateway (Port 8080)        │
-                                          │  Spring Cloud Gateway (Reactive)   │
+                                          │   Quarkus Vert.x Reactive Proxy    │
                                           └─────────────────┬──────────────────┘
                                                             │
                         ┌───────────────────────────────────┼──────────────────────────────────┐
                         ▼                                   ▼                                  ▼
              ┌─────────────────────┐             ┌─────────────────────┐            ┌─────────────────────┐
-             │   account-service   │             │   catalog-service   │            │    order-service    │
+             │   account-service   │             │   catalog-service   │            │  inventory-service  │
              │     (Port 8081)     │             │     (Port 8082)     │            │     (Port 8083)     │
-             │   PostgreSQL R2DBC  │             │   MongoDB Reactive  │            │   PostgreSQL R2DBC  │
+             │   PgPool (Mutiny)   │             │   MongoDB Panache   │            │   PgPool (Mutiny)   │
              └──────────┬──────────┘             └──────────┬──────────┘            └──────────┬──────────┘
                         │                                   │                                  │
                         └─────────────────────────────┐     │     ┌────────────────────────────┘
@@ -91,24 +91,24 @@
                         ┌─────────────────────────────┘        └──────────────────────────┐
                         ▼                                                                 ▼
              ┌─────────────────────┐             ┌─────────────────────┐            ┌─────────────────────┐
-             │  inventory-service  │             │   payment-service   │            │  ai-advisor-service │
+             │    order-service    │             │   payment-service   │            │  ai-advisor-service │
              │     (Port 8084)     │             │     (Port 8085)     │            │     (Port 8086)     │
-             │   PostgreSQL R2DBC  │             │   PostgreSQL R2DBC  │            │ PostgreSQL+pgvector │
+             │   PgPool (Mutiny)   │             │   PgPool (Mutiny)   │            │ PgPool + pgvector   │
              └─────────────────────┘             └─────────────────────┘            └─────────────────────┘
 ```
 
 ### Bảng Danh Mục Dịch Vụ & Cổng Kết Nối
 
-| STT | Dịch Vụ | Cổng | Cơ Sở Dữ Liệu | Nhiệm Vụ & Bounded Context |
+| STT | Dịch Vụ | Cổng | Cơ Sở Dữ Liệu | Nhiệm Vụ & Bounded Context (Quarkus 3.15 Reactive) |
 | :---: | :--- | :---: | :--- | :--- |
-| **1** | **`api-gateway`** | `8080` | *Không dùng DB* | Gateway điều hướng, xác thực JWT Filter, cấu hình CORS phản ứng |
-| **2** | **`account-service`** | `8081` | PostgreSQL (`account_db`) | Quản lý người dùng, hồ sơ shop, phân quyền RBAC & Skin Profile |
-| **3** | **`catalog-service`** | `8082` | MongoDB (`catalog_db`) | Quản lý sản phẩm, thương hiệu, thành phần INCI, cấu hình VTO |
-| **4** | **`order-service`** | `8083` | PostgreSQL (`order_db`) | Quản lý giỏ hàng, tách đơn (Split Order), Outbox Relay Worker |
-| **5** | **`inventory-service`**| `8084` | PostgreSQL (`inventory_db`) | Kiểm soát tồn kho nguyên tử CAS, quản lý hạn dùng FEFO |
-| **6** | **`payment-service`** | `8085` | PostgreSQL (`payment_db`) | Thanh toán giả lập, Sổ cái kép Double-Entry, trích hoa hồng 10% |
-| **7** | **`ai-advisor-service`**| `8086` | PostgreSQL (`ai_db` + pgvector) | AI RAG tư vấn mỹ phẩm theo chuẩn INCI, streaming phản hồi qua SSE |
-| **8** | **`frontend`** | `3000` | *Browser Storage* | Giao diện React 18, Vite 5, Tailwind CSS, MediaPipe AR Try-On |
+| **1** | **`api-gateway`** | `8080` | *Không dùng DB* | Quarkus Vert.x Reverse Proxy, định tuyến động, xác thực JWT, CORS phản ứng |
+| **2** | **`account-service`** | `8081` | PostgreSQL (`account_db`) | Quarkus PgPool: Quản lý người dùng, hồ sơ shop, phân quyền RBAC & Skin Profile |
+| **3** | **`catalog-service`** | `8082` | MongoDB (`catalog_db`) | Quarkus Panache MongoDB: Sản phẩm, thương hiệu, INCI, cấu hình VTO AR 3D |
+| **4** | **`inventory-service`**| `8083` | PostgreSQL (`inventory_db`) | Quarkus PgPool: Kiểm soát tồn kho nguyên tử CAS, quản lý hạn dùng FEFO |
+| **5** | **`order-service`** | `8084` | PostgreSQL (`order_db`) | Quarkus PgPool: Giỏ hàng đa Shop, tách đơn (Split Order), Outbox Relay Worker |
+| **6** | **`payment-service`** | `8085` | PostgreSQL (`payment_db`) | Quarkus PgPool: Thanh toán, Sổ cái kép Double-Entry Ledger, trích hoa hồng 10% |
+| **7** | **`ai-advisor-service`**| `8086` | PostgreSQL (`ai_db` + pgvector) | Quarkus PgPool: AI RAG tư vấn mỹ phẩm theo chuẩn INCI, streaming phản hồi qua SSE |
+| **8** | **`frontend`** | `3000` | *Browser Storage* | Giao diện React 18, Vite 5, Tailwind CSS, MediaPipe AR Try-On 60 FPS |
 
 ---
 
@@ -159,37 +159,39 @@ mvn test -pl backend/inventory-service -Dtest=AtomicStockConcurrencyTest
 
 ---
 
-### 4. Bước 3: Khởi Chạy Các Microservices
+### 4. Bước 3: Khởi Chạy Các Microservices (Quarkus 3.15 LTS)
 
-Đóng gói các dịch vụ thành file `.jar`:
+Đóng gói các dịch vụ thành ứng dụng Quarkus siêu tốc:
 ```bash
 mvn package -DskipTests
 ```
 
-Khởi chạy từng service (mỗi service mở một cửa sổ Terminal riêng hoặc chạy nền):
+Khởi chạy từng service (mỗi service mở một cửa sổ Terminal riêng hoặc chạy nền qua `quarkus-run.jar`):
 
 ```bash
 # 1. API Gateway (Port 8080)
-java -jar backend/api-gateway/target/api-gateway-1.0.0-SNAPSHOT.jar
+java -jar backend/api-gateway/target/quarkus-app/quarkus-run.jar
 
 # 2. Account Service (Port 8081)
-java -jar backend/account-service/target/account-service-1.0.0-SNAPSHOT.jar
+java -jar backend/account-service/target/quarkus-app/quarkus-run.jar
 
 # 3. Catalog Service (Port 8082)
-java -jar backend/catalog-service/target/catalog-service-1.0.0-SNAPSHOT.jar
+java -jar backend/catalog-service/target/quarkus-app/quarkus-run.jar
 
 # 4. Inventory Service (Port 8083)
-java -jar backend/inventory-service/target/inventory-service-1.0.0-SNAPSHOT.jar
+java -jar backend/inventory-service/target/quarkus-app/quarkus-run.jar
 
 # 5. Order Service (Port 8084)
-java -jar backend/order-service/target/order-service-1.0.0-SNAPSHOT.jar
+java -jar backend/order-service/target/quarkus-app/quarkus-run.jar
 
 # 6. Payment Service (Port 8085)
-java -jar backend/payment-service/target/payment-service-1.0.0-SNAPSHOT.jar
+java -jar backend/payment-service/target/quarkus-app/quarkus-run.jar
 
 # 7. AI Advisor Service (Port 8086)
-java -jar backend/ai-advisor-service/target/ai-advisor-service-1.0.0-SNAPSHOT.jar
+java -jar backend/ai-advisor-service/target/quarkus-app/quarkus-run.jar
 ```
+
+*(Hoặc khởi chạy ở chế độ phát triển Live Reload: `mvn -pl backend/<service-name> quarkus:dev`)*
 
 ---
 
@@ -244,5 +246,5 @@ Hệ thống đã chuẩn bị sẵn các tài khoản tương ứng với từn
 
 <div align="center">
   <b>Aura Beauty Mall — Đỉnh Cao Công Nghệ Thương Mại Điện Tử Mỹ Phẩm Phản Ứng</b><br>
-  <i>Phát triển trên nền tảng Spring Boot 3 WebFlux, Kafka Saga Outbox & React 18 MediaPipe 3D</i>
+  <i>Phát triển trên nền tảng Quarkus 3.15 LTS Mutiny Reactive, Kafka Saga Outbox & React 18 MediaPipe 3D</i>
 </div>

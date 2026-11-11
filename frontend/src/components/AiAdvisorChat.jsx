@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { streamAdvisorChat } from '../api';
+import { cleanChatText } from './SupportChat';
 
 export default function AiAdvisorChat({ skinProfile }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -150,7 +151,7 @@ export default function AiAdvisorChat({ skinProfile }) {
                   whiteSpace: 'pre-wrap'
                 }}
               >
-                {m.text}
+                {cleanChatText(m.text)}
               </div>
             ))}
             {isStreaming && (

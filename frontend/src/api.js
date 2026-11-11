@@ -24,7 +24,7 @@ export const MOCK_PRODUCTS = [
     "brand": "Dove",
     "description": "Kem tắm tẩy tế bào chết toàn thân Dove Exfoliating Body Polish Pomegranate Seeds & Shea Butter chiết xuất hạt lựu đỏ và bơ hạt mỡ. Công thức giàu độ ẩm với 1/4 kem dưỡng ẩm của Dove tạo sự mềm mại tức thì, hạt tẩy tế bào chết kích thước cát mịn nhẹ nhàng loại bỏ lớp da chết xỉn màu và phục hồi dưỡng chất tự nhiên của làn da.",
     "category": "Chăm sóc cơ thể",
-    "subCategory": "Tẩy da chết toàn thân",
+    "subCategory": "BODY_SCRUB",
     "registrationNumber": "CBMP-19834/23/CBMP-QLD",
     "rating": 4.9,
     "soldCount": 14500,
@@ -43,20 +43,7 @@ export const MOCK_PRODUCTS = [
       "/products/dove-pomegranate-cream-texture.jpg",
       "/products/dove-pomegranate-swatch.jpg",
       "/products/dove-pomegranate-back-label.jpg",
-      "/products/dove-pomegranate-top-lid.jpg",
-      "/products/dove-pomegranate-side-view.jpg",
-      "/products/dove-pomegranate-barcode.jpg",
-      "/products/dove-pomegranate-model.jpg"
-    ],
-    "targetSkinTypes": [
-      "ALL_SKIN_TYPES",
-      "DRY",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "DULLNESS",
-      "DRYNESS",
-      "PORES"
+      "/products/dove-pomegranate-top-lid.jpg"
     ],
     "safetyEthicsBadges": [
       "PARABEN_FREE",
@@ -138,7 +125,16 @@ export const MOCK_PRODUCTS = [
         "comedogenicRating": 2,
         "irritationRating": 0
       }
-    ]
+    ],
+    "categoryPath": [
+      "BODY_CARE",
+      "BODY_SCRUB",
+      "BODY_EXFOLIANT"
+    ],
+    "vtoConfig": null,
+    "keyActiveGroups": [],
+    "status": "PUBLISHED",
+    "image": "/products/dove-pomegranate-main.jpg"
   },
   {
     "id": "PROD-WAKEMAKE-BLURRING",
@@ -147,7 +143,7 @@ export const MOCK_PRODUCTS = [
     "brand": "WAKEMAKE",
     "description": "Son thỏi thuần chay WAKEMAKE Soft Blurring Balm Stick tạo hiệu ứng môi mờ ảo tự nhiên, mịn màng che phủ rãnh môi hoàn hảo, giàu dưỡng chất với 10 tông màu chuẩn Hàn Quốc.",
     "category": "Lipstick",
-    "subCategory": "Son thỏi",
+    "subCategory": "LIP",
     "registrationNumber": "289410/24/CBMP-QLD",
     "rating": 4.9,
     "soldCount": 6890,
@@ -166,21 +162,7 @@ export const MOCK_PRODUCTS = [
       "/products/SKU-WAKEMAKE-01.jpg",
       "/products/SKU-WAKEMAKE-02.jpg",
       "/products/SKU-WAKEMAKE-03.jpg",
-      "/products/SKU-WAKEMAKE-04.jpg",
-      "/products/SKU-WAKEMAKE-05.jpg",
-      "/products/SKU-WAKEMAKE-06.jpg",
-      "/products/SKU-WAKEMAKE-07.jpg",
-      "/products/SKU-WAKEMAKE-08.jpg",
-      "/products/SKU-WAKEMAKE-09.jpg",
-      "/products/SKU-WAKEMAKE-10.jpg"
-    ],
-    "suitableSkinTypes": [
-      "ALL_SKIN_TYPES",
-      "DRY",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
+      "/products/SKU-WAKEMAKE-04.jpg"
     ],
     "variants": [
       {
@@ -420,16 +402,24 @@ export const MOCK_PRODUCTS = [
           "bestUndertone": "ALL"
         }
       ]
-    }
+    },
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "keyActiveGroups": [],
+    "status": "PUBLISHED",
+    "image": "/products/PROD-WAKEMAKE-BLURRING.jpg"
   },
   {
     "id": "PROD-LIP-ON-LIP",
     "shopId": "00000000-0000-0000-0000-000000000010",
     "name": "Son thỏi dưỡng môi trang điểm chất son satin Lip On Lip Glowy Satin 2.2g",
     "brand": "Lip On Lip",
-    "description": "Son thỏi trang điểm dưỡng môi chất son satin bóng nhẹ, dưỡng ẩm vượt trội với dầu olive và bơ hạt mỡ, lên màu chuẩn sắc tự nhiên suốt 6H.",
+    "description": "Son thỏi trang điểm dưỡng môi chất son satin bóng nhẹ, dưỡng ẩm vượt trội với hệ dưỡng Ultra Moist (chứa hơn 50% thành phần dưỡng gồm dầu Olive, bơ hạt mỡ và Collagen hòa tan), lên màu chuẩn xác và giữ màu lâu phai.",
     "category": "Lipstick",
-    "subCategory": "Son thỏi",
+    "subCategory": "LIP",
     "registrationNumber": "214589/23/CBMP-QLD",
     "rating": 4.9,
     "soldCount": 7420,
@@ -444,20 +434,10 @@ export const MOCK_PRODUCTS = [
     ],
     "images": [
       "/products/PROD-LIPONLIP.jpg",
-      "/products/PROD-LIPONLIP-STUDIO.jpg",
-      "/products/SKU-LIPONLIP-04.jpg",
-      "/products/SKU-LIPONLIP-02.jpg",
-      "/products/SKU-LIPONLIP-05.jpg",
       "/products/SKU-LIPONLIP-01.jpg",
-      "/products/SKU-LIPONLIP-03.jpg"
-    ],
-    "suitableSkinTypes": [
-      "ALL_SKIN_TYPES",
-      "DRY",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
+      "/products/SKU-LIPONLIP-02.jpg",
+      "/products/SKU-LIPONLIP-03.jpg",
+      "/products/SKU-LIPONLIP-04.jpg"
     ],
     "variants": [
       {
@@ -582,7 +562,16 @@ export const MOCK_PRODUCTS = [
           "bestUndertone": "WARM"
         }
       ]
-    }
+    },
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "keyActiveGroups": [],
+    "status": "PUBLISHED",
+    "ingredients": "Isononyl Isononanoate, Triisostearin, Diisostearyl Malate, C10-30 Cholesterol/Lanosterol Esters, Synthetic Wax, Microcrystalline Wax, Ozokerite, Olea Europaea (Olive) Fruit Oil, Polybutene, Butyrospermum Parkii (Shea) Butter, Dextrin Isostearate, Pentylene Glycol, Soluble Collagen, Tocopheryl Acetate, Alumina, Isopropyl Myristate, Isopropyl Titanium Triisostearate, Polyhydroxystearic Acid, Propylene Carbonate, Sodium Citrate, Stearalkonium Hectorite, Water, BHT, Citric Acid, Phenoxyethanol, [+/- CI 15850, CI 16035, CI 42090, CI 45370, CI 47005, CI 77491, CI 77891]",
+    "image": "/products/PROD-LIPONLIP.jpg"
   },
   {
     "id": "PROD-CRW-001",
@@ -592,12 +581,6 @@ export const MOCK_PRODUCTS = [
     "description": "Son kem lì mềm mịn như nhung, hiệu ứng mờ viền môi tự nhiên, che phủ vân môi hoàn hảo mà không làm khô môi.",
     "category": "Lipstick",
     "registrationNo": "393663/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -734,7 +717,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-001.jpg"
+      "/products/PROD-CRW-001-main.jpg",
+      "/products/PROD-CRW-001-texture.jpg",
+      "/products/PROD-CRW-001-swatch.jpg",
+      "/products/PROD-CRW-001-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -789,18 +775,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-001.jpg",
     "imageUrl": "/products/PROD-CRW-001.jpg",
     "cbmpNumber": "393663/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -881,7 +855,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-002",
@@ -891,11 +871,6 @@ export const MOCK_PRODUCTS = [
     "description": "Son tint bóng căng mọng như nước ép trái cây mùa hè, giữ lớp bóng thủy tinh bền màu suốt cả ngày.",
     "category": "Lipstick",
     "registrationNo": "299622/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Octyldodecanol",
@@ -1032,7 +1007,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-002.jpg"
+      "/products/PROD-CRW-002-main.jpg",
+      "/products/PROD-CRW-002-texture.jpg",
+      "/products/PROD-CRW-002-swatch.jpg",
+      "/products/PROD-CRW-002-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -1087,19 +1065,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-002.jpg",
     "imageUrl": "/products/PROD-CRW-002.jpg",
     "cbmpNumber": "299622/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Octyldodecanol",
@@ -1158,10 +1123,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -1183,7 +1145,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_GLOSS"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-003",
@@ -1193,11 +1161,6 @@ export const MOCK_PRODUCTS = [
     "description": "Biểu tượng son lì huyền thoại với độ chuẩn màu tuyệt đối, giữ màu bền bỉ 10 giờ không lem trôi.",
     "category": "Lipstick",
     "registrationNo": "632146/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -1334,7 +1297,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-003.jpg"
+      "/products/PROD-CRW-003-main.jpg",
+      "/products/PROD-CRW-003-texture.jpg",
+      "/products/PROD-CRW-003-swatch.jpg",
+      "/products/PROD-CRW-003-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -1389,17 +1355,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-003.jpg",
     "imageUrl": "/products/PROD-CRW-003.jpg",
     "cbmpNumber": "632146/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -1480,7 +1435,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-004",
@@ -1490,11 +1451,6 @@ export const MOCK_PRODUCTS = [
     "description": "Kết cấu mousse mỏng nhẹ như nhung, hiệu ứng làm mờ rãnh môi mềm mượt, cấp ẩm suốt 10 giờ.",
     "category": "Lipstick",
     "registrationNo": "336954/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -1608,7 +1564,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-004.jpg"
+      "/products/PROD-CRW-004-main.jpg",
+      "/products/PROD-CRW-004-texture.jpg",
+      "/products/PROD-CRW-004-swatch.jpg",
+      "/products/PROD-CRW-004-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -1655,17 +1614,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-004.jpg",
     "imageUrl": "/products/PROD-CRW-004.jpg",
     "cbmpNumber": "336954/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -1738,7 +1686,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-005",
@@ -1748,11 +1702,6 @@ export const MOCK_PRODUCTS = [
     "description": "Chất son velvet tan chảy ngay khi chạm môi, công thức lưu giữ sắc tố tươi tắn phong cách Hàn Quốc.",
     "category": "Lipstick",
     "registrationNo": "788315/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -1866,7 +1815,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-005.jpg"
+      "/products/PROD-CRW-005-main.jpg",
+      "/products/PROD-CRW-005-texture.jpg",
+      "/products/PROD-CRW-005-swatch.jpg",
+      "/products/PROD-CRW-005-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -1913,19 +1865,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-005.jpg",
     "imageUrl": "/products/PROD-CRW-005.jpg",
     "cbmpNumber": "788315/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -1999,7 +1938,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-006",
@@ -2009,10 +1954,6 @@ export const MOCK_PRODUCTS = [
     "description": "Dòng son thỏi lì thế hệ mới, hạt phấn siêu mịn nhẹ tênh như không khí, không gây bột môi.",
     "category": "Lipstick",
     "registrationNo": "547329/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Silica",
@@ -2126,7 +2067,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-006.jpg"
+      "/products/PROD-CRW-006-main.jpg",
+      "/products/PROD-CRW-006-texture.jpg",
+      "/products/PROD-CRW-006-swatch.jpg",
+      "/products/PROD-CRW-006-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -2173,16 +2117,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-006.jpg",
     "imageUrl": "/products/PROD-CRW-006.jpg",
     "cbmpNumber": "547329/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Silica",
@@ -2256,7 +2190,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-007",
@@ -2266,11 +2206,6 @@ export const MOCK_PRODUCTS = [
     "description": "Son kem lì chống trôi đỉnh cao suốt 16 giờ, ăn uống không dây dính, chống thấm nước tuyệt đối.",
     "category": "Lipstick",
     "registrationNo": "134998/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -2384,7 +2319,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-007.jpg"
+      "/products/PROD-CRW-007-main.jpg",
+      "/products/PROD-CRW-007-texture.jpg",
+      "/products/PROD-CRW-007-swatch.jpg",
+      "/products/PROD-CRW-007-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -2431,17 +2369,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-007.jpg",
     "imageUrl": "/products/PROD-CRW-007.jpg",
     "cbmpNumber": "134998/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -2492,9 +2419,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -2516,7 +2441,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-008",
@@ -2526,11 +2457,6 @@ export const MOCK_PRODUCTS = [
     "description": "Công nghệ khóa màu đột phá vừa mang lại lớp finish bóng nước vừa giữ màu 16h không xê dịch.",
     "category": "Lipstick",
     "registrationNo": "191371/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Octyldodecanol",
@@ -2644,7 +2570,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-008.jpg"
+      "/products/PROD-CRW-008-main.jpg",
+      "/products/PROD-CRW-008-texture.jpg",
+      "/products/PROD-CRW-008-swatch.jpg",
+      "/products/PROD-CRW-008-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -2691,17 +2620,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-008.jpg",
     "imageUrl": "/products/PROD-CRW-008.jpg",
     "cbmpNumber": "191371/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Octyldodecanol",
@@ -2752,9 +2670,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -2776,7 +2692,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-009",
@@ -2786,11 +2708,6 @@ export const MOCK_PRODUCTS = [
     "description": "Chất son feather-light êm ái như lông vũ, hương quả mọng ngọt ngào và khả năng bám màu 8h.",
     "category": "Lipstick",
     "registrationNo": "446862/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -2896,7 +2813,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-009.jpg"
+      "/products/PROD-CRW-009-main.jpg",
+      "/products/PROD-CRW-009-texture.jpg",
+      "/products/PROD-CRW-009-swatch.jpg",
+      "/products/PROD-CRW-009-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -2943,19 +2863,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-009.jpg",
     "imageUrl": "/products/PROD-CRW-009.jpg",
     "cbmpNumber": "446862/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -3021,7 +2928,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-010",
@@ -3031,10 +2944,6 @@ export const MOCK_PRODUCTS = [
     "description": "Son thỏi nhung lì bán nguyệt ôm sát bờ môi, màu sắc lấy cảm hứng từ ánh sáng hoàng hôn.",
     "category": "Lipstick",
     "registrationNo": "967192/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY"
-    ],
     "ingredients": [
       {
         "inciName": "Diisostearyl Malate",
@@ -3140,7 +3049,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-010.png"
+      "/products/PROD-CRW-010-main.jpg",
+      "/products/PROD-CRW-010-texture.jpg",
+      "/products/PROD-CRW-010-swatch.jpg",
+      "/products/PROD-CRW-010-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -3187,18 +3099,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-010.png",
     "imageUrl": "/products/PROD-CRW-010.png",
     "cbmpNumber": "967192/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Diisostearyl Malate",
@@ -3264,7 +3164,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-011",
@@ -3274,11 +3180,6 @@ export const MOCK_PRODUCTS = [
     "description": "Dòng son mực quốc dân xứ kim chi với độ bám màu siêu bền và hiệu ứng nhung mờ mịn môi.",
     "category": "Lipstick",
     "registrationNo": "930426/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -3384,7 +3285,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-011.jpg"
+      "/products/PROD-CRW-011-main.jpg",
+      "/products/PROD-CRW-011-texture.jpg",
+      "/products/PROD-CRW-011-swatch.jpg",
+      "/products/PROD-CRW-011-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -3431,19 +3335,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-011.jpg",
     "imageUrl": "/products/PROD-CRW-011.jpg",
     "cbmpNumber": "930426/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -3508,7 +3399,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-012",
@@ -3518,11 +3415,6 @@ export const MOCK_PRODUCTS = [
     "description": "Son tint bóng ngậm nước như hồ thu tĩnh lặng, tạo đôi môi căng tròn đầy sức sống.",
     "category": "Lipstick",
     "registrationNo": "287436/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Octyldodecanol",
@@ -3636,7 +3528,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-012.jpg"
+      "/products/PROD-CRW-012-main.jpg",
+      "/products/PROD-CRW-012-texture.jpg",
+      "/products/PROD-CRW-012-swatch.jpg",
+      "/products/PROD-CRW-012-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -3683,19 +3578,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-012.jpg",
     "imageUrl": "/products/PROD-CRW-012.jpg",
     "cbmpNumber": "287436/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Octyldodecanol",
@@ -3746,10 +3628,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -3771,7 +3650,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_GLOSS"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-013",
@@ -3781,11 +3666,6 @@ export const MOCK_PRODUCTS = [
     "description": "Chất son kem lì bám chặt tôn da, sắc son đỏ gạch và đỏ đất cá tính thời thượng.",
     "category": "Lipstick",
     "registrationNo": "586221/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -3891,7 +3771,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-013.jpg"
+      "/products/PROD-CRW-013-main.jpg",
+      "/products/PROD-CRW-013-texture.jpg",
+      "/products/PROD-CRW-013-swatch.jpg",
+      "/products/PROD-CRW-013-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -3938,19 +3821,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-013.jpg",
     "imageUrl": "/products/PROD-CRW-013.jpg",
     "cbmpNumber": "586221/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -4016,7 +3886,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-014",
@@ -4026,10 +3902,6 @@ export const MOCK_PRODUCTS = [
     "description": "Vỏ đen huyền bí quyền lực kết hợp chất son nhung mịn semi-matte không khô căng môi.",
     "category": "Lipstick",
     "registrationNo": "186170/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Diisostearyl Malate",
@@ -4135,7 +4007,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-014.png"
+      "/products/PROD-CRW-014-main.jpg",
+      "/products/PROD-CRW-014-texture.jpg",
+      "/products/PROD-CRW-014-swatch.jpg",
+      "/products/PROD-CRW-014-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -4182,16 +4057,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-014.png",
     "imageUrl": "/products/PROD-CRW-014.png",
     "cbmpNumber": "186170/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Diisostearyl Malate",
@@ -4257,7 +4122,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-015",
@@ -4267,11 +4138,6 @@ export const MOCK_PRODUCTS = [
     "description": "Bản màu chuẩn da Châu Á, chất son nam châm bám chặt lên môi mềm mượt như cánh hoa.",
     "category": "Lipstick",
     "registrationNo": "595211/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -4377,7 +4243,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-015.jpg"
+      "/products/PROD-CRW-015-main.jpg",
+      "/products/PROD-CRW-015-texture.jpg",
+      "/products/PROD-CRW-015-swatch.jpg",
+      "/products/PROD-CRW-015-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -4424,19 +4293,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-015.jpg",
     "imageUrl": "/products/PROD-CRW-015.jpg",
     "cbmpNumber": "595211/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -4501,7 +4357,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-016",
@@ -4511,11 +4373,6 @@ export const MOCK_PRODUCTS = [
     "description": "Son thỏi lì cao cấp nhẹ tênh như không thoa son, bảng màu chuẩn thần thái Seoul quyến rũ.",
     "category": "Lipstick",
     "registrationNo": "386687/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Silica",
@@ -4606,7 +4463,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-016.webp"
+      "/products/PROD-CRW-016-main.jpg",
+      "/products/PROD-CRW-016-texture.jpg",
+      "/products/PROD-CRW-016-swatch.jpg",
+      "/products/PROD-CRW-016-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -4645,17 +4505,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-016.webp",
     "imageUrl": "/products/PROD-CRW-016.webp",
     "cbmpNumber": "386687/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Silica",
@@ -4720,7 +4569,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-017",
@@ -4730,10 +4585,6 @@ export const MOCK_PRODUCTS = [
     "description": "Chất son nhung cao cấp che phủ rãnh môi mềm như lụa, độ ẩm dồi dào từ bơ hạt mỡ.",
     "category": "Lipstick",
     "registrationNo": "574512/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -4816,7 +4667,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-017.jpg"
+      "/products/PROD-CRW-017-main.jpg",
+      "/products/PROD-CRW-017-texture.jpg",
+      "/products/PROD-CRW-017-swatch.jpg",
+      "/products/PROD-CRW-017-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -4855,18 +4709,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-017.jpg",
     "imageUrl": "/products/PROD-CRW-017.jpg",
     "cbmpNumber": "574512/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -4923,7 +4765,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-018",
@@ -4933,11 +4781,6 @@ export const MOCK_PRODUCTS = [
     "description": "Thiết kế 2 đầu tiện lợi gồm Lip Filler làm đầy rãnh môi và Lip Tint kem lì chuẩn sắc.",
     "category": "Lipstick",
     "registrationNo": "961087/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -5043,7 +4886,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-018.jpg"
+      "/products/PROD-CRW-018-main.jpg",
+      "/products/PROD-CRW-018-texture.jpg",
+      "/products/PROD-CRW-018-swatch.jpg",
+      "/products/PROD-CRW-018-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -5090,19 +4936,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-018.jpg",
     "imageUrl": "/products/PROD-CRW-018.jpg",
     "cbmpNumber": "961087/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -5145,9 +4978,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -5170,7 +5001,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-019",
@@ -5180,10 +5017,6 @@ export const MOCK_PRODUCTS = [
     "description": "Sắc son dành riêng cho làn da phụ nữ Việt Nam, dưỡng ẩm dồi dào, không lộ khuyết điểm môi.",
     "category": "Lipstick",
     "registrationNo": "621796/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -5281,7 +5114,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-019.jpg"
+      "/products/PROD-CRW-019-main.jpg",
+      "/products/PROD-CRW-019-texture.jpg",
+      "/products/PROD-CRW-019-swatch.jpg",
+      "/products/PROD-CRW-019-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -5328,16 +5164,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-019.jpg",
     "imageUrl": "/products/PROD-CRW-019.jpg",
     "cbmpNumber": "621796/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -5395,7 +5221,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-020",
@@ -5405,12 +5237,6 @@ export const MOCK_PRODUCTS = [
     "description": "Son thỏi vuông siêu mẫu couture thanh mảnh, chất son lì mịn như da thuộc cao cấp.",
     "category": "Lipstick",
     "registrationNo": "379826/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -5524,7 +5350,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-020.jpg"
+      "/products/PROD-CRW-020-main.jpg",
+      "/products/PROD-CRW-020-texture.jpg",
+      "/products/PROD-CRW-020-swatch.jpg",
+      "/products/PROD-CRW-020-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -5571,20 +5400,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-020.jpg",
     "imageUrl": "/products/PROD-CRW-020.jpg",
     "cbmpNumber": "379826/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -5657,7 +5472,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-021",
@@ -5667,11 +5488,6 @@ export const MOCK_PRODUCTS = [
     "description": "Huyền thoại son dưỡng tự thức tỉnh sắc hồng môi tự nhiên theo độ pH, nuôi dưỡng 24h.",
     "category": "Lipstick",
     "registrationNo": "533723/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Butyrospermum Parkii (Shea) Butter",
@@ -5777,7 +5593,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-021.jpg"
+      "/products/PROD-CRW-021-main.jpg",
+      "/products/PROD-CRW-021-texture.jpg",
+      "/products/PROD-CRW-021-swatch.jpg",
+      "/products/PROD-CRW-021-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -5824,19 +5643,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-021.jpg",
     "imageUrl": "/products/PROD-CRW-021.jpg",
     "cbmpNumber": "533723/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Butyrospermum Parkii (Shea) Butter",
@@ -5901,7 +5707,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_BALM"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-022",
@@ -5911,11 +5723,6 @@ export const MOCK_PRODUCTS = [
     "description": "Son kem lì không trọng lượng, không dây dính khẩu trang, sắc màu rạng rỡ suốt ngày dài.",
     "category": "Lipstick",
     "registrationNo": "916607/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -6021,7 +5828,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-022.jpg"
+      "/products/PROD-CRW-022-main.jpg",
+      "/products/PROD-CRW-022-texture.jpg",
+      "/products/PROD-CRW-022-swatch.jpg",
+      "/products/PROD-CRW-022-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -6068,17 +5878,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-022.jpg",
     "imageUrl": "/products/PROD-CRW-022.jpg",
     "cbmpNumber": "916607/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -6143,7 +5942,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-023",
@@ -6153,11 +5958,6 @@ export const MOCK_PRODUCTS = [
     "description": "Cảm hứng từ lụa tơ tằm Nhật Bản Kinu, kết cấu satin óng mượt và hương gỗ Hinoki thư giãn.",
     "category": "Lipstick",
     "registrationNo": "114311/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Diisostearyl Malate",
@@ -6263,7 +6063,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-023.jpg"
+      "/products/PROD-CRW-023-main.jpg",
+      "/products/PROD-CRW-023-texture.jpg",
+      "/products/PROD-CRW-023-swatch.jpg",
+      "/products/PROD-CRW-023-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -6310,19 +6113,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-023.jpg",
     "imageUrl": "/products/PROD-CRW-023.jpg",
     "cbmpNumber": "114311/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Diisostearyl Malate",
@@ -6388,7 +6178,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-024",
@@ -6398,10 +6194,6 @@ export const MOCK_PRODUCTS = [
     "description": "Son kem mỏng như mây với công thức kháng nước, dễ tán đều viền môi ombre xinh xắn.",
     "category": "Lipstick",
     "registrationNo": "787421/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -6499,7 +6291,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-024.jpg"
+      "/products/PROD-CRW-024-main.jpg",
+      "/products/PROD-CRW-024-texture.jpg",
+      "/products/PROD-CRW-024-swatch.jpg",
+      "/products/PROD-CRW-024-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -6546,18 +6341,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-024.jpg",
     "imageUrl": "/products/PROD-CRW-024.jpg",
     "cbmpNumber": "787421/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -6615,7 +6398,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-025",
@@ -6625,11 +6414,6 @@ export const MOCK_PRODUCTS = [
     "description": "Kết cấu bùn mịn che phủ hoàn hảo vân môi, đa năng dùng được cho cả môi và má hồng.",
     "category": "Lipstick",
     "registrationNo": "899136/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Silica",
@@ -6735,7 +6519,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-025.jpg"
+      "/products/PROD-CRW-025-main.jpg",
+      "/products/PROD-CRW-025-texture.jpg",
+      "/products/PROD-CRW-025-swatch.jpg",
+      "/products/PROD-CRW-025-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -6782,19 +6569,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-025.jpg",
     "imageUrl": "/products/PROD-CRW-025.jpg",
     "cbmpNumber": "899136/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Silica",
@@ -6860,7 +6634,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-026",
@@ -6870,11 +6650,6 @@ export const MOCK_PRODUCTS = [
     "description": "Son dưỡng có màu 100% thuần chay từ dầu dừa Bến Tre và bơ hạt mỡ, nuôi dưỡng đôi môi mềm mại.",
     "category": "Lipstick",
     "registrationNo": "628665/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Butyrospermum Parkii (Shea) Butter",
@@ -6972,7 +6747,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-026.jpg"
+      "/products/PROD-CRW-026-main.jpg",
+      "/products/PROD-CRW-026-texture.jpg",
+      "/products/PROD-CRW-026-swatch.jpg",
+      "/products/PROD-CRW-026-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -7019,19 +6797,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-026.jpg",
     "imageUrl": "/products/PROD-CRW-026.jpg",
     "cbmpNumber": "628665/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Butyrospermum Parkii (Shea) Butter",
@@ -7088,7 +6853,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-027",
@@ -7098,11 +6869,6 @@ export const MOCK_PRODUCTS = [
     "description": "Bổ sung collagen thủy phân tái tạo độ căng bóng khỏe mạnh, không gây thâm môi.",
     "category": "Lipstick",
     "registrationNo": "568962/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -7208,7 +6974,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-027.jpg"
+      "/products/PROD-CRW-027-main.jpg",
+      "/products/PROD-CRW-027-texture.jpg",
+      "/products/PROD-CRW-027-swatch.jpg",
+      "/products/PROD-CRW-027-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -7255,19 +7024,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-027.jpg",
     "imageUrl": "/products/PROD-CRW-027.jpg",
     "cbmpNumber": "568962/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "HYPERPIGMENTATION",
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "HYPERPIGMENTATION",
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -7310,9 +7066,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -7335,7 +7089,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-028",
@@ -7345,11 +7105,6 @@ export const MOCK_PRODUCTS = [
     "description": "Chiết xuất dầu hạt trà xanh đảo Jeju cấp ẩm cho lớp son lì mỏng nhẹ, màu sắc tươi tắn.",
     "category": "Lipstick",
     "registrationNo": "132192/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Camellia Sinensis Leaf Extract",
@@ -7447,7 +7202,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-028.jpg"
+      "/products/PROD-CRW-028-main.jpg",
+      "/products/PROD-CRW-028-texture.jpg",
+      "/products/PROD-CRW-028-swatch.jpg",
+      "/products/PROD-CRW-028-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -7494,17 +7252,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-028.jpg",
     "imageUrl": "/products/PROD-CRW-028.jpg",
     "cbmpNumber": "132192/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Camellia Sinensis Leaf Extract",
@@ -7561,7 +7308,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-029",
@@ -7571,11 +7324,6 @@ export const MOCK_PRODUCTS = [
     "description": "Son dưỡng bóng nhẹ chiết xuất dầu hạt bạch đàn và hoa sơn trà, tạo độ bóng ẩm trong trẻo.",
     "category": "Lipstick",
     "registrationNo": "418564/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Simmondsia Chinensis (Jojoba) Seed Oil",
@@ -7673,7 +7421,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-029.jpg"
+      "/products/PROD-CRW-029-main.jpg",
+      "/products/PROD-CRW-029-texture.jpg",
+      "/products/PROD-CRW-029-swatch.jpg",
+      "/products/PROD-CRW-029-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -7720,19 +7471,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-029.jpg",
     "imageUrl": "/products/PROD-CRW-029.jpg",
     "cbmpNumber": "418564/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Simmondsia Chinensis (Jojoba) Seed Oil",
@@ -7790,7 +7528,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIPSTICK"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-030",
@@ -7800,11 +7544,6 @@ export const MOCK_PRODUCTS = [
     "description": "Son kem nhẹ tựa mây chiffon, công nghệ hạt màu khuếch tán tạo hiệu ứng mờ nhạt ảo diệu.",
     "category": "Lipstick",
     "registrationNo": "524850/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -7910,7 +7649,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-030.jpg"
+      "/products/PROD-CRW-030-main.jpg",
+      "/products/PROD-CRW-030-texture.jpg",
+      "/products/PROD-CRW-030-swatch.jpg",
+      "/products/PROD-CRW-030-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -7957,19 +7699,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-030.jpg",
     "imageUrl": "/products/PROD-CRW-030.jpg",
     "cbmpNumber": "524850/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -8035,7 +7764,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-031",
@@ -8045,11 +7780,6 @@ export const MOCK_PRODUCTS = [
     "description": "Hạt phấn siêu mịn tiệp vào da, kiềm dầu nhẹ và tạo sắc hồng cam tự nhiên tôn lên gò má rạng rỡ.",
     "category": "Blush",
     "registrationNo": "419299/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -8113,7 +7843,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-31-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-31-02",
@@ -8127,7 +7858,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-31-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-31-03",
@@ -8141,11 +7873,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-31-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-031.jpg"
+      "/products/PROD-CRW-031-main.jpg",
+      "/products/PROD-CRW-031-texture.jpg",
+      "/products/PROD-CRW-031-swatch.jpg",
+      "/products/PROD-CRW-031-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -8189,17 +7925,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-031.jpg",
     "imageUrl": "/products/PROD-CRW-031.jpg",
     "cbmpNumber": "419299/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -8273,7 +7998,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-032",
@@ -8283,11 +8014,6 @@ export const MOCK_PRODUCTS = [
     "description": "Huyền thoại má hồng màu hồng đào ánh nhũ vàng quyến rũ, tạo gò má ửng hồng tỏa sáng tự nhiên.",
     "category": "Blush",
     "registrationNo": "230978/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -8351,7 +8077,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-32-01.webp"
       },
       {
         "skuCode": "SKU-CRW-32-02",
@@ -8365,7 +8092,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-32-02.webp"
       },
       {
         "skuCode": "SKU-CRW-32-03",
@@ -8379,11 +8107,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-32-03.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-032.webp"
+      "/products/PROD-CRW-032-main.jpg",
+      "/products/PROD-CRW-032-texture.jpg",
+      "/products/PROD-CRW-032-swatch.jpg",
+      "/products/PROD-CRW-032-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -8427,19 +8159,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-032.webp",
     "imageUrl": "/products/PROD-CRW-032.webp",
     "cbmpNumber": "230978/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -8490,9 +8209,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -8515,7 +8232,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-033",
@@ -8525,11 +8248,6 @@ export const MOCK_PRODUCTS = [
     "description": "Bảng má 5 ô hoa nở rạng ngời xứ Phù Tang, phối hợp giữa màu lì và ánh ngọc trai trong veo.",
     "category": "Blush",
     "registrationNo": "697724/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -8585,7 +8303,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-33-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-33-02",
@@ -8599,7 +8318,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-33-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-33-03",
@@ -8613,11 +8333,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-33-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-033.jpg"
+      "/products/PROD-CRW-033-main.jpg",
+      "/products/PROD-CRW-033-texture.jpg",
+      "/products/PROD-CRW-033-swatch.jpg",
+      "/products/PROD-CRW-033-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -8661,19 +8385,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-033.jpg",
     "imageUrl": "/products/PROD-CRW-033.jpg",
     "cbmpNumber": "697724/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -8716,9 +8427,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -8741,7 +8450,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-034",
@@ -8751,11 +8466,6 @@ export const MOCK_PRODUCTS = [
     "description": "Hạt phấn lấy cảm hứng từ quả sấy khô, làm mờ lỗ chân lông và kiềm dầu hoàn hảo cho gò má.",
     "category": "Blush",
     "registrationNo": "881263/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -8811,7 +8521,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-34-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-34-02",
@@ -8825,7 +8536,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-34-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-34-03",
@@ -8839,11 +8551,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-34-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-034.jpg"
+      "/products/PROD-CRW-034-main.jpg",
+      "/products/PROD-CRW-034-texture.jpg",
+      "/products/PROD-CRW-034-swatch.jpg",
+      "/products/PROD-CRW-034-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -8887,21 +8603,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-034.jpg",
     "imageUrl": "/products/PROD-CRW-034.jpg",
     "cbmpNumber": "881263/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "PORES",
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "PORES",
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -8967,7 +8668,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-035",
@@ -8977,12 +8684,6 @@ export const MOCK_PRODUCTS = [
     "description": "Chất kem mỏng nhẹ tán êm ái, sắc tố siêu đậm chỉ cần 1 chấm nhỏ cho đôi má ửng hồng cả ngày.",
     "category": "Blush",
     "registrationNo": "453958/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -9038,7 +8739,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-35-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-35-02",
@@ -9052,7 +8754,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-35-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-35-03",
@@ -9066,11 +8769,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-35-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-035.jpg"
+      "/products/PROD-CRW-035-main.jpg",
+      "/products/PROD-CRW-035-texture.jpg",
+      "/products/PROD-CRW-035-swatch.jpg",
+      "/products/PROD-CRW-035-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -9114,20 +8821,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-035.jpg",
     "imageUrl": "/products/PROD-CRW-035.jpg",
     "cbmpNumber": "453958/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -9170,10 +8863,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -9196,7 +8886,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-036",
@@ -9206,11 +8902,6 @@ export const MOCK_PRODUCTS = [
     "description": "Sắc hồng phấn hoa bồ công anh baby dịu dàng làm sáng bừng gương mặt mệt mỏi.",
     "category": "Blush",
     "registrationNo": "873435/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -9266,7 +8957,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-36-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-36-02",
@@ -9280,7 +8972,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-36-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-36-03",
@@ -9294,11 +8987,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-36-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-036.jpg"
+      "/products/PROD-CRW-036-main.jpg",
+      "/products/PROD-CRW-036-texture.jpg",
+      "/products/PROD-CRW-036-swatch.jpg",
+      "/products/PROD-CRW-036-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -9342,19 +9039,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-036.jpg",
     "imageUrl": "/products/PROD-CRW-036.jpg",
     "cbmpNumber": "873435/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -9397,9 +9081,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -9422,7 +9104,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-037",
@@ -9432,11 +9120,6 @@ export const MOCK_PRODUCTS = [
     "description": "Công nghệ nướng độc quyền cho hạt phấn trong suốt tiệp vào da như màu ửng hồng tự nhiên.",
     "category": "Blush",
     "registrationNo": "179240/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL",
-      "SENSITIVE",
-      "DRY"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -9492,7 +9175,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-37-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-37-02",
@@ -9506,7 +9190,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-37-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-37-03",
@@ -9520,11 +9205,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-37-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-037.jpg"
+      "/products/PROD-CRW-037-main.jpg",
+      "/products/PROD-CRW-037-texture.jpg",
+      "/products/PROD-CRW-037-swatch.jpg",
+      "/products/PROD-CRW-037-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -9568,19 +9257,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-037.jpg",
     "imageUrl": "/products/PROD-CRW-037.jpg",
     "cbmpNumber": "179240/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL",
-      "SENSITIVE",
-      "DRY"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -9623,9 +9299,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -9648,7 +9322,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-038",
@@ -9658,11 +9338,6 @@ export const MOCK_PRODUCTS = [
     "description": "Sắc màu ánh nắng dịu nhẹ, chất phấn mỏng mịn kiểm soát bã nhờn không gây bết dính.",
     "category": "Blush",
     "registrationNo": "720012/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -9718,7 +9393,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-38-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-38-02",
@@ -9732,7 +9408,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-38-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-38-03",
@@ -9746,11 +9423,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-38-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-038.jpg"
+      "/products/PROD-CRW-038-main.jpg",
+      "/products/PROD-CRW-038-texture.jpg",
+      "/products/PROD-CRW-038-swatch.jpg",
+      "/products/PROD-CRW-038-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -9794,19 +9475,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-038.jpg",
     "imageUrl": "/products/PROD-CRW-038.jpg",
     "cbmpNumber": "720012/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -9872,7 +9540,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-039",
@@ -9882,10 +9556,6 @@ export const MOCK_PRODUCTS = [
     "description": "Chất kem mềm mại dễ tán bằng ngón tay, tạo hiệu ứng má say rượu đáng yêu.",
     "category": "Blush",
     "registrationNo": "459433/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -9933,7 +9603,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-39-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-39-02",
@@ -9947,7 +9618,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-39-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-39-03",
@@ -9961,11 +9633,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-39-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-039.jpg"
+      "/products/PROD-CRW-039-main.jpg",
+      "/products/PROD-CRW-039-texture.jpg",
+      "/products/PROD-CRW-039-swatch.jpg",
+      "/products/PROD-CRW-039-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -10009,18 +9685,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-039.jpg",
     "imageUrl": "/products/PROD-CRW-039.jpg",
     "cbmpNumber": "459433/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -10078,7 +9742,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-040",
@@ -10088,10 +9758,6 @@ export const MOCK_PRODUCTS = [
     "description": "Tone màu chuẩn phong cách Douyin nhẹ nhàng, làm đầy hõm má và tạo khối sáng cho khuôn mặt.",
     "category": "Blush",
     "registrationNo": "724770/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -10147,7 +9813,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-40-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-40-02",
@@ -10161,7 +9828,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-40-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-40-03",
@@ -10175,11 +9843,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-40-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-040.jpg"
+      "/products/PROD-CRW-040-main.jpg",
+      "/products/PROD-CRW-040-texture.jpg",
+      "/products/PROD-CRW-040-swatch.jpg",
+      "/products/PROD-CRW-040-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -10223,18 +9895,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-040.jpg",
     "imageUrl": "/products/PROD-CRW-040.jpg",
     "cbmpNumber": "724770/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -10300,7 +9960,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-041",
@@ -10310,10 +9976,6 @@ export const MOCK_PRODUCTS = [
     "description": "Phấn má thuần chay mỏng nhẹ chiết xuất khoáng chất thiên nhiên đảo Jeju an toàn lành tính.",
     "category": "Blush",
     "registrationNo": "103953/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -10361,7 +10023,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-41-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-41-02",
@@ -10375,7 +10038,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-41-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-41-03",
@@ -10389,11 +10053,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-41-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-041.jpg"
+      "/products/PROD-CRW-041-main.jpg",
+      "/products/PROD-CRW-041-texture.jpg",
+      "/products/PROD-CRW-041-swatch.jpg",
+      "/products/PROD-CRW-041-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -10437,18 +10105,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-041.jpg",
     "imageUrl": "/products/PROD-CRW-041.jpg",
     "cbmpNumber": "103953/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -10506,7 +10162,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-042",
@@ -10516,11 +10178,6 @@ export const MOCK_PRODUCTS = [
     "description": "Công thức hạt phấn siêu nhỏ chuẩn sắc tự nhiên, bền màu không phai suốt 16 giờ.",
     "category": "Blush",
     "registrationNo": "990947/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -10576,7 +10233,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-42-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-42-02",
@@ -10590,7 +10248,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-42-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-42-03",
@@ -10604,11 +10263,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-42-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-042.jpg"
+      "/products/PROD-CRW-042-main.jpg",
+      "/products/PROD-CRW-042-texture.jpg",
+      "/products/PROD-CRW-042-swatch.jpg",
+      "/products/PROD-CRW-042-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -10652,17 +10315,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-042.jpg",
     "imageUrl": "/products/PROD-CRW-042.jpg",
     "cbmpNumber": "990947/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -10728,7 +10380,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-043",
@@ -10738,10 +10396,6 @@ export const MOCK_PRODUCTS = [
     "description": "Tông màu trong trẻo tươi mới giúp khuôn mặt trẻ trung rạng rỡ cả ngày mà không bị xỉn màu.",
     "category": "Blush",
     "registrationNo": "738977/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -10797,7 +10451,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-43-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-43-02",
@@ -10811,7 +10466,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-43-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-43-03",
@@ -10825,11 +10481,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-43-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-043.jpg"
+      "/products/PROD-CRW-043-main.jpg",
+      "/products/PROD-CRW-043-texture.jpg",
+      "/products/PROD-CRW-043-swatch.jpg",
+      "/products/PROD-CRW-043-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -10873,18 +10533,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-043.jpg",
     "imageUrl": "/products/PROD-CRW-043.jpg",
     "cbmpNumber": "738977/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "DULLNESS"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "DULLNESS"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -10927,9 +10575,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -10952,7 +10598,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-044",
@@ -10962,11 +10614,6 @@ export const MOCK_PRODUCTS = [
     "description": "Kết cấu hạt phấn siêu mịn kèm cọ chuyên dụng, tạo độ bắt sáng tự nhiên và gò má thon gọn.",
     "category": "Blush",
     "registrationNo": "266337/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -11022,7 +10669,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-44-01.png"
       },
       {
         "skuCode": "SKU-CRW-44-02",
@@ -11036,7 +10684,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-44-02.png"
       },
       {
         "skuCode": "SKU-CRW-44-03",
@@ -11050,11 +10699,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-44-03.png"
       }
     ],
     "images": [
-      "/products/PROD-CRW-044.png"
+      "/products/PROD-CRW-044-main.jpg",
+      "/products/PROD-CRW-044-texture.jpg",
+      "/products/PROD-CRW-044-swatch.jpg",
+      "/products/PROD-CRW-044-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -11098,19 +10751,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-044.png",
     "imageUrl": "/products/PROD-CRW-044.png",
     "cbmpNumber": "266337/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -11176,7 +10816,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-045",
@@ -11186,11 +10832,6 @@ export const MOCK_PRODUCTS = [
     "description": "Kết cấu kem thạch mềm dẻo như bánh flan, tan mướt vào da tạo đôi má ửng màu mọng nước.",
     "category": "Blush",
     "registrationNo": "500227/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -11238,7 +10879,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-45-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-45-02",
@@ -11252,7 +10894,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-45-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-45-03",
@@ -11266,11 +10909,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-45-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-045.jpg"
+      "/products/PROD-CRW-045-main.jpg",
+      "/products/PROD-CRW-045-texture.jpg",
+      "/products/PROD-CRW-045-swatch.jpg",
+      "/products/PROD-CRW-045-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -11314,19 +10961,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-045.jpg",
     "imageUrl": "/products/PROD-CRW-045.jpg",
     "cbmpNumber": "500227/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -11361,9 +10995,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -11386,7 +11018,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-046",
@@ -11396,11 +11034,6 @@ export const MOCK_PRODUCTS = [
     "description": "Màng lưới lọc kem nền siêu mịn mang lại lớp nền căng bóng mọng nước Glass-skin suốt 54 giờ.",
     "category": "Foundation",
     "registrationNo": "798463/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -11464,7 +11097,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-46-19C.jpg"
       },
       {
         "skuCode": "SKU-CRW-46-21N",
@@ -11478,7 +11112,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-46-21N.jpg"
       },
       {
         "skuCode": "SKU-CRW-46-23W",
@@ -11492,11 +11127,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-46-23W.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-046.jpg"
+      "/products/PROD-CRW-046-main.jpg",
+      "/products/PROD-CRW-046-texture.jpg",
+      "/products/PROD-CRW-046-swatch.jpg",
+      "/products/PROD-CRW-046-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -11540,19 +11179,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-046.jpg",
     "imageUrl": "/products/PROD-CRW-046.jpg",
     "cbmpNumber": "798463/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -11603,11 +11229,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "BRIGHTENING",
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -11630,7 +11252,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-047",
@@ -11640,11 +11268,6 @@ export const MOCK_PRODUCTS = [
     "description": "Che phủ đỉnh cao khuyết điểm và lỗ chân lông to, công thức bán lì semi-matte kiềm dầu suốt 72h.",
     "category": "Foundation",
     "registrationNo": "182771/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION",
-      "NORMAL"
-    ],
     "ingredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -11708,7 +11331,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-47-19C.jpg"
       },
       {
         "skuCode": "SKU-CRW-47-21N",
@@ -11722,7 +11346,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-47-21N.jpg"
       },
       {
         "skuCode": "SKU-CRW-47-23W",
@@ -11736,11 +11361,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-47-23W.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-047.jpg"
+      "/products/PROD-CRW-047-main.jpg",
+      "/products/PROD-CRW-047-texture.jpg",
+      "/products/PROD-CRW-047-swatch.jpg",
+      "/products/PROD-CRW-047-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -11784,19 +11413,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-047.jpg",
     "imageUrl": "/products/PROD-CRW-047.jpg",
     "cbmpNumber": "182771/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "PORES",
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "PORES",
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -11847,10 +11463,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "BRIGHTENING"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -11873,7 +11486,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-048",
@@ -11883,10 +11502,6 @@ export const MOCK_PRODUCTS = [
     "description": "Kem nền kiềm dầu quốc dân với hạt đất sét khoáng hút bã nhờn, che phủ lỗ chân lông tự nhiên.",
     "category": "Foundation",
     "registrationNo": "602253/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Water",
@@ -11958,7 +11573,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-48-19C.jpg"
       },
       {
         "skuCode": "SKU-CRW-48-21N",
@@ -11972,7 +11588,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-48-21N.jpg"
       },
       {
         "skuCode": "SKU-CRW-48-23W",
@@ -11986,11 +11603,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-48-23W.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-048.jpg"
+      "/products/PROD-CRW-048-main.jpg",
+      "/products/PROD-CRW-048-texture.jpg",
+      "/products/PROD-CRW-048-swatch.jpg",
+      "/products/PROD-CRW-048-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -12034,18 +11655,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-048.jpg",
     "imageUrl": "/products/PROD-CRW-048.jpg",
     "cbmpNumber": "602253/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "PORES",
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "PORES",
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Water",
@@ -12104,9 +11713,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -12128,7 +11735,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-049",
@@ -12138,11 +11751,6 @@ export const MOCK_PRODUCTS = [
     "description": "Chống nước, chống mồ hôi và không lem khẩu trang suốt 30 giờ, độ che phủ từ trung bình đến cao.",
     "category": "Foundation",
     "registrationNo": "448228/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -12198,7 +11806,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-49-19C.jpg"
       },
       {
         "skuCode": "SKU-CRW-49-21N",
@@ -12212,7 +11821,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-49-21N.jpg"
       },
       {
         "skuCode": "SKU-CRW-49-23W",
@@ -12226,11 +11836,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-49-23W.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-049.jpg"
+      "/products/PROD-CRW-049-main.jpg",
+      "/products/PROD-CRW-049-texture.jpg",
+      "/products/PROD-CRW-049-swatch.jpg",
+      "/products/PROD-CRW-049-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -12274,17 +11888,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-049.jpg",
     "imageUrl": "/products/PROD-CRW-049.jpg",
     "cbmpNumber": "448228/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "NORMAL",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -12327,9 +11930,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -12352,7 +11953,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-050",
@@ -12362,10 +11969,6 @@ export const MOCK_PRODUCTS = [
     "description": "Thiết kế bo tròn thời thượng, lớp nền mỏng nhẹ không dính khẩu trang và bảo vệ da khỏi ánh sáng xanh.",
     "category": "Foundation",
     "registrationNo": "274648/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -12429,7 +12032,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-50-19C.jpg"
       },
       {
         "skuCode": "SKU-CRW-50-21N",
@@ -12443,7 +12047,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-50-21N.jpg"
       },
       {
         "skuCode": "SKU-CRW-50-23W",
@@ -12457,11 +12062,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-50-23W.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-050.jpg"
+      "/products/PROD-CRW-050-main.jpg",
+      "/products/PROD-CRW-050-texture.jpg",
+      "/products/PROD-CRW-050-swatch.jpg",
+      "/products/PROD-CRW-050-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -12505,18 +12114,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-050.jpg",
     "imageUrl": "/products/PROD-CRW-050.jpg",
     "cbmpNumber": "274648/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -12567,10 +12164,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -12592,7 +12186,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-051",
@@ -12602,11 +12202,6 @@ export const MOCK_PRODUCTS = [
     "description": "Cấp ẩm dồi dào với công nghệ Liquid Diamond cho làn da rạng rỡ tỏa sáng 360 độ suốt cả ngày.",
     "category": "Foundation",
     "registrationNo": "928324/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -12670,7 +12265,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-51-19C.png"
       },
       {
         "skuCode": "SKU-CRW-51-21N",
@@ -12684,7 +12280,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-51-21N.png"
       },
       {
         "skuCode": "SKU-CRW-51-23W",
@@ -12698,11 +12295,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-51-23W.png"
       }
     ],
     "images": [
-      "/products/PROD-CRW-051.png"
+      "/products/PROD-CRW-051-main.jpg",
+      "/products/PROD-CRW-051-texture.jpg",
+      "/products/PROD-CRW-051-swatch.jpg",
+      "/products/PROD-CRW-051-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -12746,17 +12347,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-051.png",
     "imageUrl": "/products/PROD-CRW-051.png",
     "cbmpNumber": "928324/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -12807,11 +12397,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS",
-      "BRIGHTENING"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -12834,7 +12420,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-052",
@@ -12844,11 +12436,6 @@ export const MOCK_PRODUCTS = [
     "description": "Độ che phủ vượt trội nhưng mỏng mịn như nhung, chứng nhận thuần chay an toàn cho da mụn nhạy cảm.",
     "category": "Foundation",
     "registrationNo": "180709/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "COMBINATION",
-      "OILY",
-      "NORMAL"
-    ],
     "ingredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -12904,7 +12491,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-52-19C.jpg"
       },
       {
         "skuCode": "SKU-CRW-52-21N",
@@ -12918,7 +12506,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-52-21N.jpg"
       },
       {
         "skuCode": "SKU-CRW-52-23W",
@@ -12932,11 +12521,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-52-23W.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-052.jpg"
+      "/products/PROD-CRW-052-main.jpg",
+      "/products/PROD-CRW-052-texture.jpg",
+      "/products/PROD-CRW-052-swatch.jpg",
+      "/products/PROD-CRW-052-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -12980,17 +12573,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-052.jpg",
     "imageUrl": "/products/PROD-CRW-052.jpg",
     "cbmpNumber": "180709/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "COMBINATION",
-      "OILY",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "ACNE"
-    ],
-    "concerns": [
-      "ACNE"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -13033,10 +12615,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -13059,7 +12638,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-053",
@@ -13069,10 +12654,6 @@ export const MOCK_PRODUCTS = [
     "description": "Kem nền dạng lỏng cho hiệu ứng bóng bẩy tự nhiên kiểu Hàn Quốc, nuôi dưỡng làn da ngậm nước.",
     "category": "Foundation",
     "registrationNo": "503367/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL"
-    ],
     "ingredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -13128,7 +12709,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-53-19C.jpg"
       },
       {
         "skuCode": "SKU-CRW-53-21N",
@@ -13142,7 +12724,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-53-21N.jpg"
       },
       {
         "skuCode": "SKU-CRW-53-23W",
@@ -13156,11 +12739,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-53-23W.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-053.jpg"
+      "/products/PROD-CRW-053-main.jpg",
+      "/products/PROD-CRW-053-texture.jpg",
+      "/products/PROD-CRW-053-swatch.jpg",
+      "/products/PROD-CRW-053-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -13204,18 +12791,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-053.jpg",
     "imageUrl": "/products/PROD-CRW-053.jpg",
     "cbmpNumber": "503367/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -13258,10 +12833,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -13284,7 +12856,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-054",
@@ -13294,10 +12872,6 @@ export const MOCK_PRODUCTS = [
     "description": "Nữ hoàng kem nền kiềm dầu số 1 thế giới với khả năng che khuyết điểm hoàn mỹ suốt 24 giờ bất chấp nắng gắt.",
     "category": "Foundation",
     "registrationNo": "628076/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Water",
@@ -13369,7 +12943,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-54-19C.webp"
       },
       {
         "skuCode": "SKU-CRW-54-21N",
@@ -13383,7 +12958,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-54-21N.webp"
       },
       {
         "skuCode": "SKU-CRW-54-23W",
@@ -13397,11 +12973,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-54-23W.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-054.webp"
+      "/products/PROD-CRW-054-main.jpg",
+      "/products/PROD-CRW-054-texture.jpg",
+      "/products/PROD-CRW-054-swatch.jpg",
+      "/products/PROD-CRW-054-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -13445,16 +13025,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-054.webp",
     "imageUrl": "/products/PROD-CRW-054.webp",
     "cbmpNumber": "628076/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Water",
@@ -13513,9 +13083,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -13537,7 +13105,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-055",
@@ -13547,11 +13121,6 @@ export const MOCK_PRODUCTS = [
     "description": "Công nghệ hạt phấn oxy siêu nhẹ cho làn da hít thở thoải mái, che phủ mịn màng suốt 32h.",
     "category": "Foundation",
     "registrationNo": "285881/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Dimethicone",
@@ -13607,7 +13176,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-55-19C.jpg"
       },
       {
         "skuCode": "SKU-CRW-55-21N",
@@ -13621,7 +13191,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-55-21N.jpg"
       },
       {
         "skuCode": "SKU-CRW-55-23W",
@@ -13635,11 +13206,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-55-23W.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-055.jpg"
+      "/products/PROD-CRW-055-main.jpg",
+      "/products/PROD-CRW-055-texture.jpg",
+      "/products/PROD-CRW-055-swatch.jpg",
+      "/products/PROD-CRW-055-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -13683,19 +13258,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-055.jpg",
     "imageUrl": "/products/PROD-CRW-055.jpg",
     "cbmpNumber": "285881/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -13738,10 +13300,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "BRIGHTENING"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -13764,7 +13323,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-056",
@@ -13774,11 +13339,6 @@ export const MOCK_PRODUCTS = [
     "description": "Serum trang điểm chứa 1% Hyaluronic Acid tinh khiết, vừa làm sáng đều màu da vừa dưỡng ẩm sâu.",
     "category": "Foundation",
     "registrationNo": "429345/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -13834,7 +13394,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-56-19C.jpg"
       },
       {
         "skuCode": "SKU-CRW-56-21N",
@@ -13848,7 +13409,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-56-21N.jpg"
       },
       {
         "skuCode": "SKU-CRW-56-23W",
@@ -13862,11 +13424,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-56-23W.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-056.jpg"
+      "/products/PROD-CRW-056-main.jpg",
+      "/products/PROD-CRW-056-texture.jpg",
+      "/products/PROD-CRW-056-swatch.jpg",
+      "/products/PROD-CRW-056-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -13910,19 +13476,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-056.jpg",
     "imageUrl": "/products/PROD-CRW-056.jpg",
     "cbmpNumber": "429345/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "DRY",
-      "NORMAL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "DULLNESS"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "DULLNESS"
-    ],
     "inciIngredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -13965,10 +13518,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -13991,7 +13541,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-057",
@@ -14001,10 +13557,6 @@ export const MOCK_PRODUCTS = [
     "description": "Chỉ số chống nắng cực cao SPF50+/PA+++, che phủ khuyết điểm mụn và thâm đỏ nhanh chóng tiện lợi.",
     "category": "Foundation",
     "registrationNo": "930140/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -14060,7 +13612,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-57-19C.jpg"
       },
       {
         "skuCode": "SKU-CRW-57-21N",
@@ -14074,7 +13627,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-57-21N.jpg"
       },
       {
         "skuCode": "SKU-CRW-57-23W",
@@ -14088,11 +13642,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-57-23W.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-057.jpg"
+      "/products/PROD-CRW-057-main.jpg",
+      "/products/PROD-CRW-057-texture.jpg",
+      "/products/PROD-CRW-057-swatch.jpg",
+      "/products/PROD-CRW-057-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -14136,18 +13694,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-057.jpg",
     "imageUrl": "/products/PROD-CRW-057.jpg",
     "cbmpNumber": "930140/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "ACNE",
-      "HYPERPIGMENTATION"
-    ],
-    "concerns": [
-      "ACNE",
-      "HYPERPIGMENTATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -14190,9 +13736,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -14215,7 +13759,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-058",
@@ -14225,11 +13775,6 @@ export const MOCK_PRODUCTS = [
     "description": "Được mệnh danh là 'phù thủy che khuyết điểm' với khả năng che mụn và tàn nhang hoàn hảo trong 1 lần dặm.",
     "category": "Foundation",
     "registrationNo": "816883/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -14285,7 +13830,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-58-19C.jpg"
       },
       {
         "skuCode": "SKU-CRW-58-21N",
@@ -14299,7 +13845,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-58-21N.jpg"
       },
       {
         "skuCode": "SKU-CRW-58-23W",
@@ -14313,11 +13860,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-58-23W.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-058.jpg"
+      "/products/PROD-CRW-058-main.jpg",
+      "/products/PROD-CRW-058-texture.jpg",
+      "/products/PROD-CRW-058-swatch.jpg",
+      "/products/PROD-CRW-058-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -14361,17 +13912,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-058.jpg",
     "imageUrl": "/products/PROD-CRW-058.jpg",
     "cbmpNumber": "816883/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "ACNE"
-    ],
-    "concerns": [
-      "ACNE"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -14414,11 +13954,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "BRIGHTENING",
-      "SOOTHING_BOTANICAL"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -14441,7 +13977,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-059",
@@ -14451,11 +13993,6 @@ export const MOCK_PRODUCTS = [
     "description": "Kem nền kiềm dầu chuyên nghiệp chuẩn studio chụp ảnh, kiểm soát dầu thừa và bền màu 24h.",
     "category": "Foundation",
     "registrationNo": "674027/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION",
-      "NORMAL"
-    ],
     "ingredients": [
       {
         "inciName": "Water",
@@ -14519,7 +14056,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-59-19C.jpg"
       },
       {
         "skuCode": "SKU-CRW-59-21N",
@@ -14533,7 +14071,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-59-21N.jpg"
       },
       {
         "skuCode": "SKU-CRW-59-23W",
@@ -14547,11 +14086,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-59-23W.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-059.jpg"
+      "/products/PROD-CRW-059-main.jpg",
+      "/products/PROD-CRW-059-texture.jpg",
+      "/products/PROD-CRW-059-swatch.jpg",
+      "/products/PROD-CRW-059-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -14595,17 +14138,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-059.jpg",
     "imageUrl": "/products/PROD-CRW-059.jpg",
     "cbmpNumber": "674027/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION",
-      "NORMAL"
-    ],
-    "skinConcerns": [
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Water",
@@ -14656,9 +14188,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -14680,7 +14210,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-060",
@@ -14690,11 +14226,6 @@ export const MOCK_PRODUCTS = [
     "description": "Kem nền sang trọng với phức hợp Hyaluronic Acid, lớp finish lì rạng rỡ suốt ngày đêm không xuống tông.",
     "category": "Foundation",
     "registrationNo": "649792/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -14750,7 +14281,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-60-19C.jpg"
       },
       {
         "skuCode": "SKU-CRW-60-21N",
@@ -14764,7 +14296,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-60-21N.jpg"
       },
       {
         "skuCode": "SKU-CRW-60-23W",
@@ -14778,11 +14311,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-60-23W.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-060.jpg"
+      "/products/PROD-CRW-060-main.jpg",
+      "/products/PROD-CRW-060-texture.jpg",
+      "/products/PROD-CRW-060-swatch.jpg",
+      "/products/PROD-CRW-060-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -14826,17 +14363,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-060.jpg",
     "imageUrl": "/products/PROD-CRW-060.jpg",
     "cbmpNumber": "649792/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -14879,10 +14405,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -14905,7 +14428,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_FOUNDATION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-061",
@@ -14915,9 +14444,6 @@ export const MOCK_PRODUCTS = [
     "description": "Bảng phấn mắt tone hồng đất và cam nâu ánh kim bán chạy nhất Châu Á, hạt phấn mịn bám màu lâu.",
     "category": "Eyeshadow",
     "registrationNo": "665095/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -14981,7 +14507,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-61-01.png"
       },
       {
         "skuCode": "SKU-CRW-61-02",
@@ -14995,7 +14522,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-61-02.png"
       },
       {
         "skuCode": "SKU-CRW-61-03",
@@ -15009,11 +14537,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-61-03.png"
       }
     ],
     "images": [
-      "/products/PROD-CRW-061.png"
+      "/products/PROD-CRW-061-main.jpg",
+      "/products/PROD-CRW-061-texture.jpg",
+      "/products/PROD-CRW-061-swatch.jpg",
+      "/products/PROD-CRW-061-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -15057,17 +14589,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-061.png",
     "imageUrl": "/products/PROD-CRW-061.png",
     "cbmpNumber": "665095/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -15141,7 +14662,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-062",
@@ -15151,9 +14678,6 @@ export const MOCK_PRODUCTS = [
     "description": "Tone nâu cà phê và vàng đồng thanh lịch ấm áp, phù hợp cho cả trang điểm hàng ngày và tiệc tối.",
     "category": "Eyeshadow",
     "registrationNo": "597734/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -15209,7 +14733,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-62-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-62-02",
@@ -15223,7 +14748,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-62-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-62-03",
@@ -15237,11 +14763,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-62-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-062.jpg"
+      "/products/PROD-CRW-062-main.jpg",
+      "/products/PROD-CRW-062-texture.jpg",
+      "/products/PROD-CRW-062-swatch.jpg",
+      "/products/PROD-CRW-062-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -15285,17 +14815,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-062.jpg",
     "imageUrl": "/products/PROD-CRW-062.jpg",
     "cbmpNumber": "597734/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -15338,9 +14857,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -15363,7 +14880,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-063",
@@ -15373,9 +14896,6 @@ export const MOCK_PRODUCTS = [
     "description": "Bộ sưu tập mèo Koshort đáng yêu gồm các ô lì, nhũ mịn và kim tuyến lấp lánh như sương mai.",
     "category": "Eyeshadow",
     "registrationNo": "620932/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -15431,7 +14951,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-63-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-63-02",
@@ -15445,7 +14966,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-63-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-63-03",
@@ -15459,11 +14981,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-63-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-063.jpg"
+      "/products/PROD-CRW-063-main.jpg",
+      "/products/PROD-CRW-063-texture.jpg",
+      "/products/PROD-CRW-063-swatch.jpg",
+      "/products/PROD-CRW-063-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -15507,17 +15033,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-063.jpg",
     "imageUrl": "/products/PROD-CRW-063.jpg",
     "cbmpNumber": "620932/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -15560,9 +15075,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -15585,7 +15098,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-064",
@@ -15595,9 +15114,6 @@ export const MOCK_PRODUCTS = [
     "description": "10 sắc thái khu vườn bí mật với 5 cấp độ đậm nhạt khác nhau, tạo chiều sâu cuốn hút cho đôi mắt.",
     "category": "Eyeshadow",
     "registrationNo": "315228/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -15653,7 +15169,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-64-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-64-02",
@@ -15667,7 +15184,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-64-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-64-03",
@@ -15681,11 +15199,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-64-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-064.jpg"
+      "/products/PROD-CRW-064-main.jpg",
+      "/products/PROD-CRW-064-texture.jpg",
+      "/products/PROD-CRW-064-swatch.jpg",
+      "/products/PROD-CRW-064-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -15729,17 +15251,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-064.jpg",
     "imageUrl": "/products/PROD-CRW-064.jpg",
     "cbmpNumber": "315228/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -15805,7 +15316,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-065",
@@ -15815,9 +15332,6 @@ export const MOCK_PRODUCTS = [
     "description": "Tone be sữa latte dịu ngọt thuần khiết, hạt nhũ mịn ngọc trai bắt sáng tinh tế dưới ánh đèn.",
     "category": "Eyeshadow",
     "registrationNo": "269415/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -15873,7 +15387,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-65-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-65-02",
@@ -15887,7 +15402,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-65-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-65-03",
@@ -15901,11 +15417,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-65-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-065.jpg"
+      "/products/PROD-CRW-065-main.jpg",
+      "/products/PROD-CRW-065-texture.jpg",
+      "/products/PROD-CRW-065-swatch.jpg",
+      "/products/PROD-CRW-065-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -15949,17 +15469,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-065.jpg",
     "imageUrl": "/products/PROD-CRW-065.jpg",
     "cbmpNumber": "269415/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -16002,9 +15511,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -16027,7 +15534,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-066",
@@ -16037,9 +15550,6 @@ export const MOCK_PRODUCTS = [
     "description": "12 ô màu tông vàng hồng rose gold quyến rũ kinh điển, độ bám màu vượt bậc không vón cục.",
     "category": "Eyeshadow",
     "registrationNo": "329909/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -16103,7 +15613,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-66-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-66-02",
@@ -16117,7 +15628,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-66-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-66-03",
@@ -16131,11 +15643,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-66-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-066.jpg"
+      "/products/PROD-CRW-066-main.jpg",
+      "/products/PROD-CRW-066-texture.jpg",
+      "/products/PROD-CRW-066-swatch.jpg",
+      "/products/PROD-CRW-066-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -16179,15 +15695,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-066.jpg",
     "imageUrl": "/products/PROD-CRW-066.jpg",
     "cbmpNumber": "329909/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -16261,7 +15768,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-067",
@@ -16271,9 +15784,6 @@ export const MOCK_PRODUCTS = [
     "description": "Bảng mắt chuyên nghiệp 35 ô tông ấm nồng cháy, phù hợp cho mọi phong cách từ công sở đến lễ hội.",
     "category": "Eyeshadow",
     "registrationNo": "435972/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -16329,7 +15839,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-67-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-67-02",
@@ -16343,7 +15854,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-67-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-67-03",
@@ -16357,11 +15869,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-67-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-067.jpg"
+      "/products/PROD-CRW-067-main.jpg",
+      "/products/PROD-CRW-067-texture.jpg",
+      "/products/PROD-CRW-067-swatch.jpg",
+      "/products/PROD-CRW-067-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -16405,17 +15921,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-067.jpg",
     "imageUrl": "/products/PROD-CRW-067.jpg",
     "cbmpNumber": "435972/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -16481,7 +15986,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-068",
@@ -16491,9 +16002,6 @@ export const MOCK_PRODUCTS = [
     "description": "Hạt phấn nhũ đa chiều bắt sáng lấp lánh như mắt hổ và cáo, giữ màu mắt lung linh suốt ngày dài.",
     "category": "Eyeshadow",
     "registrationNo": "816993/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -16549,7 +16057,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-68-01.webp"
       },
       {
         "skuCode": "SKU-CRW-68-02",
@@ -16563,7 +16072,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-68-02.webp"
       },
       {
         "skuCode": "SKU-CRW-68-03",
@@ -16577,11 +16087,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-68-03.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-068.webp"
+      "/products/PROD-CRW-068-main.jpg",
+      "/products/PROD-CRW-068-texture.jpg",
+      "/products/PROD-CRW-068-swatch.jpg",
+      "/products/PROD-CRW-068-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -16625,17 +16139,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-068.webp",
     "imageUrl": "/products/PROD-CRW-068.webp",
     "cbmpNumber": "816993/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -16678,9 +16181,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -16703,7 +16204,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-069",
@@ -16713,9 +16220,6 @@ export const MOCK_PRODUCTS = [
     "description": "Tone nâu dừa trung tính hoàn hảo cho mọi tông da, chất phấn bơ mịn dễ tán ngay cả với người mới bắt đầu.",
     "category": "Eyeshadow",
     "registrationNo": "434405/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -16771,7 +16275,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-69-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-69-02",
@@ -16785,7 +16290,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-69-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-69-03",
@@ -16799,11 +16305,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-69-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-069.jpg"
+      "/products/PROD-CRW-069-main.jpg",
+      "/products/PROD-CRW-069-texture.jpg",
+      "/products/PROD-CRW-069-swatch.jpg",
+      "/products/PROD-CRW-069-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -16847,17 +16357,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-069.jpg",
     "imageUrl": "/products/PROD-CRW-069.jpg",
     "cbmpNumber": "434405/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -16923,7 +16422,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-070",
@@ -16933,9 +16438,6 @@ export const MOCK_PRODUCTS = [
     "description": "Bộ 4 ô tiện lợi gồm 3 ô lì và 1 ô nhũ kim cương bắt sáng, phối màu chuẩn gu tinh tế.",
     "category": "Eyeshadow",
     "registrationNo": "901629/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -16991,7 +16493,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-70-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-70-02",
@@ -17005,7 +16508,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-70-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-70-03",
@@ -17019,11 +16523,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-70-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-070.jpg"
+      "/products/PROD-CRW-070-main.jpg",
+      "/products/PROD-CRW-070-texture.jpg",
+      "/products/PROD-CRW-070-swatch.jpg",
+      "/products/PROD-CRW-070-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -17067,17 +16575,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-070.jpg",
     "imageUrl": "/products/PROD-CRW-070.jpg",
     "cbmpNumber": "901629/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -17120,9 +16617,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -17145,7 +16640,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-071",
@@ -17155,9 +16656,6 @@ export const MOCK_PRODUCTS = [
     "description": "Sắc thái tone nude đỏ mận và sô cô la đậm đà, chất nhũ duo-chrome chuyển màu kỳ ảo theo góc nhìn.",
     "category": "Eyeshadow",
     "registrationNo": "995121/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -17213,7 +16711,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-71-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-71-02",
@@ -17227,7 +16726,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-71-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-71-03",
@@ -17241,11 +16741,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-71-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-071.jpg"
+      "/products/PROD-CRW-071-main.jpg",
+      "/products/PROD-CRW-071-texture.jpg",
+      "/products/PROD-CRW-071-swatch.jpg",
+      "/products/PROD-CRW-071-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -17289,17 +16793,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-071.jpg",
     "imageUrl": "/products/PROD-CRW-071.jpg",
     "cbmpNumber": "995121/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -17365,7 +16858,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-072",
@@ -17375,9 +16874,6 @@ export const MOCK_PRODUCTS = [
     "description": "Cảm hứng từ những chiếc bánh nướng thơm lừng mộc mạc, hạt phấn bám chắc vào mí mắt.",
     "category": "Eyeshadow",
     "registrationNo": "130373/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -17433,7 +16929,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-72-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-72-02",
@@ -17447,7 +16944,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-72-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-72-03",
@@ -17461,11 +16959,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-72-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-072.jpg"
+      "/products/PROD-CRW-072-main.jpg",
+      "/products/PROD-CRW-072-texture.jpg",
+      "/products/PROD-CRW-072-swatch.jpg",
+      "/products/PROD-CRW-072-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -17509,17 +17011,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-072.jpg",
     "imageUrl": "/products/PROD-CRW-072.jpg",
     "cbmpNumber": "130373/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -17562,9 +17053,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -17587,7 +17076,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-073",
@@ -17597,9 +17092,6 @@ export const MOCK_PRODUCTS = [
     "description": "Hạt kim tuyến lấp lánh phản chiếu ánh sáng rực rỡ, đầu cọ mảnh dễ nhấn khóe mắt và bọng mắt dưới.",
     "category": "Eyeshadow",
     "registrationNo": "588638/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Water",
@@ -17647,7 +17139,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-73-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-73-02",
@@ -17661,7 +17154,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-73-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-73-03",
@@ -17675,11 +17169,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-73-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-073.jpg"
+      "/products/PROD-CRW-073-main.jpg",
+      "/products/PROD-CRW-073-texture.jpg",
+      "/products/PROD-CRW-073-swatch.jpg",
+      "/products/PROD-CRW-073-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -17723,17 +17221,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-073.jpg",
     "imageUrl": "/products/PROD-CRW-073.jpg",
     "cbmpNumber": "588638/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Water",
@@ -17768,10 +17255,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -17794,7 +17278,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "LIQUID_EYESHADOW"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-074",
@@ -17804,9 +17294,6 @@ export const MOCK_PRODUCTS = [
     "description": "16 ô màu bình minh nhiệt đới với độ lên màu ấn tượng, phù hợp cho các buổi tiệc tùng sống động.",
     "category": "Eyeshadow",
     "registrationNo": "630632/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Mica",
@@ -17862,7 +17349,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-74-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-74-02",
@@ -17876,7 +17364,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-74-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-74-03",
@@ -17890,11 +17379,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-74-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-074.jpg"
+      "/products/PROD-CRW-074-main.jpg",
+      "/products/PROD-CRW-074-texture.jpg",
+      "/products/PROD-CRW-074-swatch.jpg",
+      "/products/PROD-CRW-074-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -17938,17 +17431,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-074.jpg",
     "imageUrl": "/products/PROD-CRW-074.jpg",
     "cbmpNumber": "630632/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -18014,7 +17496,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-075",
@@ -18024,9 +17512,6 @@ export const MOCK_PRODUCTS = [
     "description": "Tông đồng ánh hoàng hôn New York thời thượng, hạt phấn mượt mà không bị rơi bụi phấn xuống bọng mắt.",
     "category": "Eyeshadow",
     "registrationNo": "843202/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL"
-    ],
     "ingredients": [
       {
         "inciName": "Talc",
@@ -18082,7 +17567,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-75-01.jpg"
       },
       {
         "skuCode": "SKU-CRW-75-02",
@@ -18096,7 +17582,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-75-02.jpg"
       },
       {
         "skuCode": "SKU-CRW-75-03",
@@ -18110,11 +17597,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-75-03.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-075.jpg"
+      "/products/PROD-CRW-075-main.jpg",
+      "/products/PROD-CRW-075-texture.jpg",
+      "/products/PROD-CRW-075-swatch.jpg",
+      "/products/PROD-CRW-075-detail.jpg"
     ],
     "vtoConfig": {
       "supported": true,
@@ -18158,15 +17649,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-075.jpg",
     "imageUrl": "/products/PROD-CRW-075.jpg",
     "cbmpNumber": "843202/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -18232,7 +17714,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-076",
@@ -18316,11 +17804,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-76-STD.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-076.webp"
+      "/products/PROD-CRW-076-main.jpg",
+      "/products/PROD-CRW-076-texture.jpg",
+      "/products/PROD-CRW-076-swatch.jpg",
+      "/products/PROD-CRW-076-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -18424,7 +17916,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-077",
@@ -18500,11 +17998,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-77-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-077.jpg"
+      "/products/PROD-CRW-077-main.jpg",
+      "/products/PROD-CRW-077-texture.jpg",
+      "/products/PROD-CRW-077-swatch.jpg",
+      "/products/PROD-CRW-077-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -18599,7 +18101,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-078",
@@ -18667,11 +18175,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-78-STD.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-078.webp"
+      "/products/PROD-CRW-078-main.jpg",
+      "/products/PROD-CRW-078-texture.jpg",
+      "/products/PROD-CRW-078-swatch.jpg",
+      "/products/PROD-CRW-078-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -18758,7 +18270,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-079",
@@ -18818,11 +18336,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-79-STD.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-079.webp"
+      "/products/PROD-CRW-079-main.jpg",
+      "/products/PROD-CRW-079-texture.jpg",
+      "/products/PROD-CRW-079-swatch.jpg",
+      "/products/PROD-CRW-079-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -18901,7 +18423,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-080",
@@ -18961,11 +18489,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-80-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-080.jpg"
+      "/products/PROD-CRW-080-main.jpg",
+      "/products/PROD-CRW-080-texture.jpg",
+      "/products/PROD-CRW-080-swatch.jpg",
+      "/products/PROD-CRW-080-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -19047,7 +18579,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-081",
@@ -19106,11 +18644,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-81-STD.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-081.webp"
+      "/products/PROD-CRW-081-main.jpg",
+      "/products/PROD-CRW-081-texture.jpg",
+      "/products/PROD-CRW-081-swatch.jpg",
+      "/products/PROD-CRW-081-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -19190,7 +18732,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-082",
@@ -19258,11 +18806,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-82-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-082.jpg"
+      "/products/PROD-CRW-082-main.jpg",
+      "/products/PROD-CRW-082-texture.jpg",
+      "/products/PROD-CRW-082-swatch.jpg",
+      "/products/PROD-CRW-082-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -19352,7 +18904,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-083",
@@ -19412,11 +18970,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-83-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-083.jpg"
+      "/products/PROD-CRW-083-main.jpg",
+      "/products/PROD-CRW-083-texture.jpg",
+      "/products/PROD-CRW-083-swatch.jpg",
+      "/products/PROD-CRW-083-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -19500,7 +19062,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-084",
@@ -19567,11 +19135,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-84-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-084.jpg"
+      "/products/PROD-CRW-084-main.jpg",
+      "/products/PROD-CRW-084-texture.jpg",
+      "/products/PROD-CRW-084-swatch.jpg",
+      "/products/PROD-CRW-084-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -19659,7 +19231,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-085",
@@ -19719,20 +19297,22 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-085.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-085.webp",
-      "/products/PROD-CRW-085.jpg",
-      "/products/packshot-default.webp"
+      "/products/PROD-CRW-085-main.jpg",
+      "/products/PROD-CRW-085-texture.jpg",
+      "/products/PROD-CRW-085-swatch.jpg",
+      "/products/PROD-CRW-085-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
     "createdAt": "2026-10-31T15:47:34.676Z",
     "updatedAt": "2026-10-31T15:47:34.676Z",
-    "image": "/products/PROD-CRW-085.jpg",
-    "imageUrl": "/products/PROD-CRW-085.jpg",
+    "image": "/products/PROD-CRW-085.webp",
+    "imageUrl": "/products/PROD-CRW-085.webp",
     "cbmpNumber": "780118/24/CBMP-QLD",
     "targetSkinTypes": [
       "OILY",
@@ -19804,7 +19384,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-086",
@@ -19864,11 +19450,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-86-STD.png"
       }
     ],
     "images": [
-      "/products/PROD-CRW-086.png"
+      "/products/PROD-CRW-086-main.jpg",
+      "/products/PROD-CRW-086-texture.jpg",
+      "/products/PROD-CRW-086-swatch.jpg",
+      "/products/PROD-CRW-086-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -19946,7 +19536,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-087",
@@ -20006,11 +19602,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-87-STD.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-087.webp"
+      "/products/PROD-CRW-087-main.jpg",
+      "/products/PROD-CRW-087-texture.jpg",
+      "/products/PROD-CRW-087-swatch.jpg",
+      "/products/PROD-CRW-087-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -20090,7 +19690,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-088",
@@ -20150,11 +19756,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-88-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-088.jpg"
+      "/products/PROD-CRW-088-main.jpg",
+      "/products/PROD-CRW-088-texture.jpg",
+      "/products/PROD-CRW-088-swatch.jpg",
+      "/products/PROD-CRW-088-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -20236,7 +19846,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-089",
@@ -20296,11 +19912,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-89-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-089.jpg"
+      "/products/PROD-CRW-089-main.jpg",
+      "/products/PROD-CRW-089-texture.jpg",
+      "/products/PROD-CRW-089-swatch.jpg",
+      "/products/PROD-CRW-089-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -20380,7 +20000,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-090",
@@ -20440,11 +20066,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-90-STD.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-090.webp"
+      "/products/PROD-CRW-090-main.jpg",
+      "/products/PROD-CRW-090-texture.jpg",
+      "/products/PROD-CRW-090-swatch.jpg",
+      "/products/PROD-CRW-090-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -20523,7 +20153,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-091",
@@ -20582,11 +20218,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-91-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-091.jpg"
+      "/products/PROD-CRW-091-main.jpg",
+      "/products/PROD-CRW-091-texture.jpg",
+      "/products/PROD-CRW-091-swatch.jpg",
+      "/products/PROD-CRW-091-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -20663,7 +20303,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-092",
@@ -20723,11 +20369,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-92-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-092.jpg"
+      "/products/PROD-CRW-092-main.jpg",
+      "/products/PROD-CRW-092-texture.jpg",
+      "/products/PROD-CRW-092-swatch.jpg",
+      "/products/PROD-CRW-092-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -20807,7 +20457,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-093",
@@ -20859,11 +20515,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-93-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-093.jpg"
+      "/products/PROD-CRW-093-main.jpg",
+      "/products/PROD-CRW-093-texture.jpg",
+      "/products/PROD-CRW-093-swatch.jpg",
+      "/products/PROD-CRW-093-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -20935,7 +20595,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-094",
@@ -20994,11 +20660,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-94-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-094.jpg"
+      "/products/PROD-CRW-094-main.jpg",
+      "/products/PROD-CRW-094-texture.jpg",
+      "/products/PROD-CRW-094-swatch.jpg",
+      "/products/PROD-CRW-094-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -21082,7 +20752,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-095",
@@ -21142,11 +20818,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-95-STD.png"
       }
     ],
     "images": [
-      "/products/PROD-CRW-095.png"
+      "/products/PROD-CRW-095-main.jpg",
+      "/products/PROD-CRW-095-texture.jpg",
+      "/products/PROD-CRW-095-swatch.jpg",
+      "/products/PROD-CRW-095-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -21227,7 +20907,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-096",
@@ -21277,11 +20963,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-96-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-096.jpg"
+      "/products/PROD-CRW-096-main.jpg",
+      "/products/PROD-CRW-096-texture.jpg",
+      "/products/PROD-CRW-096-swatch.jpg",
+      "/products/PROD-CRW-096-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -21350,7 +21040,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-097",
@@ -21409,11 +21105,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-97-STD.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-097.webp"
+      "/products/PROD-CRW-097-main.jpg",
+      "/products/PROD-CRW-097-texture.jpg",
+      "/products/PROD-CRW-097-swatch.jpg",
+      "/products/PROD-CRW-097-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -21491,7 +21191,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-098",
@@ -21551,11 +21257,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-98-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-098.jpg"
+      "/products/PROD-CRW-098-main.jpg",
+      "/products/PROD-CRW-098-texture.jpg",
+      "/products/PROD-CRW-098-swatch.jpg",
+      "/products/PROD-CRW-098-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -21635,7 +21345,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-099",
@@ -21695,11 +21411,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-99-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-099.jpg"
+      "/products/PROD-CRW-099-main.jpg",
+      "/products/PROD-CRW-099-texture.jpg",
+      "/products/PROD-CRW-099-swatch.jpg",
+      "/products/PROD-CRW-099-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -21781,7 +21501,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-100",
@@ -21841,11 +21567,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-100-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-100.jpg"
+      "/products/PROD-CRW-100-main.jpg",
+      "/products/PROD-CRW-100-texture.jpg",
+      "/products/PROD-CRW-100-swatch.jpg",
+      "/products/PROD-CRW-100-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -21925,7 +21655,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-101",
@@ -21976,11 +21712,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-101-STD.png"
       }
     ],
     "images": [
-      "/products/PROD-CRW-101.png"
+      "/products/PROD-CRW-101-main.jpg",
+      "/products/PROD-CRW-101-texture.jpg",
+      "/products/PROD-CRW-101-swatch.jpg",
+      "/products/PROD-CRW-101-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -22051,7 +21791,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "FACE_SCRUB",
+      "CHEMICAL_PEEL"
+    ],
+    "subCategory": "FACE_SCRUB"
   },
   {
     "id": "PROD-CRW-102",
@@ -22111,11 +21857,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-102-STD.png"
       }
     ],
     "images": [
-      "/products/PROD-CRW-102.png"
+      "/products/PROD-CRW-102-main.jpg",
+      "/products/PROD-CRW-102-texture.jpg",
+      "/products/PROD-CRW-102-swatch.jpg",
+      "/products/PROD-CRW-102-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -22200,7 +21950,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "BRIGHTENING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-103",
@@ -22260,11 +22016,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-103-STD.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-103.webp"
+      "/products/PROD-CRW-103-main.jpg",
+      "/products/PROD-CRW-103-texture.jpg",
+      "/products/PROD-CRW-103-swatch.jpg",
+      "/products/PROD-CRW-103-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -22346,7 +22106,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "RECOVERY_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-104",
@@ -22407,11 +22173,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-104-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-104.jpg"
+      "/products/PROD-CRW-104-main.jpg",
+      "/products/PROD-CRW-104-texture.jpg",
+      "/products/PROD-CRW-104-swatch.jpg",
+      "/products/PROD-CRW-104-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -22494,7 +22264,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-105",
@@ -22504,10 +22280,6 @@ export const MOCK_PRODUCTS = [
     "description": "Toner dưỡng ẩm không mùi hương liệu, cân bằng độ pH và cung cấp độ ẩm sâu tức thì sau khi rửa mặt.",
     "category": "Skincare",
     "registrationNo": "994690/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "ALL",
-      "SENSITIVE"
-    ],
     "ingredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -22553,11 +22325,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-105-STD.png"
       }
     ],
     "images": [
-      "/products/PROD-CRW-105.png"
+      "/products/PROD-CRW-105-main.jpg",
+      "/products/PROD-CRW-105-texture.jpg",
+      "/products/PROD-CRW-105-swatch.jpg",
+      "/products/PROD-CRW-105-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -22566,16 +22342,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-105.png",
     "imageUrl": "/products/PROD-CRW-105.png",
     "cbmpNumber": "994690/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "ALL",
-      "SENSITIVE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Hyaluronic Acid",
@@ -22610,10 +22376,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "SOOTHING_BOTANICAL"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -22636,7 +22399,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "PERFUME",
+      "WOMEN_PERFUME",
+      "EDP"
+    ],
+    "subCategory": "WOMEN_PERFUME"
   },
   {
     "id": "PROD-CRW-106",
@@ -22646,11 +22415,6 @@ export const MOCK_PRODUCTS = [
     "description": "Toner bán chạy số 1 tại Olive Young Hàn Quốc với 77% diếp cá giúp hạ nhiệt và giảm đỏ da mụn nhạy cảm.",
     "category": "Skincare",
     "registrationNo": "454585/24/CBMP-QLD",
-    "suitableSkinTypes": [
-      "SENSITIVE",
-      "OILY",
-      "COMBINATION"
-    ],
     "ingredients": [
       {
         "inciName": "Houttuynia Cordata Extract",
@@ -22696,11 +22460,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-106-STD.png"
       }
     ],
     "images": [
-      "/products/PROD-CRW-106.png"
+      "/products/PROD-CRW-106-main.jpg",
+      "/products/PROD-CRW-106-texture.jpg",
+      "/products/PROD-CRW-106-swatch.jpg",
+      "/products/PROD-CRW-106-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -22709,17 +22477,6 @@ export const MOCK_PRODUCTS = [
     "image": "/products/PROD-CRW-106.png",
     "imageUrl": "/products/PROD-CRW-106.png",
     "cbmpNumber": "454585/24/CBMP-QLD",
-    "targetSkinTypes": [
-      "SENSITIVE",
-      "OILY",
-      "COMBINATION"
-    ],
-    "skinConcerns": [
-      "ACNE"
-    ],
-    "concerns": [
-      "ACNE"
-    ],
     "inciIngredients": [
       {
         "inciName": "Houttuynia Cordata Extract",
@@ -22754,10 +22511,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "SOOTHING_BOTANICAL",
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -22780,7 +22534,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "PERFUME",
+      "WOMEN_PERFUME",
+      "EDP"
+    ],
+    "subCategory": "WOMEN_PERFUME"
   },
   {
     "id": "PROD-CRW-107",
@@ -22840,11 +22600,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-107-STD.png"
       }
     ],
     "images": [
-      "/products/PROD-CRW-107.png"
+      "/products/PROD-CRW-107-main.jpg",
+      "/products/PROD-CRW-107-texture.jpg",
+      "/products/PROD-CRW-107-swatch.jpg",
+      "/products/PROD-CRW-107-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -22924,7 +22688,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "ACNE_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-108",
@@ -22983,11 +22753,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-108-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-108.jpg"
+      "/products/PROD-CRW-108-main.jpg",
+      "/products/PROD-CRW-108-texture.jpg",
+      "/products/PROD-CRW-108-swatch.jpg",
+      "/products/PROD-CRW-108-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -23070,7 +22844,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "ACNE_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-109",
@@ -23130,11 +22910,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-109-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-109.jpg"
+      "/products/PROD-CRW-109-main.jpg",
+      "/products/PROD-CRW-109-texture.jpg",
+      "/products/PROD-CRW-109-swatch.jpg",
+      "/products/PROD-CRW-109-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -23214,7 +22998,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-110",
@@ -23265,11 +23055,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-110-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-110.jpg"
+      "/products/PROD-CRW-110-main.jpg",
+      "/products/PROD-CRW-110-texture.jpg",
+      "/products/PROD-CRW-110-swatch.jpg",
+      "/products/PROD-CRW-110-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -23339,7 +23133,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "RECOVERY_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-111",
@@ -23407,11 +23207,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-111-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-111.jpg"
+      "/products/PROD-CRW-111-main.jpg",
+      "/products/PROD-CRW-111-texture.jpg",
+      "/products/PROD-CRW-111-swatch.jpg",
+      "/products/PROD-CRW-111-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -23501,7 +23305,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-112",
@@ -23552,11 +23362,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-112-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-112.jpg"
+      "/products/PROD-CRW-112-main.jpg",
+      "/products/PROD-CRW-112-texture.jpg",
+      "/products/PROD-CRW-112-swatch.jpg",
+      "/products/PROD-CRW-112-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -23632,7 +23446,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "BRIGHTENING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-113",
@@ -23692,11 +23512,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-113-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-113.jpg"
+      "/products/PROD-CRW-113-main.jpg",
+      "/products/PROD-CRW-113-texture.jpg",
+      "/products/PROD-CRW-113-swatch.jpg",
+      "/products/PROD-CRW-113-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -23777,7 +23601,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "RECOVERY_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-114",
@@ -23837,11 +23667,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-114-STD.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-114.webp"
+      "/products/PROD-CRW-114-main.jpg",
+      "/products/PROD-CRW-114-texture.jpg",
+      "/products/PROD-CRW-114-swatch.jpg",
+      "/products/PROD-CRW-114-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -23918,7 +23752,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-115",
@@ -23978,11 +23818,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-115-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-115.jpg"
+      "/products/PROD-CRW-115-main.jpg",
+      "/products/PROD-CRW-115-texture.jpg",
+      "/products/PROD-CRW-115-swatch.jpg",
+      "/products/PROD-CRW-115-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -24061,7 +23905,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "RECOVERY_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-116",
@@ -24129,11 +23979,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-116-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-116.jpg"
+      "/products/PROD-CRW-116-main.jpg",
+      "/products/PROD-CRW-116-texture.jpg",
+      "/products/PROD-CRW-116-swatch.jpg",
+      "/products/PROD-CRW-116-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -24222,7 +24076,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-117",
@@ -24281,11 +24141,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-117-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-117.jpg"
+      "/products/PROD-CRW-117-main.jpg",
+      "/products/PROD-CRW-117-texture.jpg",
+      "/products/PROD-CRW-117-swatch.jpg",
+      "/products/PROD-CRW-117-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -24365,7 +24229,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "ACNE_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-118",
@@ -24424,11 +24294,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-118-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-118.jpg"
+      "/products/PROD-CRW-118-main.jpg",
+      "/products/PROD-CRW-118-texture.jpg",
+      "/products/PROD-CRW-118-swatch.jpg",
+      "/products/PROD-CRW-118-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -24508,7 +24382,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-119",
@@ -24560,11 +24440,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-119-STD.png"
       }
     ],
     "images": [
-      "/products/PROD-CRW-119.png"
+      "/products/PROD-CRW-119-main.jpg",
+      "/products/PROD-CRW-119-texture.jpg",
+      "/products/PROD-CRW-119-swatch.jpg",
+      "/products/PROD-CRW-119-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -24635,7 +24519,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-120",
@@ -24695,11 +24585,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-120-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-120.jpg"
+      "/products/PROD-CRW-120-main.jpg",
+      "/products/PROD-CRW-120-texture.jpg",
+      "/products/PROD-CRW-120-swatch.jpg",
+      "/products/PROD-CRW-120-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -24778,7 +24672,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-121",
@@ -24838,11 +24738,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-121-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-121.jpg"
+      "/products/PROD-CRW-121-main.jpg",
+      "/products/PROD-CRW-121-texture.jpg",
+      "/products/PROD-CRW-121-swatch.jpg",
+      "/products/PROD-CRW-121-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -24920,7 +24824,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-122",
@@ -24979,11 +24889,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-122-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-122.jpg"
+      "/products/PROD-CRW-122-main.jpg",
+      "/products/PROD-CRW-122-texture.jpg",
+      "/products/PROD-CRW-122-swatch.jpg",
+      "/products/PROD-CRW-122-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -25063,7 +24977,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-123",
@@ -25131,11 +25051,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-123-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-123.jpg"
+      "/products/PROD-CRW-123-main.jpg",
+      "/products/PROD-CRW-123-texture.jpg",
+      "/products/PROD-CRW-123-swatch.jpg",
+      "/products/PROD-CRW-123-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -25225,7 +25149,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-124",
@@ -25285,11 +25215,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-124-STD.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-124.webp"
+      "/products/PROD-CRW-124-main.jpg",
+      "/products/PROD-CRW-124-texture.jpg",
+      "/products/PROD-CRW-124-swatch.jpg",
+      "/products/PROD-CRW-124-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -25369,7 +25303,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-125",
@@ -25429,11 +25369,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-125-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-125.jpg"
+      "/products/PROD-CRW-125-main.jpg",
+      "/products/PROD-CRW-125-texture.jpg",
+      "/products/PROD-CRW-125-swatch.jpg",
+      "/products/PROD-CRW-125-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -25514,7 +25458,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-126",
@@ -25581,11 +25531,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-126-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-126.jpg"
+      "/products/PROD-CRW-126-main.jpg",
+      "/products/PROD-CRW-126-texture.jpg",
+      "/products/PROD-CRW-126-swatch.jpg",
+      "/products/PROD-CRW-126-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -25675,7 +25629,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-127",
@@ -25735,11 +25695,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-127-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-127.jpg"
+      "/products/PROD-CRW-127-main.jpg",
+      "/products/PROD-CRW-127-texture.jpg",
+      "/products/PROD-CRW-127-swatch.jpg",
+      "/products/PROD-CRW-127-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -25820,7 +25784,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SUNSCREEN",
+      "FACIAL_SUNSCREEN"
+    ],
+    "subCategory": "SUNSCREEN"
   },
   {
     "id": "PROD-CRW-128",
@@ -25880,11 +25850,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-128-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-128.jpg"
+      "/products/PROD-CRW-128-main.jpg",
+      "/products/PROD-CRW-128-texture.jpg",
+      "/products/PROD-CRW-128-swatch.jpg",
+      "/products/PROD-CRW-128-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -25965,7 +25939,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-129",
@@ -26017,11 +25997,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-129-STD.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-129.jpg"
+      "/products/PROD-CRW-129-main.jpg",
+      "/products/PROD-CRW-129-texture.jpg",
+      "/products/PROD-CRW-129-swatch.jpg",
+      "/products/PROD-CRW-129-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -26092,7 +26076,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "GEL_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-130",
@@ -26151,11 +26141,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/SKU-CRW-130-STD.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-130.webp"
+      "/products/PROD-CRW-130-main.jpg",
+      "/products/PROD-CRW-130-texture.jpg",
+      "/products/PROD-CRW-130-swatch.jpg",
+      "/products/PROD-CRW-130-detail.jpg"
     ],
     "vtoConfig": null,
     "status": "PUBLISHED",
@@ -26235,7 +26229,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-131",
@@ -26288,11 +26288,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-131.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-131.webp"
+      "/products/PROD-CRW-131-main.jpg",
+      "/products/PROD-CRW-131-texture.jpg",
+      "/products/PROD-CRW-131-swatch.jpg",
+      "/products/PROD-CRW-131-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000050",
     "image": "/products/PROD-CRW-131.webp",
@@ -26385,7 +26389,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-132",
@@ -26430,11 +26440,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-132.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-132.jpg"
+      "/products/PROD-CRW-132-main.jpg",
+      "/products/PROD-CRW-132-texture.jpg",
+      "/products/PROD-CRW-132-swatch.jpg",
+      "/products/PROD-CRW-132-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000060",
     "image": "/products/PROD-CRW-132.jpg",
@@ -26517,7 +26531,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "FACE_SCRUB",
+      "CHEMICAL_PEEL"
+    ],
+    "subCategory": "FACE_SCRUB"
   },
   {
     "id": "PROD-CRW-133",
@@ -26562,11 +26582,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-133.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-133.jpg"
+      "/products/PROD-CRW-133-main.jpg",
+      "/products/PROD-CRW-133-texture.jpg",
+      "/products/PROD-CRW-133-swatch.jpg",
+      "/products/PROD-CRW-133-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000010",
     "image": "/products/PROD-CRW-133.jpg",
@@ -26574,28 +26598,6 @@ export const MOCK_PRODUCTS = [
     "registrationNo": "118221/26/CBMP-QLD",
     "cbmpNumber": "118221/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Sodium Hyaluronate",
@@ -26622,10 +26624,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "HYDRATION",
-      "SOOTHING_BOTANICAL"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -26649,7 +26648,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "PERFUME",
+      "WOMEN_PERFUME",
+      "EDP"
+    ],
+    "subCategory": "WOMEN_PERFUME"
   },
   {
     "id": "PROD-CRW-134",
@@ -26694,11 +26699,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-134.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-134.jpg"
+      "/products/PROD-CRW-134-main.jpg",
+      "/products/PROD-CRW-134-texture.jpg",
+      "/products/PROD-CRW-134-swatch.jpg",
+      "/products/PROD-CRW-134-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000020",
     "image": "/products/PROD-CRW-134.jpg",
@@ -26781,7 +26790,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "BRIGHTENING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-135",
@@ -26826,11 +26841,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-135.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-135.jpg"
+      "/products/PROD-CRW-135-main.jpg",
+      "/products/PROD-CRW-135-texture.jpg",
+      "/products/PROD-CRW-135-swatch.jpg",
+      "/products/PROD-CRW-135-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000030",
     "image": "/products/PROD-CRW-135.jpg",
@@ -26909,7 +26928,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "GEL_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-136",
@@ -26954,11 +26979,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-136.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-136.jpg"
+      "/products/PROD-CRW-136-main.jpg",
+      "/products/PROD-CRW-136-texture.jpg",
+      "/products/PROD-CRW-136-swatch.jpg",
+      "/products/PROD-CRW-136-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000040",
     "image": "/products/PROD-CRW-136.jpg",
@@ -27036,7 +27065,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-137",
@@ -27089,11 +27124,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-137.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-137.jpg"
+      "/products/PROD-CRW-137-main.jpg",
+      "/products/PROD-CRW-137-texture.jpg",
+      "/products/PROD-CRW-137-swatch.jpg",
+      "/products/PROD-CRW-137-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000050",
     "image": "/products/PROD-CRW-137.jpg",
@@ -27177,7 +27216,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SUNSCREEN",
+      "FACIAL_SUNSCREEN"
+    ],
+    "subCategory": "SUNSCREEN"
   },
   {
     "id": "PROD-CRW-138",
@@ -27289,7 +27334,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-138.jpg"
+      "/products/PROD-CRW-138-main.jpg",
+      "/products/PROD-CRW-138-texture.jpg",
+      "/products/PROD-CRW-138-swatch.jpg",
+      "/products/PROD-CRW-138-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000060",
     "image": "/products/PROD-CRW-138.jpg",
@@ -27297,30 +27345,6 @@ export const MOCK_PRODUCTS = [
     "registrationNo": "118906/26/CBMP-QLD",
     "cbmpNumber": "118906/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone",
@@ -27417,7 +27441,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-139",
@@ -27529,7 +27559,10 @@ export const MOCK_PRODUCTS = [
       }
     ],
     "images": [
-      "/products/PROD-CRW-139.jpg"
+      "/products/PROD-CRW-139-main.jpg",
+      "/products/PROD-CRW-139-texture.jpg",
+      "/products/PROD-CRW-139-swatch.jpg",
+      "/products/PROD-CRW-139-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000010",
     "image": "/products/PROD-CRW-139.jpg",
@@ -27537,30 +27570,6 @@ export const MOCK_PRODUCTS = [
     "registrationNo": "119043/26/CBMP-QLD",
     "cbmpNumber": "119043/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Dimethicone Crosspolymer",
@@ -27657,7 +27666,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "3.8g",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "LIP",
+      "LIP_TINT"
+    ],
+    "subCategory": "LIP"
   },
   {
     "id": "PROD-CRW-140",
@@ -27702,11 +27717,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-140.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-140.jpg"
+      "/products/PROD-CRW-140-main.jpg",
+      "/products/PROD-CRW-140-texture.jpg",
+      "/products/PROD-CRW-140-swatch.jpg",
+      "/products/PROD-CRW-140-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000020",
     "image": "/products/PROD-CRW-140.jpg",
@@ -27784,7 +27803,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "ABOVE_1M",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-141",
@@ -27829,11 +27854,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-141.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-141.jpg"
+      "/products/PROD-CRW-141-main.jpg",
+      "/products/PROD-CRW-141-texture.jpg",
+      "/products/PROD-CRW-141-swatch.jpg",
+      "/products/PROD-CRW-141-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000030",
     "image": "/products/PROD-CRW-141.jpg",
@@ -27909,7 +27938,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-142",
@@ -27956,7 +27991,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-142.webp"
       },
       {
         "skuCode": "SKU-3CE-NUDE-PEACH",
@@ -27970,11 +28006,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-142.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-142.webp"
+      "/products/PROD-CRW-142-main.jpg",
+      "/products/PROD-CRW-142-texture.jpg",
+      "/products/PROD-CRW-142-swatch.jpg",
+      "/products/PROD-CRW-142-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000040",
     "image": "/products/PROD-CRW-142.webp",
@@ -27982,30 +28022,6 @@ export const MOCK_PRODUCTS = [
     "registrationNo": "119454/26/CBMP-QLD",
     "cbmpNumber": "119454/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -28081,7 +28097,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "POWDER_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-143",
@@ -28128,7 +28150,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-143.jpg"
       },
       {
         "skuCode": "SKU-RB-HAPPY",
@@ -28142,11 +28165,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-143.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-143.jpg"
+      "/products/PROD-CRW-143-main.jpg",
+      "/products/PROD-CRW-143-texture.jpg",
+      "/products/PROD-CRW-143-swatch.jpg",
+      "/products/PROD-CRW-143-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000050",
     "image": "/products/PROD-CRW-143.jpg",
@@ -28154,30 +28181,6 @@ export const MOCK_PRODUCTS = [
     "registrationNo": "119591/26/CBMP-QLD",
     "cbmpNumber": "119591/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Nelumbo Nucifera (Lotus) Flower Extract",
@@ -28253,7 +28256,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "LIQUID_BLUSH"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-144",
@@ -28300,11 +28309,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-144.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-144.jpg"
+      "/products/PROD-CRW-144-main.jpg",
+      "/products/PROD-CRW-144-texture.jpg",
+      "/products/PROD-CRW-144-swatch.jpg",
+      "/products/PROD-CRW-144-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000060",
     "image": "/products/PROD-CRW-144.jpg",
@@ -28312,28 +28325,6 @@ export const MOCK_PRODUCTS = [
     "registrationNo": "119728/26/CBMP-QLD",
     "cbmpNumber": "119728/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION"
-    ],
-    "concerns": [
-      "DEHYDRATION"
-    ],
     "inciIngredients": [
       {
         "inciName": "Mica",
@@ -28400,7 +28391,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-145",
@@ -28447,11 +28444,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-145.png"
       }
     ],
     "images": [
-      "/products/PROD-CRW-145.png"
+      "/products/PROD-CRW-145-main.jpg",
+      "/products/PROD-CRW-145-texture.jpg",
+      "/products/PROD-CRW-145-swatch.jpg",
+      "/products/PROD-CRW-145-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000010",
     "image": "/products/PROD-CRW-145.png",
@@ -28459,30 +28460,6 @@ export const MOCK_PRODUCTS = [
     "registrationNo": "119865/26/CBMP-QLD",
     "cbmpNumber": "119865/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Talc",
@@ -28509,9 +28486,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -28551,7 +28526,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "EYE",
+      "EYESHADOW_PALETTE"
+    ],
+    "subCategory": "EYE"
   },
   {
     "id": "PROD-CRW-146",
@@ -28598,7 +28579,8 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-146.webp"
       },
       {
         "skuCode": "SKU-CLIO-CSH-03",
@@ -28612,11 +28594,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-146.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-146.webp"
+      "/products/PROD-CRW-146-main.jpg",
+      "/products/PROD-CRW-146-texture.jpg",
+      "/products/PROD-CRW-146-swatch.jpg",
+      "/products/PROD-CRW-146-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000020",
     "image": "/products/PROD-CRW-146.webp",
@@ -28624,24 +28610,6 @@ export const MOCK_PRODUCTS = [
     "registrationNo": "120002/26/CBMP-QLD",
     "cbmpNumber": "120002/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "OILY",
-      "COMBINATION",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "OILY",
-      "COMBINATION",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "OIL_CONTROL"
-    ],
     "inciIngredients": [
       {
         "inciName": "Titanium Dioxide",
@@ -28668,10 +28636,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "BRIGHTENING"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -28720,7 +28685,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-147",
@@ -28767,11 +28738,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-147.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-147.jpg"
+      "/products/PROD-CRW-147-main.jpg",
+      "/products/PROD-CRW-147-texture.jpg",
+      "/products/PROD-CRW-147-swatch.jpg",
+      "/products/PROD-CRW-147-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000030",
     "image": "/products/PROD-CRW-147.jpg",
@@ -28779,30 +28754,6 @@ export const MOCK_PRODUCTS = [
     "registrationNo": "120139/26/CBMP-QLD",
     "cbmpNumber": "120139/26/CBMP-QLD",
     "status": "PUBLISHED",
-    "targetSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "suitableSkinTypes": [
-      "NORMAL",
-      "DRY",
-      "OILY",
-      "COMBINATION",
-      "SENSITIVE",
-      "ACNE_PRONE"
-    ],
-    "skinConcerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
-    "concerns": [
-      "DEHYDRATION",
-      "BARRIER_REPAIR"
-    ],
     "inciIngredients": [
       {
         "inciName": "Water",
@@ -28829,10 +28780,7 @@ export const MOCK_PRODUCTS = [
         "safetyLevel": "SAFE"
       }
     ],
-    "keyActiveGroups": [
-      "UV_FILTERS",
-      "HYDRATION"
-    ],
+    "keyActiveGroups": [],
     "safetyEthicsBadges": [
       "FRAGRANCE_FREE",
       "ALCOHOL_FREE",
@@ -28872,7 +28820,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_500K_TO_1M",
     "volumeSpec": "FULL_SIZE",
     "volumeLabel": "50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "MAKEUP",
+      "FACE",
+      "CUSHION"
+    ],
+    "subCategory": "FACE"
   },
   {
     "id": "PROD-CRW-148",
@@ -28917,11 +28871,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-148.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-148.webp"
+      "/products/PROD-CRW-148-main.jpg",
+      "/products/PROD-CRW-148-texture.jpg",
+      "/products/PROD-CRW-148-swatch.jpg",
+      "/products/PROD-CRW-148-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000040",
     "image": "/products/PROD-CRW-148.webp",
@@ -29001,7 +28959,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "RECOVERY_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-149",
@@ -29046,11 +29010,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-149.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-149.webp"
+      "/products/PROD-CRW-149-main.jpg",
+      "/products/PROD-CRW-149-texture.jpg",
+      "/products/PROD-CRW-149-swatch.jpg",
+      "/products/PROD-CRW-149-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000050",
     "image": "/products/PROD-CRW-149.webp",
@@ -29134,7 +29102,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "GEL_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-150",
@@ -29179,13 +29153,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-150.webp"
       }
     ],
     "images": [
-      "/products/PROD-CRW-150.webp",
-      "/products/PROD-CRW-150.jpg",
-      "/products/packshot-default.webp"
+      "/products/PROD-CRW-150-main.jpg",
+      "/products/PROD-CRW-150-texture.jpg",
+      "/products/PROD-CRW-150-swatch.jpg",
+      "/products/PROD-CRW-150-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000060",
     "image": "/products/PROD-CRW-150.webp",
@@ -29269,7 +29245,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "SERUM",
+      "HYDRATING_SERUM"
+    ],
+    "subCategory": "SERUM"
   },
   {
     "id": "PROD-CRW-151",
@@ -29314,11 +29296,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-151.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-151.jpg"
+      "/products/PROD-CRW-151-main.jpg",
+      "/products/PROD-CRW-151-texture.jpg",
+      "/products/PROD-CRW-151-swatch.jpg",
+      "/products/PROD-CRW-151-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000010",
     "image": "/products/PROD-CRW-151.jpg",
@@ -29394,7 +29380,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "TONER",
+      "HYDRATING_TONER"
+    ],
+    "subCategory": "TONER"
   },
   {
     "id": "PROD-CRW-152",
@@ -29439,11 +29431,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-152.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-152.jpg"
+      "/products/PROD-CRW-152-main.jpg",
+      "/products/PROD-CRW-152-texture.jpg",
+      "/products/PROD-CRW-152-swatch.jpg",
+      "/products/PROD-CRW-152-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000020",
     "image": "/products/PROD-CRW-152.jpg",
@@ -29519,7 +29515,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "UNDER_200K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "FOAM_CLEANSER"
+    ],
+    "subCategory": "CLEANSER"
   },
   {
     "id": "PROD-CRW-153",
@@ -29564,11 +29566,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-153.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-153.jpg"
+      "/products/PROD-CRW-153-main.jpg",
+      "/products/PROD-CRW-153-texture.jpg",
+      "/products/PROD-CRW-153-swatch.jpg",
+      "/products/PROD-CRW-153-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000030",
     "image": "/products/PROD-CRW-153.jpg",
@@ -29657,7 +29663,13 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "MINI_SIZE",
     "volumeLabel": "30ml - 50ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "MOISTURIZER",
+      "REPAIR_CREAM"
+    ],
+    "subCategory": "MOISTURIZER"
   },
   {
     "id": "PROD-CRW-154",
@@ -29694,11 +29706,15 @@ export const MOCK_PRODUCTS = [
         },
         "onHand": 120,
         "stock": 120,
-        "inStock": true
+        "inStock": true,
+        "image": "/products/PROD-CRW-154.jpg"
       }
     ],
     "images": [
-      "/products/PROD-CRW-154.jpg"
+      "/products/PROD-CRW-154-main.jpg",
+      "/products/PROD-CRW-154-texture.jpg",
+      "/products/PROD-CRW-154-swatch.jpg",
+      "/products/PROD-CRW-154-detail.jpg"
     ],
     "shopId": "00000000-0000-0000-0000-000000000040",
     "image": "/products/PROD-CRW-154.jpg",
@@ -29769,7 +29785,4398 @@ export const MOCK_PRODUCTS = [
     "priceRangeBucket": "FROM_200K_TO_500K",
     "volumeSpec": "BIG_SIZE",
     "volumeLabel": "200ml - 400ml",
-    "inStock": true
+    "inStock": true,
+    "categoryPath": [
+      "SKINCARE",
+      "CLEANSER",
+      "MICELLAR_WATER"
+    ],
+    "subCategory": "CLEANSER"
+  },
+  {
+    "id": "PROD-CRW-KGN-01",
+    "name": "Viên Uống Kẽm Giảm Nhờn Kiềm Dầu & Ngừa Mụn DHC Zinc Gluconate 60 Ngày 60 Viên",
+    "brand": "DHC",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống kẽm giảm nhờn",
+    "rating": 4.9,
+    "soldCount": 88400,
+    "reviewCount": 20100,
+    "price": 110000,
+    "originalPrice": 145000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Kẽm Men Tự Nhiên",
+      "Kiềm Dầu Hiệu Quả"
+    ],
+    "images": [
+      "/products/prod-crw-kgn-01-dhc-vien-uong-kem-giam-nhon-kiem-dau-ngua-mun-1.jpg",
+      "/products/prod-crw-kgn-01-dhc-vien-uong-kem-giam-nhon-kiem-dau-ngua-mun-2.jpg",
+      "/products/prod-crw-kgn-01-dhc-vien-uong-kem-giam-nhon-kiem-dau-ngua-mun-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "OILY",
+      "ACNE_PRONE"
+    ],
+    "skinConcerns": [
+      "SEBUM",
+      "ACNE"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "DHC-ZINC-KGN-60D",
+        "title": "Gói 60 viên uống 60 ngày",
+        "price": 110000,
+        "onHand": 1500
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Kẽm 15mg, Crom 60mcg, Selen 50mcg",
+        "function": "Giảm bài tiết bã nhờn, kháng viêm mụn cám mụn đầu đen"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-KGN-02",
+    "name": "Viên Uống Kẽm Tự Nhiên Hỗ Trợ Giảm Tiết Bã Nhờn Swisse Ultiboost Zinc+ 60 Viên Úc",
+    "brand": "Swisse",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống kẽm giảm nhờn",
+    "rating": 4.8,
+    "soldCount": 23400,
+    "reviewCount": 5100,
+    "price": 240000,
+    "originalPrice": 310000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Kẽm Kèm Vitamin B6",
+      "Da Sạch Nhờn"
+    ],
+    "images": [
+      "/products/prod-crw-kgn-02-swisse-vien-uong-kem-tu-nhien-ho-tro-giam-tie-1.jpg",
+      "/products/prod-crw-kgn-02-swisse-vien-uong-kem-tu-nhien-ho-tro-giam-tie-2.jpg",
+      "/products/prod-crw-kgn-02-swisse-vien-uong-kem-tu-nhien-ho-tro-giam-tie-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "OILY",
+      "COMBINATION"
+    ],
+    "skinConcerns": [
+      "SEBUM"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "AUSTRALIA",
+    "variants": [
+      {
+        "sku": "SWISSE-ZINC-60V",
+        "title": "Lọ 60 viên nén Swisse Úc",
+        "price": 240000,
+        "onHand": 430
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Zinc Amino Acid Chelate 25mg, Vitamin A & Vitamin B6",
+        "function": "Kiểm soát dầu nhờn vùng chữ T"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-KGN-03",
+    "name": "Viên Uống Kẽm Sinh Học Kháng Viêm Blackmores Bio Zinc 84 Viên Úc",
+    "brand": "Blackmores",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống kẽm giảm nhờn",
+    "rating": 4.9,
+    "soldCount": 31500,
+    "reviewCount": 6800,
+    "price": 290000,
+    "originalPrice": 360000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Kẽm Sinh Học Hấp Thu Cao",
+      "Ngừa Thâm Sau Mụn"
+    ],
+    "images": [
+      "/products/prod-crw-kgn-03-blackmores-vien-uong-kem-sinh-hoc-khang-viem--1.jpg",
+      "/products/prod-crw-kgn-03-blackmores-vien-uong-kem-sinh-hoc-khang-viem--2.jpg",
+      "/products/prod-crw-kgn-03-blackmores-vien-uong-kem-sinh-hoc-khang-viem--3.jpg"
+    ],
+    "targetSkinTypes": [
+      "OILY",
+      "ACNE_PRONE"
+    ],
+    "skinConcerns": [
+      "SEBUM",
+      "ACNE"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "AUSTRALIA",
+    "variants": [
+      {
+        "sku": "BLACKMORES-BIOZINC-84V",
+        "title": "Lọ thủy tinh 84 viên",
+        "price": 290000,
+        "onHand": 510
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Kẽm sinh học & Magie, Mangan",
+        "function": "Lành vết thương do mụn, điều hòa tuyến bã nhờn"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-KGN-04",
+    "name": "Viên Uống Bổ Sung Kẽm Giảm Dầu Mụn Puritan's Pride Zinc 50mg 100 Viên Mỹ",
+    "brand": "Puritan's Pride",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống kẽm giảm nhờn",
+    "rating": 4.8,
+    "soldCount": 26800,
+    "reviewCount": 5600,
+    "price": 195000,
+    "originalPrice": 260000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Hàm Lượng Cao 50mg",
+      "Tiêu Chuẩn FDA Mỹ"
+    ],
+    "images": [
+      "/products/prod-crw-kgn-04-puritan-s-pride-vien-uong-bo-sung-kem-giam-da-1.jpg",
+      "/products/prod-crw-kgn-04-puritan-s-pride-vien-uong-bo-sung-kem-giam-da-2.jpg",
+      "/products/prod-crw-kgn-04-puritan-s-pride-vien-uong-bo-sung-kem-giam-da-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "OILY",
+      "ACNE_PRONE"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "USA",
+    "variants": [
+      {
+        "sku": "PURITAN-ZINC-100V",
+        "title": "Lọ 100 viên nén",
+        "price": 195000,
+        "onHand": 620
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Zinc Gluconate 50mg",
+        "function": "Giảm bóng nhờn và se nhỏ lỗ chân lông"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-KGN-05",
+    "name": "Viên Uống Hỗ Trợ Ngừa Mụn Giảm Nhờn Acnes Clear Skin Zinc 30 Viên",
+    "brand": "Acnes",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống kẽm giảm nhờn",
+    "rating": 4.8,
+    "soldCount": 35200,
+    "reviewCount": 7900,
+    "price": 85000,
+    "originalPrice": 110000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Chuyên Biệt Da Mụn Nhờn",
+      "Giá Học Sinh Sinh Viên"
+    ],
+    "images": [
+      "/products/prod-crw-kgn-05-acnes-vien-uong-ho-tro-ngua-mun-giam-nhon-acn-1.jpg",
+      "/products/prod-crw-kgn-05-acnes-vien-uong-ho-tro-ngua-mun-giam-nhon-acn-2.jpg",
+      "/products/prod-crw-kgn-05-acnes-vien-uong-ho-tro-ngua-mun-giam-nhon-acn-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "OILY",
+      "ACNE_PRONE"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "VIETNAM",
+    "variants": [
+      {
+        "sku": "ACNES-ZINC-30V",
+        "title": "Hộp 3 vỉ x 10 viên",
+        "price": 85000,
+        "onHand": 950
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Kẽm sinh học & Chiết xuất nghệ Curcumin",
+        "function": "Kháng viêm kiềm nhờn mờ thâm mụn"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-KPM-01",
+    "name": "Kẹp Bấm Mi Shiseido Eyelash Curler 213 Nhật Bản Chuẩn Cong Tự Nhiên",
+    "brand": "Shiseido",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Kẹp bấm mi",
+    "rating": 4.9,
+    "soldCount": 42100,
+    "reviewCount": 8900,
+    "price": 165000,
+    "originalPrice": 220000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Bán Chạy Nhất",
+      "Chính Hãng Nhật"
+    ],
+    "images": [
+      "/products/prod-crw-kpm-01-shiseido-kep-bam-mi-shiseido-eyelash-curler-2-1.jpg",
+      "/products/prod-crw-kpm-01-shiseido-kep-bam-mi-shiseido-eyelash-curler-2-2.jpg",
+      "/products/prod-crw-kpm-01-shiseido-kep-bam-mi-shiseido-eyelash-curler-2-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [],
+    "keyActiveGroups": [],
+    "safetyEthicsBadges": [
+      "HYPOALLERGENIC"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "SHISEIDO-213-MAIN",
+        "title": "Kẹp mi + 1 Đệm silicone thay thế",
+        "price": 165000,
+        "onHand": 450
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Thép carbon không gỉ & Đệm cao su silicon y tế",
+        "function": "Bấm mi cong vút không gãy rụng"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-KPM-02",
+    "name": "Kẹp Bấm Mi Shu Uemura Eyelash Curler Đệm Silicone Cong Vút 24H",
+    "brand": "Shu Uemura",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Kẹp bấm mi",
+    "rating": 4.9,
+    "soldCount": 18500,
+    "reviewCount": 4200,
+    "price": 395000,
+    "originalPrice": 480000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Cao Cấp",
+      "Top 1 Nhật Bản"
+    ],
+    "images": [
+      "/products/prod-crw-kpm-02-shu-uemura-kep-bam-mi-shu-uemura-eyelash-curl-1.jpg",
+      "/products/prod-crw-kpm-02-shu-uemura-kep-bam-mi-shu-uemura-eyelash-curl-2.jpg",
+      "/products/prod-crw-kpm-02-shu-uemura-kep-bam-mi-shu-uemura-eyelash-curl-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [],
+    "keyActiveGroups": [],
+    "safetyEthicsBadges": [
+      "HYPOALLERGENIC"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "SHU-CURLER-CLASSIC",
+        "title": "Bản Cổ Điển Mạ Bạc Kèm Đệm",
+        "price": 395000,
+        "onHand": 280
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Thép không gỉ cao cấp mạ chrome",
+        "function": "Vòm cong chuẩn mắt châu Á"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-KPM-03",
+    "name": "Kẹp Bấm Mi Cán Đen Chuyên Nghiệp Vacosi Classic Curler Pro BM01",
+    "brand": "Vacosi",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Kẹp bấm mi",
+    "rating": 4.8,
+    "soldCount": 36200,
+    "reviewCount": 7100,
+    "price": 65000,
+    "originalPrice": 85000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Giá Tốt",
+      "Êm Mi Tuyệt Đối"
+    ],
+    "images": [
+      "/products/prod-crw-kpm-03-vacosi-kep-bam-mi-can-den-chuyen-nghiep-vacos-1.jpg",
+      "/products/prod-crw-kpm-03-vacosi-kep-bam-mi-can-den-chuyen-nghiep-vacos-2.jpg",
+      "/products/prod-crw-kpm-03-vacosi-kep-bam-mi-can-den-chuyen-nghiep-vacos-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [],
+    "keyActiveGroups": [],
+    "safetyEthicsBadges": [
+      "HYPOALLERGENIC"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "VACOSI-BM01",
+        "title": "Cán Đen Chuẩn Salon Hàn Quốc",
+        "price": 65000,
+        "onHand": 800
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Thép hợp kim phủ sơn tĩnh điện",
+        "function": "Khung bấm chắc chắn nhẹ tay"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-KPM-04",
+    "name": "Kẹp Bấm Mi Góc Rộng Ôm Trọn Mắt DHC Eyelash Curler Nhật Bản",
+    "brand": "DHC",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Kẹp bấm mi",
+    "rating": 4.8,
+    "soldCount": 12400,
+    "reviewCount": 2300,
+    "price": 175000,
+    "originalPrice": 210000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Góc Siêu Rộng",
+      "Không Kẹp Mí"
+    ],
+    "images": [
+      "/products/prod-crw-kpm-04-dhc-kep-bam-mi-goc-rong-om-tron-mat-dhc-eyela-1.jpg",
+      "/products/prod-crw-kpm-04-dhc-kep-bam-mi-goc-rong-om-tron-mat-dhc-eyela-2.jpg",
+      "/products/prod-crw-kpm-04-dhc-kep-bam-mi-goc-rong-om-tron-mat-dhc-eyela-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [],
+    "keyActiveGroups": [],
+    "safetyEthicsBadges": [
+      "HYPOALLERGENIC"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "DHC-CURLER-WIDE",
+        "title": "Bản Vòm Mắt Châu Á Tiêu Chuẩn",
+        "price": 175000,
+        "onHand": 350
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Thép mạ niken & Đệm cao su mềm",
+        "function": "Ôm trọn sợi mi từ gốc đến ngọn"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-KPM-05",
+    "name": "Kẹp Bấm Mi Mini Gập Gọn Du Lịch Kai Compact Curler Japan",
+    "brand": "Kai",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Kẹp bấm mi",
+    "rating": 4.9,
+    "soldCount": 28900,
+    "reviewCount": 5600,
+    "price": 79000,
+    "originalPrice": 105000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Nhỏ Gọn Bỏ Túi",
+      "Chính Hãng Kai"
+    ],
+    "images": [
+      "/products/prod-crw-kpm-05-kai-kep-bam-mi-mini-gap-gon-du-lich-kai-compa-1.jpg",
+      "/products/prod-crw-kpm-05-kai-kep-bam-mi-mini-gap-gon-du-lich-kai-compa-2.jpg",
+      "/products/prod-crw-kpm-05-kai-kep-bam-mi-mini-gap-gon-du-lich-kai-compa-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [],
+    "keyActiveGroups": [],
+    "safetyEthicsBadges": [
+      "HYPOALLERGENIC"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "KAI-COMPACT-PINK",
+        "title": "Màu Hồng Pastel Kèm Đệm Sơ Cua",
+        "price": 79000,
+        "onHand": 620
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Nhựa Polycarbonate & Kháng khuẩn",
+        "function": "Gập phẳng tiện lợi du lịch"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-MTN-01",
+    "name": "Bông Mút Tán Nền Hồ Lô Real Techniques Miracle Complexion Sponge Cam Đào",
+    "brand": "Real Techniques",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Mút tán nền",
+    "rating": 4.9,
+    "soldCount": 58200,
+    "reviewCount": 12400,
+    "price": 145000,
+    "originalPrice": 185000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Top 1 Bán Chạy",
+      "Nền Căng Bóng"
+    ],
+    "images": [
+      "/products/prod-crw-mtn-01-real-techniques-bong-mut-tan-nen-ho-lo-real-t-1.jpg",
+      "/products/prod-crw-mtn-01-real-techniques-bong-mut-tan-nen-ho-lo-real-t-2.jpg",
+      "/products/prod-crw-mtn-01-real-techniques-bong-mut-tan-nen-ho-lo-real-t-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [],
+    "keyActiveGroups": [
+      "HYDRATION"
+    ],
+    "safetyEthicsBadges": [
+      "LATEX_FREE",
+      "VEGAN"
+    ],
+    "formulationTexture": "POWDER",
+    "originCountry": "USA",
+    "variants": [
+      {
+        "sku": "RT-SPONGE-ORANGE",
+        "title": "Mút Đơn Cam Classic Vát Phẳng",
+        "price": 145000,
+        "onHand": 950
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "100% Polyurethane Foam không mủ cao su",
+        "function": "Kháng khuẩn, tán kem nền mỏng mịn không vệt"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-MTN-02",
+    "name": "Mút Trang Điểm Giọt Nước Không Mủ Cao Su Beautyblender The Original Pink",
+    "brand": "Beautyblender",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Mút tán nền",
+    "rating": 4.9,
+    "soldCount": 16700,
+    "reviewCount": 3800,
+    "price": 420000,
+    "originalPrice": 490000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Huyền Thoại Nền Lì",
+      "Không Hút Kem"
+    ],
+    "images": [
+      "/products/prod-crw-mtn-02-beautyblender-mut-trang-diem-giot-nuoc-khong--1.jpg",
+      "/products/prod-crw-mtn-02-beautyblender-mut-trang-diem-giot-nuoc-khong--2.jpg",
+      "/products/prod-crw-mtn-02-beautyblender-mut-trang-diem-giot-nuoc-khong--3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [],
+    "keyActiveGroups": [],
+    "safetyEthicsBadges": [
+      "LATEX_FREE",
+      "CRUELTY_FREE"
+    ],
+    "formulationTexture": "POWDER",
+    "originCountry": "USA",
+    "variants": [
+      {
+        "sku": "BB-ORIGINAL-PINK",
+        "title": "Màu Hồng Nguyên Bản Quả Trứng",
+        "price": 420000,
+        "onHand": 210
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Hydrophilic Polyurethane Foam",
+        "function": "Nở gấp đôi khi ngậm nước tạo hiệu ứng filter"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-MTN-03",
+    "name": "Bông Mút Nở Tán Nền Vát Xéo Kháng Khuẩn Focallure Hydrophilic Beauty Egg",
+    "brand": "Focallure",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Mút tán nền",
+    "rating": 4.8,
+    "soldCount": 45600,
+    "reviewCount": 9200,
+    "price": 42000,
+    "originalPrice": 65000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Siêu Mềm Mịn",
+      "Giá Siêu Tốt"
+    ],
+    "images": [
+      "/products/prod-crw-mtn-03-focallure-bong-mut-no-tan-nen-vat-xeo-khang-k-1.jpg",
+      "/products/prod-crw-mtn-03-focallure-bong-mut-no-tan-nen-vat-xeo-khang-k-2.jpg",
+      "/products/prod-crw-mtn-03-focallure-bong-mut-no-tan-nen-vat-xeo-khang-k-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [],
+    "keyActiveGroups": [],
+    "safetyEthicsBadges": [
+      "LATEX_FREE"
+    ],
+    "formulationTexture": "POWDER",
+    "originCountry": "CHINA",
+    "variants": [
+      {
+        "sku": "FOCALLURE-EGG-MATCHA",
+        "title": "Màu Xanh Matcha Mềm Mịn",
+        "price": 42000,
+        "onHand": 1200
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Bọt xốp vi mô không mùi",
+        "function": "Tán phấn nước và kem nền kiềm dầu"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-MTN-04",
+    "name": "Bông Mút Giọt Nước Vát Xéo Đa Năng Vacosi Pro Blender Pear Shape BP21",
+    "brand": "Vacosi",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Mút tán nền",
+    "rating": 4.8,
+    "soldCount": 31400,
+    "reviewCount": 6100,
+    "price": 68000,
+    "originalPrice": 89000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Vát Phẳng 2 Đầu",
+      "Độ Đàn Hồi Cao"
+    ],
+    "images": [
+      "/products/prod-crw-mtn-04-vacosi-bong-mut-giot-nuoc-vat-xeo-da-nang-vac-1.jpg",
+      "/products/prod-crw-mtn-04-vacosi-bong-mut-giot-nuoc-vat-xeo-da-nang-vac-2.jpg",
+      "/products/prod-crw-mtn-04-vacosi-bong-mut-giot-nuoc-vat-xeo-da-nang-vac-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [],
+    "keyActiveGroups": [],
+    "safetyEthicsBadges": [
+      "LATEX_FREE"
+    ],
+    "formulationTexture": "POWDER",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "VACOSI-BP21-PURPLE",
+        "title": "Tím Lavender Hồ Lô Vát",
+        "price": 68000,
+        "onHand": 740
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Polymer xốp cấu trúc hạt siêu mịn",
+        "function": "Che phủ khuyết điểm và rãnh cười"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-MTN-05",
+    "name": "Set 3 Bông Mút Tán Nền Vát Xéo Bealy Teardrop Makeup Sponge Box",
+    "brand": "Bealy",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Mút tán nền",
+    "rating": 4.9,
+    "soldCount": 22800,
+    "reviewCount": 4600,
+    "price": 95000,
+    "originalPrice": 130000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Hộp 3 Mút Tiện Lợi",
+      "Mềm Như Mây"
+    ],
+    "images": [
+      "/products/prod-crw-mtn-05-bealy-set-3-bong-mut-tan-nen-vat-xeo-bealy-te-1.jpg",
+      "/products/prod-crw-mtn-05-bealy-set-3-bong-mut-tan-nen-vat-xeo-bealy-te-2.jpg",
+      "/products/prod-crw-mtn-05-bealy-set-3-bong-mut-tan-nen-vat-xeo-bealy-te-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [],
+    "keyActiveGroups": [],
+    "safetyEthicsBadges": [
+      "LATEX_FREE"
+    ],
+    "formulationTexture": "POWDER",
+    "originCountry": "VIETNAM",
+    "variants": [
+      {
+        "sku": "BEALY-SET3-BOX",
+        "title": "Set 3 Quả Kèm Hộp Nhựa Bảo Quản",
+        "price": 95000,
+        "onHand": 510
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Bọt biển thế hệ mới siêu ngậm nước",
+        "function": "Tán nền mướt mịn không mốc cakey"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-DCM-01",
+    "name": "Set 3 Dao Cạo Lông Mày Lưỡi Thép Thụy Điển Chống Trầy Kai Beauty Care Japan",
+    "brand": "Kai",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Nhíp / Dao cạo mày",
+    "rating": 4.9,
+    "soldCount": 65400,
+    "reviewCount": 14100,
+    "price": 52000,
+    "originalPrice": 70000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Lưỡi Thép Siêu Bén",
+      "An Toàn Chống Xước"
+    ],
+    "images": [
+      "/products/prod-crw-dcm-01-kai-set-3-dao-cao-long-may-luoi-thep-thuy-die-1.jpg",
+      "/products/prod-crw-dcm-01-kai-set-3-dao-cao-long-may-luoi-thep-thuy-die-2.jpg",
+      "/products/prod-crw-dcm-01-kai-set-3-dao-cao-long-may-luoi-thep-thuy-die-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "KAI-SET3-RAZOR",
+        "title": "Vỉ 3 cây màu pastel kèm nắp đậy",
+        "price": 52000,
+        "onHand": 1400
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Thép không gỉ Thụy Điển & Nhựa ABS",
+        "function": "Cạo sạch lông mày êm dịu không xước da"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-DCM-02",
+    "name": "Nhíp Bấm Lông Mày Thép Không Gỉ Kềm Nghĩa N-402 Đầu Xéo Chuẩn Salon",
+    "brand": "Kềm Nghĩa",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Nhíp / Dao cạo mày",
+    "rating": 4.9,
+    "soldCount": 48900,
+    "reviewCount": 9800,
+    "price": 48000,
+    "originalPrice": 60000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Thương Hiệu Quốc Dân",
+      "Khít Chặt Tận Gốc"
+    ],
+    "images": [
+      "/products/prod-crw-dcm-02-kem-nghia-nhip-bam-long-may-thep-khong-gi-kem-1.jpg",
+      "/products/prod-crw-dcm-02-kem-nghia-nhip-bam-long-may-thep-khong-gi-kem-2.jpg",
+      "/products/prod-crw-dcm-02-kem-nghia-nhip-bam-long-may-thep-khong-gi-kem-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "VIETNAM",
+    "variants": [
+      {
+        "sku": "KEMNGHIA-N402",
+        "title": "Thép không gỉ mạ niken đầu xéo",
+        "price": 48000,
+        "onHand": 950
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Thép không gỉ Inox cao cấp",
+        "function": "Gắp chuẩn xác từng sợi lông mày nhỏ nhất"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-DCM-03",
+    "name": "Dao Cạo Chân Mày Gấp Gọn Tiện Lợi Innisfree Eyebrow Razor Hàn Quốc",
+    "brand": "Innisfree",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Nhíp / Dao cạo mày",
+    "rating": 4.8,
+    "soldCount": 26300,
+    "reviewCount": 5200,
+    "price": 45000,
+    "originalPrice": 60000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Gập Gọn Vệ Sinh",
+      "Chính Hãng Hàn"
+    ],
+    "images": [
+      "/products/prod-crw-dcm-03-innisfree-dao-cao-chan-may-gap-gon-tien-loi-i-1.jpg",
+      "/products/prod-crw-dcm-03-innisfree-dao-cao-chan-may-gap-gon-tien-loi-i-2.jpg",
+      "/products/prod-crw-dcm-03-innisfree-dao-cao-chan-may-gap-gon-tien-loi-i-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "INNI-RAZOR-FOLD",
+        "title": "Cây gấp gọn màu trắng an toàn",
+        "price": 45000,
+        "onHand": 620
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Lưỡi dao thép vi lưới an toàn",
+        "function": "Tạo dáng chân mày sắc nét"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-DCM-04",
+    "name": "Hộp 3 Dao Cạo Lông Mặt & Chân Mày Feather Piany Japan Lưỡi Bọc Bạch Kim",
+    "brand": "Feather",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Nhíp / Dao cạo mày",
+    "rating": 4.9,
+    "soldCount": 39100,
+    "reviewCount": 7800,
+    "price": 68000,
+    "originalPrice": 85000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Lưỡi Bạch Kim",
+      "Êm Ái Dịu Nhẹ"
+    ],
+    "images": [
+      "/products/prod-crw-dcm-04-feather-hop-3-dao-cao-long-mat-chan-may-feath-1.jpg",
+      "/products/prod-crw-dcm-04-feather-hop-3-dao-cao-long-mat-chan-may-feath-2.jpg",
+      "/products/prod-crw-dcm-04-feather-hop-3-dao-cao-long-mat-chan-may-feath-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "FEATHER-PIANY-3P",
+        "title": "Hộp 3 cây 3 màu lưỡi mạ platinum",
+        "price": 68000,
+        "onHand": 780
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Platinum Coated Stainless Steel",
+        "function": "Lướt êm trên bề mặt da mặt và chân mày"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-DCM-05",
+    "name": "Nhíp Gắp Lông Mày Đầu Nhọn Thẳng Cao Cấp Vacosi Point Tweezer T01",
+    "brand": "Vacosi",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Nhíp / Dao cạo mày",
+    "rating": 4.8,
+    "soldCount": 19400,
+    "reviewCount": 3600,
+    "price": 40000,
+    "originalPrice": 55000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Đầu Nhọn Chuẩn Xác",
+      "Thép Không Gỉ"
+    ],
+    "images": [
+      "/products/prod-crw-dcm-05-vacosi-nhip-gap-long-may-dau-nhon-thang-cao-c-1.jpg",
+      "/products/prod-crw-dcm-05-vacosi-nhip-gap-long-may-dau-nhon-thang-cao-c-2.jpg",
+      "/products/prod-crw-dcm-05-vacosi-nhip-gap-long-may-dau-nhon-thang-cao-c-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "VACOSI-T01-SILVER",
+        "title": "Bản Bạc Trơn Đầu Nhọn T01",
+        "price": 40000,
+        "onHand": 550
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Thép phẫu thuật không rỉ",
+        "function": "Bấm sát chân lông mày chống đứt gãy"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-BCT-01",
+    "name": "Bộ Cọ Trang Điểm Cá Nhân 14 Cây Lông Mềm Kèm Bao Da Vacosi Essential Brush Set",
+    "brand": "Vacosi",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Bộ cọ trang điểm",
+    "rating": 4.9,
+    "soldCount": 29500,
+    "reviewCount": 6800,
+    "price": 345000,
+    "originalPrice": 450000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Đầy Đủ 14 Cây",
+      "Bao Da Cao Cấp"
+    ],
+    "images": [
+      "/products/prod-crw-bct-01-vacosi-bo-co-trang-diem-ca-nhan-14-cay-long-m-1.jpg",
+      "/products/prod-crw-bct-01-vacosi-bo-co-trang-diem-ca-nhan-14-cay-long-m-2.jpg",
+      "/products/prod-crw-bct-01-vacosi-bo-co-trang-diem-ca-nhan-14-cay-long-m-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "VACOSI-SET14-LEATHER",
+        "title": "Bộ 14 cây + Bao Da Đen Đựng Cọ",
+        "price": 345000,
+        "onHand": 380
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Sợi tổng hợp bionic mềm mượt",
+        "function": "Bám phấn đều, tán má hồng, phấn phủ, phấn mắt"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-BCT-02",
+    "name": "Bộ Cọ Trang Điểm Mặt & Mắt 5 Cây Real Techniques Everyday Essentials Kèm Mút",
+    "brand": "Real Techniques",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Bộ cọ trang điểm",
+    "rating": 4.9,
+    "soldCount": 34200,
+    "reviewCount": 7900,
+    "price": 389000,
+    "originalPrice": 480000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Top Bán Chạy Toàn Cầu",
+      "Lông Cọ Kháng Khuẩn"
+    ],
+    "images": [
+      "/products/prod-crw-bct-02-real-techniques-bo-co-trang-diem-mat-mat-5-ca-1.jpg",
+      "/products/prod-crw-bct-02-real-techniques-bo-co-trang-diem-mat-mat-5-ca-2.jpg",
+      "/products/prod-crw-bct-02-real-techniques-bo-co-trang-diem-mat-mat-5-ca-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "USA",
+    "variants": [
+      {
+        "sku": "RT-EVERYDAY-5P",
+        "title": "Bộ 4 Cọ Chuyên Nghiệp + 1 Mút RT",
+        "price": 389000,
+        "onHand": 410
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "UltraPlush Synthetic Bristles",
+        "function": "Lông cọ thiết kế công thái học dễ vệ sinh"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-BCT-03",
+    "name": "Set Cọ Trang Điểm 10 Cây Lông Nhung Siêu Mịn Focallure Multifunction Brush Set",
+    "brand": "Focallure",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Bộ cọ trang điểm",
+    "rating": 4.8,
+    "soldCount": 52100,
+    "reviewCount": 11200,
+    "price": 165000,
+    "originalPrice": 230000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Ngon Bổ Rẻ",
+      "Lông Nhân Tạo Thân Thiện"
+    ],
+    "images": [
+      "/products/prod-crw-bct-03-focallure-set-co-trang-diem-10-cay-long-nhung-1.jpg",
+      "/products/prod-crw-bct-03-focallure-set-co-trang-diem-10-cay-long-nhung-2.jpg",
+      "/products/prod-crw-bct-03-focallure-set-co-trang-diem-10-cay-long-nhung-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "CHINA",
+    "variants": [
+      {
+        "sku": "FOCALLURE-SET10-PINK",
+        "title": "Bộ 10 Cây Hồng Gold Sang Trọng",
+        "price": 165000,
+        "onHand": 830
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Lông sợi nhung kháng khuẩn",
+        "function": "Tán phấn mắt, highlight, tạo khối tự nhiên"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-BCT-04",
+    "name": "Bộ Cọ Trang Điểm Cao Cấp 18 Cây Maange Professional kèm Túi Da Đựng",
+    "brand": "Maange",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Bộ cọ trang điểm",
+    "rating": 4.8,
+    "soldCount": 41300,
+    "reviewCount": 8400,
+    "price": 195000,
+    "originalPrice": 280000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Đầy Đủ Chi Tiết",
+      "Không Rụng Lông"
+    ],
+    "images": [
+      "/products/prod-crw-bct-04-maange-bo-co-trang-diem-cao-cap-18-cay-maange-1.jpg",
+      "/products/prod-crw-bct-04-maange-bo-co-trang-diem-cao-cap-18-cay-maange-2.jpg",
+      "/products/prod-crw-bct-04-maange-bo-co-trang-diem-cao-cap-18-cay-maange-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "CHINA",
+    "variants": [
+      {
+        "sku": "MAANGE-SET18-BAG",
+        "title": "Bộ 18 Cây Đen Khung Bạc + Túi Da",
+        "price": 195000,
+        "onHand": 650
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Sợi fiber tổng hợp mật độ cao",
+        "function": "Không hút sản phẩm, giữ độ mịn của nền"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-BCT-05",
+    "name": "Bộ Cọ Trang Điểm Chuyên Nghiệp 12 Cây Lông Dê Tự Nhiên Bealy Studio Pro",
+    "brand": "Bealy",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Bộ cọ trang điểm",
+    "rating": 4.9,
+    "soldCount": 16800,
+    "reviewCount": 3400,
+    "price": 450000,
+    "originalPrice": 580000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Lông Dê Thật",
+      "Bám Phấn Cực Tốt"
+    ],
+    "images": [
+      "/products/prod-crw-bct-05-bealy-bo-co-trang-diem-chuyen-nghiep-12-cay-l-1.jpg",
+      "/products/prod-crw-bct-05-bealy-bo-co-trang-diem-chuyen-nghiep-12-cay-l-2.jpg",
+      "/products/prod-crw-bct-05-bealy-bo-co-trang-diem-chuyen-nghiep-12-cay-l-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "VIETNAM",
+    "variants": [
+      {
+        "sku": "BEALY-SET12-GOAT",
+        "title": "Hộp 12 Cây Thân Gỗ Cổ Điển",
+        "price": 450000,
+        "onHand": 240
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Lông dê tự nhiên tiệt trùng 100%",
+        "function": "Ăn phấn đều màu cho makeup artist"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-XMT-01",
+    "name": "Nước Dưỡng Tóc Tinh Dầu Bưởi Cocoon Pomelo Hair Tonic 140ml Giảm Gãy Rụng & Kích Mọc Tóc",
+    "brand": "Cocoon",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Xịt mọc tóc",
+    "rating": 4.9,
+    "soldCount": 92400,
+    "reviewCount": 24500,
+    "price": 145000,
+    "originalPrice": 165000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Thuần Chay 100%",
+      "Kích Mọc Tóc Con"
+    ],
+    "images": [
+      "/products/prod-crw-xmt-01-cocoon-nuoc-duong-toc-tinh-dau-buoi-cocoon-po-1.jpg",
+      "/products/prod-crw-xmt-01-cocoon-nuoc-duong-toc-tinh-dau-buoi-cocoon-po-2.jpg",
+      "/products/prod-crw-xmt-01-cocoon-nuoc-duong-toc-tinh-dau-buoi-cocoon-po-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [
+      "HAIR_LOSS"
+    ],
+    "keyActiveGroups": [
+      "SOOTHING_BOTANICAL"
+    ],
+    "safetyEthicsBadges": [
+      "VEGAN",
+      "CRUELTY_FREE",
+      "ALCOHOL_FREE"
+    ],
+    "formulationTexture": "WATER_LIQUID",
+    "originCountry": "VIETNAM",
+    "variants": [
+      {
+        "sku": "COCOON-POMELO-140ML",
+        "title": "Chai xịt 140ml phiên bản nâng cấp",
+        "price": 145000,
+        "onHand": 1500
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Tinh dầu vỏ bưởi nguyên chất & Vitamin B5 (Panthenol)",
+        "function": "Kích thích nang tóc phát triển dày mượt"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-XMT-02",
+    "name": "Tinh Dầu Bưởi Dưỡng Mọc Tóc Milaganics Grapefruit Hair Mist 100ml",
+    "brand": "Milaganics",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Xịt mọc tóc",
+    "rating": 4.8,
+    "soldCount": 34100,
+    "reviewCount": 6800,
+    "price": 85000,
+    "originalPrice": 110000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Thảo Mộc Tự Nhiên",
+      "Không Bết Dính"
+    ],
+    "images": [
+      "/products/prod-crw-xmt-02-milaganics-tinh-dau-buoi-duong-moc-toc-milaga-1.jpg",
+      "/products/prod-crw-xmt-02-milaganics-tinh-dau-buoi-duong-moc-toc-milaga-2.jpg",
+      "/products/prod-crw-xmt-02-milaganics-tinh-dau-buoi-duong-moc-toc-milaga-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "WATER_LIQUID",
+    "originCountry": "VIETNAM",
+    "variants": [
+      {
+        "sku": "MILAGANICS-HAIR-100ML",
+        "title": "Chai xịt 100ml hương bưởi ngọt",
+        "price": 85000,
+        "onHand": 850
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Grapefruit Essential Oil & D-Panthenol",
+        "function": "Phục hồi chân tóc suy yếu"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-XMT-03",
+    "name": "Xịt Dưỡng Tóc Hương Bưởi Cổ Điển Thorakao Grapefruit Hair Lotion 150ml",
+    "brand": "Thorakao",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Xịt mọc tóc",
+    "rating": 4.8,
+    "soldCount": 48200,
+    "reviewCount": 9200,
+    "price": 55000,
+    "originalPrice": 70000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Thương Hiệu Lâu Đời",
+      "Ngừa Rụng Tóc"
+    ],
+    "images": [
+      "/products/prod-crw-xmt-03-thorakao-xit-duong-toc-huong-buoi-co-dien-tho-1.jpg",
+      "/products/prod-crw-xmt-03-thorakao-xit-duong-toc-huong-buoi-co-dien-tho-2.jpg",
+      "/products/prod-crw-xmt-03-thorakao-xit-duong-toc-huong-buoi-co-dien-tho-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "WATER_LIQUID",
+    "originCountry": "VIETNAM",
+    "variants": [
+      {
+        "sku": "THORAKAO-BUOI-150ML",
+        "title": "Chai 150ml vòi xịt phun sương",
+        "price": 55000,
+        "onHand": 1100
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Citrus Grandis Peel Oil",
+        "function": "Nuôi dưỡng da đầu thoáng sạch khỏe khoắn"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-XMT-04",
+    "name": "Serum Dưỡng Tóc Dày & Ngăn Rụng The Ordinary Multi-Peptide Serum for Hair Density 60ml",
+    "brand": "The Ordinary",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Xịt mọc tóc",
+    "rating": 4.9,
+    "soldCount": 21500,
+    "reviewCount": 4800,
+    "price": 420000,
+    "originalPrice": 520000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Phức Hợp Peptides",
+      "Khoa Học Dày Tóc"
+    ],
+    "images": [
+      "/products/prod-crw-xmt-04-the-ordinary-serum-duong-toc-day-ngan-rung-th-1.jpg",
+      "/products/prod-crw-xmt-04-the-ordinary-serum-duong-toc-day-ngan-rung-th-2.jpg",
+      "/products/prod-crw-xmt-04-the-ordinary-serum-duong-toc-day-ngan-rung-th-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "keyActiveGroups": [
+      "ANTI_AGING"
+    ],
+    "safetyEthicsBadges": [
+      "VEGAN",
+      "ALCOHOL_FREE"
+    ],
+    "formulationTexture": "WATER_LIQUID",
+    "originCountry": "CANADA",
+    "variants": [
+      {
+        "sku": "TO-HAIR-DENSITY-60ML",
+        "title": "Chai thủy tinh nhỏ giọt 60ml",
+        "price": 420000,
+        "onHand": 420
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "REDENSYL™, Procapil™, CAPIXYL™ Peptide Complex",
+        "function": "Tăng mật độ nang tóc gấp 3 lần"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-XMT-05",
+    "name": "Tinh Chất Xịt Mọc Tóc Gừng Tươi Weilaiya Ginger Hair Root Nourishing Tonic 100ml",
+    "brand": "Weilaiya",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Xịt mọc tóc",
+    "rating": 4.9,
+    "soldCount": 18900,
+    "reviewCount": 3900,
+    "price": 450000,
+    "originalPrice": 550000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Gừng Vân Nam",
+      "Ấm Da Đầu"
+    ],
+    "images": [
+      "/products/prod-crw-xmt-05-weilaiya-tinh-chat-xit-moc-toc-gung-tuoi-weil-1.jpg",
+      "/products/prod-crw-xmt-05-weilaiya-tinh-chat-xit-moc-toc-gung-tuoi-weil-2.jpg",
+      "/products/prod-crw-xmt-05-weilaiya-tinh-chat-xit-moc-toc-gung-tuoi-weil-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "WATER_LIQUID",
+    "originCountry": "CHINA",
+    "variants": [
+      {
+        "sku": "WEILAIYA-TONIC-100ML",
+        "title": "Chai xịt 100ml tinh chất gừng",
+        "price": 450000,
+        "onHand": 350
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Chiết xuất gừng tươi & Hà thủ ô đỏ",
+        "function": "Lưu thông máu da đầu kích thích mọc tóc"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-TNT-01",
+    "name": "Bọt Nhuộm Tóc Tự Làm Tại Nhà Mise En Scene Hello Bubble Foam Color Hàn Quốc",
+    "brand": "Mise En Scene",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Thuốc nhuộm tóc",
+    "rating": 4.9,
+    "soldCount": 65200,
+    "reviewCount": 14300,
+    "price": 175000,
+    "originalPrice": 240000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Màu Hot Trend",
+      "Tự Nhuộm Dễ Dàng"
+    ],
+    "images": [
+      "/products/prod-crw-tnt-01-mise-en-scene-bot-nhuom-toc-tu-lam-tai-nha-mi-1.jpg",
+      "/products/prod-crw-tnt-01-mise-en-scene-bot-nhuom-toc-tu-lam-tai-nha-mi-2.jpg",
+      "/products/prod-crw-tnt-01-mise-en-scene-bot-nhuom-toc-tu-lam-tai-nha-mi-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "GEL",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "MISE-BUBBLE-7K",
+        "title": "Màu 7K Ash Khaki Brown Nâu Rêu Khói",
+        "price": 175000,
+        "onHand": 820
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Tinh chất hạt trà xanh & Dầu hạt camellia",
+        "function": "Lên màu chuẩn mà không làm khô xơ tóc"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-TNT-02",
+    "name": "Thuốc Nhuộm Tóc Phủ Bạc Thảo Dược Bigen Silk Touch Nhật Bản Không Mùi Amoniac",
+    "brand": "Bigen",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Thuốc nhuộm tóc",
+    "rating": 4.9,
+    "soldCount": 42800,
+    "reviewCount": 8900,
+    "price": 185000,
+    "originalPrice": 220000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Phủ Bạc 100%",
+      "Thảo Dược Nhật Bản"
+    ],
+    "images": [
+      "/products/prod-crw-tnt-02-bigen-thuoc-nhuom-toc-phu-bac-thao-duoc-bigen-1.jpg",
+      "/products/prod-crw-tnt-02-bigen-thuoc-nhuom-toc-phu-bac-thao-duoc-bigen-2.jpg",
+      "/products/prod-crw-tnt-02-bigen-thuoc-nhuom-toc-phu-bac-thao-duoc-bigen-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "BIGEN-SILK-3N",
+        "title": "Màu 3N Nâu Đen Tự Nhiên",
+        "price": 185000,
+        "onHand": 680
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Dầu ô liu, nhân sâm & Bạc hà",
+        "function": "Bảo vệ da đầu không xót"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-TNT-03",
+    "name": "Kem Nhuộm Tóc Dưỡng Màu Thời Trang L'Oreal Paris Excellence Creme Pháp",
+    "brand": "L'Oreal Paris",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Thuốc nhuộm tóc",
+    "rating": 4.9,
+    "soldCount": 58400,
+    "reviewCount": 11800,
+    "price": 195000,
+    "originalPrice": 250000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Bảo Vệ 3 Tác Động",
+      "Bền Màu 8 Tuần"
+    ],
+    "images": [
+      "/products/prod-crw-tnt-03-l-oreal-paris-kem-nhuom-toc-duong-mau-thoi-tr-1.jpg",
+      "/products/prod-crw-tnt-03-l-oreal-paris-kem-nhuom-toc-duong-mau-thoi-tr-2.jpg",
+      "/products/prod-crw-tnt-03-l-oreal-paris-kem-nhuom-toc-duong-mau-thoi-tr-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "FRANCE",
+    "variants": [
+      {
+        "sku": "LOREAL-EXCELLENCE-4",
+        "title": "Màu 4 Nâu Tự Nhiên Quý Phái",
+        "price": 195000,
+        "onHand": 720
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Pro-Keratin, Ceramide & Collagen",
+        "function": "Phục hồi sợi tóc trước và sau khi nhuộm"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-TNT-04",
+    "name": "Thuốc Nhuộm Tóc Dược Liệu Thái Dương Nhuộm Đen Tự Nhiên Hộp 5 Gói",
+    "brand": "Thái Dương",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Thuốc nhuộm tóc",
+    "rating": 4.8,
+    "soldCount": 31200,
+    "reviewCount": 5900,
+    "price": 95000,
+    "originalPrice": 120000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Dược Liệu Lá Móng",
+      "An Toàn Cho Tóc"
+    ],
+    "images": [
+      "/products/prod-crw-tnt-04-thai-duong-thuoc-nhuom-toc-duoc-lieu-thai-duo-1.jpg",
+      "/products/prod-crw-tnt-04-thai-duong-thuoc-nhuom-toc-duoc-lieu-thai-duo-2.jpg",
+      "/products/prod-crw-tnt-04-thai-duong-thuoc-nhuom-toc-duoc-lieu-thai-duo-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "POWDER",
+    "originCountry": "VIETNAM",
+    "variants": [
+      {
+        "sku": "THAIDUONG-NHUOM-5G",
+        "title": "Hộp 5 gói x 10g bột thảo mộc",
+        "price": 95000,
+        "onHand": 940
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Bột lá móng Lawsonia Inermis tự nhiên",
+        "function": "Phủ đen tóc bạc an toàn không kích ứng"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-TNT-05",
+    "name": "Bọt Nhuộm Tóc Tạo Bọt Dưỡng Tóc Beautylabo Whip Hair Color Nhật Bản",
+    "brand": "Beautylabo",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Thuốc nhuộm tóc",
+    "rating": 4.8,
+    "soldCount": 27500,
+    "reviewCount": 5200,
+    "price": 160000,
+    "originalPrice": 210000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Bọt Kem Xốp Mịn",
+      "Dưỡng Ẩm Trái Cây"
+    ],
+    "images": [
+      "/products/prod-crw-tnt-05-beautylabo-bot-nhuom-toc-tao-bot-duong-toc-be-1.jpg",
+      "/products/prod-crw-tnt-05-beautylabo-bot-nhuom-toc-tao-bot-duong-toc-be-2.jpg",
+      "/products/prod-crw-tnt-05-beautylabo-bot-nhuom-toc-tao-bot-duong-toc-be-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "GEL",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "BEAUTYLABO-HONEY",
+        "title": "Màu Honey Chiffon Vàng Mật Ong",
+        "price": 160000,
+        "onHand": 510
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Mật ong & Tinh dầu hoa cúc dại",
+        "function": "Giữ sợi tóc bóng mượt bồng bềnh"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-DXA-01",
+    "name": "Dầu Xả Phục Hồi Tóc Hư Tổn Cao Cấp Tsubaki Premium Moist & Repair Conditioner 490ml",
+    "brand": "Tsubaki",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Dầu xả",
+    "rating": 4.9,
+    "soldCount": 51200,
+    "reviewCount": 11400,
+    "price": 189000,
+    "originalPrice": 235000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Công Nghệ Thẩm Thấu Nhanh",
+      "Bóng Mượt Như Salon"
+    ],
+    "images": [
+      "/products/prod-crw-dxa-01-tsubaki-dau-xa-phuc-hoi-toc-hu-ton-cao-cap-ts-1.jpg",
+      "/products/prod-crw-dxa-01-tsubaki-dau-xa-phuc-hoi-toc-hu-ton-cao-cap-ts-2.jpg",
+      "/products/prod-crw-dxa-01-tsubaki-dau-xa-phuc-hoi-toc-hu-ton-cao-cap-ts-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "TSUBAKI-COND-RED-490",
+        "title": "Chai vòi bơm 490ml Đỏ Dưỡng Ẩm",
+        "price": 189000,
+        "onHand": 890
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Dầu hoa trà Nhật Bản & Protein đậu nành",
+        "function": "Phục hồi lõi tóc hư tổn do uốn nhuộm"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-DXA-02",
+    "name": "Dầu Xả Bưởi Phục Hồi & Giảm Rụng Tóc Cocoon Pomelo Hair Conditioner 310ml",
+    "brand": "Cocoon",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Dầu xả",
+    "rating": 4.9,
+    "soldCount": 38700,
+    "reviewCount": 8200,
+    "price": 165000,
+    "originalPrice": 195000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Thuần Chay Không Silicon",
+      "Mượt Tóc Nhẹ Tênh"
+    ],
+    "images": [
+      "/products/prod-crw-dxa-02-cocoon-dau-xa-buoi-phuc-hoi-giam-rung-toc-coc-1.jpg",
+      "/products/prod-crw-dxa-02-cocoon-dau-xa-buoi-phuc-hoi-giam-rung-toc-coc-2.jpg",
+      "/products/prod-crw-dxa-02-cocoon-dau-xa-buoi-phuc-hoi-giam-rung-toc-coc-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "VIETNAM",
+    "variants": [
+      {
+        "sku": "COCOON-COND-310ML",
+        "title": "Chai 310ml nắp bật tiện lợi",
+        "price": 165000,
+        "onHand": 740
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Tinh dầu bưởi & Xylishine™ từ tảo nâu",
+        "function": "Cung cấp dưỡng chất bóng mượt không gây bẹp tóc"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-DXA-03",
+    "name": "Dầu Xả 3 Phút Diệu Kỳ Cho Tóc Hư Tổn Nặng Pantene 3 Minute Miracle 180ml",
+    "brand": "Pantene",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Dầu xả",
+    "rating": 4.8,
+    "soldCount": 64100,
+    "reviewCount": 13900,
+    "price": 85000,
+    "originalPrice": 110000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Phục Hồi 3 Phút",
+      "Pro-V Độc Quyền"
+    ],
+    "images": [
+      "/products/prod-crw-dxa-03-pantene-dau-xa-3-phut-dieu-ky-cho-toc-hu-ton--1.jpg",
+      "/products/prod-crw-dxa-03-pantene-dau-xa-3-phut-dieu-ky-cho-toc-hu-ton--2.jpg",
+      "/products/prod-crw-dxa-03-pantene-dau-xa-3-phut-dieu-ky-cho-toc-hu-ton--3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "THAILAND",
+    "variants": [
+      {
+        "sku": "PANTENE-3MM-180ML",
+        "title": "Tuýp 180ml Total Damage Care",
+        "price": 85000,
+        "onHand": 1200
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Pro-Vitamin B5 công thức đậm đặc",
+        "function": "Xử lý tóc chẻ ngọn và khô xơ trong 3 phút"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-DXA-04",
+    "name": "Dầu Xả Keratin Cho Tóc Vào Nếp Suôn Mượt Tresemme Keratin Smooth Conditioner 640g",
+    "brand": "Tresemme",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Dầu xả",
+    "rating": 4.9,
+    "soldCount": 49500,
+    "reviewCount": 10800,
+    "price": 195000,
+    "originalPrice": 245000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Vào Nếp 72H",
+      "Chuẩn Salon Tresemme"
+    ],
+    "images": [
+      "/products/prod-crw-dxa-04-tresemme-dau-xa-keratin-cho-toc-vao-nep-suon--1.jpg",
+      "/products/prod-crw-dxa-04-tresemme-dau-xa-keratin-cho-toc-vao-nep-suon--2.jpg",
+      "/products/prod-crw-dxa-04-tresemme-dau-xa-keratin-cho-toc-vao-nep-suon--3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "VIETNAM",
+    "variants": [
+      {
+        "sku": "TRESEMME-KERATIN-640",
+        "title": "Chai lớn 640g vòi nhấn",
+        "price": 195000,
+        "onHand": 830
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Hydrolyzed Keratin & Dầu Marula",
+        "function": "Chống xù rối và giữ nếp tóc bồng bềnh"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-DXA-05",
+    "name": "Dầu Xả Phục Hồi Toàn Diện 5 Tác Động L'Oreal Paris Elseve Total Repair 5 Conditioner 280ml",
+    "brand": "L'Oreal Paris",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Dầu xả",
+    "rating": 4.8,
+    "soldCount": 42300,
+    "reviewCount": 9100,
+    "price": 125000,
+    "originalPrice": 155000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Ceramide Phục Hồi",
+      "Giảm Chẻ Ngọn"
+    ],
+    "images": [
+      "/products/prod-crw-dxa-05-l-oreal-paris-dau-xa-phuc-hoi-toan-dien-5-tac-1.jpg",
+      "/products/prod-crw-dxa-05-l-oreal-paris-dau-xa-phuc-hoi-toan-dien-5-tac-2.jpg",
+      "/products/prod-crw-dxa-05-l-oreal-paris-dau-xa-phuc-hoi-toan-dien-5-tac-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "FRANCE",
+    "variants": [
+      {
+        "sku": "LOREAL-ELSEVE-280ML",
+        "title": "Chai nắp bật 280ml",
+        "price": 125000,
+        "onHand": 650
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Micro-Ceramide lấp đầy kẽ nứt tóc",
+        "function": "Chống đứt gãy, thô ráp và xỉn màu"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-NHT-01",
+    "name": "Nước Hoa Chiết Le Labo Santal 33 EDP 10ml Chuẩn Chính Hãng Mùi Gỗ Đẳng Cấp",
+    "brand": "Le Labo",
+    "category": "Nước hoa",
+    "subCategory": "Nước hoa chiết mini 10ml",
+    "rating": 4.9,
+    "soldCount": 15400,
+    "reviewCount": 3800,
+    "price": 580000,
+    "originalPrice": 690000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Gỗ Đàn Hương Sang Trọng",
+      "Lưu Hương 12H+"
+    ],
+    "images": [
+      "/products/prod-crw-nht-01-le-labo-nuoc-hoa-chiet-le-labo-santal-33-edp--1.jpg",
+      "/products/prod-crw-nht-01-le-labo-nuoc-hoa-chiet-le-labo-santal-33-edp--2.jpg",
+      "/products/prod-crw-nht-01-le-labo-nuoc-hoa-chiet-le-labo-santal-33-edp--3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "WATER_LIQUID",
+    "originCountry": "USA",
+    "variants": [
+      {
+        "sku": "LELABO-33-10ML",
+        "title": "Ống chiết thủy tinh 10ml vòi phun sương",
+        "price": 580000,
+        "onHand": 240
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Cardamom, Iris, Violet, Sandalwood, Cedarwood",
+        "function": "Hương thơm cá tính nịnh mũi"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-NHT-02",
+    "name": "Nước Hoa Chiết Maison Margiela Replica Jazz Club EDT 10ml Hương Rượu Trầm Ấm",
+    "brand": "Maison Margiela",
+    "category": "Nước hoa",
+    "subCategory": "Nước hoa chiết mini 10ml",
+    "rating": 4.9,
+    "soldCount": 12800,
+    "reviewCount": 2900,
+    "price": 490000,
+    "originalPrice": 580000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Hương Rượu Rum & Thuốc Lá",
+      "Ấm Áp Quyến Rũ"
+    ],
+    "images": [
+      "/products/prod-crw-nht-02-maison-margiela-nuoc-hoa-chiet-maison-margiel-1.jpg",
+      "/products/prod-crw-nht-02-maison-margiela-nuoc-hoa-chiet-maison-margiel-2.jpg",
+      "/products/prod-crw-nht-02-maison-margiela-nuoc-hoa-chiet-maison-margiel-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "WATER_LIQUID",
+    "originCountry": "FRANCE",
+    "variants": [
+      {
+        "sku": "REPLICA-JAZZ-10ML",
+        "title": "Ống 10ml nắp bạc chống rò rỉ",
+        "price": 490000,
+        "onHand": 190
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Pink Pepper, Neroli, Rum, Tobacco Leaf, Vanilla",
+        "function": "Phong cách quý ông lãng tử"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-NHT-03",
+    "name": "Nước Hoa Chiết Nam Chanel Bleu de Chanel Eau de Parfum 10ml Nam Tính Cuốn Hút",
+    "brand": "Chanel",
+    "category": "Nước hoa",
+    "subCategory": "Nước hoa chiết mini 10ml",
+    "rating": 4.9,
+    "soldCount": 28900,
+    "reviewCount": 6500,
+    "price": 450000,
+    "originalPrice": 550000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Vua Nước Hoa Nam",
+      "Lưu Hương Vượt Trội"
+    ],
+    "images": [
+      "/products/prod-crw-nht-03-chanel-nuoc-hoa-chiet-nam-chanel-bleu-de-chan-1.jpg",
+      "/products/prod-crw-nht-03-chanel-nuoc-hoa-chiet-nam-chanel-bleu-de-chan-2.jpg",
+      "/products/prod-crw-nht-03-chanel-nuoc-hoa-chiet-nam-chanel-bleu-de-chan-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "WATER_LIQUID",
+    "originCountry": "FRANCE",
+    "variants": [
+      {
+        "sku": "BLEU-CHANEL-10ML",
+        "title": "Chai chiết vỏ kim loại xoay 10ml",
+        "price": 450000,
+        "onHand": 380
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Bưởi chùm, Hương trầm, Tuyết tùng & Hổ phách",
+        "function": "Lôi cuốn phái nữ mọi ánh nhìn"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-NHT-04",
+    "name": "Nước Hoa Chiết Nam Dior Sauvage Eau de Parfum 10ml Tươi Mát Hoang Dã",
+    "brand": "Dior",
+    "category": "Nước hoa",
+    "subCategory": "Nước hoa chiết mini 10ml",
+    "rating": 4.9,
+    "soldCount": 32400,
+    "reviewCount": 7400,
+    "price": 420000,
+    "originalPrice": 510000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Top 1 Nước Hoa Thế Giới",
+      "Tỏa Hương Xa"
+    ],
+    "images": [
+      "/products/prod-crw-nht-04-dior-nuoc-hoa-chiet-nam-dior-sauvage-eau-de-p-1.jpg",
+      "/products/prod-crw-nht-04-dior-nuoc-hoa-chiet-nam-dior-sauvage-eau-de-p-2.jpg",
+      "/products/prod-crw-nht-04-dior-nuoc-hoa-chiet-nam-dior-sauvage-eau-de-p-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "WATER_LIQUID",
+    "originCountry": "FRANCE",
+    "variants": [
+      {
+        "sku": "DIOR-SAUVAGE-10ML",
+        "title": "Ống chiết tiện lợi 10ml",
+        "price": 420000,
+        "onHand": 420
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Cam Bergamot Calabria, Tiêu Tứ Xuyên & Ambroxan",
+        "function": "Phóng khoáng mạnh mẽ"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-NHT-05",
+    "name": "Nước Hoa Chiết Nữ YSL Libre Eau de Parfum 10ml Hương Hoa Lavender Sang Trọng",
+    "brand": "YSL",
+    "category": "Nước hoa",
+    "subCategory": "Nước hoa chiết mini 10ml",
+    "rating": 4.9,
+    "soldCount": 25100,
+    "reviewCount": 5800,
+    "price": 430000,
+    "originalPrice": 520000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Nữ Quyền Độc Lập",
+      "Lưu Hương Cả Ngày"
+    ],
+    "images": [
+      "/products/prod-crw-nht-05-ysl-nuoc-hoa-chiet-nu-ysl-libre-eau-de-parfum-1.jpg",
+      "/products/prod-crw-nht-05-ysl-nuoc-hoa-chiet-nu-ysl-libre-eau-de-parfum-2.jpg",
+      "/products/prod-crw-nht-05-ysl-nuoc-hoa-chiet-nu-ysl-libre-eau-de-parfum-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "WATER_LIQUID",
+    "originCountry": "FRANCE",
+    "variants": [
+      {
+        "sku": "YSL-LIBRE-10ML",
+        "title": "Chai chiết vòi phun nano 10ml",
+        "price": 430000,
+        "onHand": 310
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Hoa oải hương Pháp, Hoa cam Morocco & Vani Madagascar",
+        "function": "Tự do kiêu kỳ"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VKN-01",
+    "name": "Nước Hoa Vùng Kín Foellie Eau de Bijou 5ml Đen Quyến Rũ Sang Trọng",
+    "brand": "Foellie",
+    "category": "Nước hoa",
+    "subCategory": "Nước hoa vùng kín",
+    "rating": 4.9,
+    "soldCount": 85200,
+    "reviewCount": 19800,
+    "price": 185000,
+    "originalPrice": 250000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Khử Mùi 99.9%",
+      "Hương Thơm Nồng Nàn"
+    ],
+    "images": [
+      "/products/prod-crw-vkn-01-foellie-nuoc-hoa-vung-kin-foellie-eau-de-bijo-1.jpg",
+      "/products/prod-crw-vkn-01-foellie-nuoc-hoa-vung-kin-foellie-eau-de-bijo-2.jpg",
+      "/products/prod-crw-vkn-01-foellie-nuoc-hoa-vung-kin-foellie-eau-de-bijo-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES",
+      "SENSITIVE"
+    ],
+    "formulationTexture": "FACIAL_OIL",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "FOELLIE-BIJOU-5ML",
+        "title": "Chai 5ml vỏ đen huyền bí",
+        "price": 185000,
+        "onHand": 1100
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Dầu hoa anh thảo, Dầu argan, Dầu jojoba & Tinh dầu hạt hướng dương",
+        "function": "Cân bằng pH và khử mùi vùng nhạy cảm 48h"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VKN-02",
+    "name": "Nước Hoa Vùng Kín Foellie Eau de Bonbon 5ml Trắng Ngọt Ngào Thanh Khiết",
+    "brand": "Foellie",
+    "category": "Nước hoa",
+    "subCategory": "Nước hoa vùng kín",
+    "rating": 4.9,
+    "soldCount": 62400,
+    "reviewCount": 13500,
+    "price": 185000,
+    "originalPrice": 250000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Hương Đào & Kẹo Ngọt",
+      "Dịu Nhẹ An Toàn"
+    ],
+    "images": [
+      "/products/prod-crw-vkn-02-foellie-nuoc-hoa-vung-kin-foellie-eau-de-bonb-1.jpg",
+      "/products/prod-crw-vkn-02-foellie-nuoc-hoa-vung-kin-foellie-eau-de-bonb-2.jpg",
+      "/products/prod-crw-vkn-02-foellie-nuoc-hoa-vung-kin-foellie-eau-de-bonb-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES",
+      "SENSITIVE"
+    ],
+    "formulationTexture": "FACIAL_OIL",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "FOELLIE-BONBON-5ML",
+        "title": "Chai 5ml vỏ trắng tinh khôi",
+        "price": 185000,
+        "onHand": 840
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "6 loại tinh dầu thiên nhiên cao cấp",
+        "function": "Mang lại cảm giác thơm mát sạch sẽ suốt chu kỳ"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VKN-03",
+    "name": "Nước Hoa Vùng Kín Dionel Secret Love Black Edition 5ml Hàn Quốc Lưu Hương 24H",
+    "brand": "Dionel",
+    "category": "Nước hoa",
+    "subCategory": "Nước hoa vùng kín",
+    "rating": 4.8,
+    "soldCount": 45800,
+    "reviewCount": 9700,
+    "price": 195000,
+    "originalPrice": 260000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Huyền Thoại Dionel",
+      "Kháng Viêm Tự Nhiên"
+    ],
+    "images": [
+      "/products/prod-crw-vkn-03-dionel-nuoc-hoa-vung-kin-dionel-secret-love-b-1.jpg",
+      "/products/prod-crw-vkn-03-dionel-nuoc-hoa-vung-kin-dionel-secret-love-b-2.jpg",
+      "/products/prod-crw-vkn-03-dionel-nuoc-hoa-vung-kin-dionel-secret-love-b-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES",
+      "SENSITIVE"
+    ],
+    "formulationTexture": "FACIAL_OIL",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "DIONEL-BLACK-5ML",
+        "title": "Chai thủy tinh 5ml giọt nén",
+        "price": 195000,
+        "onHand": 620
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Dầu hạt macadamia, Oenothera Biennis Oil",
+        "function": "Diệt khuẩn Candida và tạo hương say đắm"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VKN-04",
+    "name": "Tinh Dầu Nước Hoa Vùng Kín Cenota Secret Sexy 10ml Khử Mùi Kháng Khuẩn",
+    "brand": "Cenota",
+    "category": "Nước hoa",
+    "subCategory": "Nước hoa vùng kín",
+    "rating": 4.8,
+    "soldCount": 28900,
+    "reviewCount": 5400,
+    "price": 160000,
+    "originalPrice": 220000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Dung Tích Lớn 10ml",
+      "Công Nghệ Pháp"
+    ],
+    "images": [
+      "/products/prod-crw-vkn-04-cenota-tinh-dau-nuoc-hoa-vung-kin-cenota-secr-1.jpg",
+      "/products/prod-crw-vkn-04-cenota-tinh-dau-nuoc-hoa-vung-kin-cenota-secr-2.jpg",
+      "/products/prod-crw-vkn-04-cenota-tinh-dau-nuoc-hoa-vung-kin-cenota-secr-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES",
+      "SENSITIVE"
+    ],
+    "formulationTexture": "FACIAL_OIL",
+    "originCountry": "VIETNAM",
+    "variants": [
+      {
+        "sku": "CENOTA-SEXY-10ML",
+        "title": "Chai 10ml tiết kiệm gấp đôi",
+        "price": 160000,
+        "onHand": 510
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Hương hoa linh lan & Tinh dầu hạnh nhân",
+        "function": "Kháng khuẩn và khử mùi hôi"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VKN-05",
+    "name": "Nước Hoa Vùng Kín Tinh Tế De Memoria Floral Pocket Perfume 5ml",
+    "brand": "De Memoria",
+    "category": "Nước hoa",
+    "subCategory": "Nước hoa vùng kín",
+    "rating": 4.9,
+    "soldCount": 21300,
+    "reviewCount": 4600,
+    "price": 175000,
+    "originalPrice": 230000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Hương Hoa Xứ Grasse",
+      "Không Chứa Cồn"
+    ],
+    "images": [
+      "/products/prod-crw-vkn-05-de-memoria-nuoc-hoa-vung-kin-tinh-te-de-memor-1.jpg",
+      "/products/prod-crw-vkn-05-de-memoria-nuoc-hoa-vung-kin-tinh-te-de-memor-2.jpg",
+      "/products/prod-crw-vkn-05-de-memoria-nuoc-hoa-vung-kin-tinh-te-de-memor-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES",
+      "SENSITIVE"
+    ],
+    "formulationTexture": "FACIAL_OIL",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "DEMEMORIA-FLORAL-5ML",
+        "title": "Chai 5ml hương hoa hồng Montmartre",
+        "price": 175000,
+        "onHand": 430
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Rose Damascena Flower Oil & Chamomilla Recutita",
+        "function": "Làm dịu và ngăn mùi bí bách"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VMN-01",
+    "name": "Tinh Dầu Hoa Anh Thảo Cân Bằng Nội Tiết & Giảm Mụn Blackmores Evening Primrose Oil 190 Viên",
+    "brand": "Blackmores",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống trị mụn / nội tiết",
+    "rating": 4.9,
+    "soldCount": 38900,
+    "reviewCount": 8900,
+    "price": 520000,
+    "originalPrice": 650000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Chuẩn Úc 1000mg",
+      "Cân Bằng Nội Tiết Tố"
+    ],
+    "images": [
+      "/products/prod-crw-vmn-01-blackmores-tinh-dau-hoa-anh-thao-can-bang-noi-1.jpg",
+      "/products/prod-crw-vmn-01-blackmores-tinh-dau-hoa-anh-thao-can-bang-noi-2.jpg",
+      "/products/prod-crw-vmn-01-blackmores-tinh-dau-hoa-anh-thao-can-bang-noi-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES",
+      "ACNE_PRONE"
+    ],
+    "skinConcerns": [
+      "ACNE",
+      "HORMONAL_ACNE"
+    ],
+    "safetyEthicsBadges": [
+      "NON_GMO",
+      "GLUTEN_FREE"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "AUSTRALIA",
+    "variants": [
+      {
+        "sku": "BLACKMORES-EPO-190V",
+        "title": "Hộp 190 viên nang mềm",
+        "price": 520000,
+        "onHand": 550
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Evening Primrose Oil 1000mg (chứa Gamma-Linolenic Acid GLA 100mg)",
+        "function": "Điều hòa kinh nguyệt, giảm mụn nội tiết cằm và lưng"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VMN-02",
+    "name": "Viên Uống Bổ Sung Kẽm Kiểm Soát Bã Nhờn Ngừa Mụn DHC Zinc 60 Ngày 60 Viên",
+    "brand": "DHC",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống trị mụn / nội tiết",
+    "rating": 4.9,
+    "soldCount": 95400,
+    "reviewCount": 22100,
+    "price": 110000,
+    "originalPrice": 145000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Kẽm Men Tự Nhiên",
+      "Kiểm Soát Nhờn Vượt Trội"
+    ],
+    "images": [
+      "/products/prod-crw-vmn-02-dhc-vien-uong-bo-sung-kem-kiem-soat-ba-nhon-n-1.jpg",
+      "/products/prod-crw-vmn-02-dhc-vien-uong-bo-sung-kem-kiem-soat-ba-nhon-n-2.jpg",
+      "/products/prod-crw-vmn-02-dhc-vien-uong-bo-sung-kem-kiem-soat-ba-nhon-n-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "OILY",
+      "ACNE_PRONE"
+    ],
+    "skinConcerns": [
+      "ACNE",
+      "SEBUM"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "DHC-ZINC-60D",
+        "title": "Gói 60 viên uống trong 60 ngày",
+        "price": 110000,
+        "onHand": 1800
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Kẽm Gluconate 15mg, Crom 60mcg, Selen 50mcg",
+        "function": "Kháng viêm gom cồi mụn, ức chế tuyến dầu"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VMN-03",
+    "name": "Viên Uống Trị Mụn Trứng Cá & Mụn Viêm Pair A Lion 120 Viên Nhật Bản",
+    "brand": "Lion",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống trị mụn / nội tiết",
+    "rating": 4.8,
+    "soldCount": 29800,
+    "reviewCount": 6400,
+    "price": 280000,
+    "originalPrice": 350000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Đặc Trị Mụn Bọc",
+      "Thải Độc Gan Da Liễu"
+    ],
+    "images": [
+      "/products/prod-crw-vmn-03-lion-vien-uong-tri-mun-trung-ca-mun-viem-pair-1.jpg",
+      "/products/prod-crw-vmn-03-lion-vien-uong-tri-mun-trung-ca-mun-viem-pair-2.jpg",
+      "/products/prod-crw-vmn-03-lion-vien-uong-tri-mun-trung-ca-mun-viem-pair-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ACNE_PRONE"
+    ],
+    "skinConcerns": [
+      "ACNE"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "PAIR-A-120V",
+        "title": "Hộp thủy tinh 120 viên nén",
+        "price": 280000,
+        "onHand": 620
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Glucuronolactone, L-Cysteine, Vitamin B2 & Vitamin B6",
+        "function": "Đào thải độc tố gan, ngăn chặn mụn tái phát"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VMN-04",
+    "name": "Viên Uống 32 Loại Rau Củ Thanh Nhiệt Thải Độc DHC Perfect Vegetable 60 Ngày 240 Viên",
+    "brand": "DHC",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống trị mụn / nội tiết",
+    "rating": 4.9,
+    "soldCount": 74200,
+    "reviewCount": 16800,
+    "price": 260000,
+    "originalPrice": 320000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "32 Loại Rau Xanh",
+      "Giảm Nóng Trong Mụn Nhọt"
+    ],
+    "images": [
+      "/products/prod-crw-vmn-04-dhc-vien-uong-32-loai-rau-cu-thanh-nhiet-thai-1.jpg",
+      "/products/prod-crw-vmn-04-dhc-vien-uong-32-loai-rau-cu-thanh-nhiet-thai-2.jpg",
+      "/products/prod-crw-vmn-04-dhc-vien-uong-32-loai-rau-cu-thanh-nhiet-thai-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [
+      "INTERNAL_HEAT"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "DHC-VEGE-60D",
+        "title": "Gói 240 viên uống 60 ngày",
+        "price": 260000,
+        "onHand": 1300
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "100% rau củ quốc sản Nhật Bản & 1000 tỷ lợi khuẩn Lactic Acid",
+        "function": "Mát gan tiêu độc, hỗ trợ tiêu hóa không táo bón"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VMN-05",
+    "name": "Tinh Dầu Hoa Anh Thảo Hữu Cơ Pháp Nat&Form Huile d'Onagre Bio 200 Viên",
+    "brand": "Nat&Form",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống trị mụn / nội tiết",
+    "rating": 4.8,
+    "soldCount": 21400,
+    "reviewCount": 4700,
+    "price": 320000,
+    "originalPrice": 390000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Chuẩn Hữu Cơ Bio EcoCert",
+      "Chống Lão Hóa Nội Sinh"
+    ],
+    "images": [
+      "/products/prod-crw-vmn-05-nat-form-tinh-dau-hoa-anh-thao-huu-co-phap-na-1.jpg",
+      "/products/prod-crw-vmn-05-nat-form-tinh-dau-hoa-anh-thao-huu-co-phap-na-2.jpg",
+      "/products/prod-crw-vmn-05-nat-form-tinh-dau-hoa-anh-thao-huu-co-phap-na-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "FRANCE",
+    "variants": [
+      {
+        "sku": "NATFORM-BIO-200V",
+        "title": "Hộp phân hủy sinh học 200 viên",
+        "price": 320000,
+        "onHand": 480
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Organic Evening Primrose Oil 500mg ép lạnh nguyên chất",
+        "function": "Cải thiện làn da khô ráp sần sùi mụn do rối loạn nội tiết"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VCN-01",
+    "name": "Viên Uống Cấp Nước & Căng Bóng Da CJ Innerb Aqua Rich Double Up 70 Viên Hàn Quốc",
+    "brand": "CJ Innerb",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống cấp nước Hyaluronic",
+    "rating": 4.9,
+    "soldCount": 42300,
+    "reviewCount": 9600,
+    "price": 450000,
+    "originalPrice": 590000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Gấp Đôi HA 240mg",
+      "Căng Mọng Da Sứ"
+    ],
+    "images": [
+      "/products/prod-crw-vcn-01-cj-innerb-vien-uong-cap-nuoc-cang-bong-da-cj--1.jpg",
+      "/products/prod-crw-vcn-01-cj-innerb-vien-uong-cap-nuoc-cang-bong-da-cj--2.jpg",
+      "/products/prod-crw-vcn-01-cj-innerb-vien-uong-cap-nuoc-cang-bong-da-cj--3.jpg"
+    ],
+    "targetSkinTypes": [
+      "DRY",
+      "DEHYDRATED",
+      "COMBINATION"
+    ],
+    "skinConcerns": [
+      "DEHYDRATION"
+    ],
+    "keyActiveGroups": [
+      "HYDRATION"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "INNERB-DOUBLEUP-70V",
+        "title": "Lọ 70 viên nang mềm vàng gold",
+        "price": 450000,
+        "onHand": 780
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Hyaluronic Acid 240mg, Collagen thủy phân & Ceramide cá",
+        "function": "Ngậm nước tầng sâu giúp da ẩm mượt căng bóng suốt ngày dài"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VCN-02",
+    "name": "Viên Uống Bổ Sung Hyaluronic Acid Giữ Ẩm Da DHC Hyaluronic Acid 60 Ngày 120 Viên",
+    "brand": "DHC",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống cấp nước Hyaluronic",
+    "rating": 4.9,
+    "soldCount": 36800,
+    "reviewCount": 8100,
+    "price": 295000,
+    "originalPrice": 380000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "HA 150mg Nhật Bản",
+      "Chống Khô Ráp Bong Tróc"
+    ],
+    "images": [
+      "/products/prod-crw-vcn-02-dhc-vien-uong-bo-sung-hyaluronic-acid-giu-am--1.jpg",
+      "/products/prod-crw-vcn-02-dhc-vien-uong-bo-sung-hyaluronic-acid-giu-am--2.jpg",
+      "/products/prod-crw-vcn-02-dhc-vien-uong-bo-sung-hyaluronic-acid-giu-am--3.jpg"
+    ],
+    "targetSkinTypes": [
+      "DRY",
+      "SENSITIVE"
+    ],
+    "keyActiveGroups": [
+      "HYDRATION"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "DHC-HA-60D",
+        "title": "Gói 120 viên uống 60 ngày",
+        "price": 295000,
+        "onHand": 690
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Hyaluronic Acid 150mg, Squalane & Chiết xuất hạt vải thiều",
+        "function": "Tạo màng ẩm tự nhiên bảo vệ da mặt và cơ thể"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VCN-03",
+    "name": "Viên Uống Trắng Da Cấp Nước Huons White Glutathione Inner Aqua 60 Viên",
+    "brand": "Huons",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống cấp nước Hyaluronic",
+    "rating": 4.8,
+    "soldCount": 19400,
+    "reviewCount": 4200,
+    "price": 380000,
+    "originalPrice": 480000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Cấp Nước Sáng Mịn",
+      "Glutathione Chuẩn Hàn"
+    ],
+    "images": [
+      "/products/prod-crw-vcn-03-huons-vien-uong-trang-da-cap-nuoc-huons-white-1.jpg",
+      "/products/prod-crw-vcn-03-huons-vien-uong-trang-da-cap-nuoc-huons-white-2.jpg",
+      "/products/prod-crw-vcn-03-huons-vien-uong-trang-da-cap-nuoc-huons-white-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "keyActiveGroups": [
+      "HYDRATION",
+      "BRIGHTENING"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "HUONS-AQUA-60V",
+        "title": "Lọ 60 viên màu xanh ngọc bích",
+        "price": 380000,
+        "onHand": 430
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Hyaluronic Acid, L-Glutathione & Vitamin C",
+        "function": "Vừa cấp nước khóa ẩm vừa làm mờ sạm nám"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VCN-04",
+    "name": "Tinh Chất Uống Giữ Ẩm & Chống Khô Da Astalift Moist Essence F Dạng Viên 60 Viên",
+    "brand": "Astalift",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống cấp nước Hyaluronic",
+    "rating": 4.9,
+    "soldCount": 11200,
+    "reviewCount": 2600,
+    "price": 680000,
+    "originalPrice": 850000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Astaxanthin Đỏ Cao Cấp",
+      "Chống Lão Hóa Cấp Nước"
+    ],
+    "images": [
+      "/products/prod-crw-vcn-04-astalift-tinh-chat-uong-giu-am-chong-kho-da-a-1.jpg",
+      "/products/prod-crw-vcn-04-astalift-tinh-chat-uong-giu-am-chong-kho-da-a-2.jpg",
+      "/products/prod-crw-vcn-04-astalift-tinh-chat-uong-giu-am-chong-kho-da-a-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "DRY",
+      "AGING"
+    ],
+    "keyActiveGroups": [
+      "HYDRATION",
+      "ANTI_AGING"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "ASTALIFT-MOIST-60V",
+        "title": "Lọ 60 viên công nghệ Fujifilm",
+        "price": 680000,
+        "onHand": 220
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Nano Astaxanthin, Ceramide & Hyaluronic Acid vi mô",
+        "function": "Phục hồi hàng rào giữ nước đa tầng"
+      }
+    ]
+  },
+  {
+    "id": "PROD-CRW-VCN-05",
+    "name": "Nước Uống Collagen & Cấp Nước Chống Lão Hóa The Collagen Shiseido 10 Lọ x 50ml",
+    "brand": "Shiseido",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống cấp nước Hyaluronic",
+    "rating": 4.9,
+    "soldCount": 48900,
+    "reviewCount": 11200,
+    "price": 580000,
+    "originalPrice": 720000,
+    "inStock": true,
+    "badges": [
+      "Shopee Mall",
+      "Collagen Nước Thẩm Thấu Nhanh",
+      "Bán Chạy Nhất Nhật Bản"
+    ],
+    "images": [
+      "/products/prod-crw-vcn-05-shiseido-nuoc-uong-collagen-cap-nuoc-chong-la-1.jpg",
+      "/products/prod-crw-vcn-05-shiseido-nuoc-uong-collagen-cap-nuoc-chong-la-2.jpg",
+      "/products/prod-crw-vcn-05-shiseido-nuoc-uong-collagen-cap-nuoc-chong-la-3.jpg"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "keyActiveGroups": [
+      "HYDRATION",
+      "ANTI_AGING"
+    ],
+    "formulationTexture": "WATER_LIQUID",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "SHISEIDO-COLLAGEN-BOX",
+        "title": "Hộp 10 chai x 50ml vị trái cây",
+        "price": 580000,
+        "onHand": 920
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Collagen Peptide 1000mg, Hyaluronic Acid 5mg, Ceramide 600mcg & Trái Amla",
+        "function": "Tăng độ đàn hồi căng mọng mịn màng cho da"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-001",
+    "name": "Cocoon Cà Phê Đắk Lắk Tẩy Tế Bào Chết Toàn Thân 200ml",
+    "brand": "Cocoon",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Tẩy da chết toàn thân (Body Scrub)",
+    "images": [
+      "/products/niche-body-001.jpg"
+    ],
+    "registrationNumber": "002145/22/CBMP-HCM",
+    "rating": 4.9,
+    "soldCount": 8420,
+    "inStock": true,
+    "badges": [
+      "Thuần Chay",
+      "Bán Chạy"
+    ],
+    "targetSkinTypes": [
+      "NORMAL",
+      "OILY",
+      "DRY",
+      "COMBINATION"
+    ],
+    "skinConcerns": [
+      "DULLNESS",
+      "PORES",
+      "BARRIER_REPAIR"
+    ],
+    "keyActiveGroups": [
+      "SOOTHING_BOTANICAL",
+      "EXFOLIATION"
+    ],
+    "safetyEthicsBadges": [
+      "VEGAN",
+      "CRUELTY_FREE",
+      "PARABEN_FREE",
+      "ALCOHOL_FREE"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "VIETNAM",
+    "variants": [
+      {
+        "sku": "COCOON-COFFEE-200ML",
+        "title": "Hũ 200ml",
+        "price": 125000,
+        "originalPrice": 145000,
+        "onHand": 150
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Coffea Robusta Seed Powder",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Tẩy tế bào chết vật lý tự nhiên"
+      },
+      {
+        "name": "Theobroma Cacao Seed Butter",
+        "comedogenicRating": 2,
+        "irritationRating": 0,
+        "function": "Khóa ẩm, làm mềm mịn da"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-002",
+    "name": "Muối Tắm Khoáng Epsom Thư Giãn Tinh Dầu Hoa Oải Hương Lavender 500g",
+    "brand": "Aura Spa Care",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Muối tắm thư giãn",
+    "images": [
+      "/products/niche-body-002.jpg"
+    ],
+    "registrationNumber": "003912/23/CBMP-QLD",
+    "rating": 4.8,
+    "soldCount": 3120,
+    "inStock": true,
+    "badges": [
+      "Spa Thư Giãn"
+    ],
+    "targetSkinTypes": [
+      "NORMAL",
+      "OILY",
+      "DRY"
+    ],
+    "skinConcerns": [
+      "DEHYDRATION",
+      "DULLNESS"
+    ],
+    "keyActiveGroups": [
+      "SOOTHING_BOTANICAL"
+    ],
+    "safetyEthicsBadges": [
+      "FRAGRANCE_FREE",
+      "PARABEN_FREE",
+      "VEGAN"
+    ],
+    "formulationTexture": "POWDER",
+    "originCountry": "USA",
+    "variants": [
+      {
+        "sku": "EPSOM-LAVENDER-500G",
+        "title": "Túi 500g",
+        "price": 180000,
+        "onHand": 120
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Magnesium Sulfate",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Muối khoáng làm dịu cơ bắp và da"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-003",
+    "name": "Kem Tẩy Lông Veet Pure Dịu Nhẹ Cho Da Nhạy Cảm 100ml",
+    "brand": "Veet",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Kem triệt lông dịu nhẹ",
+    "images": [
+      "/products/niche-body-003.jpg"
+    ],
+    "registrationNumber": "110293/21/CBMP-QLD",
+    "rating": 4.7,
+    "soldCount": 9400,
+    "inStock": true,
+    "badges": [
+      "Da Nhạy Cảm"
+    ],
+    "targetSkinTypes": [
+      "SENSITIVE",
+      "NORMAL"
+    ],
+    "skinConcerns": [
+      "PORES"
+    ],
+    "keyActiveGroups": [
+      "SOOTHING_BOTANICAL"
+    ],
+    "safetyEthicsBadges": [
+      "FRAGRANCE_FREE",
+      "PARABEN_FREE"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "FRANCE",
+    "variants": [
+      {
+        "sku": "VEET-PURE-100ML",
+        "title": "Tuýp 100ml",
+        "price": 95000,
+        "originalPrice": 110000,
+        "onHand": 200
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Potassium Thioglycolate",
+        "comedogenicRating": 0,
+        "irritationRating": 1,
+        "function": "Làm mềm và rụng lông nhẹ dịu"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-004",
+    "name": "Kem Dưỡng Da Tay L'Occitane Shea Butter Hand Cream 75ml",
+    "brand": "L'Occitane",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Kem dưỡng da tay & gót chân",
+    "images": [
+      "/products/niche-body-004.jpg"
+    ],
+    "registrationNumber": "19820/22/CBMP-QLD",
+    "rating": 4.9,
+    "soldCount": 5200,
+    "inStock": true,
+    "badges": [
+      "Cao Cấp",
+      "Top Bán Chạy"
+    ],
+    "targetSkinTypes": [
+      "DRY",
+      "NORMAL",
+      "SENSITIVE"
+    ],
+    "skinConcerns": [
+      "DEHYDRATION",
+      "BARRIER_REPAIR"
+    ],
+    "keyActiveGroups": [
+      "HYDRATION",
+      "SOOTHING_BOTANICAL"
+    ],
+    "safetyEthicsBadges": [
+      "PARABEN_FREE",
+      "ALCOHOL_FREE"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "FRANCE",
+    "variants": [
+      {
+        "sku": "LOCCITANE-SHEA-75ML",
+        "title": "Tuýp 75ml",
+        "price": 620000,
+        "onHand": 80
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Butyrospermum Parkii Butter",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "20% Bơ hạt mỡ dưỡng ẩm sâu"
+      }
+    ]
+  },
+  {
+    "id": "niche-hair-001",
+    "name": "Dầu Gội Khô Batiste Dry Shampoo Original Hương Tươi Mát 200ml",
+    "brand": "Batiste",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Dầu gội khô tiện lợi",
+    "images": [
+      "/products/niche-hair-001.webp"
+    ],
+    "registrationNumber": "189201/22/CBMP-QLD",
+    "rating": 4.8,
+    "soldCount": 15400,
+    "inStock": true,
+    "badges": [
+      "Bồng Bềnh Tóc"
+    ],
+    "targetSkinTypes": [
+      "OILY",
+      "NORMAL"
+    ],
+    "skinConcerns": [
+      "OIL_CONTROL"
+    ],
+    "keyActiveGroups": [
+      "SOOTHING_BOTANICAL"
+    ],
+    "safetyEthicsBadges": [
+      "PARABEN_FREE",
+      "CRUELTY_FREE"
+    ],
+    "formulationTexture": "POWDER",
+    "originCountry": "UK",
+    "variants": [
+      {
+        "sku": "BATISTE-ORIG-200ML",
+        "title": "Chai 200ml",
+        "price": 165000,
+        "onHand": 300
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Oryza Sativa Starch",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Bột gạo hút sạch dầu bã nhờn"
+      }
+    ]
+  },
+  {
+    "id": "niche-hair-002",
+    "name": "Tinh Dầu Dưỡng Tóc Moroccanoil Treatment Original 100ml",
+    "brand": "Moroccanoil",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Tinh dầu dưỡng bóng tóc",
+    "images": [
+      "/products/niche-hair-002.png"
+    ],
+    "registrationNumber": "109823/21/CBMP-QLD",
+    "rating": 5,
+    "soldCount": 12800,
+    "inStock": true,
+    "badges": [
+      "Top Salon",
+      "Best Seller"
+    ],
+    "targetSkinTypes": [
+      "DRY",
+      "NORMAL"
+    ],
+    "skinConcerns": [
+      "DEHYDRATION",
+      "BARRIER_REPAIR"
+    ],
+    "keyActiveGroups": [
+      "SOOTHING_BOTANICAL"
+    ],
+    "safetyEthicsBadges": [
+      "ALCOHOL_FREE",
+      "PARABEN_FREE"
+    ],
+    "formulationTexture": "FACIAL_OIL",
+    "originCountry": "USA",
+    "variants": [
+      {
+        "sku": "MOROCCAN-OIL-100ML",
+        "title": "Chai 100ml",
+        "price": 890000,
+        "onHand": 140
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Argania Spinosa Kernel Oil",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Dầu argan phục hồi ngọn tóc hư tổn"
+      }
+    ]
+  },
+  {
+    "id": "niche-hair-003",
+    "name": "Mặt Nạ Tóc Shiseido Fino Premium Touch Phục Hồi Chuyên Sâu 230g",
+    "brand": "Shiseido",
+    "category": "Chăm sóc tóc & Da đầu",
+    "subCategory": "Kem ủ tóc & Mặt nạ ủ nhiệt",
+    "images": [
+      "/products/niche-hair-003.jpg"
+    ],
+    "registrationNumber": "154092/22/CBMP-QLD",
+    "rating": 4.9,
+    "soldCount": 22000,
+    "inStock": true,
+    "badges": [
+      "Số 1 Nhật Bản"
+    ],
+    "targetSkinTypes": [
+      "DRY",
+      "NORMAL"
+    ],
+    "skinConcerns": [
+      "BARRIER_REPAIR"
+    ],
+    "keyActiveGroups": [
+      "HYDRATION"
+    ],
+    "safetyEthicsBadges": [
+      "ALCOHOL_FREE"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "SHISEIDO-FINO-230G",
+        "title": "Hũ 230g",
+        "price": 215000,
+        "onHand": 240
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Royal Jelly Extract",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Sữa ong chúa nuôi dưỡng sợi tóc"
+      }
+    ]
+  },
+  {
+    "id": "niche-frag-001",
+    "name": "Nước Hoa Nữ Chanel Coco Mademoiselle Eau De Parfum 50ml",
+    "brand": "Chanel",
+    "category": "Nước hoa",
+    "subCategory": "Nước hoa Nữ",
+    "images": [
+      "/products/niche-frag-001.webp"
+    ],
+    "registrationNumber": "198200/23/CBMP-QLD",
+    "rating": 5,
+    "soldCount": 6800,
+    "inStock": true,
+    "badges": [
+      "Xa Xỉ",
+      "Hương Hoa Cỏ"
+    ],
+    "targetSkinTypes": [
+      "NORMAL",
+      "DRY"
+    ],
+    "skinConcerns": [
+      "DULLNESS"
+    ],
+    "keyActiveGroups": [
+      "SOOTHING_BOTANICAL"
+    ],
+    "safetyEthicsBadges": [
+      "PARABEN_FREE"
+    ],
+    "formulationTexture": "WATER_LIQUID",
+    "originCountry": "FRANCE",
+    "variants": [
+      {
+        "sku": "CHANEL-COCO-50ML",
+        "title": "Chai 50ml",
+        "price": 3450000,
+        "onHand": 50
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Citrus Aurantium Dulcis Oil",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Tinh dầu cam tươi ngọt thanh"
+      }
+    ]
+  },
+  {
+    "id": "niche-frag-002",
+    "name": "Xịt Thơm Toàn Thân Bath & Body Works Gingham Fine Fragrance Mist 236ml",
+    "brand": "Bath & Body Works",
+    "category": "Nước hoa",
+    "subCategory": "Xịt thơm toàn thân (Body Mist)",
+    "images": [
+      "/products/niche-frag-002.jpg"
+    ],
+    "registrationNumber": "142301/22/CBMP-QLD",
+    "rating": 4.8,
+    "soldCount": 18900,
+    "inStock": true,
+    "badges": [
+      "Lưu Hương 6H"
+    ],
+    "targetSkinTypes": [
+      "NORMAL",
+      "DRY"
+    ],
+    "skinConcerns": [
+      "DEHYDRATION"
+    ],
+    "keyActiveGroups": [
+      "SOOTHING_BOTANICAL"
+    ],
+    "safetyEthicsBadges": [
+      "PARABEN_FREE"
+    ],
+    "formulationTexture": "WATER_LIQUID",
+    "originCountry": "USA",
+    "variants": [
+      {
+        "sku": "BBW-GINGHAM-236ML",
+        "title": "Chai 236ml",
+        "price": 295000,
+        "onHand": 180
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Aloe Barbadensis Leaf Extract",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Nha đam dưỡng ẩm cơ thể"
+      }
+    ]
+  },
+  {
+    "id": "niche-supp-001",
+    "name": "Viên Uống Collagen DHC Nhật Bản 2050mg (Gói 60 Ngày 360 Viên)",
+    "brand": "DHC",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Nước uống / Viên uống Collagen",
+    "images": [
+      "/products/niche-supp-001.jpg"
+    ],
+    "registrationNumber": "4892/2020/ĐKSP-ATTP",
+    "rating": 4.9,
+    "soldCount": 31000,
+    "inStock": true,
+    "badges": [
+      "Top 1 Collagen Nhật"
+    ],
+    "targetSkinTypes": [
+      "DRY",
+      "NORMAL",
+      "COMBINATION"
+    ],
+    "skinConcerns": [
+      "AGING_WRINKLES",
+      "DEHYDRATION"
+    ],
+    "keyActiveGroups": [
+      "ANTI_AGING"
+    ],
+    "safetyEthicsBadges": [
+      "PARABEN_FREE"
+    ],
+    "formulationTexture": "POWDER",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "DHC-COLLAGEN-360V",
+        "title": "Gói 360 viên (60 ngày)",
+        "price": 385000,
+        "onHand": 420
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Fish Collagen Peptide",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Collagen thủy phân từ cá biển sâu"
+      }
+    ]
+  },
+  {
+    "id": "niche-supp-002",
+    "name": "Viên Uống Trắng Da Mờ Nám Transino White C Clear 120 Viên",
+    "brand": "Transino",
+    "category": "Thực phẩm chức năng",
+    "subCategory": "Viên uống trắng da",
+    "images": [
+      "/products/niche-supp-002.jpg"
+    ],
+    "registrationNumber": "7821/2021/ĐKSP-ATTP",
+    "rating": 4.9,
+    "soldCount": 14200,
+    "inStock": true,
+    "badges": [
+      "Mờ Nám Sâu"
+    ],
+    "targetSkinTypes": [
+      "NORMAL",
+      "DRY",
+      "OILY"
+    ],
+    "skinConcerns": [
+      "HYPERPIGMENTATION",
+      "DULLNESS"
+    ],
+    "keyActiveGroups": [
+      "BRIGHTENING"
+    ],
+    "safetyEthicsBadges": [
+      "PARABEN_FREE"
+    ],
+    "formulationTexture": "POWDER",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "TRANSINO-WHITE-120V",
+        "title": "Hộp 120 viên",
+        "price": 495000,
+        "onHand": 160
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "L-Cysteine & Ascorbic Acid 1000mg",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Ức chế hắc sắc tố Melanin"
+      }
+    ]
+  },
+  {
+    "id": "niche-tool-001",
+    "name": "Bông Tẩy Trang Silcot Miếng Đôi Dưỡng Da Nhật Bản Hộp 40 Miếng",
+    "brand": "Silcot",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Bông tẩy trang",
+    "images": [
+      "/products/niche-tool-001.webp"
+    ],
+    "registrationNumber": "TCCS-0912/20",
+    "rating": 5,
+    "soldCount": 45000,
+    "inStock": true,
+    "badges": [
+      "Tiết Kiệm Toner"
+    ],
+    "targetSkinTypes": [
+      "SENSITIVE",
+      "DRY",
+      "NORMAL",
+      "OILY"
+    ],
+    "skinConcerns": [
+      "DEHYDRATION"
+    ],
+    "keyActiveGroups": [
+      "HYDRATION"
+    ],
+    "safetyEthicsBadges": [
+      "FRAGRANCE_FREE",
+      "PARABEN_FREE",
+      "VEGAN"
+    ],
+    "formulationTexture": "POWDER",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "SILCOT-DUO-40M",
+        "title": "Hộp 40 miếng đôi",
+        "price": 58000,
+        "onHand": 600
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "100% Rayon & Natural Cotton",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Sợi bọt biển mềm mịn không xơ"
+      }
+    ]
+  },
+  {
+    "id": "niche-tool-002",
+    "name": "Máy Rửa Mặt Sóng Âm Silicon Y Tế Foreo Luna 4 Smart Cleanser",
+    "brand": "Foreo",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Máy rửa mặt sóng âm T-Sonic",
+    "images": [
+      "/products/niche-tool-002.png"
+    ],
+    "registrationNumber": "TCCS-LUNA4-2023",
+    "rating": 4.9,
+    "soldCount": 2300,
+    "inStock": true,
+    "badges": [
+      "Công Nghệ Cao",
+      "Chính Hãng Thụy Điển"
+    ],
+    "targetSkinTypes": [
+      "OILY",
+      "COMBINATION",
+      "NORMAL",
+      "SENSITIVE"
+    ],
+    "skinConcerns": [
+      "PORES",
+      "ACNE",
+      "OIL_CONTROL"
+    ],
+    "keyActiveGroups": [
+      "EXFOLIATION"
+    ],
+    "safetyEthicsBadges": [
+      "HYPOALLERGENIC"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "SWITZERLAND",
+    "variants": [
+      {
+        "sku": "FOREO-LUNA4-PINK",
+        "title": "Màu Hồng (Da Thường)",
+        "price": 3850000,
+        "onHand": 40
+      },
+      {
+        "sku": "FOREO-LUNA4-BLUE",
+        "title": "Màu Xanh (Da Hỗn Hợp)",
+        "price": 3850000,
+        "onHand": 35
+      }
+    ],
+    "inciIngredients": [
+      {
+        "name": "Ultra-hygienic Medical Silicone",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Silicon y tế kháng khuẩn 35 lần"
+      }
+    ]
+  },
+  {
+    "id": "niche-tool-003",
+    "name": "Máy Đẩy Tinh Chất & Massage Nâng Cơ Ya-Man Photo PLUS EMS",
+    "brand": "Ya-Man",
+    "category": "Phụ kiện làm đẹp",
+    "subCategory": "Máy đẩy tinh chất & Massage nâng cơ",
+    "images": [
+      "/products/niche-tool-003.jpg"
+    ],
+    "registrationNumber": "TCCS-YAMAN-2023",
+    "rating": 5,
+    "soldCount": 950,
+    "inStock": true,
+    "badges": [
+      "Spa Công Nghệ Cao"
+    ],
+    "targetSkinTypes": [
+      "DRY",
+      "NORMAL",
+      "COMBINATION"
+    ],
+    "skinConcerns": [
+      "AGING_WRINKLES",
+      "BARRIER_REPAIR"
+    ],
+    "keyActiveGroups": [
+      "ANTI_AGING"
+    ],
+    "safetyEthicsBadges": [
+      "HYPOALLERGENIC"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "YAMAN-PHOTO-HRF10T",
+        "title": "Máy Ya-Man Gold",
+        "price": 7900000,
+        "onHand": 25
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Titanium Head & Radio Frequency RF",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Sóng vô tuyến RF kích sinh collagen"
+      }
+    ]
+  },
+  {
+    "id": "niche-makeup-001",
+    "name": "Kem Che Khuyết Điểm Chống Nắng The Saem Cover Perfection Tip Concealer SPF28 PA++",
+    "brand": "The Saem",
+    "category": "Trang điểm",
+    "subCategory": "Kem che khuyết điểm (Concealer)",
+    "images": [
+      "/products/niche-makeup-001.jpg"
+    ],
+    "registrationNumber": "CBMP-19342/22/CBMP-QLD",
+    "rating": 4.8,
+    "soldCount": 15400,
+    "inStock": true,
+    "badges": [
+      "Che Phủ Đỉnh Cao",
+      "Bestseller Hàn Quốc"
+    ],
+    "targetSkinTypes": [
+      "OILY",
+      "COMBINATION",
+      "NORMAL"
+    ],
+    "skinConcerns": [
+      "ACNE_PORES",
+      "PIGMENTATION_DARK_SPOTS"
+    ],
+    "keyActiveGroups": [
+      "NIACINAMIDE"
+    ],
+    "safetyEthicsBadges": [
+      "DERMATOLOGICALLY_TESTED"
+    ],
+    "formulationTexture": "CREAM",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "THESAEM-TIP-1.5",
+        "title": "Tone 1.5 Natural Beige",
+        "price": 89000,
+        "originalPrice": 110000,
+        "onHand": 350
+      },
+      {
+        "sku": "THESAEM-TIP-01",
+        "title": "Tone 01 Clear Beige",
+        "price": 89000,
+        "originalPrice": 110000,
+        "onHand": 280
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Titanium Dioxide",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Màng lọc khoáng và che khuyết điểm hoàn hảo"
+      },
+      {
+        "inciName": "Centella Asiatica Extract",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Rau má làm dịu nốt mụn viêm sưng"
+      }
+    ]
+  },
+  {
+    "id": "niche-makeup-002",
+    "name": "Phấn Phủ Bột Kiềm Dầu Khoáng Tự Nhiên Innisfree No-Sebum Mineral Powder 5g",
+    "brand": "Innisfree",
+    "category": "Trang điểm",
+    "subCategory": "Phấn phủ kiềm dầu (Phấn nén / Phấn bột)",
+    "images": [
+      "/products/niche-makeup-002.jpg"
+    ],
+    "registrationNumber": "CBMP-18230/21/CBMP-QLD",
+    "rating": 4.9,
+    "soldCount": 28500,
+    "inStock": true,
+    "badges": [
+      "Kiềm Dầu Quốc Dân",
+      "Hút Bã Nhờn 16H"
+    ],
+    "targetSkinTypes": [
+      "OILY",
+      "COMBINATION"
+    ],
+    "skinConcerns": [
+      "ACNE_PORES",
+      "DULLNESS"
+    ],
+    "keyActiveGroups": [
+      "MINERALS"
+    ],
+    "safetyEthicsBadges": [
+      "NON_COMEDOGENIC",
+      "FRAGRANCE_FREE"
+    ],
+    "formulationTexture": "POWDER",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "INNI-NOSEBUM-5G",
+        "title": "Hộp 5g",
+        "price": 135000,
+        "originalPrice": 160000,
+        "onHand": 500
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Silica",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Bột khoáng thiên nhiên hút sạch dầu thừa tức thì"
+      },
+      {
+        "inciName": "Jeju Mineral Salt",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Khoáng núi lửa đảo Jeju giữ da thông thoáng"
+      }
+    ]
+  },
+  {
+    "id": "niche-makeup-003",
+    "name": "Bút Kẻ Mắt Nước Kháng Nước Đầu Cọ Siêu Mảnh Kissme Heroine Make Smooth Liquid Eyeliner 0.1mm",
+    "brand": "Kissme",
+    "category": "Trang điểm",
+    "subCategory": "Bút kẻ mắt (Eyeliner nước / chì)",
+    "images": [
+      "/products/niche-makeup-003.webp"
+    ],
+    "registrationNumber": "CBMP-14221/20/CBMP-QLD",
+    "rating": 4.9,
+    "soldCount": 9800,
+    "inStock": true,
+    "badges": [
+      "Chống Lem Trôi",
+      "Siêu Mảnh 0.1mm"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [
+      "DULLNESS"
+    ],
+    "keyActiveGroups": [
+      "WATERPROOF"
+    ],
+    "safetyEthicsBadges": [
+      "OPHTHALMOLOGIST_TESTED"
+    ],
+    "formulationTexture": "LIQUID",
+    "originCountry": "JAPAN",
+    "variants": [
+      {
+        "sku": "KISSME-EYE-01",
+        "title": "Màu Đen Jet Black 01",
+        "price": 235000,
+        "originalPrice": 275000,
+        "onHand": 160
+      },
+      {
+        "sku": "KISSME-EYE-02",
+        "title": "Màu Nâu Tự Nhiên 02",
+        "price": 235000,
+        "originalPrice": 275000,
+        "onHand": 140
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Acrylates Copolymer",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Màng film chống nước, chống cọ xát và mồ hôi"
+      },
+      {
+        "inciName": "Panthenol",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Vitamin B5 nuôi dưỡng chân mi chắc khỏe"
+      }
+    ]
+  },
+  {
+    "id": "niche-makeup-004",
+    "name": "Mascara Làm Dài Và Cong Mi Chống Nước Maybelline Lash Sensational Sky High Waterproof 6ml",
+    "brand": "Maybelline",
+    "category": "Trang điểm",
+    "subCategory": "Mascara làm dài và cong mi",
+    "images": [
+      "/products/niche-makeup-004.jpg"
+    ],
+    "registrationNumber": "CBMP-19945/22/CBMP-QLD",
+    "rating": 4.8,
+    "soldCount": 22000,
+    "inStock": true,
+    "badges": [
+      "Cong Mi 24H",
+      "Không Lem Vón Cục"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [
+      "DULLNESS"
+    ],
+    "keyActiveGroups": [
+      "WATERPROOF"
+    ],
+    "safetyEthicsBadges": [
+      "OPHTHALMOLOGIST_TESTED"
+    ],
+    "formulationTexture": "GEL",
+    "originCountry": "USA",
+    "variants": [
+      {
+        "sku": "MAYB-SKYHIGH-BLACK",
+        "title": "Đen Huyền Very Black",
+        "price": 219000,
+        "originalPrice": 260000,
+        "onHand": 380
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Bamboo Extract",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Chiết xuất tre nối dài từng sợi mi tơi tự nhiên"
+      },
+      {
+        "inciName": "Beeswax",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Sáp ong tự nhiên định hình độ cong mi bền bỉ 24H"
+      }
+    ]
+  },
+  {
+    "id": "niche-makeup-005",
+    "name": "Chì Kẻ Mày 2 Đầu Bền Màu Định Hình Sợi Tự Nhiên Innisfree Auto Eyebrow Pencil 0.3g",
+    "brand": "Innisfree",
+    "category": "Trang điểm",
+    "subCategory": "Chì kẻ mày & Gel định hình mày",
+    "images": [
+      "/products/niche-makeup-005.webp"
+    ],
+    "registrationNumber": "CBMP-17552/21/CBMP-QLD",
+    "rating": 4.7,
+    "soldCount": 16700,
+    "inStock": true,
+    "badges": [
+      "Dễ Vẽ Sợi",
+      "Bền Màu 12H"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [
+      "DULLNESS"
+    ],
+    "keyActiveGroups": [
+      "MINERALS"
+    ],
+    "safetyEthicsBadges": [
+      "CRUELTY_FREE"
+    ],
+    "formulationTexture": "STICK",
+    "originCountry": "KOREA",
+    "variants": [
+      {
+        "sku": "INNI-EYEBROW-04",
+        "title": "Màu 04 Nâu Xám (Ash Brown)",
+        "price": 79000,
+        "originalPrice": 95000,
+        "onHand": 240
+      },
+      {
+        "sku": "INNI-EYEBROW-05",
+        "title": "Màu 05 Nâu Đậm (Espresso Brown)",
+        "price": 79000,
+        "originalPrice": 95000,
+        "onHand": 210
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Hydrogenated Soybean Oil",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Dầu đậu nành hydro hóa tạo chất chì mềm mượt dễ lướt"
+      },
+      {
+        "inciName": "Iron Oxides",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Hạt màu khoáng tinh khiết an toàn cho vùng mắt"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-005",
+    "name": "Sữa Tắm Nước Hoa Tinh Dầu Trắng Sáng Mịn Màng The Body Shop British Rose Shower Gel 250ml",
+    "brand": "The Body Shop",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Sữa tắm dưỡng ẩm & Lưu hương",
+    "images": [
+      "/products/niche-body-005.jpg"
+    ],
+    "registrationNumber": "CBMP-15431/21/CBMP-QLD",
+    "rating": 4.8,
+    "soldCount": 7800,
+    "inStock": true,
+    "badges": [
+      "Hương Nước Hoa Anh Quốc",
+      "Dưỡng Sáng Mịn"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES",
+      "DRY"
+    ],
+    "skinConcerns": [
+      "DEHYDRATION",
+      "DULLNESS"
+    ],
+    "keyActiveGroups": [
+      "ROSE_ESSENCE"
+    ],
+    "safetyEthicsBadges": [
+      "VEGAN",
+      "CRUELTY_FREE"
+    ],
+    "formulationTexture": "GEL",
+    "originCountry": "UK",
+    "variants": [
+      {
+        "sku": "TBS-ROSE-250ML",
+        "title": "Chai 250ml",
+        "price": 249000,
+        "originalPrice": 289000,
+        "onHand": 190
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Rosa Gallica Flower Extract",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Chiết xuất hoa hồng hữu cơ giữ ẩm và dưỡng da mịn lụa"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-006",
+    "name": "Lăn Khử Mùi Khoáng Khô Thoáng 48h Cho Da Nhạy Cảm Vichy Anti-Transpirant 50ml",
+    "brand": "Vichy",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Lăn / Xịt khử mùi",
+    "images": [
+      "/products/niche-body-006.jpg"
+    ],
+    "registrationNumber": "CBMP-16540/22/CBMP-QLD",
+    "rating": 4.9,
+    "soldCount": 14200,
+    "inStock": true,
+    "badges": [
+      "Khô Thoáng 48H",
+      "Chuẩn Da Liễu"
+    ],
+    "targetSkinTypes": [
+      "SENSITIVE",
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [
+      "DEHYDRATION"
+    ],
+    "keyActiveGroups": [
+      "MINERALS"
+    ],
+    "safetyEthicsBadges": [
+      "ALCOHOL_FREE",
+      "PARABEN_FREE",
+      "HYPOALLERGENIC"
+    ],
+    "formulationTexture": "LOTION",
+    "originCountry": "FRANCE",
+    "variants": [
+      {
+        "sku": "VICHY-DEO-50ML",
+        "title": "Chai lăn 50ml nắp trắng",
+        "price": 235000,
+        "originalPrice": 275000,
+        "onHand": 280
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Aluminum Chlorohydrate",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Muối khoáng kiểm soát mồ hôi và vi khuẩn gây mùi"
+      },
+      {
+        "inciName": "Vichy Mineralizing Water",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Nước khoáng núi lửa làm dịu vùng da dưới cánh tay"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-007",
+    "name": "Sữa Tắm Dưỡng Ẩm Chuyên Sâu Dove Deep Moisture Cho Làn Da Mềm Mượt 500g",
+    "brand": "Dove",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Sữa tắm",
+    "images": [
+      "/products/niche-body-007.jpg"
+    ],
+    "registrationNumber": "CBMP-19842/23/CBMP-QLD",
+    "rating": 4.8,
+    "soldCount": 9600,
+    "inStock": true,
+    "badges": [
+      "Dưỡng Ẩm Chuyên Sâu",
+      "Bán Chạy"
+    ],
+    "targetSkinTypes": [
+      "DRY",
+      "NORMAL",
+      "SENSITIVE"
+    ],
+    "skinConcerns": [
+      "DEHYDRATION"
+    ],
+    "keyActiveGroups": [
+      "HYDRATION"
+    ],
+    "safetyEthicsBadges": [
+      "PARABEN_FREE",
+      "CRUELTY_FREE"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "USA",
+    "variants": [
+      {
+        "sku": "DOVE-DM-500G",
+        "title": "Chai 500g",
+        "price": 145000,
+        "originalPrice": 175000,
+        "onHand": 150
+      },
+      {
+        "sku": "DOVE-DM-1000G",
+        "title": "Chai Đại 1000g Tiết Kiệm",
+        "price": 235000,
+        "originalPrice": 280000,
+        "onHand": 120
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "NutriumMoisture",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Hỗn hợp dưỡng chất thẩm thấu nuôi dưỡng sâu từng tế bào"
+      },
+      {
+        "inciName": "Glycerin",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Khóa ẩm ngăn ngừa tình trạng da khô căng sau khi tắm"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-008",
+    "name": "Sữa Tắm Sáng Da Dịu Lành Cho Da Nhạy Cảm Cetaphil Bright Healthy Radiance Refresh Body Wash 245ml",
+    "brand": "Cetaphil",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Sữa tắm",
+    "images": [
+      "/products/niche-body-008.jpg"
+    ],
+    "registrationNumber": "CBMP-22341/22/CBMP-QLD",
+    "rating": 4.9,
+    "soldCount": 6500,
+    "inStock": true,
+    "badges": [
+      "Chuẩn Da Liễu",
+      "Dịu Nhẹ"
+    ],
+    "targetSkinTypes": [
+      "SENSITIVE",
+      "DRY",
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [
+      "DULLNESS",
+      "DEHYDRATION"
+    ],
+    "keyActiveGroups": [
+      "BRIGHTENING"
+    ],
+    "safetyEthicsBadges": [
+      "FRAGRANCE_FREE",
+      "PARABEN_FREE",
+      "HYPOALLERGENIC"
+    ],
+    "formulationTexture": "GEL",
+    "originCountry": "CANADA",
+    "variants": [
+      {
+        "sku": "CETAPHIL-BHR-245ML",
+        "title": "Chai 245ml",
+        "price": 295000,
+        "originalPrice": 340000,
+        "onHand": 110
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Niacinamide",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Dưỡng sáng đều màu da và củng cố màng bảo vệ"
+      },
+      {
+        "inciName": "Sea Daffodil",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Chiết xuất hoa thủy tiên biển ức chế melanin sạm màu"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-009",
+    "name": "Sữa Dưỡng Thể Dưỡng Trắng & Chống Nắng Vaseline Healthy Bright Daily Sun Refreshing SPF50+ 300ml",
+    "brand": "Vaseline",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Sữa dưỡng thể (Body Lotion)",
+    "images": [
+      "/products/niche-body-009.jpg"
+    ],
+    "registrationNumber": "CBMP-18239/22/CBMP-QLD",
+    "rating": 4.9,
+    "soldCount": 22000,
+    "inStock": true,
+    "badges": [
+      "Chống Nắng SPF50+",
+      "Top 1 Bán Chạy"
+    ],
+    "targetSkinTypes": [
+      "NORMAL",
+      "OILY",
+      "ALL_SKIN_TYPES"
+    ],
+    "skinConcerns": [
+      "DULLNESS",
+      "UV_PROTECTION"
+    ],
+    "keyActiveGroups": [
+      "BRIGHTENING",
+      "UV_FILTERS"
+    ],
+    "safetyEthicsBadges": [
+      "PARABEN_FREE"
+    ],
+    "formulationTexture": "LOTION",
+    "originCountry": "THAILAND",
+    "variants": [
+      {
+        "sku": "VASELINE-SPF50-300ML",
+        "title": "Chai 300ml (Chống nắng SPF50+)",
+        "price": 185000,
+        "originalPrice": 220000,
+        "onHand": 240
+      },
+      {
+        "sku": "VASELINE-GLUTA-330ML",
+        "title": "Chai 330ml (Gluta-Hya Vàng)",
+        "price": 175000,
+        "originalPrice": 210000,
+        "onHand": 180
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "GlutaGlow",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Hiệu quả sáng da gấp 10 lần so với Vitamin C"
+      },
+      {
+        "inciName": "Hyaluronic Acid",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Cấp nước tầng sâu cho làn da căng mọng rạng rỡ"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-010",
+    "name": "Sữa Dưỡng Thể Phục Hồi Hàng Rào Ẩm Da Khô Nhạy Cảm CeraVe Daily Moisturizing Lotion 236ml",
+    "brand": "CeraVe",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Sữa dưỡng thể (Body Lotion)",
+    "images": [
+      "/products/niche-body-010.jpg"
+    ],
+    "registrationNumber": "CBMP-14920/21/CBMP-QLD",
+    "rating": 4.9,
+    "soldCount": 18500,
+    "inStock": true,
+    "badges": [
+      "Chuẩn Da Liễu",
+      "3 Ceramides Thiết Yếu"
+    ],
+    "targetSkinTypes": [
+      "DRY",
+      "SENSITIVE",
+      "NORMAL"
+    ],
+    "skinConcerns": [
+      "DEHYDRATION",
+      "BARRIER_REPAIR"
+    ],
+    "keyActiveGroups": [
+      "HYDRATION"
+    ],
+    "safetyEthicsBadges": [
+      "FRAGRANCE_FREE",
+      "PARABEN_FREE",
+      "NON_COMEDOGENIC"
+    ],
+    "formulationTexture": "LOTION",
+    "originCountry": "USA",
+    "variants": [
+      {
+        "sku": "CERAVE-LOTION-236ML",
+        "title": "Chai 236ml",
+        "price": 345000,
+        "originalPrice": 390000,
+        "onHand": 160
+      },
+      {
+        "sku": "CERAVE-LOTION-473ML",
+        "title": "Chai Lớn 473ml Tiết Kiệm",
+        "price": 465000,
+        "originalPrice": 520000,
+        "onHand": 95
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Ceramides 1, 3, 6-II",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Khôi phục lớp màng lipid bảo vệ tự nhiên của da"
+      },
+      {
+        "inciName": "Hyaluronic Acid",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Duy trì độ ẩm tự nhiên suốt 24 giờ với công nghệ MVE"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-011",
+    "name": "Tẩy Tế Bào Chết Cơ Thể Dove Exfoliating Body Polish Pomegranate Seeds & Shea Butter 298g",
+    "brand": "Dove",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Tẩy da chết toàn thân (Body Scrub)",
+    "description": "Kem tắm tẩy tế bào chết toàn thân Dove Exfoliating Body Polish Pomegranate Seeds & Shea Butter chiết xuất hạt lựu đỏ và bơ hạt mỡ. Công thức giàu độ ẩm với 1/4 kem dưỡng ẩm của Dove tạo sự mềm mại tức thì, hạt tẩy tế bào chết kích thước cát mịn nhẹ nhàng loại bỏ lớp da chết xỉn màu và phục hồi dưỡng chất tự nhiên.",
+    "images": ["/products/dove-pomegranate-top-lid.jpg","/products/dove-pomegranate-cream-texture.jpg","/products/dove-pomegranate-swatch.jpg","/products/dove-pomegranate-back-label.jpg","/products/dove-pomegranate-main.jpg"],
+    "registrationNumber": "CBMP-19834/23/CBMP-QLD",
+    "rating": 4.9,
+    "soldCount": 14500,
+    "inStock": true,
+    "badges": [
+      "Hạt Lựu Đỏ Mỹ",
+      "1/4 Kem Dưỡng Dove",
+      "Mịn Màng Tức Thì"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES",
+      "DRY",
+      "NORMAL"
+    ],
+    "skinConcerns": [
+      "DULLNESS",
+      "PORES",
+      "DRYNESS"
+    ],
+    "keyActiveGroups": [
+      "EXFOLIATION",
+      "SOOTHING_BOTANICAL",
+      "HYDRATION"
+    ],
+    "safetyEthicsBadges": [
+      "PARABEN_FREE",
+      "CRUELTY_FREE",
+      "SULFATE_FREE"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "USA",
+    "variants": [
+      {
+        "sku": "DOVE-POLISH-POMEGRANATE-298G",
+        "title": "Hũ 298g Hương Hạt Lựu & Bơ Hạt Mỡ",
+        "price": 249000,
+        "originalPrice": 285000,
+        "onHand": 175,
+        "image": "/products/dove-pomegranate-main.jpg"
+      },
+      {
+        "sku": "DOVE-POLISH-MACADAMIA-298G",
+        "title": "Hũ 298g Mắc-ca & Sữa Gạo",
+        "price": 249000,
+        "originalPrice": 285000,
+        "onHand": 140,
+        "image": "/products/dove-pomegranate-cream-texture.jpg"
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Water (Aqua)",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Dung môi tinh khiết tiêu chuẩn"
+      },
+      {
+        "inciName": "Glycerin",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Hút ẩm dưỡng ẩm tự nhiên cho lớp sừng"
+      },
+      {
+        "inciName": "Hydrated Silica",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Hạt tẩy tế bào chết khoáng mịn màng nhẹ nhàng cuốn sạch tế bào chết"
+      },
+      {
+        "inciName": "Sodium Lauroyl Isethionate",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Chất làm sạch dịu nhẹ không sulfate an toàn vi sinh vật da"
+      },
+      {
+        "inciName": "Stearic Acid",
+        "comedogenicRating": 2,
+        "irritationRating": 0,
+        "function": "Acid béo tạo chất kem mềm mượt bảo vệ màng lipid"
+      },
+      {
+        "inciName": "Punica Granatum Seed Powder",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Bột hạt lựu đỏ tự nhiên chống oxy hóa & làm sáng đều màu da"
+      },
+      {
+        "inciName": "Butyrospermum Parkii (Shea) Butter",
+        "comedogenicRating": 1,
+        "irritationRating": 0,
+        "function": "Bơ hạt mỡ hữu cơ giàu acid béo phục hồi ẩm mềm mịn 1/4 kem dưỡng Dove"
+      },
+      {
+        "inciName": "Cocamidopropyl Betaine",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Chất hoạt động bề mặt nguồn gốc dầu dừa dịu êm"
+      },
+      {
+        "inciName": "Cetearyl Alcohol",
+        "comedogenicRating": 2,
+        "irritationRating": 0,
+        "function": "Cồn béo dưỡng ẩm làm mềm da không gây khô căng"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-012",
+    "name": "Muối Tắm Sữa Bò Dưỡng Trắng & Mịn Da Toàn Thân A Bonné Spa Milk Salt 350g",
+    "brand": "A Bonné",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Muối tắm thư giãn",
+    "images": [
+      "/products/niche-body-012.jpg"
+    ],
+    "registrationNumber": "CBMP-10492/21/CBMP-QLD",
+    "rating": 4.8,
+    "soldCount": 31000,
+    "inStock": true,
+    "badges": [
+      "Trắng Mịn Tự Nhiên",
+      "Giá Học Sinh"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES",
+      "NORMAL",
+      "OILY"
+    ],
+    "skinConcerns": [
+      "DULLNESS",
+      "PORES"
+    ],
+    "keyActiveGroups": [
+      "EXFOLIATION"
+    ],
+    "safetyEthicsBadges": [
+      "PARABEN_FREE"
+    ],
+    "formulationTexture": "POWDER",
+    "originCountry": "THAILAND",
+    "variants": [
+      {
+        "sku": "ABONNE-MILK-SALT-350G",
+        "title": "Túi zip 350g",
+        "price": 45000,
+        "originalPrice": 55000,
+        "onHand": 350
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Sodium Chloride",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Hạt muối biển tinh khiết sát khuẩn và tẩy sạch tế bào chết"
+      },
+      {
+        "inciName": "Hydrolyzed Milk Protein",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Protein sữa thủy phân làm trắng sáng và mềm mại da"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-013",
+    "name": "Lăn Khử Mùi Đặc Trị Mồ Hôi & Ngăn Mùi Tối Ưu Etiaxil Détranspirant Traitement 15ml",
+    "brand": "Etiaxil",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Lăn / Xịt khử mùi",
+    "images": [
+      "/products/niche-body-013.jpg"
+    ],
+    "registrationNumber": "CBMP-12849/21/CBMP-QLD",
+    "rating": 4.9,
+    "soldCount": 19800,
+    "inStock": true,
+    "badges": [
+      "Đặc Trị Mồ Hôi",
+      "Không Vàng Áo"
+    ],
+    "targetSkinTypes": [
+      "ALL_SKIN_TYPES",
+      "SENSITIVE"
+    ],
+    "skinConcerns": [
+      "DEHYDRATION"
+    ],
+    "keyActiveGroups": [
+      "MINERALS"
+    ],
+    "safetyEthicsBadges": [
+      "FRAGRANCE_FREE",
+      "PARABEN_FREE"
+    ],
+    "formulationTexture": "LOTION",
+    "originCountry": "FRANCE",
+    "variants": [
+      {
+        "sku": "ETIAXIL-RED-15ML",
+        "title": "Chai 15ml Nhãn Đỏ (Da thường)",
+        "price": 215000,
+        "originalPrice": 250000,
+        "onHand": 210
+      },
+      {
+        "sku": "ETIAXIL-GREEN-15ML",
+        "title": "Chai 15ml Nhãn Xanh (Da nhạy cảm)",
+        "price": 215000,
+        "originalPrice": 250000,
+        "onHand": 180
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Alcohol Denat & Aluminum Lactate",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Tác động trực tiếp làm se khít tuyến mồ hôi tối ưu 48-72h"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-014",
+    "name": "Kem Tẩy Lông Chiết Xuất Bơ Cho Da Nhạy Cảm Cléo Avocado Hair Removal Cream 50g",
+    "brand": "Cléo",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Triệt lông",
+    "images": [
+      "/products/niche-body-014.jpg"
+    ],
+    "registrationNumber": "CBMP-09432/20/CBMP-QLD",
+    "rating": 4.7,
+    "soldCount": 16400,
+    "inStock": true,
+    "badges": [
+      "Chiết Xuất Bơ",
+      "Không Đau Rát"
+    ],
+    "targetSkinTypes": [
+      "SENSITIVE",
+      "NORMAL"
+    ],
+    "skinConcerns": [
+      "PORES"
+    ],
+    "keyActiveGroups": [
+      "SOOTHING_BOTANICAL"
+    ],
+    "safetyEthicsBadges": [
+      "PARABEN_FREE"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "VIETNAM",
+    "variants": [
+      {
+        "sku": "CLEO-AVOCADO-50G",
+        "title": "Tuýp 50g Dịu Nhẹ",
+        "price": 55000,
+        "originalPrice": 68000,
+        "onHand": 260
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Persea Gratissima Oil",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Dầu bơ thiên nhiên xoa dịu vùng da sau khi tẩy lông"
+      }
+    ]
+  },
+  {
+    "id": "niche-body-015",
+    "name": "Kem Dưỡng Gót Chân Nứt Nẻ & Làm Mềm Da Chai Sần Eulactol Heel Balm Gold 60ml",
+    "brand": "Eulactol",
+    "category": "Chăm sóc cơ thể",
+    "subCategory": "Kem dưỡng da tay / chân",
+    "images": [
+      "/products/niche-body-015.jpg"
+    ],
+    "registrationNumber": "CBMP-14238/22/CBMP-QLD",
+    "rating": 4.9,
+    "soldCount": 7800,
+    "inStock": true,
+    "badges": [
+      "Trị Nứt Gót Chân",
+      "Hiệu Quả 3 Ngày"
+    ],
+    "targetSkinTypes": [
+      "DRY",
+      "NORMAL"
+    ],
+    "skinConcerns": [
+      "DEHYDRATION",
+      "BARRIER_REPAIR"
+    ],
+    "keyActiveGroups": [
+      "HYDRATION"
+    ],
+    "safetyEthicsBadges": [
+      "FRAGRANCE_FREE",
+      "PARABEN_FREE"
+    ],
+    "formulationTexture": "CREAM_BALM",
+    "originCountry": "AUSTRALIA",
+    "variants": [
+      {
+        "sku": "EULACTOL-HEEL-60ML",
+        "title": "Tuýp 60ml",
+        "price": 165000,
+        "originalPrice": 195000,
+        "onHand": 90
+      }
+    ],
+    "inciIngredients": [
+      {
+        "inciName": "Urea 25%",
+        "comedogenicRating": 0,
+        "irritationRating": 0,
+        "function": "Hoạt chất vàng tiêu sừng làm mềm nhanh các mảng chai nứt gót"
+      }
+    ]
   }
 ];
 
@@ -30197,11 +34604,11 @@ Rất vui được đồng hành cùng bạn! Tôi có thể hỗ trợ bạn m�
 Để kiểm tra trạng thái kiện hàng theo thời gian thực (Real-time Timeline):
 
 1. **Cách 1 (Nhanh nhất)**: Nhấn vào mục **"Tra cứu đơn hàng"** ở góc trên cùng bên trái thanh menu website.
-2. **Cách 2**: Đăng nhập tài khoản $\\rightarrow$ Nhấn vào biểu tượng **"Tài khoản"** $\\rightarrow$ Chọn **"Đơn mua của tôi"**.
+2. **Cách 2**: Đăng nhập tài khoản → Nhấn vào biểu tượng **"Tài khoản"** → Chọn **"Đơn mua của tôi"**.
 3. **Cách 3**: Tra cứu bằng Mã đơn hàng được gửi trong email hoặc tin nhắn SMS khi bạn hoàn tất đặt hàng (Ví dụ: \`ORD-982341\`).
 
 Kiện hàng của bạn sẽ hiển thị đầy đủ tiến độ:
-\`Chờ xác nhận\` $\\rightarrow$ \`Đang lấy hàng\` $\\rightarrow$ \`Đang giao hàng\` $\\rightarrow$ \`Giao thành công\`.`;
+\`Chờ xác nhận\` → \`Đang lấy hàng\` → \`Đang giao hàng\` → \`Giao thành công\`.`;
   }
 
   // Intent E: Mở gian hàng người bán (Seller Center / Brand Partner)
@@ -30266,8 +34673,8 @@ Aura Beauty Mall là sàn thương mại điện tử chuyên biệt ngành mỹ
    - **Squalane thực vật**: Dầu dưỡng mô phỏng bã nhờn tự nhiên của con người, không gây bí tắc (Comedogenic = 0).
 
 2. ⏰ **Chu Trình Dưỡng Da Phục Hồi**:
-   - **Sáng**: Rửa mặt nước ấm/sữa rửa mặt cấp ẩm $\\rightarrow$ Nước hoa hồng cấp nước $\\rightarrow$ Serum HA/B5 bôi trên nền da còn ẩm $\\rightarrow$ Kem khóa ẩm $\\rightarrow$ Kem chống nắng phổ rộng dạng kem dưỡng.
-   - **Tối**: Sáp tẩy trang hoặc dầu tẩy trang $\\rightarrow$ Sữa rửa mặt dịu nhẹ $\\rightarrow$ Serum B5 phục hồi $\\rightarrow$ Kem dưỡng Ceramide dày dặn $\\rightarrow$ Mặt nạ ngủ (2 lần/tuần).
+   - **Sáng**: Rửa mặt nước ấm/sữa rửa mặt cấp ẩm → Nước hoa hồng cấp nước → Serum HA/B5 bôi trên nền da còn ẩm → Kem khóa ẩm → Kem chống nắng phổ rộng dạng kem dưỡng.
+   - **Tối**: Sáp tẩy trang hoặc dầu tẩy trang → Sữa rửa mặt dịu nhẹ → Serum B5 phục hồi → Kem dưỡng Ceramide dày dặn → Mặt nạ ngủ (2 lần/tuần).
 
 3. 💡 *Lưu ý*: Luôn vỗ nhẹ serum Hyaluronic Acid khi mặt còn hơi ẩm để hoạt chất hút nước vào trong da thay vì hút ẩm ngược ra ngoài!`;
   }
@@ -30283,7 +34690,7 @@ Aura Beauty Mall là sàn thương mại điện tử chuyên biệt ngành mỹ
 2. ⚠️ **Quy Tắc An Toàn Cho Người Mới Bắt Đầu**:
    - Bắt đầu với nồng độ thấp: **0.1% - 0.3% Retinol**.
    - Tần suất: Tuần 1-2 lần trong 2 tuần đầu, sau đó tăng dần lên cách ngày.
-   - Kỹ thuật **Kẹp Ẩm (Sandwich Method)**: Kem dưỡng $\\rightarrow$ Retinol $\\rightarrow$ Kem dưỡng để giảm tối đa hiện tượng bong tróc đỏ rát.
+   - Kỹ thuật **Kẹp Ẩm (Sandwich Method)**: Kem dưỡng → Retinol → Kem dưỡng để giảm tối đa hiện tượng bong tróc đỏ rát.
    - **Chỉ sử dụng vào ban đêm** và bắt buộc dùng kem chống nắng SPF50+ vào ban ngày vì Retinol khiến da nhạy cảm hơn với tia UV.`;
   }
 
@@ -30355,7 +34762,7 @@ Aura Beauty Mall là sàn thương mại điện tử chuyên biệt ngành mỹ
 
 2. ⏰ **Cách Sử Dụng Không Lo Kích Ứng**:
    - **Cách 1 (Khuyên dùng)**: Thoa BHA vào ban đêm (2-3 lần/tuần) sau bước làm sạch; sử dụng Serum Niacinamide hàng ngày vào cả sáng và tối.
-   - **Cách 2 (Cùng một buổi tối)**: Thoa BHA $\\rightarrow$ Chờ 15-20 phút cho BHA thẩm thấu và độ pH cân bằng lại $\\rightarrow$ Tiếp tục thoa Serum Niacinamide $\\rightarrow$ Khóa ẩm bằng kem dưỡng ẩm phục hồi dịu nhẹ.`;
+   - **Cách 2 (Cùng một buổi tối)**: Thoa BHA → Chờ 15-20 phút cho BHA thẩm thấu và độ pH cân bằng lại → Tiếp tục thoa Serum Niacinamide → Khóa ẩm bằng kem dưỡng ẩm phục hồi dịu nhẹ.`;
   }
 
   // Intent N: Phục hồi da sau peel, treatment, hoặc tinh chất ốc sên Cosrx

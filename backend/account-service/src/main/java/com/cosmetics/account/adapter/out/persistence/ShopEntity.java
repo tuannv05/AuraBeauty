@@ -1,42 +1,17 @@
 package com.cosmetics.account.adapter.out.persistence;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.domain.Persistable;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
 import java.time.Instant;
 import java.util.UUID;
 
-@Table("shops")
-public class ShopEntity implements Persistable<UUID> {
-    @Id
+public class ShopEntity {
     private UUID id;
-
-    @Column("owner_id")
     private UUID ownerId;
-
-    @Column("shop_name")
     private String shopName;
-
-    @Column("description")
     private String description;
-
-    @Column("status")
     private String status; // PENDING, APPROVED, REJECTED
-
-    @Column("business_registration_no")
     private String businessRegistrationNo;
-
-    @Column("created_at")
     private Instant createdAt;
-
-    @Column("updated_at")
     private Instant updatedAt;
-
-    @Transient
-    private boolean isNew = false;
 
     public ShopEntity() {}
 
@@ -49,16 +24,6 @@ public class ShopEntity implements Persistable<UUID> {
         this.businessRegistrationNo = businessRegistrationNo;
         this.createdAt = Instant.now();
         this.updatedAt = Instant.now();
-        this.isNew = true;
-    }
-
-    @Override
-    public boolean isNew() {
-        return isNew || id == null;
-    }
-
-    public void setNew(boolean isNew) {
-        this.isNew = isNew;
     }
 
     public UUID getId() { return id; }

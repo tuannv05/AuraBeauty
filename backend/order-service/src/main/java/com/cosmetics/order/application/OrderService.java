@@ -3,16 +3,12 @@ package com.cosmetics.order.application;
 import com.cosmetics.common.events.KafkaTopics;
 import com.cosmetics.common.events.payloads.OrderPlacedPayload;
 import com.cosmetics.common.events.payloads.ReleaseStockPayload;
-import com.cosmetics.common.outbox.OutboxHelper;
 import com.cosmetics.common.outbox.ProcessedEvent;
-import com.cosmetics.common.outbox.ProcessedEventRepository;
 import com.cosmetics.common.web.BusinessException;
 import com.cosmetics.order.adapter.out.persistence.*;
+import jakarta.enterprise.context.ApplicationScoped;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -20,7 +16,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.*;
 
-@Service
+@ApplicationScoped
 public class OrderService {
     private static final Logger log = LoggerFactory.getLogger(OrderService.class);
 
@@ -28,16 +24,16 @@ public class OrderService {
     private final SubOrderRepository subOrderRepository;
     private final OrderLineRepository orderLineRepository;
     private final CartItemRepository cartItemRepository;
-    private final ProcessedEventRepository processedEventRepository;
-    private final OutboxHelper outboxHelper;
+    private final QuarkusProcessedEventRepository processedEventRepository;
+    private final QuarkusOutboxHelper outboxHelper;
 
     public OrderService(
             OrderRepository orderRepository,
             SubOrderRepository subOrderRepository,
             OrderLineRepository orderLineRepository,
             CartItemRepository cartItemRepository,
-            ProcessedEventRepository processedEventRepository,
-            OutboxHelper outboxHelper
+            QuarkusProcessedEventRepository processedEventRepository,
+            QuarkusOutboxHelper outboxHelper
     ) {
         this.orderRepository = orderRepository;
         this.subOrderRepository = subOrderRepository;
@@ -74,12 +70,11 @@ public class OrderService {
         public void setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; }
     }
 
-    @Transactional
     public Mono<OrderEntity> placeOrder(UUID buyerId, CheckoutRequest request) {
         return cartItemRepository.findByBuyerId(buyerId).collectList()
                 .flatMap(cartItems -> {
                     if (cartItems.isEmpty()) {
-                        return Mono.error(new BusinessException(HttpStatus.BAD_REQUEST, "CART_EMPTY", "Cart is empty"));
+                        return Mono.error(new BusinessException(400, "CART_EMPTY", "Cart is empty"));
                     }
 
                     // Calculate total
@@ -160,7 +155,7 @@ public class OrderService {
 
     public Mono<OrderEntity> getOrderById(UUID orderId) {
         return orderRepository.findById(orderId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "ORDER_NOT_FOUND", "Order not found")));
+                .switchIfEmpty(Mono.error(new BusinessException(404, "ORDER_NOT_FOUND", "Order not found")));
     }
 
     public Flux<OrderEntity> getMyOrders(UUID buyerId) {
@@ -179,10 +174,9 @@ public class OrderService {
         return orderLineRepository.findBySubOrderId(subOrderId);
     }
 
-    @Transactional
     public Mono<SubOrderEntity> confirmSubOrder(UUID subOrderId, UUID shopId) {
         return subOrderRepository.findById(subOrderId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "SUB_ORDER_NOT_FOUND", "Sub-order not found")))
+                .switchIfEmpty(Mono.error(new BusinessException(404, "SUB_ORDER_NOT_FOUND", "Sub-order not found")))
                 .flatMap(sub -> {
                     sub.setStatus("CONFIRMED");
                     sub.setUpdatedAt(Instant.now());
@@ -190,10 +184,9 @@ public class OrderService {
                 });
     }
 
-    @Transactional
     public Mono<SubOrderEntity> shipSubOrder(UUID subOrderId, UUID shopId) {
         return subOrderRepository.findById(subOrderId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "SUB_ORDER_NOT_FOUND", "Sub-order not found")))
+                .switchIfEmpty(Mono.error(new BusinessException(404, "SUB_ORDER_NOT_FOUND", "Sub-order not found")))
                 .flatMap(sub -> {
                     sub.setStatus("SHIPPED");
                     sub.setUpdatedAt(Instant.now());
@@ -201,10 +194,9 @@ public class OrderService {
                 });
     }
 
-    @Transactional
     public Mono<SubOrderEntity> deliverSubOrder(UUID subOrderId, UUID shopId) {
         return subOrderRepository.findById(subOrderId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "SUB_ORDER_NOT_FOUND", "Sub-order not found")))
+                .switchIfEmpty(Mono.error(new BusinessException(404, "SUB_ORDER_NOT_FOUND", "Sub-order not found")))
                 .flatMap(sub -> {
                     sub.setStatus("DELIVERED");
                     sub.setUpdatedAt(Instant.now());
@@ -219,10 +211,9 @@ public class OrderService {
                 });
     }
 
-    @Transactional
     public Mono<SubOrderEntity> rejectSubOrder(UUID subOrderId, UUID shopId, String reason) {
         return subOrderRepository.findById(subOrderId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "SUB_ORDER_NOT_FOUND", "Sub-order not found")))
+                .switchIfEmpty(Mono.error(new BusinessException(404, "SUB_ORDER_NOT_FOUND", "Sub-order not found")))
                 .flatMap(sub -> {
                     sub.setStatus("REJECTED");
                     sub.setUpdatedAt(Instant.now());
@@ -238,7 +229,6 @@ public class OrderService {
     }
 
     // Saga event listeners
-    @Transactional
     public Mono<Void> handleInventoryReserved(UUID eventId, UUID orderId) {
         return processedEventRepository.existsById(eventId)
                 .flatMap(exists -> {
@@ -254,7 +244,6 @@ public class OrderService {
                 });
     }
 
-    @Transactional
     public Mono<Void> handleInventoryRejected(UUID eventId, UUID orderId, String reason) {
         return processedEventRepository.existsById(eventId)
                 .flatMap(exists -> {
@@ -275,7 +264,6 @@ public class OrderService {
                 });
     }
 
-    @Transactional
     public Mono<Void> handlePaymentSucceeded(UUID eventId, UUID orderId) {
         return processedEventRepository.existsById(eventId)
                 .flatMap(exists -> {
@@ -296,7 +284,6 @@ public class OrderService {
                 });
     }
 
-    @Transactional
     public Mono<Void> handlePaymentFailed(UUID eventId, UUID orderId, String reason) {
         return processedEventRepository.existsById(eventId)
                 .flatMap(exists -> {
@@ -324,13 +311,12 @@ public class OrderService {
                 });
     }
 
-    @Transactional
     public Mono<OrderEntity> expireOrder(UUID orderId) {
         return orderRepository.findById(orderId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "ORDER_NOT_FOUND", "Order not found: " + orderId)))
+                .switchIfEmpty(Mono.error(new BusinessException(404, "ORDER_NOT_FOUND", "Order not found: " + orderId)))
                 .flatMap(order -> {
                     if ("PAID".equals(order.getStatus()) || "COMPLETED".equals(order.getStatus())) {
-                        return Mono.error(new BusinessException(HttpStatus.BAD_REQUEST, "ORDER_ALREADY_PAID", "Order already paid"));
+                        return Mono.error(new BusinessException(400, "ORDER_ALREADY_PAID", "Order already paid"));
                     }
                     order.setStatus("EXPIRED");
                     order.setUpdatedAt(Instant.now());
@@ -352,13 +338,12 @@ public class OrderService {
                 });
     }
 
-    @Transactional
     public Mono<OrderEntity> cancelOrder(UUID orderId, String reason) {
         return orderRepository.findById(orderId)
-                .switchIfEmpty(Mono.error(new BusinessException(HttpStatus.NOT_FOUND, "ORDER_NOT_FOUND", "Order not found: " + orderId)))
+                .switchIfEmpty(Mono.error(new BusinessException(404, "ORDER_NOT_FOUND", "Order not found: " + orderId)))
                 .flatMap(order -> {
                     if ("COMPLETED".equals(order.getStatus())) {
-                        return Mono.error(new BusinessException(HttpStatus.BAD_REQUEST, "ORDER_COMPLETED", "Cannot cancel completed order"));
+                        return Mono.error(new BusinessException(400, "ORDER_COMPLETED", "Cannot cancel completed order"));
                     }
                     order.setStatus("CANCELLED");
                     order.setUpdatedAt(Instant.now());
@@ -366,7 +351,6 @@ public class OrderService {
                             .then(subOrderRepository.findByOrderId(orderId)
                                     .flatMap(sub -> {
                                         sub.setStatus("REJECTED");
-                                        sub.setUpdatedAt(Instant.now());
                                         return subOrderRepository.save(sub);
                                     }).then())
                             .then(outboxHelper.recordEvent(

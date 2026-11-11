@@ -1,37 +1,17 @@
 package com.cosmetics.payment.adapter.out.persistence;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
-@Table("ledger_entries")
 public class LedgerEntryEntity {
-    @Id
     private UUID id;
-
-    @Column("transaction_id")
     private UUID transactionId; // paymentId or subOrderId
-
-    @Column("account_debit")
     private String accountDebit;
-
-    @Column("account_credit")
     private String accountCredit;
-
-    @Column("amount")
     private BigDecimal amount;
-
-    @Column("entry_type")
     private String entryType; // ORDER_PAYMENT, COMMISSION_FEE, SELLER_PAYOUT, REFUND
-
-    @Column("note")
     private String note;
-
-    @Column("recorded_at")
     private Instant recordedAt;
 
     public LedgerEntryEntity() {}

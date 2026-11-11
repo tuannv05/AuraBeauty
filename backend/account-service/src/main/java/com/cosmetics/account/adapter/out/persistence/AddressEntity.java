@@ -1,51 +1,20 @@
 package com.cosmetics.account.adapter.out.persistence;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.domain.Persistable;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
 import java.time.Instant;
 import java.util.UUID;
 
-@Table("user_addresses")
-public class AddressEntity implements Persistable<UUID> {
-    @Id
+public class AddressEntity {
     private UUID id;
-
-    @Column("user_id")
     private UUID userId;
-
-    @Column("recipient_name")
     private String recipientName;
-
-    @Column("phone")
     private String phone;
-
-    @Column("province")
     private String province;
-
-    @Column("district")
     private String district;
-
-    @Column("ward")
     private String ward;
-
-    @Column("street_address")
     private String streetAddress;
-
-    @Column("is_default")
     private Boolean isDefault;
-
-    @Column("label")
     private String label;
-
-    @Column("created_at")
     private Instant createdAt;
-
-    @Transient
-    private boolean isNew = false;
 
     public AddressEntity() {}
 
@@ -61,16 +30,6 @@ public class AddressEntity implements Persistable<UUID> {
         this.isDefault = isDefault != null ? isDefault : false;
         this.label = label != null ? label : "HOME";
         this.createdAt = Instant.now();
-        this.isNew = true;
-    }
-
-    @Override
-    public boolean isNew() {
-        return isNew || id == null;
-    }
-
-    public void setNew(boolean isNew) {
-        this.isNew = isNew;
     }
 
     public UUID getId() { return id; }

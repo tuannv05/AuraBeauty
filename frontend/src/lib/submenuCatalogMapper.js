@@ -702,9 +702,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Kẽm Men Tự Nhiên",
     "Kiềm Dầu Hiệu Quả"
   ],
-  "images": [
-    "/products/PROD-CRW-KGN-01.jpg"
-  ],
+  "images": ["/products/prod-crw-kgn-01-dhc-vien-uong-kem-giam-nhon-kiem-dau-ngua-mun-1.jpg","/products/prod-crw-kgn-01-dhc-vien-uong-kem-giam-nhon-kiem-dau-ngua-mun-2.jpg","/products/prod-crw-kgn-01-dhc-vien-uong-kem-giam-nhon-kiem-dau-ngua-mun-3.jpg"],
   "targetSkinTypes": [
     "OILY",
     "ACNE_PRONE"
@@ -747,9 +745,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Kẽm Kèm Vitamin B6",
     "Da Sạch Nhờn"
   ],
-  "images": [
-    "/products/PROD-CRW-KGN-02.jpg"
-  ],
+  "images": ["/products/prod-crw-kgn-02-swisse-vien-uong-kem-tu-nhien-ho-tro-giam-tie-1.jpg","/products/prod-crw-kgn-02-swisse-vien-uong-kem-tu-nhien-ho-tro-giam-tie-2.jpg","/products/prod-crw-kgn-02-swisse-vien-uong-kem-tu-nhien-ho-tro-giam-tie-3.jpg"],
   "targetSkinTypes": [
     "OILY",
     "COMBINATION"
@@ -791,9 +787,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Kẽm Sinh Học Hấp Thu Cao",
     "Ngừa Thâm Sau Mụn"
   ],
-  "images": [
-    "/products/PROD-CRW-KGN-03.jpg"
-  ],
+  "images": ["/products/prod-crw-kgn-03-blackmores-vien-uong-kem-sinh-hoc-khang-viem--1.jpg","/products/prod-crw-kgn-03-blackmores-vien-uong-kem-sinh-hoc-khang-viem--2.jpg","/products/prod-crw-kgn-03-blackmores-vien-uong-kem-sinh-hoc-khang-viem--3.jpg"],
   "targetSkinTypes": [
     "OILY",
     "ACNE_PRONE"
@@ -836,9 +830,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Hàm Lượng Cao 50mg",
     "Tiêu Chuẩn FDA Mỹ"
   ],
-  "images": [
-    "/products/PROD-CRW-KGN-04.jpg"
-  ],
+  "images": ["/products/prod-crw-kgn-04-puritan-s-pride-vien-uong-bo-sung-kem-giam-da-1.jpg","/products/prod-crw-kgn-04-puritan-s-pride-vien-uong-bo-sung-kem-giam-da-2.jpg","/products/prod-crw-kgn-04-puritan-s-pride-vien-uong-bo-sung-kem-giam-da-3.jpg"],
   "targetSkinTypes": [
     "OILY",
     "ACNE_PRONE"
@@ -877,9 +869,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Chuyên Biệt Da Mụn Nhờn",
     "Giá Học Sinh Sinh Viên"
   ],
-  "images": [
-    "/products/PROD-CRW-KGN-05.jpg"
-  ],
+  "images": ["/products/prod-crw-kgn-05-acnes-vien-uong-ho-tro-ngua-mun-giam-nhon-acn-1.jpg","/products/prod-crw-kgn-05-acnes-vien-uong-ho-tro-ngua-mun-giam-nhon-acn-2.jpg","/products/prod-crw-kgn-05-acnes-vien-uong-ho-tro-ngua-mun-giam-nhon-acn-3.jpg"],
   "targetSkinTypes": [
     "OILY",
     "ACNE_PRONE"
@@ -919,9 +909,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Bán Chạy Nhất",
     "Chính Hãng Nhật"
   ],
-  "images": [
-    "/products/PROD-CRW-KPM-01.jpg"
-  ],
+  "images": ["/products/prod-crw-kpm-01-shiseido-kep-bam-mi-shiseido-eyelash-curler-2-1.jpg","/products/prod-crw-kpm-01-shiseido-kep-bam-mi-shiseido-eyelash-curler-2-2.jpg","/products/prod-crw-kpm-01-shiseido-kep-bam-mi-shiseido-eyelash-curler-2-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -964,9 +952,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Cao Cấp",
     "Top 1 Nhật Bản"
   ],
-  "images": [
-    "/products/PROD-CRW-KPM-02.jpg"
-  ],
+  "images": ["/products/prod-crw-kpm-02-shu-uemura-kep-bam-mi-shu-uemura-eyelash-curl-1.jpg","/products/prod-crw-kpm-02-shu-uemura-kep-bam-mi-shu-uemura-eyelash-curl-2.jpg","/products/prod-crw-kpm-02-shu-uemura-kep-bam-mi-shu-uemura-eyelash-curl-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1009,9 +995,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Giá Tốt",
     "Êm Mi Tuyệt Đối"
   ],
-  "images": [
-    "/products/PROD-CRW-KPM-03.jpg"
-  ],
+  "images": ["/products/prod-crw-kpm-03-vacosi-kep-bam-mi-can-den-chuyen-nghiep-vacos-1.jpg","/products/prod-crw-kpm-03-vacosi-kep-bam-mi-can-den-chuyen-nghiep-vacos-2.jpg","/products/prod-crw-kpm-03-vacosi-kep-bam-mi-can-den-chuyen-nghiep-vacos-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1054,9 +1038,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Góc Siêu Rộng",
     "Không Kẹp Mí"
   ],
-  "images": [
-    "/products/PROD-CRW-KPM-04.jpg"
-  ],
+  "images": ["/products/prod-crw-kpm-04-dhc-kep-bam-mi-goc-rong-om-tron-mat-dhc-eyela-1.jpg","/products/prod-crw-kpm-04-dhc-kep-bam-mi-goc-rong-om-tron-mat-dhc-eyela-2.jpg","/products/prod-crw-kpm-04-dhc-kep-bam-mi-goc-rong-om-tron-mat-dhc-eyela-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1099,9 +1081,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Nhỏ Gọn Bỏ Túi",
     "Chính Hãng Kai"
   ],
-  "images": [
-    "/products/PROD-CRW-KPM-05.jpg"
-  ],
+  "images": ["/products/prod-crw-kpm-05-kai-kep-bam-mi-mini-gap-gon-du-lich-kai-compa-1.jpg","/products/prod-crw-kpm-05-kai-kep-bam-mi-mini-gap-gon-du-lich-kai-compa-2.jpg","/products/prod-crw-kpm-05-kai-kep-bam-mi-mini-gap-gon-du-lich-kai-compa-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1144,9 +1124,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Top 1 Bán Chạy",
     "Nền Căng Bóng"
   ],
-  "images": [
-    "/products/PROD-CRW-MTN-01.jpg"
-  ],
+  "images": ["/products/prod-crw-mtn-01-real-techniques-bong-mut-tan-nen-ho-lo-real-t-1.jpg","/products/prod-crw-mtn-01-real-techniques-bong-mut-tan-nen-ho-lo-real-t-2.jpg","/products/prod-crw-mtn-01-real-techniques-bong-mut-tan-nen-ho-lo-real-t-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1192,9 +1170,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Huyền Thoại Nền Lì",
     "Không Hút Kem"
   ],
-  "images": [
-    "/products/PROD-CRW-MTN-02.jpg"
-  ],
+  "images": ["/products/prod-crw-mtn-02-beautyblender-mut-trang-diem-giot-nuoc-khong--1.jpg","/products/prod-crw-mtn-02-beautyblender-mut-trang-diem-giot-nuoc-khong--2.jpg","/products/prod-crw-mtn-02-beautyblender-mut-trang-diem-giot-nuoc-khong--3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1238,9 +1214,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Siêu Mềm Mịn",
     "Giá Siêu Tốt"
   ],
-  "images": [
-    "/products/PROD-CRW-MTN-03.jpg"
-  ],
+  "images": ["/products/prod-crw-mtn-03-focallure-bong-mut-no-tan-nen-vat-xeo-khang-k-1.jpg","/products/prod-crw-mtn-03-focallure-bong-mut-no-tan-nen-vat-xeo-khang-k-2.jpg","/products/prod-crw-mtn-03-focallure-bong-mut-no-tan-nen-vat-xeo-khang-k-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1283,9 +1257,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Vát Phẳng 2 Đầu",
     "Độ Đàn Hồi Cao"
   ],
-  "images": [
-    "/products/PROD-CRW-MTN-04.jpg"
-  ],
+  "images": ["/products/prod-crw-mtn-04-vacosi-bong-mut-giot-nuoc-vat-xeo-da-nang-vac-1.jpg","/products/prod-crw-mtn-04-vacosi-bong-mut-giot-nuoc-vat-xeo-da-nang-vac-2.jpg","/products/prod-crw-mtn-04-vacosi-bong-mut-giot-nuoc-vat-xeo-da-nang-vac-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1328,9 +1300,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Hộp 3 Mút Tiện Lợi",
     "Mềm Như Mây"
   ],
-  "images": [
-    "/products/PROD-CRW-MTN-05.jpg"
-  ],
+  "images": ["/products/prod-crw-mtn-05-bealy-set-3-bong-mut-tan-nen-vat-xeo-bealy-te-1.jpg","/products/prod-crw-mtn-05-bealy-set-3-bong-mut-tan-nen-vat-xeo-bealy-te-2.jpg","/products/prod-crw-mtn-05-bealy-set-3-bong-mut-tan-nen-vat-xeo-bealy-te-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1373,9 +1343,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Lưỡi Thép Siêu Bén",
     "An Toàn Chống Xước"
   ],
-  "images": [
-    "/products/PROD-CRW-DCM-01.jpg"
-  ],
+  "images": ["/products/prod-crw-dcm-01-kai-set-3-dao-cao-long-may-luoi-thep-thuy-die-1.jpg","/products/prod-crw-dcm-01-kai-set-3-dao-cao-long-may-luoi-thep-thuy-die-2.jpg","/products/prod-crw-dcm-01-kai-set-3-dao-cao-long-may-luoi-thep-thuy-die-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1413,9 +1381,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Thương Hiệu Quốc Dân",
     "Khít Chặt Tận Gốc"
   ],
-  "images": [
-    "/products/PROD-CRW-DCM-02.jpg"
-  ],
+  "images": ["/products/prod-crw-dcm-02-kem-nghia-nhip-bam-long-may-thep-khong-gi-kem-1.jpg","/products/prod-crw-dcm-02-kem-nghia-nhip-bam-long-may-thep-khong-gi-kem-2.jpg","/products/prod-crw-dcm-02-kem-nghia-nhip-bam-long-may-thep-khong-gi-kem-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1453,9 +1419,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Gập Gọn Vệ Sinh",
     "Chính Hãng Hàn"
   ],
-  "images": [
-    "/products/PROD-CRW-DCM-03.jpg"
-  ],
+  "images": ["/products/prod-crw-dcm-03-innisfree-dao-cao-chan-may-gap-gon-tien-loi-i-1.jpg","/products/prod-crw-dcm-03-innisfree-dao-cao-chan-may-gap-gon-tien-loi-i-2.jpg","/products/prod-crw-dcm-03-innisfree-dao-cao-chan-may-gap-gon-tien-loi-i-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1493,9 +1457,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Lưỡi Bạch Kim",
     "Êm Ái Dịu Nhẹ"
   ],
-  "images": [
-    "/products/PROD-CRW-DCM-04.jpg"
-  ],
+  "images": ["/products/prod-crw-dcm-04-feather-hop-3-dao-cao-long-mat-chan-may-feath-1.jpg","/products/prod-crw-dcm-04-feather-hop-3-dao-cao-long-mat-chan-may-feath-2.jpg","/products/prod-crw-dcm-04-feather-hop-3-dao-cao-long-mat-chan-may-feath-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1533,9 +1495,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Đầu Nhọn Chuẩn Xác",
     "Thép Không Gỉ"
   ],
-  "images": [
-    "/products/PROD-CRW-DCM-05.jpg"
-  ],
+  "images": ["/products/prod-crw-dcm-05-vacosi-nhip-gap-long-may-dau-nhon-thang-cao-c-1.jpg","/products/prod-crw-dcm-05-vacosi-nhip-gap-long-may-dau-nhon-thang-cao-c-2.jpg","/products/prod-crw-dcm-05-vacosi-nhip-gap-long-may-dau-nhon-thang-cao-c-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1573,9 +1533,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Đầy Đủ 14 Cây",
     "Bao Da Cao Cấp"
   ],
-  "images": [
-    "/products/PROD-CRW-BCT-01.jpg"
-  ],
+  "images": ["/products/prod-crw-bct-01-vacosi-bo-co-trang-diem-ca-nhan-14-cay-long-m-1.jpg","/products/prod-crw-bct-01-vacosi-bo-co-trang-diem-ca-nhan-14-cay-long-m-2.jpg","/products/prod-crw-bct-01-vacosi-bo-co-trang-diem-ca-nhan-14-cay-long-m-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1613,9 +1571,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Top Bán Chạy Toàn Cầu",
     "Lông Cọ Kháng Khuẩn"
   ],
-  "images": [
-    "/products/PROD-CRW-BCT-02.jpg"
-  ],
+  "images": ["/products/prod-crw-bct-02-real-techniques-bo-co-trang-diem-mat-mat-5-ca-1.jpg","/products/prod-crw-bct-02-real-techniques-bo-co-trang-diem-mat-mat-5-ca-2.jpg","/products/prod-crw-bct-02-real-techniques-bo-co-trang-diem-mat-mat-5-ca-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1653,9 +1609,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Ngon Bổ Rẻ",
     "Lông Nhân Tạo Thân Thiện"
   ],
-  "images": [
-    "/products/PROD-CRW-BCT-03.jpg"
-  ],
+  "images": ["/products/prod-crw-bct-03-focallure-set-co-trang-diem-10-cay-long-nhung-1.jpg","/products/prod-crw-bct-03-focallure-set-co-trang-diem-10-cay-long-nhung-2.jpg","/products/prod-crw-bct-03-focallure-set-co-trang-diem-10-cay-long-nhung-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1693,9 +1647,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Đầy Đủ Chi Tiết",
     "Không Rụng Lông"
   ],
-  "images": [
-    "/products/PROD-CRW-BCT-04.jpg"
-  ],
+  "images": ["/products/prod-crw-bct-04-maange-bo-co-trang-diem-cao-cap-18-cay-maange-1.jpg","/products/prod-crw-bct-04-maange-bo-co-trang-diem-cao-cap-18-cay-maange-2.jpg","/products/prod-crw-bct-04-maange-bo-co-trang-diem-cao-cap-18-cay-maange-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1733,9 +1685,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Lông Dê Thật",
     "Bám Phấn Cực Tốt"
   ],
-  "images": [
-    "/products/PROD-CRW-BCT-05.jpg"
-  ],
+  "images": ["/products/prod-crw-bct-05-bealy-bo-co-trang-diem-chuyen-nghiep-12-cay-l-1.jpg","/products/prod-crw-bct-05-bealy-bo-co-trang-diem-chuyen-nghiep-12-cay-l-2.jpg","/products/prod-crw-bct-05-bealy-bo-co-trang-diem-chuyen-nghiep-12-cay-l-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1773,9 +1723,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Thuần Chay 100%",
     "Kích Mọc Tóc Con"
   ],
-  "images": [
-    "/products/PROD-CRW-XMT-01.jpg"
-  ],
+  "images": ["/products/prod-crw-xmt-01-cocoon-nuoc-duong-toc-tinh-dau-buoi-cocoon-po-1.jpg","/products/prod-crw-xmt-01-cocoon-nuoc-duong-toc-tinh-dau-buoi-cocoon-po-2.jpg","/products/prod-crw-xmt-01-cocoon-nuoc-duong-toc-tinh-dau-buoi-cocoon-po-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1824,9 +1772,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Thảo Mộc Tự Nhiên",
     "Không Bết Dính"
   ],
-  "images": [
-    "/products/PROD-CRW-XMT-02.jpg"
-  ],
+  "images": ["/products/prod-crw-xmt-02-milaganics-tinh-dau-buoi-duong-moc-toc-milaga-1.jpg","/products/prod-crw-xmt-02-milaganics-tinh-dau-buoi-duong-moc-toc-milaga-2.jpg","/products/prod-crw-xmt-02-milaganics-tinh-dau-buoi-duong-moc-toc-milaga-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1864,9 +1810,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Thương Hiệu Lâu Đời",
     "Ngừa Rụng Tóc"
   ],
-  "images": [
-    "/products/PROD-CRW-XMT-03.jpg"
-  ],
+  "images": ["/products/prod-crw-xmt-03-thorakao-xit-duong-toc-huong-buoi-co-dien-tho-1.jpg","/products/prod-crw-xmt-03-thorakao-xit-duong-toc-huong-buoi-co-dien-tho-2.jpg","/products/prod-crw-xmt-03-thorakao-xit-duong-toc-huong-buoi-co-dien-tho-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1904,9 +1848,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Phức Hợp Peptides",
     "Khoa Học Dày Tóc"
   ],
-  "images": [
-    "/products/PROD-CRW-XMT-04.jpg"
-  ],
+  "images": ["/products/prod-crw-xmt-04-the-ordinary-serum-duong-toc-day-ngan-rung-th-1.jpg","/products/prod-crw-xmt-04-the-ordinary-serum-duong-toc-day-ngan-rung-th-2.jpg","/products/prod-crw-xmt-04-the-ordinary-serum-duong-toc-day-ngan-rung-th-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1951,9 +1893,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Gừng Vân Nam",
     "Ấm Da Đầu"
   ],
-  "images": [
-    "/products/PROD-CRW-XMT-05.jpg"
-  ],
+  "images": ["/products/prod-crw-xmt-05-weilaiya-tinh-chat-xit-moc-toc-gung-tuoi-weil-1.jpg","/products/prod-crw-xmt-05-weilaiya-tinh-chat-xit-moc-toc-gung-tuoi-weil-2.jpg","/products/prod-crw-xmt-05-weilaiya-tinh-chat-xit-moc-toc-gung-tuoi-weil-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -1991,9 +1931,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Màu Hot Trend",
     "Tự Nhuộm Dễ Dàng"
   ],
-  "images": [
-    "/products/PROD-CRW-TNT-01.jpg"
-  ],
+  "images": ["/products/prod-crw-tnt-01-mise-en-scene-bot-nhuom-toc-tu-lam-tai-nha-mi-1.jpg","/products/prod-crw-tnt-01-mise-en-scene-bot-nhuom-toc-tu-lam-tai-nha-mi-2.jpg","/products/prod-crw-tnt-01-mise-en-scene-bot-nhuom-toc-tu-lam-tai-nha-mi-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2031,9 +1969,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Phủ Bạc 100%",
     "Thảo Dược Nhật Bản"
   ],
-  "images": [
-    "/products/PROD-CRW-TNT-02.jpg"
-  ],
+  "images": ["/products/prod-crw-tnt-02-bigen-thuoc-nhuom-toc-phu-bac-thao-duoc-bigen-1.jpg","/products/prod-crw-tnt-02-bigen-thuoc-nhuom-toc-phu-bac-thao-duoc-bigen-2.jpg","/products/prod-crw-tnt-02-bigen-thuoc-nhuom-toc-phu-bac-thao-duoc-bigen-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2071,9 +2007,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Bảo Vệ 3 Tác Động",
     "Bền Màu 8 Tuần"
   ],
-  "images": [
-    "/products/PROD-CRW-TNT-03.jpg"
-  ],
+  "images": ["/products/prod-crw-tnt-03-l-oreal-paris-kem-nhuom-toc-duong-mau-thoi-tr-1.jpg","/products/prod-crw-tnt-03-l-oreal-paris-kem-nhuom-toc-duong-mau-thoi-tr-2.jpg","/products/prod-crw-tnt-03-l-oreal-paris-kem-nhuom-toc-duong-mau-thoi-tr-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2111,9 +2045,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Dược Liệu Lá Móng",
     "An Toàn Cho Tóc"
   ],
-  "images": [
-    "/products/PROD-CRW-TNT-04.jpg"
-  ],
+  "images": ["/products/prod-crw-tnt-04-thai-duong-thuoc-nhuom-toc-duoc-lieu-thai-duo-1.jpg","/products/prod-crw-tnt-04-thai-duong-thuoc-nhuom-toc-duoc-lieu-thai-duo-2.jpg","/products/prod-crw-tnt-04-thai-duong-thuoc-nhuom-toc-duoc-lieu-thai-duo-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2151,9 +2083,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Bọt Kem Xốp Mịn",
     "Dưỡng Ẩm Trái Cây"
   ],
-  "images": [
-    "/products/PROD-CRW-TNT-05.jpg"
-  ],
+  "images": ["/products/prod-crw-tnt-05-beautylabo-bot-nhuom-toc-tao-bot-duong-toc-be-1.jpg","/products/prod-crw-tnt-05-beautylabo-bot-nhuom-toc-tao-bot-duong-toc-be-2.jpg","/products/prod-crw-tnt-05-beautylabo-bot-nhuom-toc-tao-bot-duong-toc-be-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2191,9 +2121,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Công Nghệ Thẩm Thấu Nhanh",
     "Bóng Mượt Như Salon"
   ],
-  "images": [
-    "/products/PROD-CRW-DXA-01.jpg"
-  ],
+  "images": ["/products/prod-crw-dxa-01-tsubaki-dau-xa-phuc-hoi-toc-hu-ton-cao-cap-ts-1.jpg","/products/prod-crw-dxa-01-tsubaki-dau-xa-phuc-hoi-toc-hu-ton-cao-cap-ts-2.jpg","/products/prod-crw-dxa-01-tsubaki-dau-xa-phuc-hoi-toc-hu-ton-cao-cap-ts-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2231,9 +2159,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Thuần Chay Không Silicon",
     "Mượt Tóc Nhẹ Tênh"
   ],
-  "images": [
-    "/products/PROD-CRW-DXA-02.jpg"
-  ],
+  "images": ["/products/prod-crw-dxa-02-cocoon-dau-xa-buoi-phuc-hoi-giam-rung-toc-coc-1.jpg","/products/prod-crw-dxa-02-cocoon-dau-xa-buoi-phuc-hoi-giam-rung-toc-coc-2.jpg","/products/prod-crw-dxa-02-cocoon-dau-xa-buoi-phuc-hoi-giam-rung-toc-coc-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2271,9 +2197,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Phục Hồi 3 Phút",
     "Pro-V Độc Quyền"
   ],
-  "images": [
-    "/products/PROD-CRW-DXA-03.jpg"
-  ],
+  "images": ["/products/prod-crw-dxa-03-pantene-dau-xa-3-phut-dieu-ky-cho-toc-hu-ton--1.jpg","/products/prod-crw-dxa-03-pantene-dau-xa-3-phut-dieu-ky-cho-toc-hu-ton--2.jpg","/products/prod-crw-dxa-03-pantene-dau-xa-3-phut-dieu-ky-cho-toc-hu-ton--3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2311,9 +2235,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Vào Nếp 72H",
     "Chuẩn Salon Tresemme"
   ],
-  "images": [
-    "/products/PROD-CRW-DXA-04.jpg"
-  ],
+  "images": ["/products/prod-crw-dxa-04-tresemme-dau-xa-keratin-cho-toc-vao-nep-suon--1.jpg","/products/prod-crw-dxa-04-tresemme-dau-xa-keratin-cho-toc-vao-nep-suon--2.jpg","/products/prod-crw-dxa-04-tresemme-dau-xa-keratin-cho-toc-vao-nep-suon--3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2351,9 +2273,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Ceramide Phục Hồi",
     "Giảm Chẻ Ngọn"
   ],
-  "images": [
-    "/products/PROD-CRW-DXA-05.jpg"
-  ],
+  "images": ["/products/prod-crw-dxa-05-l-oreal-paris-dau-xa-phuc-hoi-toan-dien-5-tac-1.jpg","/products/prod-crw-dxa-05-l-oreal-paris-dau-xa-phuc-hoi-toan-dien-5-tac-2.jpg","/products/prod-crw-dxa-05-l-oreal-paris-dau-xa-phuc-hoi-toan-dien-5-tac-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2391,9 +2311,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Gỗ Đàn Hương Sang Trọng",
     "Lưu Hương 12H+"
   ],
-  "images": [
-    "/products/PROD-CRW-NHT-01.jpg"
-  ],
+  "images": ["/products/prod-crw-nht-01-le-labo-nuoc-hoa-chiet-le-labo-santal-33-edp--1.jpg","/products/prod-crw-nht-01-le-labo-nuoc-hoa-chiet-le-labo-santal-33-edp--2.jpg","/products/prod-crw-nht-01-le-labo-nuoc-hoa-chiet-le-labo-santal-33-edp--3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2431,9 +2349,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Hương Rượu Rum & Thuốc Lá",
     "Ấm Áp Quyến Rũ"
   ],
-  "images": [
-    "/products/PROD-CRW-NHT-02.jpg"
-  ],
+  "images": ["/products/prod-crw-nht-02-maison-margiela-nuoc-hoa-chiet-maison-margiel-1.jpg","/products/prod-crw-nht-02-maison-margiela-nuoc-hoa-chiet-maison-margiel-2.jpg","/products/prod-crw-nht-02-maison-margiela-nuoc-hoa-chiet-maison-margiel-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2471,9 +2387,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Vua Nước Hoa Nam",
     "Lưu Hương Vượt Trội"
   ],
-  "images": [
-    "/products/PROD-CRW-NHT-03.jpg"
-  ],
+  "images": ["/products/prod-crw-nht-03-chanel-nuoc-hoa-chiet-nam-chanel-bleu-de-chan-1.jpg","/products/prod-crw-nht-03-chanel-nuoc-hoa-chiet-nam-chanel-bleu-de-chan-2.jpg","/products/prod-crw-nht-03-chanel-nuoc-hoa-chiet-nam-chanel-bleu-de-chan-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2511,9 +2425,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Top 1 Nước Hoa Thế Giới",
     "Tỏa Hương Xa"
   ],
-  "images": [
-    "/products/PROD-CRW-NHT-04.jpg"
-  ],
+  "images": ["/products/prod-crw-nht-04-dior-nuoc-hoa-chiet-nam-dior-sauvage-eau-de-p-1.jpg","/products/prod-crw-nht-04-dior-nuoc-hoa-chiet-nam-dior-sauvage-eau-de-p-2.jpg","/products/prod-crw-nht-04-dior-nuoc-hoa-chiet-nam-dior-sauvage-eau-de-p-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2551,9 +2463,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Nữ Quyền Độc Lập",
     "Lưu Hương Cả Ngày"
   ],
-  "images": [
-    "/products/PROD-CRW-NHT-05.jpg"
-  ],
+  "images": ["/products/prod-crw-nht-05-ysl-nuoc-hoa-chiet-nu-ysl-libre-eau-de-parfum-1.jpg","/products/prod-crw-nht-05-ysl-nuoc-hoa-chiet-nu-ysl-libre-eau-de-parfum-2.jpg","/products/prod-crw-nht-05-ysl-nuoc-hoa-chiet-nu-ysl-libre-eau-de-parfum-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2591,9 +2501,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Khử Mùi 99.9%",
     "Hương Thơm Nồng Nàn"
   ],
-  "images": [
-    "/products/PROD-CRW-VKN-01.jpg"
-  ],
+  "images": ["/products/prod-crw-vkn-01-foellie-nuoc-hoa-vung-kin-foellie-eau-de-bijo-1.jpg","/products/prod-crw-vkn-01-foellie-nuoc-hoa-vung-kin-foellie-eau-de-bijo-2.jpg","/products/prod-crw-vkn-01-foellie-nuoc-hoa-vung-kin-foellie-eau-de-bijo-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES",
     "SENSITIVE"
@@ -2632,9 +2540,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Hương Đào & Kẹo Ngọt",
     "Dịu Nhẹ An Toàn"
   ],
-  "images": [
-    "/products/PROD-CRW-VKN-02.jpg"
-  ],
+  "images": ["/products/prod-crw-vkn-02-foellie-nuoc-hoa-vung-kin-foellie-eau-de-bonb-1.jpg","/products/prod-crw-vkn-02-foellie-nuoc-hoa-vung-kin-foellie-eau-de-bonb-2.jpg","/products/prod-crw-vkn-02-foellie-nuoc-hoa-vung-kin-foellie-eau-de-bonb-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES",
     "SENSITIVE"
@@ -2673,9 +2579,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Huyền Thoại Dionel",
     "Kháng Viêm Tự Nhiên"
   ],
-  "images": [
-    "/products/PROD-CRW-VKN-03.jpg"
-  ],
+  "images": ["/products/prod-crw-vkn-03-dionel-nuoc-hoa-vung-kin-dionel-secret-love-b-1.jpg","/products/prod-crw-vkn-03-dionel-nuoc-hoa-vung-kin-dionel-secret-love-b-2.jpg","/products/prod-crw-vkn-03-dionel-nuoc-hoa-vung-kin-dionel-secret-love-b-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES",
     "SENSITIVE"
@@ -2714,9 +2618,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Dung Tích Lớn 10ml",
     "Công Nghệ Pháp"
   ],
-  "images": [
-    "/products/PROD-CRW-VKN-04.jpg"
-  ],
+  "images": ["/products/prod-crw-vkn-04-cenota-tinh-dau-nuoc-hoa-vung-kin-cenota-secr-1.jpg","/products/prod-crw-vkn-04-cenota-tinh-dau-nuoc-hoa-vung-kin-cenota-secr-2.jpg","/products/prod-crw-vkn-04-cenota-tinh-dau-nuoc-hoa-vung-kin-cenota-secr-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES",
     "SENSITIVE"
@@ -2755,9 +2657,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Hương Hoa Xứ Grasse",
     "Không Chứa Cồn"
   ],
-  "images": [
-    "/products/PROD-CRW-VKN-05.jpg"
-  ],
+  "images": ["/products/prod-crw-vkn-05-de-memoria-nuoc-hoa-vung-kin-tinh-te-de-memor-1.jpg","/products/prod-crw-vkn-05-de-memoria-nuoc-hoa-vung-kin-tinh-te-de-memor-2.jpg","/products/prod-crw-vkn-05-de-memoria-nuoc-hoa-vung-kin-tinh-te-de-memor-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES",
     "SENSITIVE"
@@ -2796,9 +2696,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Chuẩn Úc 1000mg",
     "Cân Bằng Nội Tiết Tố"
   ],
-  "images": [
-    "/products/PROD-CRW-VMN-01.jpg"
-  ],
+  "images": ["/products/prod-crw-vmn-01-blackmores-tinh-dau-hoa-anh-thao-can-bang-noi-1.jpg","/products/prod-crw-vmn-01-blackmores-tinh-dau-hoa-anh-thao-can-bang-noi-2.jpg","/products/prod-crw-vmn-01-blackmores-tinh-dau-hoa-anh-thao-can-bang-noi-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES",
     "ACNE_PRONE"
@@ -2845,9 +2743,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Kẽm Men Tự Nhiên",
     "Kiểm Soát Nhờn Vượt Trội"
   ],
-  "images": [
-    "/products/PROD-CRW-VMN-02.jpg"
-  ],
+  "images": ["/products/prod-crw-vmn-02-dhc-vien-uong-bo-sung-kem-kiem-soat-ba-nhon-n-1.jpg","/products/prod-crw-vmn-02-dhc-vien-uong-bo-sung-kem-kiem-soat-ba-nhon-n-2.jpg","/products/prod-crw-vmn-02-dhc-vien-uong-bo-sung-kem-kiem-soat-ba-nhon-n-3.jpg"],
   "targetSkinTypes": [
     "OILY",
     "ACNE_PRONE"
@@ -2890,9 +2786,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Đặc Trị Mụn Bọc",
     "Thải Độc Gan Da Liễu"
   ],
-  "images": [
-    "/products/PROD-CRW-VMN-03.jpg"
-  ],
+  "images": ["/products/prod-crw-vmn-03-lion-vien-uong-tri-mun-trung-ca-mun-viem-pair-1.jpg","/products/prod-crw-vmn-03-lion-vien-uong-tri-mun-trung-ca-mun-viem-pair-2.jpg","/products/prod-crw-vmn-03-lion-vien-uong-tri-mun-trung-ca-mun-viem-pair-3.jpg"],
   "targetSkinTypes": [
     "ACNE_PRONE"
   ],
@@ -2933,9 +2827,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "32 Loại Rau Xanh",
     "Giảm Nóng Trong Mụn Nhọt"
   ],
-  "images": [
-    "/products/PROD-CRW-VMN-04.jpg"
-  ],
+  "images": ["/products/prod-crw-vmn-04-dhc-vien-uong-32-loai-rau-cu-thanh-nhiet-thai-1.jpg","/products/prod-crw-vmn-04-dhc-vien-uong-32-loai-rau-cu-thanh-nhiet-thai-2.jpg","/products/prod-crw-vmn-04-dhc-vien-uong-32-loai-rau-cu-thanh-nhiet-thai-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -2976,9 +2868,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Chuẩn Hữu Cơ Bio EcoCert",
     "Chống Lão Hóa Nội Sinh"
   ],
-  "images": [
-    "/products/PROD-CRW-VMN-05.jpg"
-  ],
+  "images": ["/products/prod-crw-vmn-05-nat-form-tinh-dau-hoa-anh-thao-huu-co-phap-na-1.jpg","/products/prod-crw-vmn-05-nat-form-tinh-dau-hoa-anh-thao-huu-co-phap-na-2.jpg","/products/prod-crw-vmn-05-nat-form-tinh-dau-hoa-anh-thao-huu-co-phap-na-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -3016,9 +2906,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Gấp Đôi HA 240mg",
     "Căng Mọng Da Sứ"
   ],
-  "images": [
-    "/products/PROD-CRW-VCN-01.jpg"
-  ],
+  "images": ["/products/prod-crw-vcn-01-cj-innerb-vien-uong-cap-nuoc-cang-bong-da-cj--1.jpg","/products/prod-crw-vcn-01-cj-innerb-vien-uong-cap-nuoc-cang-bong-da-cj--2.jpg","/products/prod-crw-vcn-01-cj-innerb-vien-uong-cap-nuoc-cang-bong-da-cj--3.jpg"],
   "targetSkinTypes": [
     "DRY",
     "DEHYDRATED",
@@ -3064,9 +2952,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "HA 150mg Nhật Bản",
     "Chống Khô Ráp Bong Tróc"
   ],
-  "images": [
-    "/products/PROD-CRW-VCN-02.jpg"
-  ],
+  "images": ["/products/prod-crw-vcn-02-dhc-vien-uong-bo-sung-hyaluronic-acid-giu-am--1.jpg","/products/prod-crw-vcn-02-dhc-vien-uong-bo-sung-hyaluronic-acid-giu-am--2.jpg","/products/prod-crw-vcn-02-dhc-vien-uong-bo-sung-hyaluronic-acid-giu-am--3.jpg"],
   "targetSkinTypes": [
     "DRY",
     "SENSITIVE"
@@ -3108,9 +2994,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Cấp Nước Sáng Mịn",
     "Glutathione Chuẩn Hàn"
   ],
-  "images": [
-    "/products/PROD-CRW-VCN-03.jpg"
-  ],
+  "images": ["/products/prod-crw-vcn-03-huons-vien-uong-trang-da-cap-nuoc-huons-white-1.jpg","/products/prod-crw-vcn-03-huons-vien-uong-trang-da-cap-nuoc-huons-white-2.jpg","/products/prod-crw-vcn-03-huons-vien-uong-trang-da-cap-nuoc-huons-white-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -3152,9 +3036,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Astaxanthin Đỏ Cao Cấp",
     "Chống Lão Hóa Cấp Nước"
   ],
-  "images": [
-    "/products/PROD-CRW-VCN-04.jpg"
-  ],
+  "images": ["/products/prod-crw-vcn-04-astalift-tinh-chat-uong-giu-am-chong-kho-da-a-1.jpg","/products/prod-crw-vcn-04-astalift-tinh-chat-uong-giu-am-chong-kho-da-a-2.jpg","/products/prod-crw-vcn-04-astalift-tinh-chat-uong-giu-am-chong-kho-da-a-3.jpg"],
   "targetSkinTypes": [
     "DRY",
     "AGING"
@@ -3197,9 +3079,7 @@ export const CURATED_NICHE_PRODUCTS = [
     "Collagen Nước Thẩm Thấu Nhanh",
     "Bán Chạy Nhất Nhật Bản"
   ],
-  "images": [
-    "/products/PROD-CRW-VCN-05.jpg"
-  ],
+  "images": ["/products/prod-crw-vcn-05-shiseido-nuoc-uong-collagen-cap-nuoc-chong-la-1.jpg","/products/prod-crw-vcn-05-shiseido-nuoc-uong-collagen-cap-nuoc-chong-la-2.jpg","/products/prod-crw-vcn-05-shiseido-nuoc-uong-collagen-cap-nuoc-chong-la-3.jpg"],
   "targetSkinTypes": [
     "ALL_SKIN_TYPES"
   ],
@@ -3242,7 +3122,7 @@ export const CURATED_NICHE_PRODUCTS = [
     originalPrice: 155000,
     inStock: true,
     badges: ['Shopee Mall', 'Xử lý bởi Mall', 'Voucher Xtra'],
-    images: ['/products/PROD-LIPONLIP.jpg', '/products/PROD-LIPONLIP-STUDIO.jpg', '/products/SKU-LIPONLIP-04.jpg', '/products/SKU-LIPONLIP-02.jpg', '/products/SKU-LIPONLIP-05.jpg', '/products/SKU-LIPONLIP-01.jpg', '/products/SKU-LIPONLIP-03.jpg'],
+    images: ['/products/PROD-LIPONLIP.jpg', '/products/SKU-LIPONLIP-01.jpg', '/products/SKU-LIPONLIP-02.jpg', '/products/SKU-LIPONLIP-03.jpg', '/products/SKU-LIPONLIP-04.jpg'],
     targetSkinTypes: ['ALL_SKIN_TYPES', 'DRY', 'NORMAL'],
     skinConcerns: ['DEHYDRATION'],
     keyActiveGroups: ['HYDRATION'],
@@ -3345,13 +3225,7 @@ export const CURATED_NICHE_PRODUCTS = [
       '/products/SKU-WAKEMAKE-01.jpg',
       '/products/SKU-WAKEMAKE-02.jpg',
       '/products/SKU-WAKEMAKE-03.jpg',
-      '/products/SKU-WAKEMAKE-04.jpg',
-      '/products/SKU-WAKEMAKE-05.jpg',
-      '/products/SKU-WAKEMAKE-06.jpg',
-      '/products/SKU-WAKEMAKE-07.jpg',
-      '/products/SKU-WAKEMAKE-08.jpg',
-      '/products/SKU-WAKEMAKE-09.jpg',
-      '/products/SKU-WAKEMAKE-10.jpg'
+      '/products/SKU-WAKEMAKE-04.jpg'
     ],
     targetSkinTypes: ['ALL_SKIN_TYPES', 'DRY', 'NORMAL'],
     skinConcerns: ['DEHYDRATION'],
@@ -4158,10 +4032,7 @@ export const CURATED_NICHE_PRODUCTS = [
       '/products/dove-pomegranate-cream-texture.jpg',
       '/products/dove-pomegranate-swatch.jpg',
       '/products/dove-pomegranate-back-label.jpg',
-      '/products/dove-pomegranate-top-lid.jpg',
-      '/products/dove-pomegranate-side-view.jpg',
-      '/products/dove-pomegranate-barcode.jpg',
-      '/products/dove-pomegranate-model.jpg'
+      '/products/dove-pomegranate-top-lid.jpg'
     ],
     registrationNumber: 'CBMP-19834/23/CBMP-QLD',
     rating: 4.9,
@@ -4360,38 +4231,114 @@ export function getSubmenuMetadata(query) {
 // =========================================================================
 export function resolveClientCategoryPath(p) {
   if (Array.isArray(p?.categoryPath) && p.categoryPath.length > 0) {
+    const pName = (p?.name || '').toLowerCase();
+    const joined = p.categoryPath.join(' > ');
+    // Auto-correct historic edge-cases
+    if (pName.includes('toner') && joined.includes('PERFUME')) {
+      return ['SKINCARE', 'TONER', 'HYDRATING_TONER'];
+    }
+    if ((pName.includes('kem nền') || pName.includes('foundation')) && joined.includes('LIP')) {
+      return ['MAKEUP', 'FACE', 'FOUNDATION'];
+    }
     return p.categoryPath;
   }
   const name = (p?.name || '').toLowerCase();
   const cat = (p?.category || '').toLowerCase();
+  const sub = (p?.subCategory || '').toLowerCase();
 
-  if (cat.includes('body') || cat.includes('cơ thể') || name.includes('sữa tắm') || name.includes('dưỡng thể') || name.includes('body polish')) {
-    if (name.includes('tẩy tế bào chết') || name.includes('scrub') || name.includes('polish')) return ['BODY_CARE', 'BODY_SCRUB'];
-    if (name.includes('sữa tắm') || name.includes('shower')) return ['BODY_CARE', 'BODY_WASH'];
-    return ['BODY_CARE', 'BODY_MOISTURIZER'];
+  // 1. Phụ kiện làm đẹp (Beauty Tools)
+  if (
+    cat.includes('phụ kiện') || cat.includes('beauty tool') || cat.includes('dụng cụ') ||
+    sub.includes('kẹp bấm mi') || sub.includes('mút tán') || sub.includes('cọ') || sub.includes('bông tẩy trang') ||
+    name.includes('bấm mi') || name.includes('curler') ||
+    name.includes('mút tán') || name.includes('bông mút') || name.includes('sponge') || name.includes('blender') ||
+    name.includes('bộ cọ') || name.includes('cọ trang điểm') || name.includes('brush') ||
+    name.includes('dao cạo') || name.includes('tỉa mày') || name.includes('nhíp') ||
+    name.includes('bông tẩy trang') || name.includes('cotton') ||
+    name.includes('máy rửa mặt') || name.includes('foreo') || name.includes('t-sonic') ||
+    name.includes('máy massage') || name.includes('nâng cơ') || name.includes('đẩy tinh chất') || name.includes('ems')
+  ) {
+    if (name.includes('bấm mi') || name.includes('curler')) return ['BEAUTY_TOOLS', 'MAKEUP_ACCESSORIES', 'EYELASH_CURLER'];
+    if (name.includes('mút tán') || name.includes('sponge')) return ['BEAUTY_TOOLS', 'MAKEUP_ACCESSORIES', 'MAKEUP_SPONGE'];
+    if (name.includes('cọ') || name.includes('brush')) return ['BEAUTY_TOOLS', 'MAKEUP_ACCESSORIES', 'MAKEUP_BRUSH'];
+    if (name.includes('dao cạo') || name.includes('tỉa mày')) return ['BEAUTY_TOOLS', 'MAKEUP_ACCESSORIES', 'EYEBROW_RAZOR'];
+    if (name.includes('bông tẩy trang') || name.includes('cotton')) return ['BEAUTY_TOOLS', 'SKINCARE_TOOLS', 'COTTON_PAD'];
+    if (name.includes('máy rửa mặt') || name.includes('t-sonic')) return ['BEAUTY_TOOLS', 'BEAUTY_DEVICES', 'FACIAL_CLEANSING_DEVICE'];
+    if (name.includes('máy massage') || name.includes('nâng cơ') || name.includes('ems')) return ['BEAUTY_TOOLS', 'BEAUTY_DEVICES', 'MASSAGE_EMS_DEVICE'];
+    return ['BEAUTY_TOOLS', 'MAKEUP_ACCESSORIES', 'GENERAL_TOOL'];
   }
-  if (cat.includes('hair') || cat.includes('tóc') || name.includes('dầu gội') || name.includes('dầu xả') || name.includes('da đầu')) {
-    if (name.includes('da đầu') || name.includes('scalp')) return ['HAIR_CARE', 'SCALP_TREATMENT'];
-    if (name.includes('dầu gội') || name.includes('shampoo')) return ['HAIR_CARE', 'SHAMPOO'];
-    return ['HAIR_CARE', 'CONDITIONER'];
+
+  // 2. Thực phẩm chức năng (Supplement)
+  if (
+    cat.includes('thực phẩm chức năng') || cat.includes('supplement') || sub.includes('viên uống') ||
+    name.includes('viên uống') || name.includes('collagen') || name.includes('dhc') || name.includes('transino')
+  ) {
+    if (name.includes('collagen')) return ['SUPPLEMENT', 'COLLAGEN', 'COLLAGEN_PEPTIDE'];
+    if (name.includes('trắng da') || name.includes('transino')) return ['SUPPLEMENT', 'SKIN_WHITENING', 'GLUTATHIONE_TRANSINO'];
+    if (name.includes('kẽm') || name.includes('trị mụn')) return ['SUPPLEMENT', 'ACNE_DEFENSE', 'ZINC_GLUCONATE'];
+    if (name.includes('vitamin') || name.includes('rau củ')) return ['SUPPLEMENT', 'MULTIVITAMIN', 'DAILY_VEGGIE'];
+    if (name.includes('cấp nước')) return ['SUPPLEMENT', 'HYDRATION', 'HYALURONIC_CERAMIDE'];
+    if (name.includes('chống nắng')) return ['SUPPLEMENT', 'SUN_CARE', 'UV_PROTECTION_PILL'];
+    return ['SUPPLEMENT', 'DAILY_SUPPLEMENT', 'HEALTH'];
   }
+
+  // 3. Nước hoa hồng (Toner)
+  if ((name.includes('nước hoa hồng') || name.includes('toner') || name.includes('nước cân bằng')) && !name.includes('nước hoa nữ') && !name.includes('eau de')) {
+    return ['SKINCARE', 'TONER', 'HYDRATING_TONER'];
+  }
+
+  // 4. Kem nền (Foundation)
+  if (name.includes('kem nền') || name.includes('foundation') || name.includes('tinted serum') || name.includes('cushion') || name.includes('phấn nước')) {
+    if (name.includes('cushion') || name.includes('phấn nước')) return ['MAKEUP', 'FACE', 'CUSHION'];
+    return ['MAKEUP', 'FACE', 'FOUNDATION'];
+  }
+
+  // 5. Chăm sóc cơ thể (Body Care)
+  if (cat.includes('body') || cat.includes('cơ thể') || name.includes('sữa tắm') || name.includes('dưỡng thể') || name.includes('body polish') || name.includes('muối tắm') || name.includes('khử mùi')) {
+    if (name.includes('tẩy tế bào chết') || name.includes('scrub') || name.includes('polish')) return ['BODY_CARE', 'BODY_SCRUB', 'BODY_EXFOLIANT'];
+    if (name.includes('sữa tắm') || name.includes('shower')) return ['BODY_CARE', 'BODY_WASH', 'SHOWER_GEL'];
+    if (name.includes('muối tắm')) return ['BODY_CARE', 'BATH_SALT', 'EPSOM_SALT'];
+    if (name.includes('khử mùi') || name.includes('lăn')) return ['BODY_CARE', 'DEODORANT', 'ROLL_ON'];
+    return ['BODY_CARE', 'BODY_MOISTURIZER', 'BODY_LOTION'];
+  }
+
+  // 6. Chăm sóc tóc & da đầu (Hair Care)
+  if (cat.includes('hair') || cat.includes('tóc') || name.includes('dầu gội') || name.includes('dầu xả') || name.includes('da đầu') || name.includes('mọc tóc')) {
+    if (name.includes('dầu gội khô')) return ['HAIR_CARE', 'DRY_SHAMPOO', 'VOLUMIZING_DRY_SHAMPOO'];
+    if (name.includes('dầu gội') || name.includes('shampoo')) return ['HAIR_CARE', 'SHAMPOO', 'HAIR_CLEANSER'];
+    if (name.includes('dầu xả') || name.includes('conditioner')) return ['HAIR_CARE', 'CONDITIONER', 'REPAIR_CONDITIONER'];
+    if (name.includes('mọc tóc')) return ['HAIR_CARE', 'SCALP_TONIC', 'GROWTH_TONIC'];
+    return ['HAIR_CARE', 'CONDITIONER', 'HAIR_TREATMENT'];
+  }
+
+  // 7. Nước hoa (Perfume)
   if (cat.includes('nước hoa') || cat.includes('perfume') || name.includes('nước hoa') || name.includes('body mist')) {
-    return ['PERFUME', 'WOMEN_PERFUME'];
+    if (name.includes('vùng kín')) return ['PERFUME', 'INTIMATE_PERFUME', 'SECRET_LOVE_OIL'];
+    if (name.includes('body mist')) return ['PERFUME', 'BODY_MIST', 'FRAGRANCE_MIST'];
+    if (name.includes('nam')) return ['PERFUME', 'MEN_PERFUME', 'EDP'];
+    return ['PERFUME', 'WOMEN_PERFUME', 'EDP'];
   }
+
+  // 8. Trang điểm (Makeup)
   if (cat === 'lipstick' || name.includes('son ') || name.includes('son kem') || name.includes('son thỏi') || name.includes('tint')) {
     if (name.includes('son kem') || name.includes('tint')) return ['MAKEUP', 'LIP', 'LIP_TINT'];
     return ['MAKEUP', 'LIP', 'LIPSTICK'];
   }
-  if (cat === 'blush' || name.includes('má hồng')) return ['MAKEUP', 'FACE', 'BLUSH'];
-  if (cat === 'foundation' || name.includes('kem nền') || name.includes('phấn nước') || name.includes('cushion')) return ['MAKEUP', 'FACE', 'FOUNDATION'];
-  if (cat === 'eyeshadow' || name.includes('phấn mắt') || name.includes('mascara')) return ['MAKEUP', 'EYE', 'EYESHADOW'];
+  if (cat === 'blush' || name.includes('má hồng')) return ['MAKEUP', 'FACE', 'POWDER_BLUSH'];
+  if (cat === 'eyeshadow' || name.includes('phấn mắt') || name.includes('mascara') || name.includes('kẻ mắt')) {
+    if (name.includes('mascara')) return ['MAKEUP', 'EYE', 'MASCARA'];
+    if (name.includes('kẻ mắt')) return ['MAKEUP', 'EYE', 'EYELINER'];
+    return ['MAKEUP', 'EYE', 'EYESHADOW_PALETTE'];
+  }
+
+  // 9. Chăm sóc da (Skincare)
   if (cat === 'cleanser' || name.includes('sữa rửa mặt') || name.includes('tẩy trang')) return ['SKINCARE', 'CLEANSER', 'GEL_CLEANSER'];
   if (name.includes('tẩy tế bào chết') || name.includes('bha') || name.includes('aha')) return ['SKINCARE', 'FACE_SCRUB', 'CHEMICAL_PEEL'];
-  if (cat === 'toner' || name.includes('toner') || name.includes('nước hoa hồng')) return ['SKINCARE', 'TONER'];
-  if (cat === 'serum' || name.includes('serum') || name.includes('tinh chất')) return ['SKINCARE', 'SERUM'];
-  if (cat === 'cream' || name.includes('kem dưỡng')) return ['SKINCARE', 'MOISTURIZER'];
-  if (cat === 'sunscreen' || name.includes('chống nắng')) return ['SKINCARE', 'SUNSCREEN'];
-  return ['SKINCARE', 'GENERAL_SKINCARE'];
+  if (cat === 'toner' || name.includes('toner')) return ['SKINCARE', 'TONER', 'HYDRATING_TONER'];
+  if (cat === 'serum' || name.includes('serum') || name.includes('tinh chất')) return ['SKINCARE', 'SERUM', 'REPAIR_SERUM'];
+  if (cat === 'cream' || name.includes('kem dưỡng')) return ['SKINCARE', 'MOISTURIZER', 'REPAIR_CREAM'];
+  if (cat === 'sunscreen' || name.includes('chống nắng')) return ['SKINCARE', 'SUNSCREEN', 'FACIAL_SUNSCREEN'];
+  return ['SKINCARE', 'GENERAL_SKINCARE', 'DAILY_CARE'];
 }
 
 // =========================================================================
@@ -4495,7 +4442,7 @@ export function searchAndFilterProducts(allProducts = [], query = '', category =
     'chăm sóc tóc & da đầu': ['hair', 'haircare', 'chăm sóc tóc', 'gội', 'xả', 'ủ tóc'],
     'nước hoa': ['fragrance', 'perfume', 'nước hoa'],
     'thực phẩm chức năng': ['supplement', 'thực phẩm chức năng', 'collagen', 'vitamin'],
-    'phụ kiện làm đẹp': ['tool', 'device', 'dụng cụ', 'phụ kiện', 'máy']
+    'phụ kiện làm đẹp': ['tool', 'device', 'dụng cụ', 'phụ kiện', 'máy', 'beauty_tools', 'curler', 'sponge', 'bấm mi', 'mút tán']
   };
 
   if (results.length < 6) {
@@ -4507,7 +4454,18 @@ export function searchAndFilterProducts(allProducts = [], query = '', category =
       const pCat = (p.category || '').toLowerCase();
       const pSubCat = (p.subCategory || '').toLowerCase();
       const pName = (p.name || '').toLowerCase();
-      return relatedTokens.some((tok) => pCat.includes(tok) || pSubCat.includes(tok) || pName.includes(tok));
+      const pPaths = (p.categoryPath || resolveClientCategoryPath(p)).map((x) => String(x).toLowerCase());
+
+      // Phụ kiện làm đẹp không bị lọt mỹ phẩm
+      if (parentKey.includes('phụ kiện')) {
+        return pPaths.includes('beauty_tools') || pCat.includes('phụ kiện') || pCat.includes('tool');
+      }
+      // Nước hoa không bị lọt toner
+      if (parentKey.includes('nước hoa')) {
+        return pPaths.includes('perfume') || (pCat.includes('nước hoa') && !pName.includes('nước hoa hồng') && !pName.includes('toner'));
+      }
+
+      return relatedTokens.some((tok) => pCat.includes(tok) || pSubCat.includes(tok) || pName.includes(tok) || pPaths.some(cp => cp.includes(tok)));
     });
 
     results = [...results, ...filler];

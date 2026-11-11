@@ -1,39 +1,15 @@
 package com.cosmetics.account.adapter.out.persistence;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.domain.Persistable;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
 import java.util.UUID;
 
-@Table("skin_profiles")
-public class SkinProfileEntity implements Persistable<UUID> {
-    @Id
-    @Column("user_id")
+public class SkinProfileEntity {
     private UUID userId;
-
-    @Column("skin_type")
     private String skinType;
-
-    @Column("concerns")
     private String concerns; // comma-separated
-
-    @Column("allergies")
     private String allergies; // comma-separated INCI names
-
-    @Column("skin_tone_hex")
     private String skinToneHex;
-
-    @Column("skin_undertone")
     private String skinUndertone;
-
-    @Column("ita_angle")
     private Double itaAngle;
-
-    @Transient
-    private boolean isNewEntry = false;
 
     public SkinProfileEntity() {}
 
@@ -52,18 +28,8 @@ public class SkinProfileEntity implements Persistable<UUID> {
         this.itaAngle = itaAngle != null ? itaAngle : 32.0;
     }
 
-    @Override
     public UUID getId() {
         return userId;
-    }
-
-    @Override
-    public boolean isNew() {
-        return isNewEntry;
-    }
-
-    public void setNewEntry(boolean newEntry) {
-        this.isNewEntry = newEntry;
     }
 
     public UUID getUserId() { return userId; }

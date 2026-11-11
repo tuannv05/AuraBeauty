@@ -34,7 +34,7 @@ Hệ thống được thiết kế theo tiêu chuẩn công nghiệp hiện đ�
                                           │ HTTP REST / SSE Stream (Port 8080)
                                           ▼
 +-----------------------------------------------------------------------------------+
-|                        SPRING CLOUD API GATEWAY (Port 8080)                       |
+|                        QUARKUS VERT.X API GATEWAY (Port 8080)                     |
 |           Reactive Routing + CORS Centralized + Stateless JWT Filter              |
 +-----------------------------------------------------------------------------------+
        │                 │                 │                 │                 │
@@ -65,20 +65,20 @@ Hệ thống được thiết kế theo tiêu chuẩn công nghiệp hiện đ�
 
 | Tầng (Layer) | Công nghệ / Thư viện | Phiên bản | Mục đích & Vai trò kiến trúc |
 | :--- | :--- | :---: | :--- |
-| **Ngôn ngữ Core** | **Java** | **21 LTS** | Sử dụng Virtual Threads, Record Patterns, Pattern Matching và tính năng bảo mật mới nhất. |
-| **Framework Microservices**| **Spring Boot / WebFlux** | **3.3.x** | Lập trình phản ứng Non-blocking (Reactive Streams), Project Reactor (Mono/Flux), Netty Server. |
-| **Cơ sở dữ liệu Quan hệ**| **PostgreSQL** + **R2DBC** | **16.x** | Trình điều khiển phản ứng không chặn `r2dbc-postgresql`, lưu trữ dữ liệu ACID cho Account, Order, Inventory, Payment. |
-| **Cơ sở dữ liệu Tài liệu**| **MongoDB Reactive** | **7.0.x** | Lưu trữ danh mục mỹ phẩm đa hình, biến thể màu sắc, thành phần INCI, 8 nhóm Facet lọc linh hoạt. |
+| **Ngôn ngữ Core** | **Java** | **21/22 LTS** | Sử dụng Virtual Threads, Record Patterns, Pattern Matching và tính năng bảo mật mới nhất. |
+| **Framework Microservices**| **Quarkus / Mutiny** | **3.15.x LTS** | Lập trình phản ứng Non-blocking (Reactive Streams), SmallRye Mutiny (Uni/Multi), Vert.x Engine. |
+| **Cơ sở dữ liệu Quan hệ**| **PostgreSQL** + **Reactive PgPool** | **16.x** | Trình điều khiển phản ứng không chặn hiệu năng cao của Quarkus, lưu trữ ACID cho Account, Order, Inventory, Payment. |
+| **Cơ sở dữ liệu Tài liệu**| **Quarkus Panache MongoDB** | **7.0.x** | Lưu trữ danh mục mỹ phẩm đa hình, biến thể màu sắc, thành phần INCI, 8 nhóm Facet lọc linh hoạt. |
 | **Vector Database (AI)** | **pgvector** | **0.7.x** | Lưu trữ Vector Embeddings (1536 chiều) của dữ liệu mỹ phẩm và thành phần INCI phục vụ RAG search. |
 | **Message Broker** | **Apache Kafka** | **3.8.x** | Trục truyền thông điệp bất đồng bộ (Asynchronous Event Bus), bảo đảm thứ tự theo Partition Key. |
-| **Giao thức Reactive Kafka**| **Reactor Kafka** | **1.3.x** | Tích hợp luồng Kafka vào Reactive Streams pipeline mà không chặn Thread. |
-| **API Gateway** | **Spring Cloud Gateway** | **4.1.x** | Đóng vai trò Reverse Proxy, định tuyến động, thẩm định JWT tập trung, xử lý CORS. |
+| **Giao thức Reactive Kafka**| **SmallRye Reactive Messaging** | **3.x** | Tích hợp luồng Kafka vào Mutiny Reactive pipeline mà không chặn Thread. |
+| **API Gateway** | **Quarkus Vert.x Gateway** | **3.15.x** | Đóng vai trò Reverse Proxy, định tuyến động, thẩm định JWT tập trung, xử lý CORS. |
 | **Frontend Framework** | **React** + **Vite** | **18.3 / 5.4** | Single Page Application (SPA), tối ưu thời gian nạp trang dưới 0.8s, render hiệu năng cao. |
 | **Styling & Hiệu ứng** | **Tailwind CSS + Framer Motion**| **3.4 / 11.x**| Ngôn ngữ thiết kế Luxury Gallery-Monochrome, hiệu ứng tương tác mượt mà chuẩn Shopee Mall. |
 | **AR & Xử lý Thị giác** | **MediaPipe Face Mesh + WebRTC**| **0.10.x** | Ước tính 468 điểm mốc khuôn mặt, render màu son 3D Virtual Try-On đạt 60 FPS trực tiếp trên trình duyệt. |
 | **AI LLM Engine** | **Google Gemini 1.5** | **v1.5 Flash/Pro** | Trích xuất tri thức da liễu, phân tích cảnh báo tương tác thành phần mỹ phẩm qua SSE. |
-| **Bảo vệ Kiến trúc** | **ArchUnit** | **1.3.x** | Tự động hóa kiểm thử ràng buộc kiến trúc Hexagonal (cấm Domain phụ thuộc Adapter). |
-| **Phát hiện Blocking** | **BlockHound** | **1.0.x** | Chặn đứng tức thì nếu phát hiện lập trình viên gọi mã đồng bộ/blocking trong luồng Reactor. |
+| **Bảo vệ Kiến trúc** | **ArchUnit** | **1.3.x** | Tự động hóa kiểm thử ràng buộc kiến trúc Hexagonal (cấm Domain phụ thuộc Adapter/Framework). |
+| **Phát hiện Blocking** | **Vert.x Blocked Thread Checker** | **4.x** | Chặn đứng tức thì nếu phát hiện mã đồng bộ/blocking trong luồng Vert.x EventLoop. |
 | **Kiểm thử Hiệu năng** | **k6 (Grafana)** | **0.50.x** | Stress test & Spike test kịch bản đặt hàng đồng thời, kiểm chứng thông lượng > 1.800 RPS. |
 
 ---
@@ -89,18 +89,18 @@ Dự án không dừng lại ở mức ứng dụng CRUD cơ bản mà triển k
 
 ### 1. Kiến trúc Lục giác (Hexagonal Architecture / Ports & Adapters)
 Mỗi Microservice đều được tổ chức phân tầng nghiêm ngặt nhằm cách ly tuyệt đối lõi nghiệp vụ khỏi framework và hạ tầng:
-- **`domain/`**: Chứa các thực thể (Entities), Value Objects, Domain Events và Invariant Rules. Viết bằng Java 21 thuần, **hoàn toàn không chứa annotation của Spring hay Database**.
+- **`domain/`**: Chứa các thực thể (Entities), Value Objects, Domain Events và Invariant Rules. Viết bằng Java 21 thuần, **hoàn toàn không chứa annotation của Quarkus, Spring hay Database**.
 - **`application/`**: Định nghĩa các Ports (Inbound Ports: Use Cases / Commands; Outbound Ports: Repository Interfaces, Event Publishers).
 - **`infrastructure/` / `adapters/`**:
-  - *Inbound Adapters*: REST Controllers (WebFlux), Kafka Event Consumers.
-  - *Outbound Adapters*: R2DBC Repositories, Mongo Repositories, Kafka Producers, WebClient.
+  - *Inbound Adapters*: REST Resources (Quarkus REST / Vert.x), Kafka Event Consumers.
+  - *Outbound Adapters*: Reactive PgPool Repositories, Panache Mongo Repositories, Kafka Producers.
 - **Ràng buộc kiểm tra tự động**: Class kiểm thử `HexagonalArchitectureTest` sử dụng ArchUnit chạy trong quy trình CI/CD, tự động đánh trượt bản build nếu có bất kỳ vi phạm chiều phụ thuộc (`domain` $\leftarrow$ `application` $\leftarrow$ `adapter`).
 
 ### 2. Mô hình 100% Non-blocking Reactive Streams
-- Toàn bộ 7 microservices loại bỏ hoàn toàn Tomcat Servlet (mỗi request 1 thread truyền thống).
-- Thay vào đó sử dụng kiến trúc hướng sự kiện lặp (Event Loop) trên nền tảng **Netty** và **Project Reactor**.
-- Một số lượng nhỏ CPU Cores (thường bằng số Cores máy) có thể phục vụ hàng chục ngàn kết nối đồng thời với mức tiêu hao bộ nhớ RAM cực thấp (~128MB - 160MB mỗi service).
-- Tích hợp **BlockHound** trong pha khởi động kiểm thử (`BlockHound.install()`), giúp phát hiện ngay lập tức bất kỳ lệnh I/O đồng bộ (ví dụ: `Thread.sleep()`, JDBC, hoặc blocking socket call).
+- Toàn bộ 7 microservices loại bỏ hoàn toàn mô hình blocking request-per-thread truyền thống.
+- Thay vào đó sử dụng kiến trúc hướng sự kiện lặp (Event Loop) trên nền tảng **Vert.x** và **SmallRye Mutiny Reactive** (`Uni`/`Multi`).
+- Một số lượng nhỏ CPU Cores (thường bằng số Cores máy) có thể phục vụ hàng chục ngàn kết nối đồng thời với mức tiêu hao bộ nhớ RAM cực thấp (~80MB - 120MB mỗi service), khởi động siêu tốc trong < 2.5s.
+- Cơ chế giám sát luồng của Vert.x tự động cảnh báo và phát hiện ngay lập tức bất kỳ tác vụ I/O đồng bộ gây chặn EventLoop thread.
 
 ### 3. Giao dịch phân tán Saga Choreography kết hợp Transactional Outbox Pattern
 Trong mô hình Database-per-Service, không thể dùng giao dịch phân tán 2-Phase Commit (2PC) do hiệu năng kém và nguy cơ khóa chết (Deadlock). Dự án triển khai:

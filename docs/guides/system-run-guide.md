@@ -1,7 +1,7 @@
 # HƯỚNG DẪN KHỞI CHẠY VÀ VẬN HÀNH HỆ THỐNG (SYSTEM RUN GUIDE)
 
 > **Dự án:** Sàn Thương Mại Điện Tử Mỹ Phẩm Đa Người Bán (Aura Beauty Mall / WebBanMP)  
-> **Kiến trúc:** Reactive Microservices (Spring Boot 3 WebFlux) + React 18 / Vite  
+> **Kiến trúc:** Reactive Microservices (Quarkus 3.15 LTS Mutiny Reactive) + React 18 / Vite 5  
 
 ---
 
@@ -11,10 +11,10 @@ Yêu cầu tiên quyết: Docker Desktop đang chạy.
 
 ```bash
 # 1. Khởi chạy 4 container hạ tầng (PostgreSQL pgvector, MongoDB 7, Kafka 3.8, Kafka UI)
-docker compose -f infra/docker-compose.yml up -d
+docker compose -f infra/docker/docker-compose.yml up -d
 
 # 2. Kiểm tra trạng thái các container
-docker compose -f infra/docker-compose.yml ps
+docker compose -f infra/docker/docker-compose.yml ps
 ```
 
 Các cổng dịch vụ hạ tầng:
@@ -25,27 +25,37 @@ Các cổng dịch vụ hạ tầng:
 
 ---
 
-## 2. BIÊN DỊCH VÀ KHỞI CHẠY BACKEND SERVICES
+## 2. BIÊN DỊCH VÀ KHỞI CHẠY BACKEND SERVICES (QUARKUS 3.15 LTS)
 
 ```bash
-# Biên dịch toàn bộ 11 modules
+# 1. Biên dịch toàn bộ modules
 mvn clean test-compile
 
-# Chạy kiểm thử kiến trúc Hexagonal (ArchUnit)
-mvn test -pl services/account-service -Dtest=HexagonalArchitectureTest
+# 2. Chạy kiểm thử kiến trúc Hexagonal (ArchUnit)
+mvn test -pl backend/account-service,backend/catalog-service -Dtest=HexagonalArchitectureTest
 
-# Chạy kiểm thử giữ kho nguyên tử không âm (CAS)
-mvn test -pl services/inventory-service -Dtest=AtomicStockConcurrencyTest
+# 3. Chạy kiểm thử giữ kho nguyên tử không âm (CAS Concurrency)
+mvn test -pl backend/inventory-service -Dtest=AtomicStockConcurrencyTest
+
+# 4. Đóng gói ứng dụng Quarkus
+mvn package -DskipTests
 ```
 
-Bảng cổng các microservices (được Gateway điều phối):
-- **API Gateway:** `http://localhost:8080` (Entry point duy nhất)
-- **Account Service:** `http://localhost:8081`
-- **Catalog Service:** `http://localhost:8082`
-- **Inventory Service:** `http://localhost:8083`
-- **Order Service:** `http://localhost:8084`
-- **Payment Service:** `http://localhost:8085`
-- **AI Advisor Service:** `http://localhost:8086`
+Khởi chạy từng service (mỗi service chạy nền hoặc qua terminal riêng với `quarkus-run.jar`):
+```bash
+# Gateway (Port 8080 - Entry point duy nhất)
+java -jar backend/api-gateway/target/quarkus-app/quarkus-run.jar
+
+# 6 Microservices nghiệp vụ:
+java -jar backend/account-service/target/quarkus-app/quarkus-run.jar      # Port 8081
+java -jar backend/catalog-service/target/quarkus-app/quarkus-run.jar      # Port 8082
+java -jar backend/inventory-service/target/quarkus-app/quarkus-run.jar    # Port 8083
+java -jar backend/order-service/target/quarkus-app/quarkus-run.jar        # Port 8084
+java -jar backend/payment-service/target/quarkus-app/quarkus-run.jar      # Port 8085
+java -jar backend/ai-advisor-service/target/quarkus-app/quarkus-run.jar   # Port 8086
+```
+
+*(Mẹo: Khi phát triển, có thể dùng `mvn -pl backend/<service> quarkus:dev` để bật chế độ Live Reload siêu tốc)*
 
 ---
 

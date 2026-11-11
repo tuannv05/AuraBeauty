@@ -590,6 +590,8 @@ export default function ProductDetailView({
                     </>
                   )}
                 </div>
+
+
               </>
             );
           })()}
