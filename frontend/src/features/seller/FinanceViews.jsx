@@ -211,7 +211,7 @@ export function FinanceViews({ subTab = 'revenue', currentShop, onAddToast, onNa
           <div>
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
               <Wallet className="text-pink-600" size={24} />
-              Số Dư Tài Khoản Shopee &amp; Rút Tiền
+              Số Dư Ví Aura Mall &amp; Rút Tiền
             </h2>
             <p className="text-xs text-slate-500 mt-1">
               Số dư khả dụng có thể rút về tài khoản ngân hàng bất cứ lúc nào, miễn phí giao dịch.

@@ -21,7 +21,7 @@ import WholesaleDashboard from './WholesaleDashboard';
 import { NumberTicker, AnimatedBadge, SpringButton, AuraBrandLogo } from './ui';
 
 // ============================================================================
-// 7 PHÂN HỆ & 32 SUB-MENUS CHUẨN SHOPEE SELLER CENTER
+// 7 PHÂN HỆ & 32 SUB-MENUS KÊNH NGƯỜI BÁN AURA (AURA SELLER CENTER)
 // ============================================================================
 const SELLER_NAVIGATION = [
   {
@@ -43,7 +43,7 @@ const SELLER_NAVIGATION = [
     submenus: [
       { id: 'products/all', label: 'Tất cả sản phẩm & Lô date' },
       { id: 'products/add', label: '+ Thêm sản phẩm & VTO AR' },
-      { id: 'products/standard', label: 'Sản phẩm tiêu chuẩn Shopee' },
+      { id: 'products/standard', label: 'Sản phẩm tiêu chuẩn Aura Mall' },
       { id: 'products/ai-optimizer', label: 'Công cụ tối ưu AI & Graphify', highlight: true }
     ]
   },
@@ -54,14 +54,14 @@ const SELLER_NAVIGATION = [
     submenus: [
       { id: 'marketing/center', label: 'Kênh Marketing tổng quan' },
       { id: 'marketing/bidding', label: 'Đấu giá Rẻ Vô Địch' },
-      { id: 'marketing/display-ads', label: 'Quảng cáo tìm kiếm Shopee' },
+      { id: 'marketing/display-ads', label: 'Quảng cáo tìm kiếm Aura Ads' },
       { id: 'marketing/off-platform-ads', label: 'Quảng cáo ngoại sàn' },
       { id: 'marketing/kol-affiliate', label: 'Tăng đơn cùng KOL' },
       { id: 'marketing/live-video', label: 'Live & Video' },
       { id: 'marketing/discounts', label: 'Khuyến mãi của Shop' },
       { id: 'marketing/flash-sale', label: 'Flash Sale của Shop' },
       { id: 'marketing/vouchers', label: 'Mã giảm giá của Shop' },
-      { id: 'marketing/shopee-campaigns', label: 'Chương trình Shopee' }
+      { id: 'marketing/shopee-campaigns', label: 'Chương trình Sàn Aura' }
     ]
   },
   {
@@ -81,7 +81,7 @@ const SELLER_NAVIGATION = [
     icon: DollarSign,
     submenus: [
       { id: 'finance/revenue', label: 'Doanh thu & Quyết toán' },
-      { id: 'finance/balance', label: 'Số dư TK Shopee & Rút tiền' },
+      { id: 'finance/balance', label: 'Số dư Ví Aura & Rút tiền' },
       { id: 'finance/bank-accounts', label: 'Tài khoản ngân hàng' }
     ]
   },
@@ -535,11 +535,11 @@ export default function SellerZone({ user, onNavigateHome, activeTab: propTab, o
           </span>
         </button>
 
-        {/* 3. Khung Shopee Chat Thu Gọn */}
+        {/* 3. Khung Aura Chat Thu Gọn */}
         <button
           onClick={() => setShowQuickChat(!showQuickChat)}
           className="w-12 h-12 rounded-2xl bg-slate-900 text-white shadow-lg hover:bg-slate-800 active:scale-95 transition flex items-center justify-center relative"
-          title="Khung Chat Người Bán"
+          title="Khung Chat Người Bán Aura"
         >
           <MessageSquare size={20} />
           <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white" />

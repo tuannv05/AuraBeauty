@@ -99,7 +99,7 @@ export function DataAnalyticsViews({ subTab = 'sales-analytics', currentShop, on
             Hiệu Quả Vận Hành &amp; Điểm Phạt Sao Quả Tạ
           </h2>
           <p className="text-xs text-slate-500 mt-1">
-            Bảng chỉ số chất lượng dịch vụ: Cam kết chuẩn Shopee Mall không vi phạm chất cấm và không trễ hạn giao.
+            Bảng chỉ số chất lượng dịch vụ: Cam kết chuẩn Aura Official Mall không vi phạm chất cấm và không trễ hạn giao.
           </p>
         </div>
         <div className="text-right">

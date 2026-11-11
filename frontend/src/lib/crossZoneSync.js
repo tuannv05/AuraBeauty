@@ -143,8 +143,8 @@ const DEFAULT_ORDERS = [
         image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=200&auto=format&fit=crop&q=80'
       }
     ],
-    carrier: 'Shopee Xpress (SPX)',
-    trackingCode: 'SPX-VN-88234202',
+    carrier: 'Aura Express (AEX)',
+    trackingCode: 'AEX-VN-88234202',
     shippingMethod: 'STANDARD',
     shippingFee: 22000,
     totalAmount: 960000,
@@ -406,7 +406,7 @@ export const crossZoneSync = {
           ...o,
           status: 'SHIPPING',
           carrier,
-          trackingCode: `${carrier.includes('GHTK') ? 'GHTK' : 'SPX'}-${Math.floor(100000 + Math.random() * 900000)}`,
+          trackingCode: `${carrier.includes('GHTK') ? 'GHTK' : 'AEX'}-${Math.floor(100000 + Math.random() * 900000)}`,
           shippedAt: new Date().toISOString()
         };
       }

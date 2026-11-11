@@ -564,7 +564,7 @@ export function ProductManagementViews({ subTab = 'all', currentShop, onAddToast
   }
 
   // =========================================================================
-  // SUBTAB: products/standard (SẢN PHẨM TIÊU CHUẨN SHOPEE)
+  // SUBTAB: products/standard (SẢN PHẨM TIÊU CHUẨN AURA MALL)
   // =========================================================================
   if (subTab === 'standard') {
     return (

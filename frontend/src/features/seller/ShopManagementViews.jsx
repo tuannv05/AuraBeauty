@@ -163,7 +163,7 @@ export function ShopManagementViews({ subTab = 'profile', currentShop, onAddToas
           <Palette className="mx-auto text-pink-600" size={32} />
           <h4 className="font-bold text-slate-800 text-sm">Trình Kéo Thả Kệ Hàng (Storefront Visual Builder)</h4>
           <p className="max-w-md mx-auto">
-            Hỗ trợ 3 mẫu layout chuẩn Shopee Mall: Layout Banner Carousel, Kệ Sản Phẩm Bán Chạy &amp; Widget Gương Thử Son 3D.
+            Hỗ trợ 3 mẫu layout chuẩn Aura Mall: Layout Banner Carousel, Kệ Sản Phẩm Bán Chạy &amp; Widget Gương Thử Son 3D.
           </p>
         </div>
       </div>
@@ -213,7 +213,7 @@ export function ShopManagementViews({ subTab = 'profile', currentShop, onAddToas
             {[
               { title: 'Nhận thông báo khi có đơn hàng mới (SSE / Webhook)', desc: 'Gửi chuông thông báo âm thanh và pop-up tức thì khi khách đặt hàng.', checked: true },
               { title: 'Cảnh báo khi tồn kho CAS chạm ngưỡng an toàn (< 10 sản phẩm)', desc: 'Hạn chế tình trạng đứt hàng các sản phẩm bán chạy.', checked: true },
-              { title: 'Tự động phản hồi tin nhắn khách hàng (Auto-reply CSKH)', desc: 'Duy trì tỷ lệ phản hồi 98% chuẩn Shopee Mall.', checked: true }
+              { title: 'Tự động phản hồi tin nhắn khách hàng (Auto-reply CSKH)', desc: 'Duy trì tỷ lệ phản hồi 98% chuẩn Aura Official Mall.', checked: true }
             ].map((s, idx) => (
               <div key={idx} className="p-3.5 rounded-xl border border-slate-200 flex items-center justify-between">
                 <div>

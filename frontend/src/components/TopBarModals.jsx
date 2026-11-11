@@ -94,7 +94,7 @@ export function TopBarModals({
               </div>
 
               <p style={{ fontSize: '13.5px', color: '#475569', lineHeight: 1.6, marginBottom: '20px' }}>
-                Aura Beauty Mall liên kết cùng các đơn vị vận chuyển hàng đầu (GHTK, GHN, Shopee Xpress) áp dụng chính sách trợ giá vận chuyển 100% không giới hạn số lần mua.
+                Aura Beauty Mall liên kết cùng các đơn vị vận chuyển hàng đầu (GHTK, GHN, Aura Express) áp dụng chính sách trợ giá vận chuyển 100% không giới hạn số lần mua.
               </p>
 
               <h4 style={{ fontSize: '14px', fontWeight: 750, color: '#0f172a', marginBottom: '10px' }}>

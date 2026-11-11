@@ -244,7 +244,7 @@ export function MarketingViews({ subTab = 'center', currentShop, onAddToast, onN
   }
 
   // =========================================================================
-  // SUBTAB: marketing/display-ads (DỊCH VỤ HIỂN THỊ SHOPEE / ADS)
+  // SUBTAB: marketing/display-ads (DỊCH VỤ HIỂN THỊ AURA ADS)
   // =========================================================================
   if (subTab === 'display-ads') {
     return (
@@ -344,9 +344,9 @@ export function MarketingViews({ subTab = 'center', currentShop, onAddToast, onN
     'bidding': { title: 'Đấu Giá Rẻ Vô Địch', desc: 'Đăng ký SKU tham gia chiến dịch giá tốt nhất sàn để nhận diện nhãn Rẻ Vô Địch.' },
     'off-platform-ads': { title: 'Quảng Cáo Ngoại Sàn (Meta & TikTok)', desc: 'Tạo link theo dõi chuyển đổi UTM để tối ưu chi phí chạy ads Facebook & TikTok.' },
     'kol-affiliate': { title: 'Tăng Đơn Cùng KOL / KOC', desc: 'Thiết lập tỷ lệ hoa hồng tiếp thị liên kết từ 5% - 15% cho reviewer làm đẹp.' },
-    'live-video': { title: 'Livestream Thử Màu & Video Ngắn', desc: 'Quản lý phòng Live tư vấn da trực tiếp và gắn sản phẩm vào video ngắn Shopee Video.' },
+    'live-video': { title: 'Livestream Thử Màu & Video Ngắn', desc: 'Quản lý phòng Live tư vấn da trực tiếp và gắn sản phẩm vào video ngắn Aura Video.' },
     'discounts': { title: 'Khuyến Mãi Của Shop & Mua Kèm Deal Sốc', desc: 'Thiết lập combo chu trình dưỡng da 28 ngày giảm thêm 10% khi mua kèm.' },
-    'shopee-campaigns': { title: 'Chương Trình Đại Tiệc Toàn Sàn', desc: 'Đăng ký sản phẩm tham gia các chiến dịch Siêu Sale 11.11, Lương Về của Aura Mall.' }
+    'shopee-campaigns': { title: 'Chương Trình Đại Tiệc Sàn Aura', desc: 'Đăng ký sản phẩm tham gia các chiến dịch Siêu Sale 11.11, Lương Về của Aura Mall.' }
   };
 
   const meta = subMeta[subTab] || { title: 'Kênh Marketing', desc: 'Quản lý chiến dịch tiếp thị gian hàng.' };

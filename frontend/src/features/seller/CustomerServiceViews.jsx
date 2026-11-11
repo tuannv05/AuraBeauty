@@ -112,7 +112,7 @@ export function CustomerServiceViews({ subTab = 'chat', currentShop, onAddToast,
           </span>
         </div>
 
-        {/* Khung Chat 3 Cột Chuẩn Shopee */}
+        {/* Khung Chat 3 Cột Chuẩn Aura Beauty Mall */}
         <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm grid grid-cols-1 md:grid-cols-12 min-h-[560px]">
           {/* Cột 1: Danh sách hội thoại (4 cols) */}
           <div className="md:col-span-4 border-r border-slate-200 flex flex-col">

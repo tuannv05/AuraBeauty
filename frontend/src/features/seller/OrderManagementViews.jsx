@@ -207,7 +207,7 @@ export function OrderManagementViews({ subTab = 'all', currentShop, onAddToast, 
           </div>
         </div>
 
-        {/* Bảng Dữ Liệu 5 Cột Chuẩn Shopee */}
+        {/* Bảng Dữ Liệu 5 Cột Chuẩn Aura Mall */}
         <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
           {filteredOrders.length === 0 ? (
             /* EMPTY STATE */
